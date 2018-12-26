@@ -29,12 +29,6 @@ Page({
       },
       {
         text: '青葱'
-      },
-      {
-        text: '上课'
-      },
-      {
-        text: '下课'
       }
     ],
     currentTab: 0,
@@ -42,11 +36,11 @@ Page({
     infosArray: [
       {
         id: 1,
-        title: '应急管理部三定方案（厅字【2018】60号）',
+        title: '应急管理部三定方案（厅字【2018】60号）你还USD还是大科技收到货看撒娇地方还是进口的粉红色',
         viewNum: '浏览93',
         date: '2018-10-19',
         type: '推荐',
-        type1:'3'
+        type1: '3'
       },
       {
         id: 2,
@@ -54,15 +48,15 @@ Page({
         viewNum: '浏览913',
         date: '2018-10-19',
         type: '推荐',
-        type1:'1'
+        type1: '1'
       },
       {
         id: 3,
-        title: '上海塞科室“5.12”其他爆炸较大事故调查报告',
+        title: '上海塞科室“5.12”其他爆炸较大事故调查报告按时发顺丰大沙发沙发沙发上啊撒大声地啊实打实大师大师大发送到发顺丰阿达速度啊实打实大声道阿魏酸',
         viewNum: '浏览13',
         date: '2018-10-03',
         type: '时事资讯',
-        type1:'2'
+        type1: '2'
       },
       {
         id: 4,
@@ -70,7 +64,7 @@ Page({
         viewNum: '浏览93',
         date: '2018-10-19',
         type: '时事资讯',
-        type1:'3'
+        type1: '3'
       }
     ]
   },
@@ -130,6 +124,7 @@ Page({
       })
     }
   },
+
   switchTab(event) {
     var cur = event.detail.current;
     var singleNavWidth = this.data.windowWidth / 5;
@@ -137,5 +132,23 @@ Page({
       currentTab: cur,
       navScrollLeft: (cur - 2) * singleNavWidth
     });
-  }
+  },
+
+  //跳转详情页
+  goDetaile(e) {
+    wx.navigateTo({
+      url: '../details/details?id=' + e.target.dataset.id
+    })
+  },
+
+  onPullDownRefresh() {
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    // wx.hideNavigationBarLoading() //在标题栏中显示加载
+
+    // wx.startPullDownRefresh({
+    //   success:function(){
+    //     wx.stopPullDownRefresh();                       //停止下拉刷新
+    //   }
+    // })
+  },
 })

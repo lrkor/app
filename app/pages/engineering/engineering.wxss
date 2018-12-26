@@ -60,7 +60,7 @@ page{
 }
 .list-infos1{
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   padding: 20rpx 0;
   border-bottom: 1px solid #ddd;
 }
@@ -108,16 +108,20 @@ page{
   border: 1px solid #ddd;
   border-radius: 10rpx;
 }
-.enMiddle{
+.flex-left{
   display: flex;
+  width: 100%!important;
+  flex-direction: row;
+  margin-top: 20rpx;
 }
-.enMiddle .img-box{
+.flex-left .img-box{
   display: flex;
-  flex-grow:1;
-  justify-content: center ;
+  flex: 1;
+  justify-content:  center;
 }
 
-.enMiddle .img-box image{
-  width: 160rpx;
-  height: 160rpx;
+.flex-left .img-box image{
+  width: 160rpx!important;
+  height: 160rpx!important;
+ 
 }
