@@ -63,7 +63,7 @@
                                 <image class='list-img' src='/images/info.png' mode="widthFix"></image>
                             </view>
                         </view>
-                        <view class="enDow qq">
+                        <view class="enDow">
                             <text class='date color-6'>{{item.date}}</text>
                             <text class='view-num color-6'>{{item.viewNum}}</text>
                         </view>
