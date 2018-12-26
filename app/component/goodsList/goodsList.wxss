@@ -1,0 +1,56 @@
+/* component/goodsList/goodsList.wxss */
+:host{
+  display: block;
+  border-bottom: 1px solid #e0e0e0;
+}
+.list-group{
+  display: flex;
+  padding: 15px;
+}
+.list-left{
+  flex:1;
+  padding-right:10px;
+}
+.list-right{
+  flex:0 0 50px;
+}
+.title {
+  font-size:16px;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+.icon-img {
+  float: left;
+  margin-top:9px;
+  margin-right:4px;
+  width: 14px;
+  height: 12px;
+  vertical-align:middle;
+}
+.desc{
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  margin-top: 4px;
+  line-height: 25px;
+  font-size: 14px;
+  color:#7a7a7a;
+}
+.btn-primary {
+  position: static;
+  margin-top:13px;
+  padding:3px 2px;
+  line-height:1.4;
+  color:#3396fb;
+  border:1px solid #3396fb;
+  border-radius: 3px;
+  text-align: center;
+  font-size:12px;
+}
+
+

@@ -1,0 +1,54 @@
+<!-- index.wxml -->
+<view class="index">
+    <view class="title">
+        <view class="flex-wrp" style="flex-direction:row;">
+            <view class="flex-item title_letf">
+                <image src="../../images/index/positioning.png" style="width:20rpx;height: 24rpx;margin-right: 10rpx;" />
+                五峰山接线工程
+                <!-- <image src="../../images/index/down.png" style="width:11rpx;height: 10rpx;margin-left: 10rpx;" /> -->
+            </view>
+            <view class="flex-item flex_weather flex-wrp title_right" bindtap="getweather">
+                <view class="weather">{{windSpeed}}</view>
+                <view class="weather">{{temperature}}</view>
+                <view class="weather flex-wrp" style="align-items: center;"><image src="{{weatherImg}}" style="width:40rpx;height: 40rpx;" alt=""/></view>
+
+            </view>
+        </view>
+    </view>
+    <view class="shuffling">
+        <swiper class="border-rd-10" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+            <block wx:for="{{imgUrls}}">
+                <swiper-item class="border-rd-10">
+                    <image src="{{item}}" class="slide-image" style="width:100%;height: 100%;" />
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view class="small_feature">
+        <swiper indicator-dots="{{flase}}" autoplay="{{flase}}" class="small_feature_swiper" bindchange="switchTab">
+            <block wx:for="{{smallImgUrl}}" wx:key="*this">
+                <swiper-item>
+                    <view wx:for="{{item}}" class="small_feature_li">
+                        <image src="{{item.url}}" style="width:60rpx;height: 60rpx;" />
+                        <view>{{item.text}}</view>
+                    </view>
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class="swiper_tab">
+            <view class="tab-item {{currentTab==0?'active':''}}" data-current="0"></view>
+            <view class="tab-item {{currentTab==1?'active':''}}" data-current="1"></view>
+        </view>
+    </view>
+    <view class="bgc"></view>
+    <view class="application">
+        <view class="application_title">我的应用</view>
+        <view class="application_list clearfix">
+            <view class="application_item" wx:for="{{applicationList}}" bindtap='goToWebView' >
+                <image src="{{item.imgUrl}}" style="width:90rpx;height: 90rpx;" data-url="{{item.url}}"/>
+                <view>{{item.text}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+

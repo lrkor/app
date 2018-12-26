@@ -1,0 +1,22 @@
+
+<navigator  url="/pages/details/details1">
+  <view class='list-div'>
+    <view class='list-infos'>
+      <view class='list-left'>
+        <view class='title-div'>
+          <text class='icon-top'></text>
+          <text class='title'>{{title}}</text>
+        </view>
+        <view class='brief-div'>
+          <text class='date color-6'>{{date}}</text>
+          <text class='view-num color-6'>{{viewNum}}</text>
+        </view>
+      </view>
+      <view class='list-right'>
+        <view class='img-box'>
+          <image class='list-img' src='/images/info.png' mode="widthFix"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</navigator>

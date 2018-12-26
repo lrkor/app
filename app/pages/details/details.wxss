@@ -1,0 +1,38 @@
+.detail-page {
+  padding: 0 30rpx;
+}
+.detail-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+}
+.title-brief {
+  margin-top: 20rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  border-bottom: 1px solid #ddd;
+  font-size: 12px;
+  color: #666;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+.content-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+}
+.detail-content {
+  padding-top: 30rpx;
+  clear: both;
+}
+.content {
+  margin: 15px 0;
+  font-size: 16px;
+  line-height:2;
+  color: #333;
+}

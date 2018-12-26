@@ -1,0 +1,74 @@
+/**index.wxss**/
+.flex-wrp{
+  display:flex;
+}
+.clearfix:after{
+  content: "020"; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;  
+  }
+
+.clearfix {
+  /* 触发 hasLayout */ 
+  zoom: 1; 
+  }
+.personal{
+  font-family: 'PingFangSC-Regular, sans-serif';
+}
+.personal_information{
+  padding: 50rpx 0;
+  border-top: 1px solid #dddddd;
+}
+.head_portrait{
+  padding-right: 40rpx;
+}
+.name{
+  font-size: 40rpx;
+  font-weight: 700;
+  font-family: 'PingFangSC-Regular, sans-serif';
+}
+.engineeringName{
+  margin: 15rpx 0;
+}
+.engineeringName,.orgName{
+  font-size: 30rpx;
+  font-weight: normal;
+}
+.bgc{
+  height: 20rpx;
+  background-color: #f7f7f7;
+}
+.switch{
+  display:flex;
+  align-items:center;
+  font-size: 24rpx;
+  font-weight: normal;
+  position: absolute;
+  right: 0;
+  top: 111rpx;
+  background-color: #7fc8ed;
+  padding: 13rpx 20rpx;
+  color: #fff;
+  border-top-left-radius: 25rpx;
+  border-bottom-left-radius: 25rpx;
+}
+.switch_img{
+  margin-left: 10rpx;
+}
+.functionItem{
+  font-size: 30rpx;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #dddddd;
+}
+.functionItem_img,.functionItem_name{
+  float: left;
+}
+.rigthArrow{
+  padding-right: 30rpx;
+  float: right;
+}
+.functionItem_img{
+  margin: 0 30rpx;
+}

@@ -1,0 +1,22 @@
+/**index.wxss**/
+.flex-wrp{
+  margin-top: 60rpx;
+  display:flex;
+}
+.flex-item{
+  width: 200rpx;
+  height: 200rpx;
+  font-size: 26rpx;
+}
+.flex-item-V{
+  margin: 0 auto;
+  width: 200rpx;
+  height: 200rpx;
+}
+.project-content {
+  position:absolute;
+  top:210px;
+  margin-top:1px;
+  box-shadow:0 -4px 4px #e2dede;
+  border-width: 0;
+}

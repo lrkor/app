@@ -1,0 +1,12 @@
+<view class='list-group'>
+  <view class='list-left'>
+    <view class='title'>{{title}}</view>
+    <view>
+      <image class='icon-img' src='/images/bid.png' mode="widthFix"></image>
+      <text class='desc'>{{desc}}</text>
+    </view>
+  </view>
+  <view class='list-right'>
+    <view class='btn-primary'>查看</view>
+  </view>
+</view>

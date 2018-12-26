@@ -1,0 +1,123 @@
+/**index.wxss**/
+page{
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+}
+.container{
+  width: 100%;
+  height: 100%;
+}
+.nav {
+  padding: 0 28rpx;
+  width: 100%;
+  height: 80rpx;
+  box-sizing: border-box;
+  box-shadow:0 0 5px 1px #787878;
+  overflow: hidden;
+  line-height: 77rpx;
+  background: #fff;
+  font-size: 16px;
+  white-space: nowrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+.nav-item {
+  margin-right: 20rpx;
+  padding:0 20rpx;
+  display: inline-block;
+  text-align: center;
+}
+.nav-item.active{
+  color: #438afe;  
+  border-bottom: 2px solid #3396fb;
+}
+.tab-box{
+  position:absolute;
+  top:100rpx;
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+}
+.tab-content{
+  border-top: 1px solid #ddd;
+  overflow-y: scroll;
+}
+
+:host{
+  display: block;
+}
+.list-div {
+  padding: 0 40rpx;
+}
+.list-infos{
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+.list-infos1{
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #ddd;
+}
+.list-infos .list-left{
+  width:200rpx;
+  flex:1;
+}
+.list-infos .list-right{
+  width: 160rpx;
+  height: 160rpx;
+}
+.list-infos .title {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  line-height: 1.6;
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+}
+.list-infos .img-box {
+  width: 160rpx;
+  height: 160rpx;
+}
+.list-infos .list-img {
+  width: 100%;
+  height: 100%;
+}
+.list-infos .brief-div {
+  margin-top: 15rpx;
+  font-size: 12px;
+}
+.list-infos .color-6 {
+  color: #666;
+}
+.list-infos .date{
+  margin-right: 40rpx;
+}
+.list-infos .type {
+  margin-left:30rpx;
+  padding:0 10rpx;
+  color: #999;
+  border: 1px solid #ddd;
+  border-radius: 10rpx;
+}
+.enMiddle{
+  display: flex;
+}
+.enMiddle .img-box{
+  display: flex;
+  flex-grow:1;
+  justify-content: center ;
+}
+
+.enMiddle .img-box image{
+  width: 160rpx;
+  height: 160rpx;
+}
