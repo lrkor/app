@@ -5,7 +5,6 @@ const app = getApp()
 
 Page({
     data: {
-        weather: '',//天气
         weatherImg: '',//天气图片
         temperature: '',//温度
         windSpeed: '',//风速
@@ -101,40 +100,7 @@ Page({
                 imgUrl: '../../images/index/application/9.png',
                 text: '班组管理'
             }
-        ],
-        PinYin: {
-          中雨:'zhongyu',
-          白天扬沙:'baitianyangsha',
-          白天有风:'baitianyoufeng',
-          暴雪:'baoxue',
-          暴雨:'baoyu',
-          冰雹:'bingbao',
-          大雪:'daxue',
-          大雨:'dayu',
-          多云:'duoyun',
-          多云转晴:'duoyunzhuanqing',
-          多云转阴:'duoyunzhuanyin',
-          风:'feng',
-          雷雨:'leiyu',
-          雷阵雨:'leizhenyu',
-          晴天:'qingtian',
-          晴转多云:'qingzhuanduoyun',
-          沙尘暴:'shachengbao',
-          太阳升起:'taiyangshengqi',
-          太阳下落:'taiyangxiala',
-          小雪:'xiaoxue',
-          小雨:'xiaoyu',
-          夜间多云:'yejianduoyun',
-          夜间有雪:'yejianyouxue',
-          夜间有雨:'yejianyouyu',
-          夜间阵雨:'yejianzhenyu',
-          夜晚:'yewan',
-          阴天:'yintian',
-          雨夹雪:'yujiaxue',
-          阵雨:'zhenyu',
-          中雪:'zhongxue',
-          有雾:'youwu',
-        }
+        ]
     },
 
     // tab切换
@@ -159,14 +125,14 @@ Page({
         var fail = function (data) {
         };
         var success = function (data) {
-            var weatherData = data.currentWeather[0];
+            console.log(data.originalData.results[0].weather_data[0]);
+            var weatherData = data.originalData.results[0].weather_data[0];
             let temperature = weatherData.date;
             let strStartIndex = temperature.indexOf('：');
             let strEndIndex = temperature.indexOf('℃');
             temperature = temperature.substring(strStartIndex + 1, strEndIndex) + '°';
             that.setData({
-                weatherImg: '../../images/weather/' + that.data.PinYin[weatherData.weatherDesc] + '.png',
-                weather: weatherData.weatherDesc,
+                weatherImg: weatherData.dayPictureUrl,
                 temperature: temperature,
                 windSpeed: weatherData.wind
             });

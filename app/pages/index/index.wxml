@@ -10,7 +10,7 @@
             <view class="flex-item flex_weather flex-wrp title_right" bindtap="getweather">
                 <view class="weather">{{windSpeed}}</view>
                 <view class="weather">{{temperature}}</view>
-                <view class="weather flex-wrp" style="align-items: center;"><image src="{{weatherImg}}" style="width:40rpx;height: 40rpx;" alt=""/></view>
+                <view class="weather flex-wrp" style="align-items: center;"><image src="{{weatherImg}}" style="width:42rpx;height: 30rpx;" alt=""/></view>
 
             </view>
         </view>
