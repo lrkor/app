@@ -3,7 +3,7 @@
 <view class='detail-page'>
   <view class='detail-title'>{{title}}</view>
   <view class='title-brief'>
-    <text class='pull-left'>时事资讯</text> 
+    <text class='pull-left'>{{typeName}}</text> 
     <text class='pull-right'>{{date}}</text>  
   </view>
   <view class='detail-content'>

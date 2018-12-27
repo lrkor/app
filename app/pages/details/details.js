@@ -39,13 +39,13 @@ Page({
       // },
       success: function (res) {
         let article = res.data.data.content;
+        let typeName = res.data.data.categoryName;
         WxParse.wxParse('article', 'html', article, that, 5);
         that.setData({
           title: res.data.data.title,
-          date: util.formatDate(new Date(res.data.data.createTime))
+          date: util.formatDate(new Date(res.data.data.createTime)),
+          typeName:typeName
         });
-        console.log(111);
-        // let visitTimes = res.data.data.visitTimes
         that.updata(res.data.data.id, res.data.data.visitTimes + 1);
       }
     })
