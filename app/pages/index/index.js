@@ -10,9 +10,9 @@ Page({
         windSpeed: '',//风速
         currentTab: 0, //预设当前项的值
         imgUrls: [
-            'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-            'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-            'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+          '../../images/index/banner.png',
+          '../../images/index/banner.png',
+          '../../images/index/banner.png'
         ],
         // indicatorDots: true,
         autoplay: true,
@@ -38,28 +38,29 @@ Page({
             }],
             [{
                 url: '../../images/index/small/1.png',
-                text: '扫一扫'
+                text: '账号解绑'
             },
             {
                 url: '../../images/index/small/2.png',
-                text: '考勤管理'
+                text: '意见反馈'
             },
             {
                 url: '../../images/index/small/3.png',
-                text: '任务管理'
-            },
-            {
-                url: '../../images/index/small/4.png',
-                text: '会议通知'
+                text: '联系客服'
             }]
         ],
         applicationList: [
             {
+                url: 'https://mp.weixin.qq.com',
+                imgUrl: '../../images/index/application/1.png',
+                text: '排行榜',
+            },
+            {
                 url: 'https://mp.weixin.qq.com/',
                 imgUrl: '../../images/index/application/1.png',
                 text: '通知公告',
-
             },
+            
             {
                 url: 'https://mp.weixin.qq.com/',
                 imgUrl: '../../images/index/application/2.png',
@@ -143,10 +144,17 @@ Page({
         });
     },
 
-    // 页面跳转事件
-    goToWebView(e) {
-        wx.navigateTo({
-            url: '../webView/web_view?url=' + e.target.dataset.url
-        })
-    },
+  // 页面跳转事件
+  goToWebView(e) {
+    // wx.navigateTo({
+    //     url: '../webView/web_view?url=' + e.target.dataset.url
+    // })
+
+    wx.showToast({
+      title: '正在建设中',
+      icon: "none",
+      duration: 1000,
+      mask: true
+    })
+  },
 })

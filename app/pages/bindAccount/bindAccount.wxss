@@ -1,0 +1,29 @@
+.login-page {
+  padding: 0 2rem;
+  margin: 8rem 0;
+}
+.login_input {
+  margin:1rem 0;
+
+  width: 100%;
+  height:1.7rem;
+  border: 1px solid #ccc;
+  border-width: 0 0 1px 0;
+  font-size: 13px;
+}
+.pwd-txt {
+  text-align: right;
+  color: #ff0000;
+  font-size: 13px;
+}
+.btn-bind {
+  margin-top: 2rem;
+  width: 100%;
+  line-height: 40px;
+  background-color: #169bd5;
+  color: #fff;
+  border-radius: 4px;
+  text-align: center;
+  font-size:13px;
+
+}

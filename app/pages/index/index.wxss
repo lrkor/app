@@ -54,12 +54,13 @@
 
 /* 小功能 */
 .small_feature_swiper{
-  /* padding: 40rpx 40rpx 0 40rpx; */
   padding-top: 40rpx;
-  height: 120rpx;
+  height: 125rpx;
 }
 .small_feature_li{
+  position: relative;
   float: left;
+   padding-top: 10px;
   width: 25%;
   text-align: center;
 }
@@ -69,6 +70,7 @@
   width: 60rpx;
   height: 13rpx;
   padding-top: 10rpx;
+  padding-bottom: 10rpx;
   margin: 0 auto;
 }
 .tab-item{
@@ -83,7 +85,7 @@
 }
 .bgc{
   width: 100%;
-  height: 30rpx;
+  height: 20rpx;
   background-color: #f7f7f7;
 }
 
@@ -114,4 +116,14 @@
 }
 .flex_weather{
   flex-direction:row-reverse;
+}
+.icon-num {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  padding: 0 3px;
+  border-radius: 4rem;
+  background: #ff0000;
+  color: #fff;
+  font-size: 12px;
 }

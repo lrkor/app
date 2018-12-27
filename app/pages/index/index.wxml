@@ -10,14 +10,13 @@
             <view class="flex-item flex_weather flex-wrp title_right" bindtap="getweather">
                 <view class="weather">{{windSpeed}}</view>
                 <view class="weather">{{temperature}}</view>
-                <view class="weather flex-wrp" style="align-items: center;"><image src="{{weatherImg}}" style="width:42rpx;height: 30rpx;" alt=""/></view>
-
+                <view class="weather flex-wrp" style="align-items: center;"><image src="{{weatherImg}}" style="width:40rpx;height: 40rpx;" alt=""/></view>
             </view>
         </view>
     </view>
     <view class="shuffling">
         <swiper class="border-rd-10" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-            <block wx:for="{{imgUrls}}">
+            <block wx:for="{{imgUrls}}" wx:key="">
                 <swiper-item class="border-rd-10">
                     <image src="{{item}}" class="slide-image" style="width:100%;height: 100%;" />
                 </swiper-item>
@@ -28,9 +27,12 @@
         <swiper indicator-dots="{{flase}}" autoplay="{{flase}}" class="small_feature_swiper" bindchange="switchTab">
             <block wx:for="{{smallImgUrl}}" wx:key="*this">
                 <swiper-item>
-                    <view wx:for="{{item}}" class="small_feature_li">
+                    <view wx:for="{{item}}" wx:key="" class="small_feature_li">
                         <image src="{{item.url}}" style="width:60rpx;height: 60rpx;" />
                         <view>{{item.text}}</view>
+                        <block wx:if="{{item.num > 0}}">
+                          <view class="icon-num">{{item.num}}</view>
+                        </block>
                     </view>
                 </swiper-item>
             </block>
@@ -44,7 +46,7 @@
     <view class="application">
         <view class="application_title">我的应用</view>
         <view class="application_list clearfix">
-            <view class="application_item" wx:for="{{applicationList}}" bindtap='goToWebView' >
+            <view class="application_item" wx:for="{{applicationList}}"  wx:key="" bindtap='goToWebView' >
                 <image src="{{item.imgUrl}}" style="width:90rpx;height: 90rpx;" data-url="{{item.url}}"/>
                 <view>{{item.text}}</view>
             </view>
