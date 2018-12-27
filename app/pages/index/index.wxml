@@ -27,8 +27,8 @@
         <swiper indicator-dots="{{flase}}" autoplay="{{flase}}" class="small_feature_swiper" bindchange="switchTab">
             <block wx:for="{{smallImgUrl}}" wx:key="*this">
                 <swiper-item>
-                    <view wx:for="{{item}}" wx:key="" class="small_feature_li">
-                        <image src="{{item.url}}" style="width:60rpx;height: 60rpx;" />
+                    <view wx:for="{{item}}" wx:key="" class="small_feature_li" bindtap='goToWebView'>
+                        <image src="{{item.url}}" data-status="{{item.status}}" data-url="{{item.hrefUrl}}" style="width:60rpx;height: 60rpx;" />
                         <view>{{item.text}}</view>
                         <block wx:if="{{item.num > 0}}">
                           <view class="icon-num">{{item.num}}</view>
@@ -47,7 +47,7 @@
         <view class="application_title">我的应用</view>
         <view class="application_list clearfix">
             <view class="application_item" wx:for="{{applicationList}}"  wx:key="" bindtap='goToWebView' >
-                <image src="{{item.imgUrl}}" style="width:90rpx;height: 90rpx;" data-url="{{item.url}}"/>
+                <image src="{{item.imgUrl}}" style="width:90rpx;height: 90rpx;" data-status="{{item.status}}" data-url="{{item.url}}"/>
                 <view>{{item.text}}</view>
             </view>
         </view>

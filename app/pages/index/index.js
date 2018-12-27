@@ -21,85 +21,120 @@ Page({
         // circular:true
         smallImgUrl: [
             [{
-                url: '../../images/index/small/1.png',
-                text: '扫一扫'
+              url: '../../images/index/small/sys.png',
+              hrefUrl: 'https://mp.weixin.qq.com/',
+              text: '扫一扫',
+              status: 3
             },
             {
-                url: '../../images/index/small/2.png',
-                text: '考勤管理'
+              url: '../../images/index/small/kqdk.png',
+              hrefUrl: 'http://wechat.zhinengjianshe.com/wechatService/weChat/time/card/list?openId=oBqrSwzzFWtcDD6SjgV13F2OhPkc&userId=1',
+              text: '考勤打卡',
+              status: 1
             },
             {
-                url: '../../images/index/small/3.png',
-                text: '任务管理'
+              url: '../../images/index/small/rwgl.png',
+              hrefUrl: 'http://wechat.zhinengjianshe.com/wechatService/weChat/task/list?openId=oBqrSwzzFWtcDD6SjgV13F2OhPkc&userId=1&userName=1',
+              text: '任务管理',
+              status: 1
             },
             {
-                url: '../../images/index/small/4.png',
-                text: '会议通知'
+              url: '../../images/index/small/hytz.png',
+              hrefUrl: 'http://wechat.zhinengjianshe.com/wechatService/weChat/meetingNotice/list?openId=oBqrSwzzFWtcDD6SjgV13F2OhPkc&userId=1&systemCode=fbzhsgms',
+              text: '会议通知',
+              status: 1
             }],
             [{
-                url: '../../images/index/small/1.png',
-                text: '账号解绑'
+              url: '../../images/index/small/zhjb.png',
+              hrefUrl: '/pages/accountDeregulation/accountDeregulation',
+              text: '账号解绑',
+              status: 1
             },
             {
-                url: '../../images/index/small/2.png',
-                text: '意见反馈'
+              url: '../../images/index/small/yjfk.png',
+              text: '意见反馈',
+              status: 2
             },
             {
-                url: '../../images/index/small/3.png',
-                text: '联系客服'
+              url: '../../images/index/small/lxkf.png',
+              hrefUrl: 'https://mp.weixin.qq.com/',
+              text: '联系客服',
+              status: 2
             }]
         ],
         applicationList: [
             {
-                url: 'https://mp.weixin.qq.com',
-                imgUrl: '../../images/index/application/1.png',
-                text: '排行榜',
+            url: 'http://wechat.zhinengjianshe.com/wechatService/weChat/score/rank?rankType=1&recordDate=20181227&type=1',
+              imgUrl: '../../images/index/application/phb.png',
+              text: '排行榜',
+              status: 1
             },
             {
-                url: 'https://mp.weixin.qq.com/',
-                imgUrl: '../../images/index/application/1.png',
-                text: '通知公告',
+              url: 'http://wechat.zhinengjianshe.com/wechatService/weChat/time/card/list?openId=oBqrSwzzFWtcDD6SjgV13F2OhPkc&userId=1&systemCode=fbzhsgms',
+              imgUrl: '../../images/index/application/kqgl.png',
+              text: '考勤管理',
+              status: 1
+            },
+            {
+              url: 'http://wechat.zhinengjianshe.com/wechatService/weChat/weatherStation/monitor?openId=oBqrSwzzFWtcDD6SjgV13F2OhPkc&userId=1&systemCode=fbzhsgms',
+              imgUrl: '../../images/index/application/hjjc.png',
+              text: '环境监测',
+              status: 1
+            },
+            {
+              url: 'http://wechat.zhinengjianshe.com/wechatService/weChat/liftingMonitoring/list?openId=oBqrSwzzFWtcDD6SjgV13F2OhPkc&userId=1&systemCode=fbzhsgms',
+              imgUrl: '../../images/index/application/qzjc.png',
+              text: '起重监测',
+              status: 1
+            },
+            {
+              url: 'https://mp.weixin.qq.com/',
+              imgUrl: '../../images/index/application/tzgg.png',
+              text: '通知公告',
+              status: 2
             },
             
             {
-                url: 'https://mp.weixin.qq.com/',
-                imgUrl: '../../images/index/application/2.png',
-                text: '信息报道'
+              url: 'https://mp.weixin.qq.com/',
+              imgUrl: '../../images/index/application/xwbd.png',
+              text: '新闻报道',
+              status: 2
             },
             {
-                url: 'https://mp.weixin.qq.com/',
-                imgUrl: '../../images/index/application/3.png',
-                text: '通讯录'
+              url: 'https://mp.weixin.qq.com/',
+              imgUrl: '../../images/index/application/txl.png',
+              text: '通讯录',
+              status: 2
             },
             {
-                url: 'https://mp.weixin.qq.com/',
-                imgUrl: '../../images/index/application/4.png',
-                text: '视频监控'
+              url: 'https://mp.weixin.qq.com/',
+              imgUrl: '../../images/index/application/spjk.png',
+              text: '视频监控',
+              status: 2
             },
             {
-                url: 'https://mp.weixin.qq.com/',
-                imgUrl: '../../images/index/application/5.png',
-                text: '环境监测'
+              url: 'https://mp.weixin.qq.com/',
+              imgUrl: '../../images/index/application/rcxc.png',
+              text: '日常巡查',
+              status: 2
             },
             {
-                url: 'https://mp.weixin.qq.com/',
-                imgUrl: '../../images/index/application/6.png',
-                text: '日常巡查'
+              url: 'https://mp.weixin.qq.com/',
+              imgUrl: '../../images/index/application/djc.png',
+              text: '大检查',
+              status: 2 
             },
             {
-                url: 'https://mp.weixin.qq.com/',
-                imgUrl: '../../images/index/application/7.png',
-                text: '安全大检查'
+              url: 'https://mp.weixin.qq.com/',
+              imgUrl: '../../images/index/application/bzjy.png',
+              text: '班组教育',
+              status: 2
             },
             {
-                url: 'https://mp.weixin.qq.com/',
-                imgUrl: '../../images/index/application/8.png',
-                text: '指数排行'
-            },
-            {
-                url: 'https://mp.weixin.qq.com/',
-                imgUrl: '../../images/index/application/9.png',
-                text: '班组管理'
+              url: 'https://mp.weixin.qq.com/',
+              imgUrl: '../../images/index/application/aqrj.png',
+              text: '安全日记',
+              status: 2
             }
         ]
     },
@@ -146,15 +181,26 @@ Page({
 
   // 页面跳转事件
   goToWebView(e) {
-    // wx.navigateTo({
-    //     url: '../webView/web_view?url=' + e.target.dataset.url
-    // })
+    console.log(e, e.target.dataset.status);
 
-    wx.showToast({
-      title: '正在建设中',
-      icon: "none",
-      duration: 1000,
-      mask: true
-    })
+    var status = e.target.dataset.status;
+    if (status == 1) {
+      wx.navigateTo({
+        url: '../webView/web_view?url=' + e.target.dataset.url,
+      })
+    } else if (status == 2) {
+      wx.showToast({
+        title: '正在建设中',
+        icon: "none",
+        duration: 1000,
+        mask: 1000
+      })
+    } else if (status == 3) {
+      wx.scanCode({
+        success(res) {
+          console.log(res);
+        }
+      })
+    }
   },
 })

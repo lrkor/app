@@ -57,6 +57,7 @@
   margin-left: 10rpx;
 }
 .functionItem{
+  position: relative;
   font-size: 30rpx;
   padding: 30rpx 0;
   border-bottom: 1rpx solid #dddddd;
@@ -73,6 +74,7 @@
 }
 .name_status{
   position: absolute;
+  top: 1rem;
   right: 6rem;
   padding: 0 1px;
   background-color: red;
