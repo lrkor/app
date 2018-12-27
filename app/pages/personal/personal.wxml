@@ -8,10 +8,10 @@
       <view class="name">{{name}}</view>
       <view class="engineeringName">{{engineeringName}}</view>
       <view class="orgName">{{orgName}}</view>
-      <view class="switch">
+      <!-- <view class="switch">
         切换项目
         <image class="switch_img" src="../../images/personal/2.png" style="width:6rpx;height: 10rpx;" />
-      </view>
+      </view> -->
     </view>
   </view>
   <view class="bgc"></view>
@@ -21,6 +21,7 @@
         <image src="../../images/personal/3.png" style="width:35rpx;height: 36rpx;" />
       </view>
       <view class="functionItem_name">我的收藏</view>
+      <view class="name_status">建设中</view>
       <view class="rigthArrow">
         <image  src="../../images/personal/7.png" style="width:14rpx;height: 25rpx;" />
       </view>
@@ -30,6 +31,7 @@
       <image  src="../../images/personal/4.png" style="width:35rpx;height: 36rpx;" />
       </view>
       <view class="functionItem_name">意见反馈</view>
+      <view class="name_status">建设中</view>
       <view class="rigthArrow">
       <image  src="../../images/personal/7.png" style="width:14rpx;height: 25rpx;" />
       </view>
@@ -48,6 +50,7 @@
       <image  src="../../images/personal/6.png" style="width:35rpx;height: 36rpx;" />
       </view>
       <view class="functionItem_name">设置</view>
+      <view class="name_status">建设中</view>
       <view class="rigthArrow">
       <image  src="../../images/personal/7.png" style="width:14rpx;height: 25rpx;" />
       </view>
