@@ -200,8 +200,8 @@ Page({
         }
       })
     } else if (status == 4) {
-      wx.switchTab({
-        url: '../../accountDeregulation/accountDeregulation',
+      wx.navigateTo({
+        url: '../accountDeregulation/accountDeregulation'
       })
     }
   },
