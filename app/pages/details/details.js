@@ -1,6 +1,8 @@
 // pages/details/details.js
 var util = require('../../utils/util.js') //引入微信自带的日期格式化
 var WxParse = require('../../wxParse/wxParse.js');
+const regeneratorRuntime = require('../../utils/runtime.js');
+
 const app = getApp();
 
 Page({
@@ -8,17 +10,27 @@ Page({
     title: '',
     typeName: '',
     date: '',
-    content: ''
+    content: '',
+    visitTimes: ''
   },
   //事件处理函数
   onLoad: function (options) {
-    this.getDetails(options.id);
+    let id = options.id;
+    this.getDetails(id);
+    // this.getDetails(id).then(res => {
+    //   console.log(222);
+    // });
   },
 
+  // async doIt(id){
+  //     const do1 = await this.getDetails(id);
+  //     const do2 = await this.updata(id);
+  // },
+
   // 获取详情
-  getDetails(id) {
+  async getDetails(id) {
     var that = this;
-    wx.request({
+    return wx.request({
       url: 'http://192.168.1.40:8081/applet/api/article/get',
       data: { id: id },
       method: 'GET',
@@ -32,7 +44,25 @@ Page({
           title: res.data.data.title,
           date: util.formatDate(new Date(res.data.data.createTime))
         });
+        console.log(111);
+        // let visitTimes = res.data.data.visitTimes
+        that.updata(res.data.data.id, res.data.data.visitTimes + 1);
       }
     })
+  },
+
+  updata(id, visitTimes) {
+      wx.request({
+        url: 'http://192.168.1.40:8081/applet/api/article/updateStatus',
+        method: 'POST',
+        dataType: 'json',
+        data: { id: id, visitTimes: visitTimes },
+        header: {
+          'content-type': 'application/json'
+        },
+        success: function (res) {
+          console.log(2);
+        }
+      })
   }
 })

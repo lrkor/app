@@ -11,7 +11,6 @@ App({
         wx.navigateTo({
           url: '/pages/login/login',
         })
-        console.log(res.code, 111);
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })

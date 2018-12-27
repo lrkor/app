@@ -1,21 +1,3 @@
-Skip to content
- 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- @lrkor Sign out
-85
-2,627 447 facebook/regenerator
- Code  Issues 38  Pull requests 11  Projects 0  Wiki  Insights
-regenerator/packages/regenerator-runtime/runtime.js
-38713e3  on 17 Nov
-@loganfsmyth loganfsmyth Allow the runtime to parse in ES3 environments. (#355)
-@benjamn @aickin @Andarist @rayd @zpao @maxnordlund @loganfsmyth @leebyron @Benjamin-Dobell @amccloud
-     
-712 lines (601 sloc)  22.8 KB
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -727,16 +709,3 @@ var regeneratorRuntime = (function (exports) {
   // the regeneratorRuntime variable at the top of this file.
   typeof module === "object" ? module.exports : {}
 ));
-© 2018 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Press h to open a hovercard with more details.
