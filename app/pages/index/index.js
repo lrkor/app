@@ -48,7 +48,7 @@ Page({
               url: '../../images/index/small/zhjb.png',
               hrefUrl: '/pages/accountDeregulation/accountDeregulation',
               text: '账号解绑',
-              status: 1
+              status: 4
             },
             {
               url: '../../images/index/small/yjfk.png',
@@ -181,8 +181,6 @@ Page({
 
   // 页面跳转事件
   goToWebView(e) {
-    console.log(e, e.target.dataset.status);
-
     var status = e.target.dataset.status;
     if (status == 1) {
       wx.navigateTo({
@@ -200,6 +198,10 @@ Page({
         success(res) {
           console.log(res);
         }
+      })
+    } else if (status == 4) {
+      wx.switchTab({
+        url: '../../accountDeregulation/accountDeregulation',
       })
     }
   },
