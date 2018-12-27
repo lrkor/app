@@ -14,7 +14,8 @@
     <swiper class="tab-box" current="{{currentTab}}" duration="300" bindchange="switchTab">
         <swiper-item wx:for="{{navData}}" wx:for-item="tabItem" wx:for-index="idx" wx:key="idx" class="tab-content">
             <block wx:for="{{infosArray}}" wx:key="id">
-                <view wx:if="{{item.type1==1}}" class='list-div' data-id="{{item.id}}" bindtap="goDetaile">
+                <view wx:if="{{item.imageList.length>0 && item.imageList.length<3}}" class='list-div' data-id="{{item.id}}"
+                    bindtap="goDetaile">
                     <view class='list-infos'>
                         <view class='list-left'>
                             <view class='title-div'>
@@ -23,18 +24,19 @@
                             </view>
                             <view class='brief-div'>
                                 <text class='color-6 typeTitle'>{{item.type}}</text>
-                                <text class='view-num color-6'>{{item.viewNum}}</text>
-                                <text class='date color-6'>{{item.date}}</text>
+                                <text class='view-num color-6'>浏览{{item.visitTimes}}</text>
+                                <text class='date color-6'>{{item.createTime}}</text>
                             </view>
                         </view>
                         <view class='list-right'>
                             <view class='img-box'>
-                                <image class='list-img' src='/images/info.png'></image>
+                                <image class='list-img' src='{{item.imageList[0]}}'></image>
                             </view>
                         </view>
                     </view>
                 </view>
-                <view wx:elif="{{item.type1==2}}" class='list-div' data-id="{{item.id}}" bindtap="goDetaile">
+                <view wx:elif="{{item.imageList==null || item.imageList.length==0}}" class='list-div' data-id="{{item.id}}"
+                    bindtap="goDetaile">
                     <view class='list-infos'>
                         <view class='list-left'>
                             <view class='title-div'>
@@ -43,13 +45,13 @@
                             </view>
                             <view class='brief-div'>
                                 <text class='color-6 typeTitle'>{{item.type}}</text>
-                                <text class='view-num color-6'>{{item.viewNum}}</text>
-                                <text class='date color-6'>{{item.date}}</text>
+                                <text class='view-num color-6'>浏览{{item.visitTimes}}</text>
+                                <text class='date color-6'>{{item.createTime}}</text>
                             </view>
                         </view>
                     </view>
                 </view>
-                <view wx:else="{{item.type1==3}}" class='list-div' data-id="{{item.id}}" bindtap="goDetaile">
+                <view wx:else="{{item.imageList.length>2}}" class='list-div' data-id="{{item.id}}" bindtap="goDetaile">
                     <view class='list-infos' style="flex-direction: column;">
                         <view class='list-left' style="width: 100%;">
                             <view class='title-div'>
@@ -59,20 +61,20 @@
                         </view>
                         <view class='list-right flex-left'>
                             <view class='img-box'>
-                                <image class='list-img' src='/images/info.png' mode="widthFix"></image>
+                                <image class='list-img' src='{{item.imageList[0]}}' mode="widthFix"></image>
                             </view>
                             <view class='img-box'>
-                                <image class='list-img' src='/images/info.png' mode="widthFix"></image>
+                                <image class='list-img' src='{{item.imageList[1]}}' mode="widthFix"></image>
                             </view>
                             <view class='img-box'>
-                                <image class='list-img' src='/images/info.png' mode="widthFix"></image>
+                                <image class='list-img' src='{{item.imageList[2]}}' mode="widthFix"></image>
                             </view>
                         </view>
                         <view class='list-left' style="width: 100%;">
                             <view class='brief-div'>
                                 <text class='color-6 typeTitle'>{{item.type}}</text>
-                                <text class='view-num color-6'>{{item.viewNum}}</text>
-                                <text class='date color-6'>{{item.date}}</text>
+                                <text class='view-num color-6'>浏览{{item.visitTimes}}</text>
+                                <text class='date color-6'>{{item.createTime}}</text>
                             </view>
                         </view>
                     </view>

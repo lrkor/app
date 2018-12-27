@@ -1,4 +1,6 @@
 //engineering.js
+var util = require('../../utils/util.js') //引入微信自带的日期格式化
+const app = getApp();
 Page({
   data: {
     motto: 'Hello World',
@@ -6,7 +8,7 @@ Page({
     hasUserInfo: false,
     navData: [
       {
-        id:'1',
+        id: '1',
         name: '推荐'
       }
     ],
@@ -51,7 +53,7 @@ Page({
   onLoad: function () {
     this.queryHeaderList();
     this.getRecommend();
-   
+
   },
   switchNav(event) {
     var cur = event.currentTarget.dataset.current;
@@ -59,7 +61,7 @@ Page({
     // 获取导航栏id
     var id = event.currentTarget.dataset.id;
 
-    if(id=='1'){
+    if (id == '1') {
 
     }
 
@@ -109,42 +111,46 @@ Page({
   },
 
   // 获取导航栏列表
-  queryHeaderList(){
+  queryHeaderList() {
     var that = this;
-    wx.request({  
-      url: 'http://192.168.1.40:8081/applet/api/articleCategory/query',  
-      data:{},  
-      method:'POST',  
-      header: {  
-        'content-type': 'application/json'  
-      },  
-      success: function (res) {  
-        let headerArr =  res.data.data;
-        let newNavData = that.data.navData.concat(headerArr);
+    wx.request({
+      url: 'http://192.168.1.40:8081/applet/api/articleCategory/query',
+      data: {},
+      method: 'POST',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        let headerArr = res.data.data;
+        let newNavData = [...that.data.navData, ...headerArr];
         that.setData({
-          navData:newNavData
+          navData: newNavData
         });
-      }  
-    }) 
+      }
+    })
   },
 
   // 获取推荐列表
-  getRecommend(){
+  getRecommend() {
     var that = this;
-    wx.request({  
-      url: 'http://192.168.1.40:8081/applet/api/article/query',  
-      data:{isRecommend:'1'},  
-      method:'POST',  
-      header: {  
-        'content-type': 'application/json'  
-      },  
-      success: function (res) {  
-        // let headerArr =  res.data.data;
-        // let newNavData = that.data.navData.concat(headerArr);
-        // that.setData({
-        //   navData:newNavData
-        // });
-      }  
-    }) 
+    wx.request({
+      url: 'http://192.168.1.40:8081/applet/api/article/query',
+      data: { isRecommend: '1' },
+      method: 'POST',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        let RecommendArr = res.data.data;
+        
+        // 格式化时间
+        for(let item of RecommendArr){
+          item.createTime = util.formatDate(new Date(item.createTime));
+      }
+        that.setData({
+          infosArray:RecommendArr
+        });
+      }
+    })
   }
 })
