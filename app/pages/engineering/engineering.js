@@ -84,8 +84,9 @@ Page({
     var that = this;
     wx.request({
       url: 'http://192.168.1.40:8081/applet/api/articleCategory/query',
-      data: {},
       method: 'POST',
+      dataType: 'json',
+      data: {},
       header: {
         'content-type': 'application/json'
       },
@@ -104,8 +105,9 @@ Page({
     var that = this;
     wx.request({
       url: 'http://192.168.1.40:8081/applet/api/article/query',
-      data: { isRecommend: '1', page: 1, size: 10 },
       method: 'POST',
+      dataType: 'json',
+      data: {isRecommend:'1',page:'1',size:10},
       header: {
         'content-type': 'application/json'
       },
@@ -124,7 +126,7 @@ Page({
   },
 
   // 获取其他列表
-  getRecommend(id) {
+  getOtherlisr(id) {
     var that = this;
     wx.request({
       url: 'http://192.168.1.40:8081/applet/api/article/query',

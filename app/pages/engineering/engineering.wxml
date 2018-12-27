@@ -23,7 +23,7 @@
                                 <text class='title'>{{item.title}}</text>
                             </view>
                             <view class='brief-div'>
-                                <text class='color-6 typeTitle'>{{item.type}}</text>
+                                <text class='color-6 typeTitle'>{{item.categoryName}}</text>
                                 <text class='view-num color-6'>浏览{{item.visitTimes}}</text>
                                 <text class='date color-6'>{{item.createTime}}</text>
                             </view>
@@ -44,7 +44,7 @@
                                 <text class='title'>{{item.title}}</text>
                             </view>
                             <view class='brief-div'>
-                                <text class='color-6 typeTitle'>{{item.type}}</text>
+                                <text class='color-6 typeTitle'>{{item.categoryName}}</text>
                                 <text class='view-num color-6'>浏览{{item.visitTimes}}</text>
                                 <text class='date color-6'>{{item.createTime}}</text>
                             </view>
@@ -72,7 +72,7 @@
                         </view>
                         <view class='list-left' style="width: 100%;">
                             <view class='brief-div'>
-                                <text class='color-6 typeTitle'>{{item.type}}</text>
+                                <text class='color-6 typeTitle'>{{item.categoryName}}</text>
                                 <text class='view-num color-6'>浏览{{item.visitTimes}}</text>
                                 <text class='date color-6'>{{item.createTime}}</text>
                             </view>
