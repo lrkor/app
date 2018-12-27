@@ -126,7 +126,6 @@ Page({
         var fail = function (data) {
         };
         var success = function (data) {
-            console.log(data.originalData.results[0].weather_data[0]);
             var weatherData = data.originalData.results[0].weather_data[0];
             let temperature = weatherData.date;
             let strStartIndex = temperature.indexOf('：');
