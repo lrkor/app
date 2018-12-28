@@ -39,6 +39,7 @@ page{
   height: 100%;
   border-bottom: 1px solid #ddd;
   box-sizing: border-box;
+  margin-bottom: 40rpx;
 }
 .tab-content{
   border-top: 1px solid #ddd;
@@ -166,5 +167,5 @@ page{
     color: #666666;
     z-index: 999;
     font-size: 20rpx;
-    text-align: center
+    text-align: center;
   }

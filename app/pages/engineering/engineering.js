@@ -40,13 +40,6 @@ Page({
       isload: true
     })
 
-    if (id == '1') {
-      this.getRecommend('0', '0');
-    } else {
-      this.getOtherlisr(id, '0', '0');
-    }
-
-
     //每个tab选项宽度占1/5
     var singleNavWidth = this.data.windowWidth / 5;
 
@@ -73,7 +66,8 @@ Page({
     this.setData({
       currentTab: cur,
       navScrollLeft: (cur - 2) * singleNavWidth,
-      isload: true
+      isload: true,
+      infosArray:[]
     });
 
     var query = wx.createSelectorQuery();
@@ -102,7 +96,8 @@ Page({
     let id = this.data.id;
     let page1 = 1;
     this.setData({
-      page: page1
+      page: page1,
+      infosArray:[]
     });
     if (this.data.id == '1') {
       this.getRecommend('1', '1');
@@ -181,7 +176,7 @@ Page({
           var isload = true;
         }
 
-        let RecommendArr = res.data.data;
+        let RecommendArr = [...that.data.infosArray,...res.data.data];
 
         // 格式化时间
         for (let item of RecommendArr) {
@@ -222,7 +217,7 @@ Page({
           var isload = true;
         }
 
-        let RecommendArr = res.data.data;
+        let RecommendArr = [...that.data.infosArray,...res.data.data];
 
         // 格式化时间
         for (let item of RecommendArr) {

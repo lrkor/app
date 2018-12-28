@@ -77,11 +77,11 @@
                     </view>
                 </view>
             </block>
+
         </swiper-item>
     </swiper>
-
     <!-- 没有更多数据 -->
-    <view class="no-more" wx:if="{{!isload}}"  >
-        <text decode="{{true}}">———— &nbsp;&nbsp;已经到底了&nbsp;&nbsp; ————</text>
-    </view>
+    <!-- <view class="no-more" wx:if="{{!isload}}">
+                <text decode="{{true}}">———— &nbsp;&nbsp;已经到底了&nbsp;&nbsp; ————</text>
+            </view> -->
 </view>
