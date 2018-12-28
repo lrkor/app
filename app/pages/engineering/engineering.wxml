@@ -17,12 +17,11 @@
                 <view wx:if="{{item.imageList.length>0 && item.imageList.length<3}}" class='list-div' data-id="{{item.id}}"
                     bindtap="goDetaile">
                     <view class='list-infos'>
-                        <view class='list-left'>
+                        <view class='list-left' style="height:147rpx;">
                             <view class='title-div' style="height:116rpx;">
-                                <text class='icon-top'></text>
-                                <text class='title'>{{item.title}}</text>
+                                <text class='title'><text class="to-top" wx:if="{{item.isTop=='1'}}">置顶</text>{{item.title}}</text>
                             </view>
-                            <view class='brief-div'>
+                            <view class='brief-div' style="margin-top:0;">
                                 <text class='color-6 typeTitle'>{{item.categoryName}}</text>
                                 <text class='view-num color-6'>浏览{{item.visitTimes}}</text>
                                 <text class='date color-6'>{{item.createTime}}</text>
@@ -40,8 +39,7 @@
                     <view class='list-infos'>
                         <view class='list-left'>
                             <view class='title-div'>
-                                <text class='icon-top'></text>
-                                <text class='title'>{{item.title}}</text>
+                                <text class='title'><text class="to-top" wx:if="{{item.isTop=='1'}}">置顶</text>{{item.title}}</text>
                             </view>
                             <view class='brief-div'>
                                 <text class='color-6 typeTitle'>{{item.categoryName}}</text>
@@ -55,8 +53,7 @@
                     <view class='list-infos' style="flex-direction: column;">
                         <view class='list-left' style="width: 100%;">
                             <view class='title-div'>
-                                <text class='icon-top'></text>
-                                <text class='title'>{{item.title}}</text>
+                                <text class='title'><text class="to-top" wx:if="{{item.isTop=='1'}}">置顶</text>{{item.title}}</text>
                             </view>
                         </view>
                         <view class='list-right flex-left'>

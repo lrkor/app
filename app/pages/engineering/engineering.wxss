@@ -50,12 +50,12 @@ page{
   display: block;
 }
 .list-div {
-  padding: 0 40rpx;
+  padding: 0 31rpx;
 }
 .list-infos{
   display: flex;
   padding: 10px 0;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #e8e8e8;
 }
 .list-infos1{
   display: flex;
@@ -64,13 +64,18 @@ page{
   border-bottom: 1px solid #ddd;
 }
 .list-infos .list-left{
-  width:180rpx;
+  widows: 423rpx;
   flex:1;
-  margin-right: 20rpx;
+  margin-right: 38rpx;
 }
 .list-infos .list-right{
-  width: 200rpx;
-  height: 160rpx;
+  width: 226rpx;
+  height: 147rpx;
+}
+.icon-top{
+  display: inline-block;
+  background-color: #fff;
+  
 }
 .list-infos .title {
   display: -webkit-box;
@@ -78,17 +83,16 @@ page{
   -webkit-line-clamp: 2;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
-  /* line-height: 1.6; */
-  color: #000;
-  font-size: 16px;
+  color: #222;
+  font-size: 36rpx;
 }
 .list-infos .img-box {
   width: 200rpx;
   height: 160rpx;
 }
 .list-infos .list-img {
-  width: 200rpx;
-  height: 160rpx;
+  width: 226rpx;
+  height: 147rpx;
 }
 .list-infos .brief-div {
   margin-top: 15rpx;
@@ -98,10 +102,12 @@ page{
   color: #666;
 }
 .list-infos .date{
-  margin-left: 40rpx;
+  margin-left: 20rpx;
 }
 .list-infos .view-num{
-  margin-left: 40rpx;
+  margin-left: 20rpx;
+  display: inline-block;
+  width: 104rpx;
 }
 .list-infos .type {
   margin-left:30rpx;
@@ -123,14 +129,24 @@ page{
 }
 
 .flex-left .img-box image{
-  width: 200rpx!important;
-  height: 160rpx!important;
+  width: 226rpx!important;
+  height: 147rpx!important;
 }
 
 .typeTitle{
   display: inline-block;
-  width: 130rpx;
+  width: 150rpx;
   border: 1rpx solid #f1f1f1;
   text-align: center;
   border-radius: 10px
+}
+
+.to-top{
+  display: inline-block;
+  width: 80rpx;
+  background-color: #ff0000;
+  color: #fff;
+  text-align: center;
+  font-size: 30rpx;
+  border-radius: 5px;
 }

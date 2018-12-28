@@ -43,7 +43,7 @@ Page({
         WxParse.wxParse('article', 'html', article, that, 5);
         that.setData({
           title: res.data.data.title,
-          date: util.formatDate(new Date(res.data.data.createTime)),
+          date: util.formattime(new Date(res.data.data.createTime),'yyyy-mm-dd'),
           typeName:typeName
         });
         that.updata(res.data.data.id, res.data.data.visitTimes + 1);

@@ -155,7 +155,7 @@ Page({
 
         // 格式化时间
         for (let item of RecommendArr) {
-          item.createTime = util.formatDate(new Date(item.createTime));
+          item.createTime = util.formatTime(new Date(item.createTime),'mm-dd');
         }
         that.setData({
           infosArray: RecommendArr
@@ -189,7 +189,7 @@ Page({
 
         // 格式化时间
         for (let item of RecommendArr) {
-          item.createTime = util.formatDate(new Date(item.createTime));
+          item.createTime = util.formatTime(new Date(item.createTime),'mm-dd');
         }
         that.setData({
           infosArray: RecommendArr

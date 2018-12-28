@@ -4,17 +4,16 @@
   padding: 0 30rpx;
 }
 .detail-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #333;
+  font-size: 36rpx;
+  color: #222;
 }
 .title-brief {
   margin-top: 20rpx;
   height: 48rpx;
   line-height: 48rpx;
-  border-bottom: 1px solid #ddd;
-  font-size: 12px;
-  color: #666;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 24rpx;
+  color: #999;
 }
 .pull-left {
   float: left;
