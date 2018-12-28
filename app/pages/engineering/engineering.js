@@ -20,26 +20,26 @@ Page({
   //事件处理函数
   onLoad: function () {
     this.queryHeaderList();
-    this.getRecommend('0','0');
+    this.getRecommend('0', '0');
     wx.setNavigationBarTitle({
-      title: '工程圈' 
+      title: '工程圈'
     })
   },
   switchNav(event) {
     var cur = event.currentTarget.dataset.current;
     let page1 = 1;
- 
+
     // 获取导航栏id
     var id = event.currentTarget.dataset.id;
     this.setData({
       id: id,
-      page:page1
+      page: page1
     })
 
     if (id == '1') {
-      this.getRecommend('0','0');
+      this.getRecommend('0', '0');
     } else {
-      this.getOtherlisr(id, '0','0');
+      this.getOtherlisr(id, '0', '0');
     }
 
 
@@ -60,13 +60,28 @@ Page({
     }
   },
 
+  //滑动切换
   switchTab(event) {
+    var that = this;
     var cur = event.detail.current;
+
     var singleNavWidth = this.data.windowWidth / 5;
     this.setData({
       currentTab: cur,
       navScrollLeft: (cur - 2) * singleNavWidth
     });
+
+    var query = wx.createSelectorQuery();
+    //选择id
+    query.select('.active').boundingClientRect(function (rect) {
+      let id = rect.dataset.id;
+      if (id == '1') {
+        that.getRecommend('0', '0');
+      } else {
+        that.getOtherlisr(id, '0', '0');
+      }
+    }).exec();
+
   },
 
   //跳转详情页
@@ -82,12 +97,12 @@ Page({
     let id = this.data.id;
     let page1 = 1;
     this.setData({
-      page:page1
+      page: page1
     });
     if (this.data.id == '1') {
-      this.getRecommend('1','1');
+      this.getRecommend('1', '1');
     } else {
-      this.getOtherlisr(id, '1','1');
+      this.getOtherlisr(id, '1', '1');
     }
   },
 
@@ -100,12 +115,12 @@ Page({
     });
     let page1 = this.data.page + 1;
     this.setData({
-      page:page1
+      page: page1
     });
     if (this.data.id == '1') {
-      this.getRecommend('1','1');
+      this.getRecommend('1', '1');
     } else {
-      this.getOtherlisr(id, '1','1');
+      this.getOtherlisr(id, '1', '1');
     }
   },
 
@@ -155,7 +170,7 @@ Page({
 
         // 格式化时间
         for (let item of RecommendArr) {
-          item.createTime = util.formatTime(new Date(item.createTime),'mm-dd');
+          item.createTime = util.formatTime(new Date(item.createTime), 'mm-dd');
         }
         that.setData({
           infosArray: RecommendArr
@@ -189,7 +204,7 @@ Page({
 
         // 格式化时间
         for (let item of RecommendArr) {
-          item.createTime = util.formatTime(new Date(item.createTime),'mm-dd');
+          item.createTime = util.formatTime(new Date(item.createTime), 'mm-dd');
         }
         that.setData({
           infosArray: RecommendArr
