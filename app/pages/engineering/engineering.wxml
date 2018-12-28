@@ -18,7 +18,7 @@
                     bindtap="goDetaile">
                     <view class='list-infos'>
                         <view class='list-left'>
-                            <view class='title-div' style="height:160rpx;">
+                            <view class='title-div' style="height:116rpx;">
                                 <text class='icon-top'></text>
                                 <text class='title'>{{item.title}}</text>
                             </view>

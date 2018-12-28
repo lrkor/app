@@ -64,8 +64,9 @@ page{
   border-bottom: 1px solid #ddd;
 }
 .list-infos .list-left{
-  width:200rpx;
+  width:180rpx;
   flex:1;
+  margin-right: 20rpx;
 }
 .list-infos .list-right{
   width: 200rpx;
@@ -77,10 +78,9 @@ page{
   -webkit-line-clamp: 2;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
-  line-height: 1.6;
-  color: #333;
+  /* line-height: 1.6; */
+  color: #000;
   font-size: 16px;
-  font-weight: 700;
 }
 .list-infos .img-box {
   width: 200rpx;
