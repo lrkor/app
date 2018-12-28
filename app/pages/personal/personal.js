@@ -14,7 +14,7 @@ Page({
       mername: options.mername
     })
     wx.setNavigationBarTitle({
-      title: that.data.mername,
+      title: '我的',
     })
   }
 })

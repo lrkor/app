@@ -21,7 +21,9 @@ Page({
   onLoad: function () {
     this.queryHeaderList();
     this.getRecommend('0','0');
-
+    wx.setNavigationBarTitle({
+      title: '工程圈' 
+    })
   },
   switchNav(event) {
     var cur = event.currentTarget.dataset.current;

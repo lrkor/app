@@ -35,6 +35,14 @@ Page({
       },
     ]
   },
+
+  onLoad(){
+    wx.setNavigationBarTitle({
+      title: '项目看板' 
+    })
+  },
+
+
   canvasIdErrorCallback: function (e) {
     console.error(e.detail.errMsg)
   },
