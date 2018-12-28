@@ -17,15 +17,8 @@ Page({
   onLoad: function (options) {
     let id = options.id;
     this.getDetails(id);
-    // this.getDetails(id).then(res => {
-    //   console.log(222);
-    // });
+  
   },
-
-  // async doIt(id){
-  //     const do1 = await this.getDetails(id);
-  //     const do2 = await this.updata(id);
-  // },
 
   // 获取详情
   async getDetails(id) {
@@ -43,7 +36,7 @@ Page({
         WxParse.wxParse('article', 'html', article, that, 5);
         that.setData({
           title: res.data.data.title,
-          date: util.formattime(new Date(res.data.data.createTime),'yyyy-mm-dd'),
+          date: util.formatTime(new Date(res.data.data.createTime),'yyyy-mm-dd'),
           typeName:typeName
         });
         that.updata(res.data.data.id, res.data.data.visitTimes + 1);

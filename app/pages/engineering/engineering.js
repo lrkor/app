@@ -7,6 +7,7 @@ Page({
     page: 1,
     userInfo: {},
     hasUserInfo: false,
+    isload: true,
     navData: [
       {
         id: '1',
@@ -25,6 +26,8 @@ Page({
       title: '工程圈'
     })
   },
+
+  //导航栏切换
   switchNav(event) {
     var cur = event.currentTarget.dataset.current;
     let page1 = 1;
@@ -33,7 +36,8 @@ Page({
     var id = event.currentTarget.dataset.id;
     this.setData({
       id: id,
-      page: page1
+      page: page1,
+      isload: true
     })
 
     if (id == '1') {
@@ -68,7 +72,8 @@ Page({
     var singleNavWidth = this.data.windowWidth / 5;
     this.setData({
       currentTab: cur,
-      navScrollLeft: (cur - 2) * singleNavWidth
+      navScrollLeft: (cur - 2) * singleNavWidth,
+      isload: true
     });
 
     var query = wx.createSelectorQuery();
@@ -108,20 +113,24 @@ Page({
 
   //上拉加载
   onReachBottom() {
+    let isload = this.data.isload;
     let id = this.data.id;
-    // 显示加载图标
-    wx.showLoading({
-      title: '加载中'
-    });
-    let page1 = this.data.page + 1;
-    this.setData({
-      page: page1
-    });
-    if (this.data.id == '1') {
-      this.getRecommend('1', '1');
-    } else {
-      this.getOtherlisr(id, '1', '1');
+    if (isload) {
+      // 显示加载图标
+      wx.showLoading({
+        title: '加载中'
+      });
+      let page1 = this.data.page + 1;
+      this.setData({
+        page: page1
+      });
+      if (id == '1') {
+        this.getRecommend('1', '1');
+      } else {
+        this.getOtherlisr(id, '1', '1');
+      }
     }
+
   },
 
   // 获取导航栏列表
@@ -166,6 +175,12 @@ Page({
           wx.hideLoading();
         }
 
+        if (res.data.data != null && res.data.data.length < 10) {
+          var isload = false;
+        } else {
+          var isload = true;
+        }
+
         let RecommendArr = res.data.data;
 
         // 格式化时间
@@ -173,7 +188,8 @@ Page({
           item.createTime = util.formatTime(new Date(item.createTime), 'mm-dd');
         }
         that.setData({
-          infosArray: RecommendArr
+          infosArray: RecommendArr,
+          isload: isload
         });
       }
     })
@@ -200,6 +216,12 @@ Page({
           wx.hideLoading();
         }
 
+        if (res.data.data != null && res.data.data.length < 10) {
+          var isload = false;
+        } else {
+          var isload = true;
+        }
+
         let RecommendArr = res.data.data;
 
         // 格式化时间
@@ -207,7 +229,8 @@ Page({
           item.createTime = util.formatTime(new Date(item.createTime), 'mm-dd');
         }
         that.setData({
-          infosArray: RecommendArr
+          infosArray: RecommendArr,
+          isload: isload
         });
       }
     })
