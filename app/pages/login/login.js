@@ -12,9 +12,10 @@ Page({
         if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
             success: function (res) {
-              //从数据库获取用户信息
-              that.queryUsreInfo();
+              //获取用户信息
+              // that.queryUsreInfo();
               //用户已经授权过
+              console.log(111)
               wx.switchTab({
                 url: '/pages/index/index'
               })
@@ -49,8 +50,9 @@ Page({
       //   }
       // });
       //授权成功后，跳转进入小程序首页
-      wx.switchTab({
-        url: '/pages/index/index'
+      console.log(222)
+      wx.navigateTo({
+        url: '/pages/bindAccount/bindAccount'
       })
     } else {
       //用户按了拒绝按钮
@@ -73,7 +75,7 @@ Page({
       // url: app.globalData.urlPath + '/user/userInfo',
       url:'http://www.baidu.com/user/userInfo',
       data: {
-        openid: app.globalData.openid
+        openid: app.globalData.openId
       },
       header: {
         'content-type': 'application/json'

@@ -1,6 +1,6 @@
 Page({
   data: {
-      url:''
+    url:''
   },
   onLoad: function (options) {
     this.setData({

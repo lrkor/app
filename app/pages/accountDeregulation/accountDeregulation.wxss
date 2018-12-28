@@ -8,7 +8,7 @@
   width: 100%;
 }
 .btn-account {
-  width: 80%;
+  width: 95%;
   line-height: 40px;
   background-color: #ff0000;
   color: #fff;

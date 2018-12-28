@@ -1,47 +1,57 @@
 /**index.wxss**/
-.flex-wrp{
-  display:flex;
+
+.flex-wrp {
+  display: flex;
 }
-.clearfix:after{
-  content: "020"; 
-  display: block; 
-  height: 0; 
-  clear: both; 
-  visibility: hidden;  
-  }
+
+.clearfix:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
 
 .clearfix {
-  /* 触发 hasLayout */ 
-  zoom: 1; 
-  }
-.personal{
+  /* 触发 hasLayout */
+  zoom: 1;
+}
+
+.personal {
   font-family: 'PingFangSC-Regular, sans-serif';
 }
-.personal_information{
+
+.personal_information {
   padding: 50rpx 0;
 }
-.head_portrait{
+
+.head_portrait {
   padding-right: 40rpx;
 }
-.name{
+
+.name {
   font-size: 40rpx;
   font-weight: 700;
   font-family: 'PingFangSC-Regular, sans-serif';
 }
-.engineeringName{
-  margin: 15rpx 0;
+
+.engineeringName {
+  margin: 17rpx 0;
 }
-.engineeringName,.orgName{
+
+.engineeringName, .orgName {
   font-size: 30rpx;
   font-weight: normal;
 }
-.bgc{
+
+.bgc {
   height: 20rpx;
   background-color: #f7f7f7;
 }
-.switch{
-  display:flex;
-  align-items:center;
+
+.switch {
+  display: flex;
+  align-items: center;
   font-size: 24rpx;
   font-weight: normal;
   position: absolute;
@@ -53,25 +63,31 @@
   border-top-left-radius: 25rpx;
   border-bottom-left-radius: 25rpx;
 }
-.switch_img{
+
+.switch_img {
   margin-left: 10rpx;
 }
-.functionItem{
+
+.functionItem {
   position: relative;
   font-size: 30rpx;
   padding: 30rpx 0;
-  border-bottom: 1rpx solid #dddddd;
+  border-bottom: 1rpx solid #ddd;
 }
-.functionItem_img,.functionItem_name{
+
+.functionItem_img, .functionItem_name {
   float: left;
 }
-.rigthArrow{
+
+.rigthArrow {
   padding-right: 30rpx;
   float: right;
 }
-.functionItem_img{
+
+.functionItem_img {
   margin: 0 30rpx;
 }
+
 .showModule {
   display: flex;
   justify-content: center;
@@ -81,8 +97,8 @@
   bottom: 20%;
   height: 6vh;
   width: 24vw;
-  opacity:1;
-  background-color: #3B3B3B;
+  opacity: 1;
+  background-color: #3b3b3b;
   border-radius: 9rpx;
   z-index: 3001;
 }

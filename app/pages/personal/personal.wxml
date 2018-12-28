@@ -5,9 +5,9 @@
       <image src="{{userInfo.avatarUrl}}" style="width:158rpx;height: 158rpx;margin-left: 30rpx;" />
     </view>
     <view class="information">
-      <view class="name">{{userInfo.nickName}}</view>
-      <view class="engineeringName">{{engineeringName}}</view>
-      <view class="orgName">{{orgName}}</view>
+      <view class="name">{{userInfo.userName}}</view>
+      <view class="engineeringName">{{userInfo.systemName}}</view>
+      <view class="orgName">{{userInfo.tenderName}}</view>
       <!-- <view class="switch">
         切换项目
         <image class="switch_img" src="../../images/personal/2.png" style="width:6rpx;height: 10rpx;" />

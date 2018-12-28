@@ -4,50 +4,49 @@ const app = getApp()
 
 Page({
   data: {
-    isShow: false,
-    engineeringName: '五峰山接线工程',
-    orgName: '南通一标',
     //用户个人信息
+    avatarUrl: "../../images/personal/1.png",
     userInfo: {
-      avatarUrl: "../../images/personal/1.png",//用户头像
-      nickName: "张三",//用户昵称
+      userName: "",
+      systemName: "",
+      tenderName: ""
     }
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this;
     wx.getUserInfo({
-      success: function (res) {
-        console.log(res);
-        var avatarUrl = 'userInfo.avatarUrl';
-        var nickName = 'userInfo.nickName';
-        that.setData({
-          [avatarUrl]: res.userInfo.avatarUrl,
-          [nickName]: res.userInfo.nickName,
+      success: function(res) {
+        that.avatarUrl = res.userInfo.avatarUrl;
+        wx.getStorage({
+          key: 'userInfo',
+          success(res) {
+            that.data.userInfo = res.data;
+            console.log(that.data.userInfo, 999);
+            var avatarUrl = 'userInfo.avatarUrl';
+            var userName = 'userInfo.userName';
+            var systemName = 'userInfo.systemName';
+            var tenderName = 'userInfo.tenderName';
+
+            that.setData({
+              [avatarUrl]: that.avatarUrl,
+              [userName]: that.data.userInfo.userName,
+              [systemName]: that.data.userInfo.systemName,
+              [tenderName]: that.data.userInfo.tenderName,
+            })
+          }
         })
       }
     })
-    that.setDate({
-      mername: options.mername
-    })
     wx.setNavigationBarTitle({
-      title: that.data.mername
+      title: '我的'
     })
-  },
-  showToast: function (e) {
-    var that = this
-    that.setData({
-      isShow: true,
-      text: e
-    })
-    setTimeout(function () {
-      that.setData({
-        isShow: false
-      })
-    }, 1000)
   },
   goToWebView(e) {
-    this.showToast('正在建设中')
+    wx.showToast({
+      title: '正在建设中',
+      image: '../../images/success.png',
+      duration: 2000
+    })
   }
-      
-})
 
+})

@@ -1,72 +1,100 @@
 // pages/bindAccount.js
+var app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    showTxt: false,
+    username: "",
+    password: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    var that = this;
-    that.setDate({
-      mername: options.mername
-    })
+  onLoad: function(options) {
     wx.setNavigationBarTitle({
-      title: that.data.mername,
+      title: '绑定账号',
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  listenerUsernameInput: function(e) {
+    this.data.username = e.detail.value;
+  },
+  /** 监听密码输入 */
+  listenerPasswordInput: function(e) {
+    this.data.password = e.detail.value;
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+  loginAction: function() {
+    var userName = this.data.username;
+    var passwords = this.data.password;
+    var that = this;
+    if (userName === "") {
+      wx.showToast({
+        title: '账号不能为空！',
+        icon: 'success',
+        duration: 2000
+      })
+      return;
+    }
+    if (passwords === "") {
+      wx.showToast({
+        title: '密码不能为空！',
+        icon: 'success',
+        duration: 2000
+      })
+      return;
+    }
 
-  },
+    var urlStr = app.globalData.BaseURL + 'api/v1/userBind/bind'
+    wx.request({
+      method: "POST",
+      url: urlStr,
+      data: {
+        openId: app.globalData.openId,
+        loginName: userName,
+        pwd: passwords
+      },
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      success: function(res) {
+        if (res.data.code != '200') {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'success',
+            duration: 2000
+          })
+          return false;
+        }
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+        var userInfo = res.data.data
+        // 将token存储到本地
+        wx.setStorageSync('userInfo', userInfo)
 
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+        wx.showToast({
+          title: res.data.message,
+          icon: 'success',
+          duration: 2000
+        })
+        // wx.navigateTo({
+        //   url: '/pages/index/index'
+        // })
+        wx.switchTab({
+          url: '/pages/index/index'
+        })
+      },
+      fail: function() {
+        wx.showToast({
+          title: '登录失败',
+          icon: 'success',
+          duration: 2000
+        })
+      }
+    })
   }
 })
