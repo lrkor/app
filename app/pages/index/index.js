@@ -5,12 +5,12 @@ const app = getApp()
 
 Page({
     data: {
+        isShow: false,
         weatherImg: '',//天气图片
         temperature: '',//温度
         windSpeed: '',//风速
         currentTab: 0, //预设当前项的值
         imgUrls: [
-          '../../images/index/banner.png',
           '../../images/index/banner.png',
           '../../images/index/banner.png'
         ],
@@ -139,6 +139,19 @@ Page({
         ]
     },
 
+    showToast: function(e) {
+      var that = this
+      that.setData({
+        isShow: true,
+        text: e
+      })
+      setTimeout(function() {
+        that.setData({
+          isShow: false
+        })
+      }, 1000)
+    },
+
     // tab切换
     switchTab: function (e) {
         this.setData({
@@ -179,30 +192,25 @@ Page({
         });
     },
 
-  // 页面跳转事件
-  goToWebView(e) {
-    var status = e.target.dataset.status;
-    if (status == 1) {
-      wx.navigateTo({
-        url: '../webView/web_view?url=' + e.target.dataset.url,
-      })
-    } else if (status == 2) {
-      wx.showToast({
-        title: '正在建设中',
-        icon: "none",
-        duration: 1000,
-        mask: 1000
-      })
-    } else if (status == 3) {
-      wx.scanCode({
-        success(res) {
-          console.log(res);
-        }
-      })
-    } else if (status == 4) {
-      wx.navigateTo({
-        url: '../accountDeregulation/accountDeregulation'
-      })
-    }
-  },
+    // 页面跳转事件
+    goToWebView(e) {
+      var status = e.target.dataset.status;
+      if (status == 1) {
+        wx.navigateTo({
+          url: '../webView/web_view?url=' + e.target.dataset.url,
+        })
+      } else if (status == 2) {
+        this.showToast('正在建设中')
+      } else if (status == 3) {
+        wx.scanCode({
+          success(res) {
+            console.log(res);
+          }
+        })
+      } else if (status == 4) {
+        wx.navigateTo({
+          url: '../accountDeregulation/accountDeregulation'
+        })
+      }
+    },
 })

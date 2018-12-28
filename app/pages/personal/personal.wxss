@@ -72,12 +72,23 @@
 .functionItem_img{
   margin: 0 30rpx;
 }
-.name_status{
-  position: absolute;
-  top: 1rem;
-  right: 6rem;
-  padding: 0 1px;
-  background-color: red;
-  color: #fff;
-  font-size: 10px;
+.showModule {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 38%;
+  bottom: 20%;
+  height: 6vh;
+  width: 24vw;
+  opacity:1;
+  background-color: #3B3B3B;
+  border-radius: 9rpx;
+  z-index: 3001;
+}
+
+.showModule .text {
+  display: flex;
+  color: white;
+  font-size: 13px;
 }

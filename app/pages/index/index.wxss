@@ -69,7 +69,7 @@
   flex-direction:row;
   width: 60rpx;
   height: 13rpx;
-  padding-top: 10rpx;
+  padding-top: 16rpx;
   padding-bottom: 10rpx;
   margin: 0 auto;
 }
@@ -126,4 +126,24 @@
   background: #ff0000;
   color: #fff;
   font-size: 12px;
+}
+.showModule {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 38%;
+  bottom: 20%;
+  height: 6vh;
+  width: 24vw;
+  opacity:1;
+  background-color: #3B3B3B;
+  border-radius: 9rpx;
+  z-index: 3001;
+}
+
+.showModule .text {
+  display: flex;
+  color: white;
+  font-size: 13px;
 }

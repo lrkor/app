@@ -53,4 +53,6 @@
         </view>
     </view>
 </view>
-
+<view class="showModule" wx:if="{{isShow}}" >
+  <view class="text ">{{text}}</view>
+</view>
