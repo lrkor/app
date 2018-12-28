@@ -9,10 +9,6 @@ Page({
     orgName: '南通一标',
   },
   onLoad: function (options) {
-    var that = this;
-    that.setDate({
-      mername: options.mername
-    })
     wx.setNavigationBarTitle({
       title: '我的',
     })
