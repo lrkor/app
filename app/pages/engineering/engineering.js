@@ -21,7 +21,9 @@ Page({
   onLoad: function () {
     this.queryHeaderList();
     this.getRecommend('0','0');
-
+    wx.setNavigationBarTitle({
+      title: '工程圈' 
+    })
   },
   switchNav(event) {
     var cur = event.currentTarget.dataset.current;
@@ -93,7 +95,9 @@ Page({
   onReachBottom() {
     let id = this.data.id;
     // 显示加载图标
-    wx.showLoading();
+    wx.showLoading({
+      title: '加载中'
+    });
     let page1 = this.data.page + 1;
     this.setData({
       page:page1
