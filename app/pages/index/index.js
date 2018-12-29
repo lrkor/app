@@ -28,19 +28,19 @@ Page({
         },
         {
           url: '../../images/index/small/kqdk.png',
-          hrefUrl: 'http://wechat.zhinengjianshe.com/wechatService/weChat/time/card/list?openId=oBqrSwzzFWtcDD6SjgV13F2OhPkc&userId=1',
+          hrefUrl: 'http://wechat.zhinengjianshe.com/wechatService/weChat/time/card/list',
           text: '考勤打卡',
           status: 1
         },
         {
           url: '../../images/index/small/rwgl.png',
-          hrefUrl: 'http://wechat.zhinengjianshe.com/wechatService/weChat/task/list?openId=oBqrSwzzFWtcDD6SjgV13F2OhPkc&userId=1&userName=1',
+          hrefUrl: 'http://wechat.zhinengjianshe.com/wechatService/weChat/task/list',
           text: '任务管理',
           status: 1
         },
         {
           url: '../../images/index/small/hytz.png',
-          hrefUrl: 'http://wechat.zhinengjianshe.com/wechatService/weChat/meetingNotice/list?openId=oBqrSwzzFWtcDD6SjgV13F2OhPkc&userId=1&systemCode=fbzhsgms',
+          hrefUrl: 'http://wechat.zhinengjianshe.com/wechatService/weChat/meetingNotice/list',
           text: '会议通知',
           status: 1
         }
@@ -65,25 +65,25 @@ Page({
       ]
     ],
     applicationList: [{
-        url: 'http://wechat.zhinengjianshe.com/wechatService/weChat/score/rank?rankType=1&recordDate=20181227&type=1',
+        url: 'http://wechat.zhinengjianshe.com/wechatService/weChat/score/rank',
         imgUrl: '../../images/index/application/phb.png',
         text: '排行榜',
         status: 1
       },
       {
-        url: 'http://wechat.zhinengjianshe.com/wechatService/weChat/time/card/list?openId=oBqrSwzzFWtcDD6SjgV13F2OhPkc&userId=1&systemCode=fbzhsgms',
+        url: 'http://wechat.zhinengjianshe.com/wechatService/weChat/time/card/list',
         imgUrl: '../../images/index/application/kqgl.png',
         text: '考勤管理',
         status: 1
       },
       {
-        url: 'http://wechat.zhinengjianshe.com/wechatService/weChat/weatherStation/monitor?openId=oBqrSwzzFWtcDD6SjgV13F2OhPkc&userId=1&systemCode=fbzhsgms',
+        url: 'http://wechat.zhinengjianshe.com/wechatService/weChat/weatherStation/monitor',
         imgUrl: '../../images/index/application/hjjc.png',
         text: '环境监测',
         status: 1
       },
       {
-        url: 'http://wechat.zhinengjianshe.com/wechatService/weChat/liftingMonitoring/list?openId=oBqrSwzzFWtcDD6SjgV13F2OhPkc&userId=1&systemCode=fbzhsgms',
+        url: 'http://wechat.zhinengjianshe.com/wechatService/weChat/liftingMonitoring/list',
         imgUrl: '../../images/index/application/qzjc.png',
         text: '起重监测',
         status: 1
@@ -140,6 +140,13 @@ Page({
     ]
   },
 
+  // onShareAppMessage() {
+  //   return {
+  //     title: '客服消息',
+  //     path: 'page/API/pages/custom-message/custom-message'
+  //   }
+  // },
+
   // tab切换
   switchTab: function(e) {
     this.setData({
@@ -147,11 +154,9 @@ Page({
     });
   },
 
-
   onLoad: function() {
     this.getweather();
     this.getSystemName();
-    
   },
 
   //获取天气
@@ -200,7 +205,7 @@ Page({
     var status = e.target.dataset.status;
     if (status == 1) {
       wx.navigateTo({
-        url: '../webView/web_view?url=' + e.target.dataset.url,
+        url: '../webView/web_view?url=' + e.target.dataset.url + '?openId=' + app.globalData.openId + '&userId=1&systemCode=fbzhsgms',
       })
     } else if (status == 2) {
       wx.showToast({

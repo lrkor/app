@@ -52,7 +52,7 @@ Page({
       //授权成功后，跳转进入小程序首页
       console.log(222)
       wx.navigateTo({
-        url: '/pages/bindAccount/bindAccount'
+        url: '/pages/index/index'
       })
     } else {
       //用户按了拒绝按钮

@@ -38,6 +38,7 @@
 .title_letf {
   padding-left: 33rpx;
   display: flex;
+  width: 64%;
   align-items: center;
 }
 
@@ -70,7 +71,6 @@
 .small_feature_li {
   position: relative;
   float: left;
-  padding-top: 10px;
   width: 25%;
   text-align: center;
 }
