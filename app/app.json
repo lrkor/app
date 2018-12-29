@@ -26,7 +26,7 @@
         "selectedIconPath": "images/tabBar/index2.png"
       },
       {
-        "pagePath": "pages/webView/web_view",
+        "pagePath": "pages/project/project",
         "text": "项目看板",
         "iconPath": "images/tabBar/project1.png",
         "selectedIconPath": "images/tabBar/project2.png"
