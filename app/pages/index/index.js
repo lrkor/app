@@ -199,7 +199,6 @@ Page({
   goToWebView(e) {
     var status = e.target.dataset.status;
     if (status == 1) {
-      console.log(status);
       wx.navigateTo({
         url: '../webView/web_view?url=' + e.target.dataset.url,
       })
