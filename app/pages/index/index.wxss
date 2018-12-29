@@ -123,7 +123,8 @@
   width: 25%;
   float: left;
   text-align: center;
-  margin-bottom: 60rpx;
+  margin-bottom: 40rpx;
+  padding:20rpx 0;
 }
 
 .application_item:last-child {

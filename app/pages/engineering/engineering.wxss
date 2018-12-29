@@ -142,7 +142,8 @@ page{
 }
 
 .to-top{
-  padding: 5rpx 0;
+  height: 40rpx;
+  line-height: 40rpx;
   display: inline-block;
   width: 65rpx;
   background-color: #ff0000;
@@ -181,3 +182,8 @@ page{
     font-size: 20rpx;
     text-align: center;
   }
+
+  .detail-hover{
+    color:rgba(0, 0, 0, 0.6);
+    background-color:#DEDEDE;
+}

@@ -4,7 +4,7 @@
     <!-- scroll-with-animation滚动添加动画过渡 -->
     <scroll-view scroll-x="true" class="nav" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
         <block wx:for="{{navData}}" wx:for-index="id" wx:for-item="navItem" wx:key="id">
-            <view class="nav-item {{currentTab == id ?'active':''}}" data-current="{{id}}" data-id="{{navItem.id}}"
+            <view  class="nav-item {{currentTab == id ?'active':''}}" data-current="{{id}}" data-id="{{navItem.id}}"
                 bindtap="switchNav">
                 {{navItem.name}}
             </view>
@@ -14,7 +14,7 @@
     <swiper class="tab-box" current="{{currentTab}}" duration="300" data-id="{{id}}" bindchange="switchTab">
         <swiper-item wx:for="{{navData}}" wx:for-item="tabItem" wx:for-index="id" wx:key="id" class="tab-content">
             <block wx:for="{{infosArray}}" wx:key="id">
-                <view wx:if="{{item.imageList.length>0 && item.imageList.length<3}}" class='list-div' data-id="{{item.id}}"
+                <view hover="true" hover-class="detail-hover" wx:if="{{item.imageList.length>0 && item.imageList.length<3}}" class='list-div' data-id="{{item.id}}"
                     bindtap="goDetaile">
                     <view class='list-infos'>
                         <view class='list-left' style="height:147rpx;">
@@ -38,7 +38,7 @@
                         </view>
                     </view>
                 </view>
-                <view wx:elif="{{item.imageList==null || item.imageList.length==0}}" class='list-div' data-id="{{item.id}}"
+                <view hover="true" hover-class="detail-hover" wx:elif="{{item.imageList==null || item.imageList.length==0}}" class='list-div' data-id="{{item.id}}"
                     bindtap="goDetaile">
                     <view class='list-infos'>
                         <view class='list-left'>
@@ -53,7 +53,7 @@
                         </view>
                     </view>
                 </view>
-                <view wx:else="{{item.imageList.length>2}}" class='list-div' data-id="{{item.id}}" bindtap="goDetaile">
+                <view hover="true" hover-class="detail-hover" wx:else="{{item.imageList.length>2}}" class='list-div' data-id="{{item.id}}" bindtap="goDetaile">
                     <view class='list-infos' style="flex-direction: column;">
                         <view class='list-left' style="width: 100%;">
                             <view class='title-div'>
