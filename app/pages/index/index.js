@@ -206,6 +206,8 @@ Page({
         image: '../../images/success.png',
         duration: 2000
       })
+      console.log(e.target, e.target.dataset);
+      // this.addClassName('button-hover');
     } else if (status == 3) {
       wx.scanCode({
         success(res) {

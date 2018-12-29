@@ -27,7 +27,7 @@
         <swiper indicator-dots="{{flase}}" autoplay="{{flase}}" class="small_feature_swiper" bindchange="switchTab">
             <block wx:for="{{smallImgUrl}}" wx:key="*this">
                 <swiper-item>
-                    <view wx:for="{{item}}" wx:key="" class="small_feature_li" bindtap='goToWebView'>
+                    <view wx:for="{{item}}" wx:key="" class="small_feature_li  detail-view" hover="true" hover-class="detail-hover" bindtap='goToWebView'>
                         <image src="{{item.url}}" data-status="{{item.status}}" data-url="{{item.hrefUrl}}" style="width:60rpx;height: 60rpx;" />
                         <view wx:if="{{item.status == 5}}">
                         <button class="contact-us" open-type="contact">联系客服</button>
@@ -49,7 +49,7 @@
     <view class="application">
         <view class="application_title">我的应用</view>
         <view class="application_list clearfix">
-            <view class="application_item" wx:for="{{applicationList}}"  wx:key="" bindtap='goToWebView' >
+            <view class="application_item detail-view" hover="true" hover-class="detail-hover" wx:for="{{applicationList}}"  wx:key="" bindtap='goToWebView'>
                 <image src="{{item.imgUrl}}" style="width:90rpx;height: 90rpx;" data-status="{{item.status}}" data-url="{{item.url}}"/>
                 <view>{{item.text}}</view>
             </view>

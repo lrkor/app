@@ -16,7 +16,7 @@
   </view>
   <view class="bgc"></view>
   <view class="function">
-    <view class="functionItem clearfix" bindtap='goToWebView'>
+    <view class="functionItem clearfix detail-view" hover="true" hover-class="detail-hover" bindtap='goToWebView'>
       <view class="functionItem_img">
         <image src="../../images/personal/3.png" style="width:35rpx;height: 36rpx;" />
       </view>
@@ -25,7 +25,7 @@
         <image src="../../images/personal/7.png" style="width:14rpx;height: 25rpx;" />
       </view>
     </view>
-    <view class="functionItem clearfix" bindtap='goToWebView'>
+    <view class="functionItem clearfix detail-view" hover="true" hover-class="detail-hover" bindtap='goToWebView'>
       <view class="functionItem_img">
         <image src="../../images/personal/4.png" style="width:35rpx;height: 36rpx;" />
       </view>
@@ -34,7 +34,7 @@
         <image src="../../images/personal/7.png" style="width:14rpx;height: 25rpx;" />
       </view>
     </view>
-    <view class="functionItem clearfix">
+    <view class="functionItem clearfix detail-view" hover="true" hover-class="detail-hover">
       <view class="functionItem_img">
         <image src="../../images/personal/5.png" style="width:35rpx;height: 36rpx;" />
       </view>
@@ -46,7 +46,7 @@
         <button class="contact-us" open-type="contact">联系客服</button>
       </view>
     </view>
-    <view class="functionItem clearfix" bindtap='goToWebView'>
+    <view class="functionItem clearfix detail-view" hover="true" hover-class="detail-hover" bindtap='goToWebView'>
       <view class="functionItem_img">
         <image src="../../images/personal/6.png" style="width:35rpx;height: 36rpx;" />
       </view>
