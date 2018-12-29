@@ -6,6 +6,7 @@ const app = getApp()
 Page({
   data: {
     systemName: '五峰山接线工程',
+    systemCode: '',
     weatherImg: '', //天气图片
     temperature: '', //温度
     windSpeed: '', //风速
@@ -186,8 +187,10 @@ Page({
       key: 'userInfo',
       success(res) {
         var systemName = res.data.systemName
+        var systemCode = res.data.systemCode
         that.setData({
-          systemName: systemName
+          systemName: systemName,
+          systemCode: systemCode
         })
       }
     })
@@ -196,9 +199,11 @@ Page({
   // 页面跳转事件
   goToWebView(e) {
     var status = e.target.dataset.status;
+    var url = e.target.dataset.url + '?openId=' + app.globalData.openId + '&userId=1&systemCode=' + this.data.systemCode;
     if (status == 1) {
+      console.log(url);
       wx.navigateTo({
-        url: '../webView/web_view?url=' + e.target.dataset.url + '?openId=' + app.globalData.openId + '&userId=1&systemCode=fbzhsgms',
+        url: '../webView/web_view?url=' + url,
       })
     } else if (status == 2) {
       wx.showToast({
@@ -206,7 +211,6 @@ Page({
         image: '../../images/success.png',
         duration: 2000
       })
-      // this.addClassName('button-hover');
     } else if (status == 3) {
       wx.scanCode({
         success(res) {

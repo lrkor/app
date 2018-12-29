@@ -1,6 +1,6 @@
 <view class="account-page">
-  <view class="account-txt">当前绑定账号： 123123121312</view>
+  <view class="account-txt">当前绑定账号： {{userInfo.userName}}</view>
   <view class="btn-div">
-    <view class="btn-account">解除绑定</view>
+    <view class="btn-account" bindtap='userBind'>解除绑定</view>
   </view>
 </view>
