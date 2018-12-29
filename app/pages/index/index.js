@@ -60,7 +60,7 @@ Page({
           url: '../../images/index/small/lxkf.png',
           hrefUrl: 'https://mp.weixin.qq.com/',
           text: '联系客服',
-          status: 2
+          status: 5
         }
       ]
     ],
@@ -140,13 +140,6 @@ Page({
     ]
   },
 
-  // onShareAppMessage() {
-  //   return {
-  //     title: '客服消息',
-  //     path: 'page/API/pages/custom-message/custom-message'
-  //   }
-  // },
-
   // tab切换
   switchTab: function(e) {
     this.setData({
@@ -223,6 +216,8 @@ Page({
       wx.navigateTo({
         url: '../accountDeregulation/accountDeregulation'
       })
+    } else if (status == 5) {
+    
     }
   },
 })

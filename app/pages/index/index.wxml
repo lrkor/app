@@ -29,6 +29,9 @@
                 <swiper-item>
                     <view wx:for="{{item}}" wx:key="" class="small_feature_li" bindtap='goToWebView'>
                         <image src="{{item.url}}" data-status="{{item.status}}" data-url="{{item.hrefUrl}}" style="width:60rpx;height: 60rpx;" />
+                        <view wx:if="{{item.status == 5}}">
+                        <button class="contact-us" open-type="contact">联系客服</button>
+                        </view>
                         <view>{{item.text}}</view>
                         <block wx:if="{{item.num > 0}}">
                           <view class="icon-num">{{item.num}}</view>
@@ -53,6 +56,3 @@
         </view>
     </view>
 </view>
-<!-- <view class="page-body-line">
-  <contact-button size="40" session-from="weapp"></contact-button>
-</view> -->
