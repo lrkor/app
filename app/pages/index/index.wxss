@@ -38,14 +38,13 @@
 .title_letf {
   padding-left: 33rpx;
   display: flex;
-  width: 64%;
+  flex: 1;
   align-items: center;
 }
 
 .title_right {
   text-align: right;
   padding-right: 33rpx;
-  width: 35%;
 }
 
 .shuffling {
@@ -153,7 +152,8 @@
 .systemName-txt {
   display: inline-block;
   vertical-align: middle;
-  height:65rpx;
+  width: 100%;
+  height: 65rpx;
 }
 
 .contact-us {
@@ -164,7 +164,7 @@
 }
 
 .detail-view{
-    background: rgb(247, 247, 247);
+    background: rgb(255, 255, 255);
  }
  
 .detail-hover{

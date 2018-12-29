@@ -1,5 +1,6 @@
 Page({
   data: {
+    url: '',
     latitude: 23.099994,
     longitude: 113.324520,
     markers: [{
@@ -40,8 +41,10 @@ Page({
     wx.setNavigationBarTitle({
       title: '项目看板' 
     })
+    // this.setData({
+    //   url: options.url
+    // });
   },
-
 
   canvasIdErrorCallback: function (e) {
     console.error(e.detail.errMsg)

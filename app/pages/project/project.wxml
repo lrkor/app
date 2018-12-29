@@ -1,4 +1,4 @@
-<view class="page-body">
+<!-- <view class="page-body">
   <view class="page-section page-section-gap">
     <map
       id="myMap"
@@ -18,4 +18,6 @@
       num="{{item.num}}">
     </goodsList>
   </view>
-</view>
+</view> -->
+<web-view id="webView" src="http://wechat.zhinengjianshe.com/wechatService/weChat/toProject"></web-view>
+
