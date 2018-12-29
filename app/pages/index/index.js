@@ -28,19 +28,19 @@ Page({
         },
         {
           url: '../../images/index/small/kqdk.png',
-          hrefUrl: 'http://wechat.zhinengjianshe.com/wechatService/weChat/time/card/list',
+          hrefUrl: app.globalData.BaseURL + 'weChat/time/card/list',
           text: '考勤打卡',
           status: 1
         },
         {
           url: '../../images/index/small/rwgl.png',
-          hrefUrl: 'http://wechat.zhinengjianshe.com/wechatService/weChat/task/list',
+          hrefUrl: app.globalData.BaseURL + 'weChat/task/list',
           text: '任务管理',
           status: 1
         },
         {
           url: '../../images/index/small/hytz.png',
-          hrefUrl: 'http://wechat.zhinengjianshe.com/wechatService/weChat/meetingNotice/list',
+          hrefUrl: app.globalData.BaseURL + 'weChat/meetingNotice/list',
           text: '会议通知',
           status: 1
         }
@@ -65,25 +65,25 @@ Page({
       ]
     ],
     applicationList: [{
-        url: 'http://wechat.zhinengjianshe.com/wechatService/weChat/score/rank',
+        url: app.globalData.BaseURL + 'weChat/score/rank',
         imgUrl: '../../images/index/application/phb.png',
         text: '排行榜',
         status: 1
       },
       {
-        url: 'http://wechat.zhinengjianshe.com/wechatService/weChat/time/card/list',
+        url: app.globalData.BaseURL + 'weChat/time/card/list',
         imgUrl: '../../images/index/application/kqgl.png',
         text: '考勤管理',
         status: 1
       },
       {
-        url: 'http://wechat.zhinengjianshe.com/wechatService/weChat/weatherStation/monitor',
+        url: app.globalData.BaseURL + 'weChat/weatherStation/monitor',
         imgUrl: '../../images/index/application/hjjc.png',
         text: '环境监测',
         status: 1
       },
       {
-        url: 'http://wechat.zhinengjianshe.com/wechatService/weChat/liftingMonitoring/list',
+        url: app.globalData.BaseURL + 'weChat/liftingMonitoring/list',
         imgUrl: '../../images/index/application/qzjc.png',
         text: '起重监测',
         status: 1
@@ -206,7 +206,6 @@ Page({
         image: '../../images/success.png',
         duration: 2000
       })
-      console.log(e.target, e.target.dataset);
       // this.addClassName('button-hover');
     } else if (status == 3) {
       wx.scanCode({
@@ -219,7 +218,7 @@ Page({
         url: '../accountDeregulation/accountDeregulation'
       })
     } else if (status == 5) {
-    
+
     }
   },
 })
