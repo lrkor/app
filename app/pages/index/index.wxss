@@ -172,3 +172,11 @@
     color:rgba(0, 0, 0, 0.6);
     background-color:#DEDEDE;
 }
+
+.detail1-hover {
+  color:rgba(0, 0, 0, 0.6);
+}
+
+.detail1-hover image{
+  opacity:0.4;
+}
