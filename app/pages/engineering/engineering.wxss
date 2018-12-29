@@ -142,12 +142,24 @@ page{
 }
 
 .to-top{
+  padding: 5rpx 0;
   display: inline-block;
-  width: 80rpx;
+  width: 65rpx;
   background-color: #ff0000;
   color: #fff;
   text-align: center;
-  font-size: 28rpx;
+  font-size: 22rpx;
+  border-radius: 3px;
+  position: absolute;
+  top:28rpx;
+}
+
+.to-top1{
+  display: inline-block;
+  width: 65rpx;
+  color: #fff;
+  text-align: center;
+  font-size: 22rpx;
   border-radius: 5px;
 }
 

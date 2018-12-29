@@ -135,7 +135,7 @@ Page({
       url: 'http://192.168.1.40:8081/applet/api/articleCategory/query',
       method: 'POST',
       dataType: 'json',
-      data: {},
+      data: {status:'1'},
       header: {
         'content-type': 'application/json'
       },

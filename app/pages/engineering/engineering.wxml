@@ -19,7 +19,11 @@
                     <view class='list-infos'>
                         <view class='list-left' style="height:147rpx;">
                             <view class='title-div' style="height:116rpx;">
-                                <text class='title'><text class="to-top" wx:if="{{item.isTop=='1'}}">置顶</text>{{item.title}}</text>
+                                <view class='title'>
+                                    <text class="to-top" wx:if="{{item.isTop=='1'}}">置顶</text>
+                                    <text class="to-top1" wx:if="{{item.isTop=='1'}}">置顶</text>
+                                    <text>{{item.title}}</text>
+                                </view>
                             </view>
                             <view class='brief-div' style="margin-top:0;">
                                 <text class='color-6 typeTitle'>{{item.categoryName}}</text>
