@@ -147,7 +147,7 @@ page{
   background-color: #ff0000;
   color: #fff;
   text-align: center;
-  font-size: 30rpx;
+  font-size: 28rpx;
   border-radius: 5px;
 }
 

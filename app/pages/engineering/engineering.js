@@ -31,7 +31,6 @@ Page({
   switchNav(event) {
     var cur = event.currentTarget.dataset.current;
     let page1 = 1;
-
     // 获取导航栏id
     var id = event.currentTarget.dataset.id;
     this.setData({
@@ -40,13 +39,15 @@ Page({
       isload: true
     })
 
-    //每个tab选项宽度占1/5
-    var singleNavWidth = this.data.windowWidth / 5;
+    // //每个tab选项宽度占1/5
+    // var singleNavWidth = this.data.windowWidth / 5;
+    // console.log(singleNavWidth);
 
-    //tab选项居中                            
-    this.setData({
-      navScrollLeft: (cur - 2) * singleNavWidth
-    })
+    // //tab选项居中                            
+    // this.setData({
+    //   navScrollLeft: cur
+    // })
+    // console.log(this.data.navScrollLeft);
 
     if (this.data.currentTab == cur) {
       return false;
@@ -65,7 +66,6 @@ Page({
     var singleNavWidth = this.data.windowWidth / 5;
     this.setData({
       currentTab: cur,
-      navScrollLeft: (cur - 2) * singleNavWidth,
       isload: true,
       infosArray:[]
     });
