@@ -158,7 +158,7 @@ Page({
     var that = this;
     // 新建百度地图对象 
     var BMap = new bmap.BMapWX({
-      ak: 'MlYLII7NQDCSox6r4rGorSf2qU8zv8C4'
+      ak: 'wONQmGOLjZfXLbPXzAphdq5tgkKdTkCC'
     });
     var fail = function(data) {};
     var success = function(data) {
