@@ -13,9 +13,7 @@ Page({
         var systemName = res.data.systemName
         var systemCode = res.data.systemCode
         that.setData({
-          // url: options.url + '?openId=' + app.globalData.openId + '&userId=1&systemCode=' + systemCode
-          url: options.url
-
+          url: options.url + '?openId=' + app.globalData.openid + '&userId=1&systemCode=' + systemCode
         });
       }
     })
