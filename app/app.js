@@ -13,7 +13,6 @@ App({
               js_code: res.code
             },
             success: function(result) {
-              console.log(result);
               if (result.data.errcode != '0') {
                 wx.showToast({
                   title: '登陆失败！',

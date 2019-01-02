@@ -201,7 +201,6 @@ Page({
     var status = e.target.dataset.status;
     var url = e.target.dataset.url + '?openId=' + app.globalData.openId + '&userId=1&systemCode=' + this.data.systemCode;
     if (status == 1) {
-      console.log(url);
       wx.navigateTo({
         url: '../webView/web_view?url=' + url,
       })

@@ -9,10 +9,13 @@ Page({
     wx.getStorage({
       key: 'userInfo',
       success(res) {
+        console.log(res);
         var systemName = res.data.systemName
         var systemCode = res.data.systemCode
         that.setData({
-          url: options.url + '?openId=' + app.globalData.openId + '&userId=1&systemCode=' + systemCode
+          // url: options.url + '?openId=' + app.globalData.openId + '&userId=1&systemCode=' + systemCode
+          url: options.url
+
         });
       }
     })
