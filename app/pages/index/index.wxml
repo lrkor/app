@@ -10,12 +10,15 @@
             <view class="flex-item flex_weather flex-wrp title_right" bindtap="getweather">
                 <view class="weather">{{windSpeed}}</view>
                 <view class="weather">{{temperature}}</view>
-                <view class="weather flex-wrp" style="align-items: center;"><image src="{{weatherImg}}" style="width:42rpx;height: 30rpx;" alt=""/></view>
+                <view class="weather flex-wrp" style="align-items: center;">
+                    <image src="{{weatherImg}}" style="width:42rpx;height: 30rpx;" alt="" />
+                </view>
             </view>
         </view>
     </view>
     <view class="shuffling">
-        <swiper class="border-rd-10" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <swiper class="border-rd-10" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}"
+            duration="{{duration}}">
             <block wx:for="{{imgUrls}}" wx:key="">
                 <swiper-item class="border-rd-10">
                     <image src="{{item}}" class="slide-image" style="width:100%;height: 100%;" />
@@ -27,14 +30,15 @@
         <swiper indicator-dots="{{flase}}" autoplay="{{flase}}" class="small_feature_swiper" bindchange="switchTab">
             <block wx:for="{{smallImgUrl}}" wx:key="*this">
                 <swiper-item>
-                    <view wx:for="{{item}}" wx:key="" class="small_feature_li  detail-view" hover="true" hover-class="detail1-hover" bindtap='goToWebView'>
+                    <view wx:for="{{item}}" wx:key="" class="small_feature_li  detail-view" data-status="{{item.status}}" data-url="{{item.hrefUrl}}" hover="true" hover-class="detail1-hover"
+                        bindtap='goToWebView'>
                         <image src="{{item.url}}" data-status="{{item.status}}" data-url="{{item.hrefUrl}}" style="width:60rpx;height: 60rpx;" />
-                        <view wx:if="{{item.status == 5}}">
-                        <button class="contact-us" open-type="contact">联系客服</button>
+                        <view wx:if="{{item.status == 5}}" data-status="{{item.status}}" data-url="{{item.hrefUrl}}">
+                            <button class="contact-us" open-type="contact">联系客服</button>
                         </view>
-                        <view>{{item.text}}</view>
+                        <view data-status="{{item.status}}" data-url="{{item.hrefUrl}}">{{item.text}}</view>
                         <block wx:if="{{item.num > 0}}">
-                          <view class="icon-num">{{item.num}}</view>
+                            <view class="icon-num">{{item.num}}</view>
                         </block>
                     </view>
                 </swiper-item>
@@ -49,10 +53,13 @@
     <view class="application">
         <view class="application_title">我的应用</view>
         <view class="application_list clearfix">
-            <view class="application_item detail-view" hover="true" hover-class="detail-hover" wx:for="{{applicationList}}"  wx:key="" bindtap='goToWebView'>
-                <image src="{{item.imgUrl}}" style="width:90rpx;height: 90rpx;" data-status="{{item.status}}" data-url="{{item.url}}"/>
-                <view>{{item.text}}</view>
-            </view>
+            <block wx:for="{{applicationList}}" wx:key="">
+                <view class="application_item detail-view" hover="true" data-status="{{item.status}}" data-url="{{item.url}}"
+                    hover-class="detail-hover" bindtap='goToWebView'>
+                    <image src="{{item.imgUrl}}" style="width:90rpx;height: 90rpx;" data-status="{{item.status}}" data-url="{{item.url}}"/>
+                    <view data-status="{{item.status}}" data-url="{{item.url}}">{{item.text}}</view>
+                </view>
+            </block>
         </view>
     </view>
 </view>

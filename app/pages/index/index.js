@@ -198,6 +198,7 @@ Page({
 
   // 页面跳转事件
   goToWebView(e) {
+    console.log(e);
     var status = e.target.dataset.status;
     var url = e.target.dataset.url + '?openId=' + app.globalData.openId + '&userId=1&systemCode=' + this.data.systemCode;
     if (status == 1) {
