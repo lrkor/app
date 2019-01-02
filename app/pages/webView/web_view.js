@@ -5,6 +5,9 @@ Page({
     url:''
   },
   onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: '加载中...' 
+    })
     var that = this;
     wx.getStorage({
       key: 'userInfo',
