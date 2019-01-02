@@ -55,7 +55,7 @@ Page({
       method: "POST",
       url: urlStr,
       data: {
-        openId: app.globalData.openId,
+        openId: app.globalData.openid,
         loginName: userName,
         pwd: passwords
       },
@@ -66,7 +66,7 @@ Page({
         if (res.data.code != '200') {
           wx.showToast({
             title: res.data.message,
-            icon: 'success',
+            icon: 'error',
             duration: 2000
           })
           return false;
@@ -81,9 +81,6 @@ Page({
           icon: 'success',
           duration: 2000
         })
-        // wx.navigateTo({
-        //   url: '/pages/index/index'
-        // })
         wx.switchTab({
           url: '/pages/index/index'
         })

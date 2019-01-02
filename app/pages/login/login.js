@@ -62,7 +62,7 @@ Page({
           })
           return false;
         }
-        if (res.data && res.data.rows && res.data.rows.length > 0) {
+        if (res.data && res.data.rows && res.data.rows.length == 1) {
           wx.switchTab({
             url: '/pages/index/index',
           })
