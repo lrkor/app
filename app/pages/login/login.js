@@ -13,7 +13,7 @@ Page({
           wx.getUserInfo({
             success: function(res) {
               //获取用户信息
-              that.queryUsreInfo();
+              that.queryUserInfo();
             }
           });
         }
@@ -25,7 +25,7 @@ Page({
       //用户按了允许授权按钮
       var that = this;
       //授权成功后，跳转进入小程序首页
-      that.queryUsreInfo();
+      that.queryUserInfo();
     } else {
       //用户按了拒绝按钮
       wx.showModal({
@@ -41,8 +41,9 @@ Page({
       })
     }
   },
+  
   //获取用户信息接口
-  queryUsreInfo: function() {
+  queryUserInfo: function() {
     wx.request({
       method: "POST",
       url: app.globalData.BaseURL + 'api/v1/userBind/query',
