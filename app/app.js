@@ -1,27 +1,27 @@
 App({
   onLaunch: function() {
+    var that = this;
     // 登录
     wx.login({
       success: res => {
         // 获取用户openId
-        console.log(res.code);
         if (res.code) {
           // 发起网络请求  appid  secret
           wx.request({
-            url: this.globalData.codeUrl,
+            url: that.globalData.codeUrl,
             data: {
               js_code: res.code
             },
             success: function(result) {
-              console.log(result);
-              if (result.data.errcode != '0') {
+              if (result.data.openid) {
+                that.globalData.openid = result.data.openid;
+              } else {
                 wx.showToast({
                   title: '登陆失败！',
                   duration: 2000
                 })
                 return false;
               }
-              this.globalData.openId = result.data.openId;
             }
           })
         } else {
@@ -36,7 +36,7 @@ App({
 
   },
   globalData: {
-    openId: "oBqrSwzzFWtcDD6SjgV13F2OhPkc",
+    openid: "",
     adminUserViewId: "",
     token: "",
     userInfo: {},

@@ -55,7 +55,7 @@ Page({
       method: "POST",
       url: urlStr,
       data: {
-        openId: app.globalData.openId,
+        openId: app.globalData.openid,
         loginName: userName,
         pwd: passwords
       },
