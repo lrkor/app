@@ -38,7 +38,7 @@ Page({
   userBind(e) {
     wx.request({
       method: "GET",
-      url: app.globalData.BaseURL + 'api/v1/userBind/unBind ',
+      url: app.globalData.BaseURL + 'api/v1/userBind/unBind',
       data: {
         openId: app.globalData.openid,
       },
@@ -59,7 +59,10 @@ Page({
           icon: 'success',
           duration: 2000
         })
-        wx.clearStorageSync()
+        wx.clearStorageSync();
+        wx.switchTab({
+          url: '/pages/bindAccount/bindAccount',
+        })
       },
     })
   }
