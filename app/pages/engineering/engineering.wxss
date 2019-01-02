@@ -157,7 +157,7 @@ page{
 
 .to-top1{
   display: inline-block;
-  width: 65rpx;
+  width: 70rpx;
   color: #fff;
   text-align: center;
   font-size: 22rpx;
