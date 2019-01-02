@@ -7,6 +7,7 @@ Page({
   data: {
     systemName: '五峰山接线工程',
     systemCode: '',
+    unitType: '',
     weatherImg: '', //天气图片
     temperature: '', //温度
     windSpeed: '', //风速
@@ -66,10 +67,10 @@ Page({
       ]
     ],
     applicationList: [{
-        url: app.globalData.BaseURL + 'weChat/score/rank',
+      url: app.globalData.BaseURL + 'weChat/score/rank',
         imgUrl: '../../images/index/application/phb.png',
         text: '排行榜',
-        status: 1
+        status: 6
       },
       {
         url: app.globalData.BaseURL + 'weChat/time/card/list',
@@ -188,9 +189,11 @@ Page({
       success(res) {
         var systemName = res.data.systemName
         var systemCode = res.data.systemCode
+        var unitType = res.data.unitType
         that.setData({
           systemName: systemName,
-          systemCode: systemCode
+          systemCode: systemCode,
+          unitType: unitType
         })
       }
     })
@@ -222,6 +225,11 @@ Page({
       })
     } else if (status == 5) {
 
+    } else if (status == 6) {
+      url = url + '&rankType=' + this.data.unitType;
+      wx.navigateTo({
+        url: '../webView/web_view?url=' + url,
+      })
     }
   },
 })
