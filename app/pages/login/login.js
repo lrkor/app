@@ -66,6 +66,7 @@ Page({
           wx.switchTab({
             url: '/pages/index/index',
           })
+          wx.setStorageSync('userInfo', res.data.rows[0])
           app.globalData.userInfo = res.data.rows[0];
         } else {
           wx.navigateTo({

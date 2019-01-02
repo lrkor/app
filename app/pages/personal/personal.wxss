@@ -117,10 +117,6 @@
   opacity: 0;
 }
 
-.detail-view {
-  background: rgb(247, 247, 247);
-}
-
 .detail-hover {
   color: rgba(0, 0, 0, 0.6);
   background-color: #dedede;

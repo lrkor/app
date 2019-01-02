@@ -1,4 +1,36 @@
 App({
+  onLoad: function() {
+    wx.request({
+      method: "POST",
+      url: app.globalData.BaseURL + 'api/v1/userBind/query',
+      data: {
+        openId: app.globalData.openid
+      },
+      header: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      success: function (res) {
+        if (res.data.code != 200) {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          })
+          return false;
+        }
+        if (res.data && res.data.rows && res.data.rows.length == 1) {
+          wx.switchTab({
+            url: '/pages/index/index',
+          })
+          app.globalData.userInfo = res.data.rows[0];
+        } else {
+          wx.navigateTo({
+            url: '/pages/bindAccount/bindAccount'
+          })
+        }
+      }
+    });
+  },
   onLaunch: function() {
     var that = this;
     // 登录
@@ -33,7 +65,6 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
-
   },
   globalData: {
     openid: "",
