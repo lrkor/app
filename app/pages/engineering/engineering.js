@@ -191,7 +191,7 @@ Page({
   },
 
   // 获取其他列表
-  getOtherlisr(id, isRefresh, isLoading) {
+  getOtherList(id, isRefresh, isLoading) {
     var that = this;
     wx.request({
       url: 'http://192.168.1.40:8081/applet/api/article/query',
