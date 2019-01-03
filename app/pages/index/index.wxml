@@ -63,16 +63,3 @@
         </view>
     </view>
 </view>
-<!-- modal -->
-<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
-<view class="modal-dialog" wx:if="{{showModal}}">
-  <view class="modal-title">我真的好为难啊</view>
-  <view class="modal-content">没有你的授权信息，我们怎么愉快的为你服务？快来授权吧</view>
-  <view class="modal-footer">
-      <button class="btn-confirm" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
-        确定
-    </button>
-    <!-- <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
-    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view> -->
-  </view>
-</view>

@@ -24,7 +24,7 @@ App({
           })
           app.globalData.userInfo = res.data.rows[0];
         } else {
-          wx.navigateTo({
+          wx.reLaunch({
             url: '/pages/bindAccount/bindAccount'
           })
         }

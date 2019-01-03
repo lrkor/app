@@ -5,7 +5,6 @@ const app = getApp()
 
 Page({
   data: {
-    showModal: false,
     systemName: '五峰山接线工程',
     systemCode: '',
     weatherImg: '', //天气图片
@@ -151,21 +150,9 @@ Page({
 
   onLoad: function() {
     this.getSetting();
-  },
-
-  showDialogBtn: function () {
-    this.setData({
-      showModal: true
+    wx.setNavigationBarTitle({
+      title: '智慧工程云平台'
     })
-  },
-
-  preventTouchMove: function () {
-  },
-
-  hideModal: function () {
-    this.setData({
-      showModal: false
-    });
   },
 
   getSetting: function() {
@@ -182,33 +169,12 @@ Page({
             }
           });
         } else {
-          that.showDialogBtn();
+          wx.reLaunch({
+            url: '/pages/bindAccount/bindAccount'
+          })
         }
       }
     })
-  },
-
-  bindGetUserInfo: function (e) {
-    if (e.detail.userInfo) {
-      //用户按了允许授权按钮
-      var that = this;
-      //授权成功后，跳转进入小程序首页
-      that.queryUserInfo();
-      that.hideModal();
-    } else {
-      //用户按了拒绝按钮
-      wx.showModal({
-        title: '警告',
-        content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
-        showCancel: false,
-        confirmText: '返回授权',
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击了“返回授权”')
-          }
-        }
-      })
-    }    
   },
 
   //获取用户信息接口
@@ -238,7 +204,7 @@ Page({
           that.getweather();
           that.getSystemName();
         } else {
-          wx.navigateTo({
+          wx.reLaunch({
             url: '/pages/bindAccount/bindAccount'
           })
         }

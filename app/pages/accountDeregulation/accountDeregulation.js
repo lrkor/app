@@ -60,7 +60,7 @@ Page({
           duration: 2000
         })
         wx.clearStorageSync();
-        wx.navigateTo({
+        wx.reLaunch({
           url: '/pages/bindAccount/bindAccount',
         })
       },
