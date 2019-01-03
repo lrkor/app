@@ -21,7 +21,6 @@ Page({
           key: 'userInfo',
           success(res) {
             that.data.userInfo = res.data;
-            console.log(that.data.userInfo, 999);
             var avatarUrl = 'userInfo.avatarUrl';
             var userName = 'userInfo.userName';
             var systemName = 'userInfo.systemName';

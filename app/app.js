@@ -59,10 +59,6 @@ App({
         } else {
           console.log('登录失败！' + res.errMsg)
         }
-        // wx.navigateTo({
-        //   url: '/pages/login/login',
-        // })
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
   },
