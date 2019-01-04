@@ -15,7 +15,7 @@ page{
   overflow: hidden;
   line-height: 77rpx;
   background: #fff;
-  font-size: 16px;
+  font-size: 14px;
   white-space: nowrap;
   position: fixed;
   top: 0;
@@ -84,7 +84,7 @@ page{
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   color: #222;
-  font-size: 36rpx;
+  font-size: 32rpx;
 }
 .list-infos .img-box {
   width: 200rpx;
