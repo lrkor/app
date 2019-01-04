@@ -77,7 +77,7 @@ Page({
       if (id == '1') {
         that.getRecommend('0', '0');
       } else {
-        that.getOtherlisr(id, '0', '0');
+        that.getOtherList(id, '0', '0');
       }
     }).exec();
 
@@ -102,7 +102,7 @@ Page({
     if (this.data.id == '1') {
       this.getRecommend('1', '1');
     } else {
-      this.getOtherlisr(id, '1', '1');
+      this.getOtherList(id, '1', '1');
     }
   },
 
@@ -122,7 +122,7 @@ Page({
       if (id == '1') {
         this.getRecommend('1', '1');
       } else {
-        this.getOtherlisr(id, '1', '1');
+        this.getOtherList(id, '1', '1');
       }
     }
 

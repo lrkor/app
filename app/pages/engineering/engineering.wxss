@@ -23,7 +23,6 @@ page{
   z-index: 99;
 }
 .nav-item {
-  margin-right: 20rpx;
   padding:0 20rpx;
   display: inline-block;
   text-align: center;
@@ -142,8 +141,8 @@ page{
 }
 
 .to-top{
-  height: 40rpx;
-  line-height: 40rpx;
+  height: 35rpx;
+  line-height: 35rpx;
   display: inline-block;
   width: 65rpx;
   background-color: #ff0000;
@@ -152,7 +151,7 @@ page{
   font-size: 22rpx;
   border-radius: 3px;
   position: absolute;
-  top:28rpx;
+  top:26rpx;
 }
 
 .to-top1{
