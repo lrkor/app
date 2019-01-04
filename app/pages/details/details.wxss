@@ -4,7 +4,7 @@
   padding: 0 30rpx;
 }
 .detail-title {
-  font-size: 36rpx;
+  font-size: 16px;
   color: #222;
 }
 .title-brief {
@@ -12,7 +12,7 @@
   height: 48rpx;
   line-height: 48rpx;
   border-bottom: 1px solid #e8e8e8;
-  font-size: 24rpx;
+  font-size: 12px;
   color: #999;
 }
 .pull-left {
@@ -21,22 +21,11 @@
 .pull-right {
   float: right;
 }
-.content-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #333;
-  text-align: center;
-}
 .detail-content {
   padding-top: 30rpx;
   clear: both;
 }
-.content {
-  margin: 15px 0;
-  font-size: 16px;
-  line-height:2;
-  color: #333;
-}
+
 .detail-content image{
   width: 100%;
   height: auto;
