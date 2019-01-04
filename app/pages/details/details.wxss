@@ -37,3 +37,7 @@
   line-height:2;
   color: #333;
 }
+.detail-content image{
+  width: 100%;
+  height: auto;
+}

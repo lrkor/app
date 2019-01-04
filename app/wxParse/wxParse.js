@@ -115,11 +115,11 @@ function wxAutoImageCal(originalWidth, originalHeight,that,bindName) {
     // console.log("autoWidth" + autoWidth);
     autoHeight = (autoWidth * originalHeight) / originalWidth;
     // console.log("autoHeight" + autoHeight);
-    results.imageWidth = autoWidth;
-    results.imageheight = autoHeight;
+    results.imageWidth = '100%';
+    results.imageheight = 'auto';
   } else {//否则展示原来的数据
-    results.imageWidth = originalWidth;
-    results.imageheight = originalHeight;
+    results.imageWidth = '100%';
+    results.imageheight = 'auto';
   }
   return results;
 }
