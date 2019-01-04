@@ -8,6 +8,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '加载中...' 
     })
+    console.log(options.url);
     var that = this;
     wx.getStorage({
       key: 'userInfo',

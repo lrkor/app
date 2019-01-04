@@ -67,7 +67,7 @@ App({
     adminUserViewId: "",
     token: "",
     userInfo: {},
-    BaseURL: "http://wechat-dev.zhinengjianshe.com/wechatService/",
+    BaseURL: "https://wechat.zhinengjianshe.com/wechatService/",
     codeUrl: "https://api.weixin.qq.com/sns/jscode2session?appid=wx55f0a1078776fa82&secret=d637bdb0dbb1751995be8352eb46ef91&grant_type=authorization_code",
   }
 })

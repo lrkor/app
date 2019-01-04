@@ -132,7 +132,7 @@ Page({
   queryHeaderList() {
     var that = this;
     wx.request({
-      url: 'http://192.168.1.40:8081/applet/api/articleCategory/query',
+      url: 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/articleCategory/query',
       method: 'POST',
       dataType: 'json',
       data: {status:'1'},
@@ -153,7 +153,7 @@ Page({
   getRecommend(isRefresh, isLoading) {
     var that = this;
     wx.request({
-      url: 'http://192.168.1.40:8081/applet/api/article/query',
+      url: 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/article/query',
       method: 'POST',
       dataType: 'json',
       data: { isRecommend: '1', page: that.data.page, size: 10, isRelease: '1' },
@@ -194,7 +194,7 @@ Page({
   getOtherList(id, isRefresh, isLoading) {
     var that = this;
     wx.request({
-      url: 'http://192.168.1.40:8081/applet/api/article/query',
+      url: 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/article/query',
       data: { categoryId: id, page: that.data.page, size: '10', isRelease: '1' },
       method: 'POST',
       header: {
