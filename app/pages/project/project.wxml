@@ -19,5 +19,5 @@
     </goodsList>
   </view>
 </view> -->
-<web-view src="http://wechat-dev.zhinengjianshe.com/wechatService/weChat/toProject"></web-view>
+<web-view src="https://wechat.zhinengjianshe.com/wechatService/weChat/toProject"></web-view>
 
