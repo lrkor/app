@@ -24,7 +24,7 @@ Page({
   async getDetails(id) {
     var that = this;
     return wx.request({
-      url: 'http://192.168.1.40:8081/applet/api/article/get',
+      url: 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/article/get',
       data: { id: id },
       method: 'GET',
       // header: {
@@ -46,7 +46,7 @@ Page({
 
   updata(id, visitTimes) {
       wx.request({
-        url: 'http://192.168.1.40:8081/applet/api/article/updateStatus',
+        url: 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/article/updateStatus',
         method: 'POST',
         dataType: 'json',
         data: { id: id, visitTimes: visitTimes },
