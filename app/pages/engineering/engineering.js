@@ -19,7 +19,11 @@ Page({
     infosArray: []
   },
   //事件处理函数
-  onLoad: function () {
+  onShow: function () {
+    this.setData({
+      navData: [],
+      infosArray: []
+    });
     this.queryHeaderList();
     this.getRecommend('0', '0');
     wx.setNavigationBarTitle({
