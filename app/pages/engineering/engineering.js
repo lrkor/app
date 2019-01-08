@@ -21,7 +21,7 @@ Page({
   //事件处理函数
   onShow: function () {
     this.setData({
-      navData: [],
+      navData: [{id: '1',name: '推荐'}],
       infosArray: []
     });
     this.queryHeaderList();
