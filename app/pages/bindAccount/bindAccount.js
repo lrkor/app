@@ -110,11 +110,17 @@ Page({
   },
 
   listenerUsernameInput: function(e) {
-    this.data.username = e.detail.value;
+    //存值
+    this.setData({
+      username: e.detail.value
+    })
   },
   /** 监听密码输入 */
   listenerPasswordInput: function(e) {
-    this.data.password = e.detail.value;
+    //存值
+    this.setData({
+      password: e.detail.value
+    })
   },
 
   loginAction: function() {

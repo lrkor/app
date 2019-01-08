@@ -180,6 +180,7 @@ Page({
   //获取用户信息接口
   queryUserInfo: function () {
     var that = this;
+    console.log(app.globalData.openid);
     wx.request({
       method: "POST",
       url: app.globalData.BaseURL + 'api/v1/userBind/query',
