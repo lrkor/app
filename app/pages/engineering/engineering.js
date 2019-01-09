@@ -17,19 +17,26 @@ Page({
     currentTab: 0,
     navScrollLeft: 0,
     infosArray: [],
-    isSlid:true
+    categoryId: '',
+    isSlid: true
   },
   //事件处理函数
   onShow: function () {
-    console.log(this.data.currentTab);
+    let id = this.data.categoryId
+    let that = this;
     this.setData({
       navData: [{ id: '1', name: '推荐' }],
       infosArray: [],
-      currentTab: 0,
-      isSlid:false
+      isSlid: false
     });
     this.queryHeaderList();
-    this.getRecommend('0', '0');
+
+    if (id == '1' || id == '') {
+      that.getRecommend('0', '0');
+    } else {
+      that.getOtherList(id, '0', '0');
+    }
+
 
     wx.setNavigationBarTitle({
       title: '工程圈'
@@ -47,16 +54,6 @@ Page({
       page: page1,
       isload: true
     })
-
-    // //每个tab选项宽度占1/5
-    // var singleNavWidth = this.data.windowWidth / 5;
-    // console.log(singleNavWidth);
-
-    // //tab选项居中                            
-    // this.setData({
-    //   navScrollLeft: cur
-    // })
-    // console.log(this.data.navScrollLeft);
 
     if (this.data.currentTab == cur) {
       return false;
@@ -83,12 +80,16 @@ Page({
     //选择id
     query.select('.active').boundingClientRect(function (rect) {
       let id = rect.dataset.id;
+      that.setData({
+        categoryId: id
+      });
       if (id == '1') {
         if (that.data.isSlid) {
           that.getRecommend('0', '0');
         }
         that.setData({
-          isSlid:true
+          isSlid: true,
+          categoryId: id
         });
       } else {
         that.getOtherList(id, '0', '0');
@@ -196,8 +197,6 @@ Page({
         for (let item of RecommendArr) {
           item.createTime = util.formatTime(new Date(item.createTime), 'mm-dd');
         }
-        console.log(that.data.infosArray);
-
         that.setData({
           infosArray: RecommendArr,
           isload: isload
