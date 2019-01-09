@@ -52,11 +52,11 @@ Page({
           text: '账号解绑',
           status: 4
         },
-        {
-          url: '../../images/index/small/yjfk.png',
-          text: '意见反馈',
-          status: 2
-        },
+        // {
+        //   url: '../../images/index/small/yjfk.png',
+        //   text: '意见反馈',
+        //   status: 2
+        // },
         {
           url: '../../images/index/small/lxkf.png',
           hrefUrl: 'https://mp.weixin.qq.com/',

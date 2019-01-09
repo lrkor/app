@@ -23,11 +23,10 @@ Page({
     var that = this;
     // 查看是否授权
     wx.getSetting({
-      success: function (res) {
-        console.log(res);
+      success: function(res) {
         if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
-            success: function (res) {
+            success: function(res) {
               //获取用户信息
               that.queryUserInfo();
             }
@@ -39,22 +38,21 @@ Page({
     })
   },
 
-  showDialogBtn: function () {
+  showDialogBtn: function() {
     this.setData({
       showModal: true
     })
   },
 
-  preventTouchMove: function () {
-  },
+  preventTouchMove: function() {},
 
-  hideModal: function () {
+  hideModal: function() {
     this.setData({
       showModal: false
     });
   },
 
-  bindGetUserInfo: function (e) {
+  bindGetUserInfo: function(e) {
     if (e.detail.userInfo) {
       //用户按了允许授权按钮
       var that = this;
@@ -68,7 +66,7 @@ Page({
         content: '没有你的授权信息，我们怎么愉快的为你服务？快来授权吧',
         showCancel: false,
         confirmText: '返回授权',
-        success: function (res) {
+        success: function(res) {
           if (res.confirm) {
             console.log('用户点击了“返回授权”')
           }
@@ -78,7 +76,7 @@ Page({
   },
 
   //获取用户信息接口
-  queryUserInfo: function () {
+  queryUserInfo: function() {
     var that = this;
     wx.request({
       method: "POST",
@@ -89,7 +87,7 @@ Page({
       header: {
         "Content-Type": "application/json;charset=UTF-8"
       },
-      success: function (res) {
+      success: function(res) {
         if (res.data.code != 200) {
           wx.showToast({
             title: res.data.message,
@@ -115,9 +113,24 @@ Page({
       username: e.detail.value
     })
   },
+
   /** 监听密码输入 */
   listenerPasswordInput: function(e) {
     //存值
+    this.setData({
+      password: e.detail.value
+    })
+  },
+
+
+  // 非聚焦函数：解决魅族不识别bindinput
+  bindKeyBlurUsername: function(e) {
+    this.setData({
+      username: e.detail.value
+    })
+  },
+
+  bindKeyBlurPassword: function(e) {
     this.setData({
       password: e.detail.value
     })
