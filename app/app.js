@@ -40,10 +40,12 @@ App({
         if (res.code) {
           // 发起网络请求  appid  secret
           wx.request({
+            // url:'https://api.weixin.qq.com/sns/jscode2session?appid=wx55f0a1078776fa82&secret=d637bdb0dbb1751995be8352eb46ef91&grant_type=authorization_code',
             url: 'https://wechat.zhinengjianshe.com/wechatService/api/v1/acquireOpenId/get',
             method: 'GET',
             data: {
               jsCode: res.code
+              // js_code:res.code
             },
             success: function(result) {
               if (result.data.data) {

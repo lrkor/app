@@ -164,6 +164,7 @@ Page({
         if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
             success: function (res) {
+              console.log(res);
               //获取用户信息
               that.queryUserInfo();
             }
@@ -180,7 +181,6 @@ Page({
   //获取用户信息接口
   queryUserInfo: function () {
     var that = this;
-    console.log(app.globalData.openid);
     wx.request({
       method: "POST",
       url: app.globalData.BaseURL + 'api/v1/userBind/query',
