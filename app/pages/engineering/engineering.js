@@ -16,16 +16,21 @@ Page({
     ],
     currentTab: 0,
     navScrollLeft: 0,
-    infosArray: []
+    infosArray: [],
+    isSlid:true
   },
   //事件处理函数
   onShow: function () {
+    console.log(this.data.currentTab);
     this.setData({
-      navData: [{id: '1',name: '推荐'}],
-      infosArray: []
+      navData: [{ id: '1', name: '推荐' }],
+      infosArray: [],
+      currentTab: 0,
+      isSlid:false
     });
     this.queryHeaderList();
     this.getRecommend('0', '0');
+
     wx.setNavigationBarTitle({
       title: '工程圈'
     })
@@ -71,7 +76,7 @@ Page({
     this.setData({
       currentTab: cur,
       isload: true,
-      infosArray:[]
+      infosArray: []
     });
 
     var query = wx.createSelectorQuery();
@@ -79,7 +84,12 @@ Page({
     query.select('.active').boundingClientRect(function (rect) {
       let id = rect.dataset.id;
       if (id == '1') {
-        that.getRecommend('0', '0');
+        if (that.data.isSlid) {
+          that.getRecommend('0', '0');
+        }
+        that.setData({
+          isSlid:true
+        });
       } else {
         that.getOtherList(id, '0', '0');
       }
@@ -101,7 +111,7 @@ Page({
     let page1 = 1;
     this.setData({
       page: page1,
-      infosArray:[]
+      infosArray: []
     });
     if (this.data.id == '1') {
       this.getRecommend('1', '1');
@@ -139,7 +149,7 @@ Page({
       url: 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/articleCategory/query',
       method: 'POST',
       dataType: 'json',
-      data: {status:'1'},
+      data: { status: '1' },
       header: {
         'content-type': 'application/json'
       },
@@ -180,12 +190,14 @@ Page({
           var isload = true;
         }
 
-        let RecommendArr = [...that.data.infosArray,...res.data.data];
+        let RecommendArr = [...that.data.infosArray, ...res.data.data];
 
         // 格式化时间
         for (let item of RecommendArr) {
           item.createTime = util.formatTime(new Date(item.createTime), 'mm-dd');
         }
+        console.log(that.data.infosArray);
+
         that.setData({
           infosArray: RecommendArr,
           isload: isload
@@ -221,7 +233,7 @@ Page({
           var isload = true;
         }
 
-        let RecommendArr = [...that.data.infosArray,...res.data.data];
+        let RecommendArr = [...that.data.infosArray, ...res.data.data];
 
         // 格式化时间
         for (let item of RecommendArr) {
