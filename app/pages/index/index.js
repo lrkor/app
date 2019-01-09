@@ -164,7 +164,6 @@ Page({
         if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
             success: function (res) {
-              console.log(res);
               //获取用户信息
               that.queryUserInfo();
             }
