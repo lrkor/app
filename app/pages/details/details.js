@@ -20,7 +20,7 @@ Page({
   },
 
   // 获取详情
-  async getDetails(id) {
+  getDetails(id) {
     var that = this;
     return wx.request({
       url: 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/article/get',
@@ -32,7 +32,7 @@ Page({
       success: function (res) {
         let article = res.data.data.content;
         let typeName = res.data.data.categoryName;
-        
+
         WxParse.wxParse('article', 'html', article, that, 5);
 
 
