@@ -10,7 +10,9 @@ Page({
     showModal: false,
     showTxt: false,
     username: "",
-    password: ""
+    password: "",
+    avatarUrl:'',
+    nickName:''
   },
 
   /**
@@ -27,10 +29,20 @@ Page({
         if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
             success: function(res) {
+              that.setData({
+                avatarUrl:res.userInfo.avatarUrl,
+                nickName:res.userInfo.nickName
+              })
               //获取用户信息
               that.queryUserInfo();
             }
           });
+          wx.getUserInfo({
+            success: function(res) {
+              that.avatarUrl = res.userInfo.avatarUrl;
+            
+            }
+          })
         } else {
           that.showDialogBtn();
         }
@@ -166,7 +178,9 @@ Page({
         unionId:app.globalData.unionId,
         openId: app.globalData.openid,
         loginName: userName,
-        userPwd: passwords
+        userPwd: passwords,
+        headImgUrl:that.data.avatarUrl,
+        nickName:that.data.nickName
       },
       header: {
         "Content-Type": "application/json;charset=UTF-8"
