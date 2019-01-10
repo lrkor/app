@@ -22,22 +22,9 @@ Page({
   },
   //事件处理函数
   onLoad: function () {
-    // let id = this.data.categoryId
     let that = this;
-    // this.setData({
-    //   navData: [{ id: '1', name: '推荐' }],
-    //   infosArray: [],
-    //   isSlid: false
-    // });
     this.queryHeaderList();
     that.getRecommend('0', '0');
-    // if (id == '1' || id == '') {
-    //   that.getRecommend('0', '0');
-    // } else {
-    //   that.getOtherList(id, '0', '0');
-    // }
-
-
     wx.setNavigationBarTitle({
       title: '工程圈'
     })
@@ -80,17 +67,8 @@ Page({
     //选择id
     query.select('.active').boundingClientRect(function (rect) {
       let id = rect.dataset.id;
-      // that.setData({
-      //   categoryId: id
-      // });
       if (id == '1') {
-        // if (that.data.isSlid) {
         that.getRecommend('0', '0');
-        // }
-        // that.setData({
-        //   isSlid: true,
-        //   categoryId: id
-        // });
       } else {
         that.getOtherList(id, '0', '0');
       }
@@ -148,6 +126,7 @@ Page({
     var that = this;
     wx.request({
       url: 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/articleCategory/query',
+      // url: 'http://192.168.1.40:8080/applet_web_war_exploded/api/articleCategory/query',
       method: 'POST',
       dataType: 'json',
       data: { status: '1' },
@@ -169,6 +148,7 @@ Page({
     var that = this;
     wx.request({
       url: 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/article/query',
+      // url: 'http://192.168.1.40:8080/applet_web_war_exploded/api/article/query',
       method: 'POST',
       dataType: 'json',
       data: { isRecommend: '1', page: that.data.page, size: 10, isRelease: '1' },
@@ -210,7 +190,9 @@ Page({
     var that = this;
     wx.request({
       url: 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/article/query',
-      data: { categoryId: id, page: that.data.page, size: '10', isRelease: '1' },
+      // url: 'http://192.168.1.40:8080/applet_web_war_exploded/api/article/query',
+
+      data: { categoryId: id, page: that.data.page, size: 10, isRelease: '1' },
       method: 'POST',
       header: {
         'content-type': 'application/json'
