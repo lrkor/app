@@ -38,7 +38,6 @@ page{
   height: 100%;
   border-bottom: 1px solid #ddd;
   box-sizing: border-box;
-  margin-bottom: 40rpx;
 }
 .tab-content{
   border-top: 1px solid #ddd;

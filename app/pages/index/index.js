@@ -5,7 +5,7 @@ const app = getApp()
 
 Page({
   data: {
-    systemName: '五峰山接线工程',
+    systemName: '',
     systemCode: '',
     weatherImg: '', //天气图片
     temperature: '', //温度
@@ -160,7 +160,6 @@ Page({
     // 查看是否授权
     wx.getSetting({
       success: function (res) {
-        console.log(res);
         if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
             success: function (res) {
@@ -181,13 +180,12 @@ Page({
   queryUserInfo: function () {
     var that = this;
     wx.request({
-      method: "POST",
-      url: app.globalData.BaseURL + 'api/v1/userBind/query',
+      method: "GET",
+      url: app.globalData.BaseURL + '/api/v1/userBind/getAppBindInfo',
       data: {
-        openId: app.globalData.openid
-      },
-      header: {
-        "Content-Type": "application/json;charset=UTF-8"
+        openId: app.globalData.openid,
+        appType:'2',
+        unionId: app.globalData.openid
       },
       success: function (res) {
         if (res.data.code != 200) {
@@ -198,9 +196,9 @@ Page({
           })
           return false;
         }
-        if (res.data && res.data.rows && res.data.rows.length == 1) {
-          wx.setStorageSync('userInfo', res.data.rows[0])
-          app.globalData.userInfo = res.data.rows[0];
+        if (res.data.data!=null) {
+          wx.setStorageSync('userInfo', res.data.data)
+          app.globalData.userInfo = res.data.data;
           that.getweather();
           that.getSystemName();
         } else {

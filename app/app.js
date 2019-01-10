@@ -41,7 +41,7 @@ App({
           // 发起网络请求  appid  secret
           wx.request({
             // url:'https://api.weixin.qq.com/sns/jscode2session?appid=wx55f0a1078776fa82&secret=d637bdb0dbb1751995be8352eb46ef91&grant_type=authorization_code',
-            url: 'https://wechat.zhinengjianshe.com/wechatService/api/v1/acquireOpenId/get',
+            url: 'http://wechat-dev.zhinengjianshe.com/wechatService/api/v1/miniApp/session/get',
             method: 'GET',
             data: {
               jsCode: res.code
@@ -49,7 +49,8 @@ App({
             },
             success: function(result) {
               if (result.data.data) {
-                that.globalData.openid = result.data.data;
+                that.globalData.openid = result.data.data.openid;
+                that.globalData.unionId = result.data.data.unionid;
               } else {
                 wx.showToast({
                   title: '登陆失败！',
@@ -67,9 +68,10 @@ App({
   },
   globalData: {
     openid: "",
+    unionId:'',
     adminUserViewId: "",
     token: "",
     userInfo: {},
-    BaseURL: "https://wechat.zhinengjianshe.com/wechatService/",
+    BaseURL: "http://wechat-dev.zhinengjianshe.com/wechatService/",
   }
 })

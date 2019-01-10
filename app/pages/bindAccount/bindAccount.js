@@ -162,9 +162,11 @@ Page({
       method: "POST",
       url: urlStr,
       data: {
+        appType:'2',
+        unionId:app.globalData.unionId,
         openId: app.globalData.openid,
         loginName: userName,
-        pwd: passwords
+        userPwd: passwords
       },
       header: {
         "Content-Type": "application/json;charset=UTF-8"
