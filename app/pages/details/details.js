@@ -1,7 +1,6 @@
 // pages/details/details.js
 var util = require('../../utils/util.js') //引入微信自带的日期格式化
 var WxParse = require('../../wxParse/wxParse.js');
-const regeneratorRuntime = require('../../utils/runtime.js');
 
 const app = getApp();
 
@@ -33,7 +32,10 @@ Page({
       success: function (res) {
         let article = res.data.data.content;
         let typeName = res.data.data.categoryName;
+        
         WxParse.wxParse('article', 'html', article, that, 5);
+
+
         that.setData({
           title: res.data.data.title,
           date: util.formatTime(new Date(res.data.data.createTime),'yyyy-mm-dd'),
