@@ -1,5 +1,6 @@
 //engineering.js
 var util = require('../../utils/util.js') //引入微信自带的日期格式化
+const wxRequest = require('../../utils/wxRequest.js')
 const app = getApp();
 Page({
   data: {
@@ -23,7 +24,13 @@ Page({
   //事件处理函数
   onLoad: function () {
     let that = this;
-    this.queryHeaderList();
+    this.queryHeaderList().then(res=>{
+      let headerArr = res.data.data;
+      let newNavData = [...that.data.navData, ...headerArr];
+      that.setData({
+        navData: newNavData
+      });
+    });
     that.getRecommend('0', '0');
     wx.setNavigationBarTitle({
       title: '工程圈'
@@ -83,7 +90,6 @@ Page({
       that.setData({
         id:id
       })
-      console.log(id);
       if (id == '1') {
         that.getRecommend('0', '0');
       } else {
@@ -140,108 +146,68 @@ Page({
 
   // 获取导航栏列表
   queryHeaderList() {
-    var that = this;
-    wx.request({
-      url: 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/articleCategory/query',
-      // url: 'http://192.168.1.40:8080/applet_web_war_exploded/api/articleCategory/query',
-      method: 'POST',
-      dataType: 'json',
-      data: { status: '1' },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        let headerArr = res.data.data;
-        let newNavData = [...that.data.navData, ...headerArr];
-        that.setData({
-          navData: newNavData
-        });
-      }
-    })
+    let url = 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/articleCategory/query';
+    let data = { status: '1' };
+    return wxRequest.postRequest(url, data);
   },
 
   // 获取推荐列表
   getRecommend(isRefresh, isLoading) {
     var that = this;
-    wx.request({
-      url: 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/article/query',
-      // url: 'http://192.168.1.40:8080/applet_web_war_exploded/api/article/query',
-      method: 'POST',
-      dataType: 'json',
-      data: { isRecommend: '1', page: that.data.page, size: 10, isRelease: '1' },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        if (isRefresh == '1') {
-          wx.hideNavigationBarLoading() //在标题栏中隐藏加载
-          wx.stopPullDownRefresh();                       //停止下拉刷新
-        }
-        if (isLoading == '1') {
-          // 隐藏加载框
-          wx.hideLoading();
-        }
+    let url = 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/article/query';
+    let data = { isRecommend: '1', page: that.data.page, size: 10, isRelease: '1' };
+    that.recommend(url,data).then(res=>{
+      that.drawList(res,isRefresh, isLoading);
+    });
+  },
 
-        if (res.data.data != null && res.data.data.length < 10) {
-          var isload = false;
-        } else {
-          var isload = true;
-        }
-
-        let RecommendArr = [...that.data.infosArray, ...res.data.data];
-
-        // 格式化时间
-        for (let item of RecommendArr) {
-          item.createTime = util.formatTime(new Date(item.createTime), 'mm-dd');
-        }
-        that.setData({
-          infosArray: RecommendArr,
-          isload: isload
-        });
-      }
-    })
+  // 推荐列表接口
+  recommend(url, data){
+    return wxRequest.postRequest(url, data);
   },
 
   // 获取其他列表
   getOtherList(id, isRefresh, isLoading) {
     var that = this;
-    wx.request({
-      url: 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/article/query',
-      // url: 'http://192.168.1.40:8080/applet_web_war_exploded/api/article/query',
-
-      data: { categoryId: id, page: that.data.page, size: 10, isRelease: '1' },
-      method: 'POST',
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        if (isRefresh == '1') {
-          wx.hideNavigationBarLoading() //在标题栏中隐藏加载
-          wx.stopPullDownRefresh();                       //停止下拉刷新
-        }
-
-        if (isLoading == '1') {
-          // 隐藏加载框
-          wx.hideLoading();
-        }
-
-        if (res.data.data != null && res.data.data.length < 10) {
-          var isload = false;
-        } else {
-          var isload = true;
-        }
-
-        let RecommendArr = [...that.data.infosArray, ...res.data.data];
-
-        // 格式化时间
-        for (let item of RecommendArr) {
-          item.createTime = util.formatTime(new Date(item.createTime), 'mm-dd');
-        }
-        that.setData({
-          infosArray: RecommendArr,
-          isload: isload
-        });
-      }
+    let url = 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/article/query';
+    let data = { categoryId: id, page: that.data.page, size: 10, isRelease: '1' };
+    that.otherList(url,data).then(res=>{
+      that.drawList(res,isRefresh,isLoading);
     })
+  },
+
+  // 其他列表接口
+  otherList(url,data){
+    return wxRequest.postRequest(url, data);
+  },
+
+  //渲染数据
+  drawList(res,isRefresh,isLoading){
+    var that = this;
+    if (isRefresh == '1') {
+      wx.hideNavigationBarLoading() //在标题栏中隐藏加载
+      wx.stopPullDownRefresh();                       //停止下拉刷新
+    }
+    if (isLoading == '1') {
+      // 隐藏加载框
+      wx.hideLoading();
+    }
+
+    if (res.data.data != null && res.data.data.length < 10) {
+      var isload = false;
+    } else {
+      var isload = true;
+    }
+
+    let RecommendArr = [...that.data.infosArray, ...res.data.data];
+
+    // 格式化时间
+    for (let item of RecommendArr) {
+      item.createTime = util.formatTime(new Date(item.createTime), 'mm-dd');
+    }
+    that.setData({
+      infosArray: RecommendArr,
+      isload: isload
+    });
   }
 })
