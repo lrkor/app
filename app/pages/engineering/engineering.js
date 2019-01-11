@@ -53,7 +53,7 @@ Page({
 
   //滑动切换
   switchTab(event) {
-    回到顶部
+    // 回到顶部
     if (wx.pageScrollTo) {
       wx.pageScrollTo({
         scrollTop: 0
