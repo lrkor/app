@@ -1,5 +1,6 @@
 App({
   onLoad: function() {
+    console.log(app.globalData.openid,'appppppppp');
     wx.request({
       method: "GET",
       url: app.globalData.BaseURL + 'api/v1/userBind/getAppBindInfo',
@@ -36,37 +37,37 @@ App({
   onLaunch: function() {
     var that = this;
     // 登录
-    wx.login({
-      success: res => {
-        // 获取用户openId
-        if (res.code) {
-          // 发起网络请求  appid  secret
-          wx.request({
-            // url:'https://api.weixin.qq.com/sns/jscode2session?appid=wx55f0a1078776fa82&secret=d637bdb0dbb1751995be8352eb46ef91&grant_type=authorization_code',
-            url: 'http://wechat-dev.zhinengjianshe.com/wechatService/api/v1/miniApp/session/get',
-            method: 'GET',
-            data: {
-              jsCode: res.code
-              // js_code:res.code
-            },
-            success: function(result) {
-              if (result.data.data) {
-                that.globalData.openid = result.data.data.openid;
-                that.globalData.unionId = result.data.data.unionid;
-              } else {
-                wx.showToast({
-                  title: '登陆失败！',
-                  duration: 2000
-                })
-                return false;
-              }
-            }
-          })
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
-      }
-    })
+    // wx.login({
+    //   success: res => {
+    //     // 获取用户openId
+    //     if (res.code) {
+    //       // 发起网络请求  appid  secret
+    //       wx.request({
+    //         // url:'https://api.weixin.qq.com/sns/jscode2session?appid=wx55f0a1078776fa82&secret=d637bdb0dbb1751995be8352eb46ef91&grant_type=authorization_code',
+    //         url: 'http://wechat-dev.zhinengjianshe.com/wechatService/api/v1/miniApp/session/get',
+    //         method: 'GET',
+    //         data: {
+    //           jsCode: res.code
+    //           // js_code:res.code
+    //         },
+    //         success: function(result) {
+    //           if (result.data.data) {
+    //             that.globalData.openid = result.data.data.openid;
+    //             that.globalData.unionId = result.data.data.unionid;
+    //           } else {
+    //             wx.showToast({
+    //               title: '登陆失败！',
+    //               duration: 2000
+    //             })
+    //             return false;
+    //           }
+    //         }
+    //       })
+    //     } else {
+    //       console.log('登录失败！' + res.errMsg)
+    //     }
+    //   }
+    // })
   },
   globalData: {
     openid: "",

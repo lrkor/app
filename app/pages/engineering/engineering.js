@@ -53,7 +53,7 @@ Page({
 
   //滑动切换
   switchTab(event) {
-    //回到顶部
+    回到顶部
     if (wx.pageScrollTo) {
       wx.pageScrollTo({
         scrollTop: 0
@@ -85,10 +85,8 @@ Page({
       })
       console.log(id);
       if (id == '1') {
-        console.log(1);
         that.getRecommend('0', '0');
       } else {
-        console.log('other')
         that.getOtherList(id, '0', '0');
       }
     }).exec();

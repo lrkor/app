@@ -89,6 +89,7 @@ Page({
 
   //获取用户信息接口
   queryUserInfo: function() {
+    console.log(app.globalData.openid,'bbbbbbbbbbb');
     var that = this;
     wx.request({
       method: "GET",
@@ -110,9 +111,9 @@ Page({
           })
           return false;
         }
-        if (res.data && res.data.rows && res.data.rows.length == 1) {
-          wx.setStorageSync('userInfo', res.data.rows[0])
-          app.globalData.userInfo = res.data.rows[0];
+        if (res.data.data!=null) {
+          wx.setStorageSync('userInfo', res.data.data)
+          app.globalData.userInfo = res.data.data;
           wx.switchTab({
             url: '/pages/index/index',
           })
@@ -171,14 +172,13 @@ Page({
       return;
     }
 
-    var urlStr = app.globalData.BaseURL + 'api/v1/userBind/bind'
+    var urlStr = app.globalData.BaseURL + 'api/v1/userBind/bindMini'
     wx.request({
       method: "POST",
       url: urlStr,
       data: {
-        appType:'2',
         unionId:app.globalData.unionId,
-        openId: app.globalData.openid,
+        miniOpenId: app.globalData.openid,
         loginName: userName,
         userPwd: passwords,
         headImgUrl:that.data.avatarUrl,

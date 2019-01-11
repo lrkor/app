@@ -149,7 +149,7 @@ Page({
   },
 
   onLoad: function() {
-    this.getSetting();
+    this.login();
     wx.setNavigationBarTitle({
       title: '智慧工程云平台'
     })
@@ -171,6 +171,43 @@ Page({
           wx.reLaunch({
             url: '/pages/bindAccount/bindAccount'
           })
+        }
+      }
+    })
+  },
+
+  // 登录
+  login:function(){
+    var that = this;
+    wx.login({
+      success: res => {
+        // 获取用户openId
+        if (res.code) {
+          // 发起网络请求  appid  secret
+          wx.request({
+            // url:'https://api.weixin.qq.com/sns/jscode2session?appid=wx55f0a1078776fa82&secret=d637bdb0dbb1751995be8352eb46ef91&grant_type=authorization_code',
+            url: 'http://wechat-dev.zhinengjianshe.com/wechatService/api/v1/miniApp/session/get',
+            method: 'GET',
+            data: {
+              jsCode: res.code
+              // js_code:res.code
+            },
+            success: function(result) {
+              if (result.data.data) {
+                app.globalData.openid = result.data.data.openid;
+                app.globalData.unionId = result.data.data.unionid;
+                that.getSetting();
+              } else {
+                wx.showToast({
+                  title: '登陆失败！',
+                  duration: 2000
+                })
+                return false;
+              }
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
         }
       }
     })
