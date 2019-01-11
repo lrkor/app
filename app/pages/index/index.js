@@ -181,11 +181,11 @@ Page({
     var that = this;
     wx.request({
       method: "GET",
-      url: app.globalData.BaseURL + '/api/v1/userBind/getAppBindInfo',
+      url: app.globalData.BaseURL + 'api/v1/userBind/getAppBindInfo',
       data: {
         openId: app.globalData.openid,
         appType:'2',
-        unionId: app.globalData.openid
+        unionId: app.globalData.unionId
       },
       success: function (res) {
         if (res.data.code != 200) {

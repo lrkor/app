@@ -53,6 +53,18 @@ Page({
 
   //滑动切换
   switchTab(event) {
+    //回到顶部
+    if (wx.pageScrollTo) {
+      wx.pageScrollTo({
+        scrollTop: 0
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+      })
+    }
+
     var that = this;
     var cur = event.detail.current;
 
@@ -60,16 +72,23 @@ Page({
     this.setData({
       currentTab: cur,
       isload: true,
-      infosArray: []
+      infosArray: [],
+      page:1
     });
 
     var query = wx.createSelectorQuery();
     //选择id
     query.select('.active').boundingClientRect(function (rect) {
       let id = rect.dataset.id;
+      that.setData({
+        id:id
+      })
+      console.log(id);
       if (id == '1') {
+        console.log(1);
         that.getRecommend('0', '0');
       } else {
+        console.log('other')
         that.getOtherList(id, '0', '0');
       }
     }).exec();

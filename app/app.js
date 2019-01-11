@@ -1,10 +1,12 @@
 App({
   onLoad: function() {
     wx.request({
-      method: "POST",
-      url: app.globalData.BaseURL + 'api/v1/userBind/query',
+      method: "GET",
+      url: app.globalData.BaseURL + 'api/v1/userBind/getAppBindInfo',
       data: {
-        openId: app.globalData.openid
+        openId: app.globalData.openid,
+        appType:'2',
+        unionId: app.globalData.unionId
       },
       header: {
         "Content-Type": "application/json;charset=UTF-8"
