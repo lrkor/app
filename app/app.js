@@ -1,77 +1,42 @@
 App({
-  onLoad: function() {
-    console.log(app.globalData.openid,'appppppppp');
-    wx.request({
-      method: "GET",
-      url: app.globalData.BaseURL + 'api/v1/userBind/getAppBindInfo',
-      data: {
-        openId: app.globalData.openid,
-        appType:'2',
-        unionId: app.globalData.unionId
-      },
-      header: {
-        "Content-Type": "application/json;charset=UTF-8"
-      },
-      success: function (res) {
-        if (res.data.code != 200) {
-          wx.showToast({
-            title: res.data.message,
-            icon: 'none',
-            duration: 2000
-          })
-          return false;
-        }
-        if (res.data && res.data.rows && res.data.rows.length == 1) {
-          wx.switchTab({
-            url: '/pages/index/index',
-          })
-          app.globalData.userInfo = res.data.rows[0];
-        } else {
-          wx.reLaunch({
-            url: '/pages/bindAccount/bindAccount'
-          })
-        }
-      }
-    });
-  },
-  onLaunch: function() {
-    var that = this;
-    // 登录
-    // wx.login({
-    //   success: res => {
-    //     // 获取用户openId
-    //     if (res.code) {
-    //       // 发起网络请求  appid  secret
-    //       wx.request({
-    //         // url:'https://api.weixin.qq.com/sns/jscode2session?appid=wx55f0a1078776fa82&secret=d637bdb0dbb1751995be8352eb46ef91&grant_type=authorization_code',
-    //         url: 'http://wechat-dev.zhinengjianshe.com/wechatService/api/v1/miniApp/session/get',
-    //         method: 'GET',
-    //         data: {
-    //           jsCode: res.code
-    //           // js_code:res.code
-    //         },
-    //         success: function(result) {
-    //           if (result.data.data) {
-    //             that.globalData.openid = result.data.data.openid;
-    //             that.globalData.unionId = result.data.data.unionid;
-    //           } else {
-    //             wx.showToast({
-    //               title: '登陆失败！',
-    //               duration: 2000
-    //             })
-    //             return false;
-    //           }
-    //         }
-    //       })
-    //     } else {
-    //       console.log('登录失败！' + res.errMsg)
-    //     }
-    //   }
-    // })
-  },
+  // onLoad: function() {
+  //   wx.request({
+  //     method: "GET",
+  //     url: app.globalData.BaseURL + 'api/v1/userBind/getAppBindInfo',
+  //     data: {
+  //       openId: app.globalData.openid,
+  //       appType:'2',
+  //       unionId: app.globalData.unionId
+  //     },
+  //     header: {
+  //       "Content-Type": "application/json;charset=UTF-8"
+  //     },
+  //     success: function (res) {
+  //       if (res.data.code != 200) {
+  //         wx.showToast({
+  //           title: res.data.message,
+  //           icon: 'none',
+  //           duration: 2000
+  //         })
+  //         return false;
+  //       }
+  //       if (res.data && res.data.rows && res.data.rows.length == 1) {
+  //         wx.switchTab({
+  //           url: '/pages/index/index',
+  //         })
+  //         app.globalData.userInfo = res.data.rows[0];
+  //       } else {
+  //         wx.reLaunch({
+  //           url: '/pages/bindAccount/bindAccount'
+  //         })
+  //       }
+  //     }
+  //   });
+  // },
   globalData: {
     openid: "",
     unionId:'',
+    sessionKey:'',
     adminUserViewId: "",
     token: "",
     userInfo: {},

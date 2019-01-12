@@ -33,14 +33,14 @@ Page({
                 avatarUrl:res.userInfo.avatarUrl,
                 nickName:res.userInfo.nickName
               })
+              console.log('点击了授权')
               //获取用户信息
-              that.queryUserInfo();
+              // that.queryUserInfo();
             }
           });
           wx.getUserInfo({
             success: function(res) {
               that.avatarUrl = res.userInfo.avatarUrl;
-            
             }
           })
         } else {
@@ -68,8 +68,39 @@ Page({
     if (e.detail.userInfo) {
       //用户按了允许授权按钮
       var that = this;
-      //授权成功后，跳转进入小程序首页
-      that.queryUserInfo();
+      //授权成功后，跳转进入小程序首页    
+      wx.getUserInfo({
+        success: function(res) {
+          that.setData({
+            avatarUrl:res.userInfo.avatarUrl,
+            nickName:res.userInfo.nickName
+          })
+          let encryptedData = res.encryptedData
+          let iv = res.iv
+          wx.request({
+            url: 'http://wechat-dev.zhinengjianshe.com/wechatService/api/v1/miniApp/decodeUserInfo',
+            method: 'POST',
+            header: {
+              "Content-Type": "application/json"
+            },
+            data: {
+              sessionKey: app.globalData.sessionKey,
+              iv: iv,
+              encryptedData: encryptedData
+            },
+            success: function (result) {
+              app.globalData.openid = result.data.data.openId;
+              app.globalData.unionId = result.data.data.unionId;
+              //获取用户信息
+              that.queryUserInfo();
+            }
+          })
+          //获取用户信息
+          // that.queryUserInfo();
+        }
+      });
+      
+      // that.queryUserInfo();
       that.hideModal();
     } else {
       //用户按了拒绝按钮
@@ -89,7 +120,6 @@ Page({
 
   //获取用户信息接口
   queryUserInfo: function() {
-    console.log(app.globalData.openid,'bbbbbbbbbbb');
     var that = this;
     wx.request({
       method: "GET",
