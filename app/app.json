@@ -9,7 +9,7 @@
     "pages/bindAccount/bindAccount",
     "pages/accountDeregulation/accountDeregulation",
     "pages/webView/web_view",
-    "pages/webView/pushMessage"
+    "pages/pushMessage/pushMessage"
   ],
   "window": {
     "backgroundTextStyle": "light",

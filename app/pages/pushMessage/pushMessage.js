@@ -2,7 +2,7 @@ const app = getApp()
 
 Page({
   data: {
-    url:app.globalData.BaseURL + 'weChat/'
+    url:app.globalData.BaseURL + 'weChat/openMessage'
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
@@ -10,6 +10,8 @@ Page({
     })
   },
   onUnload(){
-    console.log(app.globalData)
+    console.log(app.globalData);
   }
+
+  //
 })

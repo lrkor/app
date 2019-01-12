@@ -160,7 +160,6 @@ Page({
     // 查看是否授权
     wx.getSetting({
       success: function (res) {
-        console.log(res);
         if(res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true){
           wx.showModal({
             title: '是否授权当前位置',
@@ -184,6 +183,8 @@ Page({
             success: function (res) {
               let encryptedData = res.encryptedData
               let iv = res.iv
+              app.globalData.iv = iv;
+              app.globalData.encryptedData = encryptedData;
               wx.request({
                 url: 'http://wechat-dev.zhinengjianshe.com/wechatService/api/v1/miniApp/decodeUserInfo',
                 method: 'POST',
@@ -198,8 +199,10 @@ Page({
                 success: function (result) {
                   app.globalData.openid = result.data.data.openId;
                   app.globalData.unionId = result.data.data.unionId;
+                 
                   //获取用户信息
                   that.queryUserInfo();
+                 
                 }
               })
 
@@ -268,6 +271,7 @@ Page({
           })
           return false;
         }
+     
         if (res.data.data != null) {
           wx.setStorageSync('userInfo', res.data.data)
           app.globalData.userInfo = res.data.data;
@@ -277,6 +281,22 @@ Page({
           wx.reLaunch({
             url: '/pages/bindAccount/bindAccount'
           })
+        }
+
+          if(!res.data.data.openId){
+          wx.showModal({
+            title: '是否获取消息推送',
+            content: '公总号消息推送需要授权',
+            success:function(res){
+                if(res.cancel){
+                  console.info("授权失败返回数据");
+                }else if(res.confirm){
+                  wx.navigateTo({
+                    url: '../pushMessage/pushMessage'
+                  })
+                }
+            }
+          });
         }
       }
     });
