@@ -8,7 +8,8 @@
     "pages/details/details",
     "pages/bindAccount/bindAccount",
     "pages/accountDeregulation/accountDeregulation",
-    "pages/webView/web_view"
+    "pages/webView/web_view",
+    "pages/webView/pushMessage"
   ],
   "window": {
     "backgroundTextStyle": "light",
