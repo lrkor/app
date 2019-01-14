@@ -1,6 +1,6 @@
 Page({
   data: {
-    url: '',
+    url: 'https://wechat.zhinengjianshe.com/wechatService/weChat/toProject?token=',
     latitude: 23.099994,
     longitude: 113.324520,
     markers: [{
@@ -37,10 +37,18 @@ Page({
     ]
   },
 
-  onLoad(){
+  onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: '项目看板' 
     })
+    let url = this.data.url + app.globalData.token;
+    this.setData({
+      url: url
+    });
+  },
+
+  onLoad(){
+   
     // this.setData({
     //   url: options.url
     // });
