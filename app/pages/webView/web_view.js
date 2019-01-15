@@ -15,7 +15,7 @@ Page({
         var systemName = res.data.systemName
         var systemCode = res.data.systemCode
         that.setData({
-          url: options.url + '?token=' + app.globalData.token
+          url: 'http://wechat-dev.zhinengjianshe.com/wechatService/weChat/menu' + '?token=' + app.globalData.token
         });
       }
     })

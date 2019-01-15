@@ -8,21 +8,31 @@ App({
   timing(){
     let that = this;
      timer = setInterval(function(){
-      that.getToken.then(res=>{
-        app.globalData.token = res.data.data.token;
-      })
-    },1000)
+      // that.getToken()
+    },7200000);
   },
 
   getToken(){
-    let url = 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/article/get';
-    let data = { id: id };
-    return wxRequest.getRequest(url, data);
+    // let data = { userId: this.globalData.userId, client_id: this.globalData.appId, client_secret:this.globalData.appSecret,grant_type:'client_credentials'};
+    // wx.request({
+    //   method: "POST",
+    //   url: this.globalData.BaseURL + 'oauth2/token',
+    //   data: data,
+    //   header: {
+    //     "Content-Type": "application/x-www-form-urlencoded" 
+    //     },
+    //   success: function (res) {
+    //     this.globalData.token = res.data.access_token
+    //   }
+    // });
   },
 
   globalData: {
     openid:'',
     iv:'',
+    appId:'111',
+    userId:'',
+    appSecret:'2222',
     encryptedData:'',
     unionId:'',
     sessionKey:'',

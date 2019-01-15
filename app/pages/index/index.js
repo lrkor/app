@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 var bmap = require('../../libs/bmap-wx/bmap-wx.min.js');
+const wxRequest = require('../../utils/wxRequest.js')
 const app = getApp()
 
 Page({
@@ -226,7 +227,7 @@ Page({
         if (res.code) {
           // 发起网络请求  appid  secret
           wx.request({
-            url: 'http://wechat-dev.zhinengjianshe.com/wechatService/api/v1/miniApp/session/get',
+            url: app.globalData.BaseURL +'api/v1/miniApp/session/get',
             method: 'GET',
             data: {
               jsCode: res.code
@@ -273,8 +274,10 @@ Page({
         }
      
         if (res.data.data != null) {
-          wx.setStorageSync('userInfo', res.data.data)
+          wx.setStorageSync('userInfo', res.data.data);
           app.globalData.userInfo = res.data.data;
+          app.globalData.userId = res.data.data.userId;
+          that.getToken(res.data.data.userId);
           that.getweather();
           that.getSystemName();
         } else {
@@ -298,6 +301,21 @@ Page({
             }
           });
         }
+      }
+    });
+  },
+
+  getToken(userId){
+    let data = { userId: userId, client_id: app.globalData.appId, client_secret:app.globalData.appSecret,grant_type:'client_credentials'};
+    wx.request({
+      method: "POST",
+      url: app.globalData.BaseURL + 'oauth2/token',
+      data: data,
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded" 
+        },
+      success: function (res) {
+        app.globalData.token = res.data.access_token
       }
     });
   },
