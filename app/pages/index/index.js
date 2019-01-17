@@ -187,7 +187,7 @@ Page({
               app.globalData.iv = iv;
               app.globalData.encryptedData = encryptedData;
               wx.request({
-                url: 'http://wechat-dev.zhinengjianshe.com/wechatService/api/v1/miniApp/decodeUserInfo',
+                url: app.globalData.BaseURL + 'api/v1/miniApp/decodeUserInfo',
                 method: 'POST',
                 header: {
                   "Content-Type": "application/json"
@@ -200,6 +200,7 @@ Page({
                 success: function (result) {
                   app.globalData.openid = result.data.data.openId;
                   app.globalData.unionId = result.data.data.unionId;
+
                  
                   //获取用户信息
                   that.queryUserInfo();
@@ -277,7 +278,9 @@ Page({
           wx.setStorageSync('userInfo', res.data.data);
           app.globalData.userInfo = res.data.data;
           app.globalData.userId = res.data.data.userId;
-          that.getToken(res.data.data.userId);
+          app.globalData.userName = res.data.data.userName;
+
+          that.getToken(res.data.data.userName);
           that.getweather();
           that.getSystemName();
         } else {
@@ -305,17 +308,17 @@ Page({
     });
   },
 
-  getToken(userId){
-    let data = { userId: userId, client_id: app.globalData.appId, client_secret:app.globalData.appSecret,grant_type:'client_credentials'};
+  getToken(userName){
+    let data = { userName: userName, openId: app.globalData.openid};
     wx.request({
       method: "POST",
-      url: app.globalData.BaseURL + 'oauth2/token',
+      url: app.globalData.BaseURL + '/api/v1/token',
       data: data,
       header: {
         "Content-Type": "application/x-www-form-urlencoded" 
         },
       success: function (res) {
-        app.globalData.token = res.data.access_token
+        app.globalData.token = res.data.data.accessToken
       }
     });
   },

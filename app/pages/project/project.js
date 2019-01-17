@@ -1,3 +1,4 @@
+const app = getApp();
 Page({
   data: {
     url: 'https://wechat.zhinengjianshe.com/wechatService/weChat/toProject?token=',
@@ -43,7 +44,7 @@ Page({
     })
     let url = this.data.url + app.globalData.token;
     this.setData({
-      url: url
+      url: url + app.globalData.token
     });
   },
 

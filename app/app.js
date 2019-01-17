@@ -1,38 +1,38 @@
 let timer;
 App({
   onLaunch(){
-    this.getToken();
+    this.timing();
   },
 
   // 定时获取token
   timing(){
     let that = this;
      timer = setInterval(function(){
-      // that.getToken()
-    },7200000);
+      that.getToken();
+    },600000);
   },
 
   getToken(){
-    // let data = { userId: userId, client_id: app.globalData.appId, client_secret:app.globalData.appSecret,grant_type:'client_credentials'};
-    // wx.request({
-    //   method: "POST",
-    //   url: app.globalData.BaseURL + 'oauth2/token',
-    //   data: data,
-    //   header: {
-    //     "Content-Type": "application/x-www-form-urlencoded" 
-    //     },
-    //   success: function (res) {
-    //     app.globalData.token = res.data.access_token
-    //   }
-    // });
+    let data = { token: this.globalData.token};
+    var that = this;
+    wx.request({
+      method: "GET",
+      url: that.globalData.BaseURL + 'api/v1/token/refresh',
+      data: data,
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded" 
+        },
+      success: function (res) {
+        that.globalData.token = res.data.data.accessToken
+      }
+    });
   },
 
   globalData: {
     openid:'',
     iv:'',
-    appId:'111',
+    userName:'',
     userId:'',
-    appSecret:'2222',
     encryptedData:'',
     unionId:'',
     sessionKey:'',

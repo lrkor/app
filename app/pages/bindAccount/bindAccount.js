@@ -209,8 +209,8 @@ Page({
       data: {
         unionId:app.globalData.unionId,
         miniOpenId: app.globalData.openid,
-        loginName: userName,
-        userPwd: passwords,
+        userName: userName,
+        password: passwords,
         headImgUrl:that.data.avatarUrl,
         nickName:that.data.nickName
       },
