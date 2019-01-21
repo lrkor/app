@@ -47,7 +47,7 @@
     "color": "#444444",
     "selectedColor": "#3396fb",
     "backgroundColor": "#ffffff",
-    "borderStyle": "#dddddd",
+    "borderStyle": "white",
     "fontFamily": "Microsoft YaHei"
   },
   "permission": {
