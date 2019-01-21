@@ -41,5 +41,4 @@ App({
     userInfo: {},
     BaseURL: "http://wechat-dev.zhinengjianshe.com/wechatService/",
   }
-
 })

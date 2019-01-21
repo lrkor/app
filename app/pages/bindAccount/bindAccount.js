@@ -78,7 +78,7 @@ Page({
           let encryptedData = res.encryptedData
           let iv = res.iv
           wx.request({
-            url: 'http://wechat-dev.zhinengjianshe.com/wechatService/api/v1/miniApp/decodeUserInfo',
+            url: app.globalData.BaseURL + 'api/v1/miniApp/decodeUserInfo',
             method: 'POST',
             header: {
               "Content-Type": "application/json"

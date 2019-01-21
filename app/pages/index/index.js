@@ -279,31 +279,31 @@ Page({
           app.globalData.userInfo = res.data.data;
           app.globalData.userId = res.data.data.userId;
           app.globalData.userName = res.data.data.userName;
-
           that.getToken(res.data.data.userName);
           that.getweather();
           that.getSystemName();
+          if(!res.data.data.openId){
+            wx.showModal({
+              title: '是否获取消息推送',
+              content: '公众号消息推送需要授权',
+              success:function(res){
+                  if(res.cancel){
+                    console.info("授权失败返回数据");
+                  }else if(res.confirm){
+                    wx.navigateTo({
+                      url: '../pushMessage/pushMessage'
+                    })
+                  }
+              }
+            });
+          }
         } else {
           wx.reLaunch({
             url: '/pages/bindAccount/bindAccount'
           })
         }
 
-          if(!res.data.data.openId){
-          wx.showModal({
-            title: '是否获取消息推送',
-            content: '公总号消息推送需要授权',
-            success:function(res){
-                if(res.cancel){
-                  console.info("授权失败返回数据");
-                }else if(res.confirm){
-                  wx.navigateTo({
-                    url: '../pushMessage/pushMessage'
-                  })
-                }
-            }
-          });
-        }
+          
       }
     });
   },
@@ -312,7 +312,7 @@ Page({
     let data = { userName: userName, openId: app.globalData.openid};
     wx.request({
       method: "POST",
-      url: app.globalData.BaseURL + '/api/v1/token',
+      url: app.globalData.BaseURL + 'api/v1/token',
       data: data,
       header: {
         "Content-Type": "application/x-www-form-urlencoded" 

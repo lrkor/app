@@ -11,7 +11,7 @@
         </block>
     </scroll-view>
     <!-- 页面内容 -->
-    <swiper class="tab-box" current="{{currentTab}}" duration="300" data-id="{{id}}" bindchange="switchTab">
+    <swiper class="tab-box" current="{{currentTab}}" duration="500" data-id="{{id}}" bindchange="switchTab">
         <swiper-item wx:for="{{navData}}" wx:for-item="tabItem" wx:for-index="id" wx:key="id" class="tab-content">
             <block wx:for="{{infosArray}}" wx:key="id">
                 <view hover="true" hover-class="detail-hover" wx:if="{{item.imageList.length>0 && item.imageList.length<3}}" class='list-div' data-id="{{item.id}}"
