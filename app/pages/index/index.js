@@ -282,7 +282,7 @@ Page({
           that.getToken(res.data.data.userName);
           that.getweather();
           that.getSystemName();
-          if(!res.data.data.openId){
+          if(!res.data.data.mpOpenId){
             wx.showModal({
               title: '是否获取消息推送',
               content: '公众号消息推送需要授权',

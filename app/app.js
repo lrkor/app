@@ -40,5 +40,6 @@ App({
     token:"",
     userInfo: {},
     BaseURL: "http://wechat-dev.zhinengjianshe.com/wechatService/",
+    tokenUrl:"http://wechat-dev.zhinengjianshe.com/wechatService/weChat/toProject?token="
   }
 })
