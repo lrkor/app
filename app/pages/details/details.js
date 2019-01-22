@@ -15,9 +15,11 @@ Page({
   },
   //事件处理函数
   onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: '详情'
+    })
     let id = options.id;
     var that = this;
-    // this.getDetails(id);
     this.getDetails(id)
       .then(res => {
         let article = res.data.data.content;
