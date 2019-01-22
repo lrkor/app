@@ -40,7 +40,7 @@ Page({
       method: "GET",
       url: app.globalData.BaseURL + 'api/v1/userBind/unBind',
       data: {
-        unionId: app.globalData.unionId,
+        userId: app.globalData.userId,
       },
       header: {
         "Content-Type": "application/json;charset=UTF-8"

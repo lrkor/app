@@ -219,9 +219,10 @@ Page({
       },
       success: function(res) {
         if (res.data.code != '200') {
+          console.log(res.data.message);
           wx.showToast({
             title: res.data.message,
-            icon: 'error',
+            icon: 'none',
             duration: 2000
           })
           return false;
