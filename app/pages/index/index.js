@@ -309,7 +309,7 @@ Page({
   },
 
   getToken(userName){
-    let data = { userName: userName, unionId: app.globalData.unionId};
+    let data = { userName: userName, credentials: app.globalData.unionId};
     wx.request({
       method: "POST",
       url: app.globalData.BaseURL + 'api/v1/token',
