@@ -279,7 +279,7 @@ Page({
           app.globalData.userInfo = res.data.data;
           app.globalData.userId = res.data.data.userId;
           app.globalData.userName = res.data.data.userName;
-          // that.getToken(res.data.data.userName);
+          that.getToken(res.data.data.userName);
           that.getweather();
           that.getSystemName();
           if(!res.data.data.mpOpenId){

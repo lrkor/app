@@ -22,7 +22,7 @@
   float: right;
 }
 .detail-content {
-  padding-top: 30rpx;
+  padding: 30rpx 0;
   clear: both;
 }
 
