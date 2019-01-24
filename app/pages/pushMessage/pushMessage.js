@@ -9,7 +9,7 @@ Page({
       title: '加载中...' 
     });
     this.setData({
-      url: app.globalData.BaseURL + 'weChat/openMessage?token=' + app.globalData.token 
+      url: app.globalData.BaseURL + 'weChat/openMessage'
     });
   },
   onUnload(){
