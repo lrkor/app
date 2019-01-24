@@ -44,7 +44,7 @@ App({
     sessionKey: '',
     adminUserViewId: "",
     userInfo: {},
-    BaseURL: "http://wechat-dev.zhinengjianshe.com/wechatService/",
-    tokenUrl: "http://wechat-dev.zhinengjianshe.com/wechatService/weChat/toProject"
+    BaseURL: "https://wechat-dev.zhinengjianshe.com/wechatService/",
+    tokenUrl: "https://wechat-dev.zhinengjianshe.com/wechatService/weChat/toProject"
   }
 })

@@ -7,31 +7,32 @@ Page({
    * 页面的初始数据
    */
   data: {
+    buttonClicked: false,
     showModal: false,
     showTxt: false,
     username: "",
     password: "",
-    avatarUrl:'',
-    nickName:''
+    avatarUrl: '',
+    nickName: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: '绑定账号',
     })
     var that = this;
     // 查看是否授权
     wx.getSetting({
-      success: function(res) {
+      success: function (res) {
         if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
-            success: function(res) {
+            success: function (res) {
               that.setData({
-                avatarUrl:res.userInfo.avatarUrl,
-                nickName:res.userInfo.nickName
+                avatarUrl: res.userInfo.avatarUrl,
+                nickName: res.userInfo.nickName
               })
               console.log('点击了授权')
               //获取用户信息
@@ -39,7 +40,7 @@ Page({
             }
           });
           wx.getUserInfo({
-            success: function(res) {
+            success: function (res) {
               that.avatarUrl = res.userInfo.avatarUrl;
             }
           })
@@ -50,30 +51,30 @@ Page({
     })
   },
 
-  showDialogBtn: function() {
+  showDialogBtn: function () {
     this.setData({
       showModal: true
     })
   },
 
-  preventTouchMove: function() {},
+  preventTouchMove: function () { },
 
-  hideModal: function() {
+  hideModal: function () {
     this.setData({
       showModal: false
     });
   },
 
-  bindGetUserInfo: function(e) {
+  bindGetUserInfo: function (e) {
     if (e.detail.userInfo) {
       //用户按了允许授权按钮
       var that = this;
       //授权成功后，跳转进入小程序首页    
       wx.getUserInfo({
-        success: function(res) {
+        success: function (res) {
           that.setData({
-            avatarUrl:res.userInfo.avatarUrl,
-            nickName:res.userInfo.nickName
+            avatarUrl: res.userInfo.avatarUrl,
+            nickName: res.userInfo.nickName
           })
           let encryptedData = res.encryptedData
           let iv = res.iv
@@ -99,7 +100,7 @@ Page({
           // that.queryUserInfo();
         }
       });
-      
+
       // that.queryUserInfo();
       that.hideModal();
     } else {
@@ -109,7 +110,7 @@ Page({
         content: '没有你的授权信息，我们怎么愉快的为你服务？快来授权吧',
         showCancel: false,
         confirmText: '返回授权',
-        success: function(res) {
+        success: function (res) {
           if (res.confirm) {
             console.log('用户点击了“返回授权”')
           }
@@ -119,20 +120,20 @@ Page({
   },
 
   //获取用户信息接口
-  queryUserInfo: function() {
+  queryUserInfo: function () {
     var that = this;
     wx.request({
       method: "GET",
       url: app.globalData.BaseURL + 'api/v1/userBind/getAppBindInfo',
       data: {
         openId: app.globalData.openid,
-        appType:'2',
+        appType: '2',
         unionId: app.globalData.unionId
       },
       header: {
         "Content-Type": "application/json;charset=UTF-8"
       },
-      success: function(res) {
+      success: function (res) {
         if (res.data.code != 200) {
           wx.showToast({
             title: res.data.message,
@@ -141,7 +142,7 @@ Page({
           })
           return false;
         }
-        if (res.data.data!=null) {
+        if (res.data.data != null) {
           wx.setStorageSync('userInfo', res.data.data)
           app.globalData.userInfo = res.data.data;
           wx.switchTab({
@@ -152,7 +153,7 @@ Page({
     });
   },
 
-  listenerUsernameInput: function(e) {
+  listenerUsernameInput: function (e) {
     //存值
     this.setData({
       username: e.detail.value
@@ -160,7 +161,7 @@ Page({
   },
 
   /** 监听密码输入 */
-  listenerPasswordInput: function(e) {
+  listenerPasswordInput: function (e) {
     //存值
     this.setData({
       password: e.detail.value
@@ -169,19 +170,19 @@ Page({
 
 
   // 非聚焦函数：解决魅族不识别bindinput
-  bindKeyBlurUsername: function(e) {
+  bindKeyBlurUsername: function (e) {
     this.setData({
       username: e.detail.value
     })
   },
 
-  bindKeyBlurPassword: function(e) {
+  bindKeyBlurPassword: function (e) {
     this.setData({
       password: e.detail.value
     })
   },
 
-  loginAction: function() {
+  loginAction: function () {
     var userName = this.data.username;
     var passwords = this.data.password;
     var that = this;
@@ -192,38 +193,43 @@ Page({
         duration: 2000
       })
       return;
-    }
-    if (passwords === "") {
+    } else if (passwords === "") {
       wx.showToast({
         title: '密码不能为空！',
         icon: 'success',
         duration: 2000
       })
       return;
+    }else{
+      that.setData({
+        buttonClicked:true
+      })
     }
-
     var urlStr = app.globalData.BaseURL + 'api/v1/userBind/bindMini'
     wx.request({
       method: "POST",
       url: urlStr,
       data: {
-        unionId:app.globalData.unionId,
+        unionId: app.globalData.unionId,
         miniOpenId: app.globalData.openid,
         userName: userName,
         password: passwords,
-        headImgUrl:that.data.avatarUrl,
-        nickName:that.data.nickName
+        headImgUrl: that.data.avatarUrl,
+        nickName: that.data.nickName
       },
       header: {
         "Content-Type": "application/json;charset=UTF-8"
       },
-      success: function(res) {
+      success: function (res) {
         if (res.data.code != '200') {
           console.log(res.data.message);
           wx.showToast({
             title: res.data.message,
             icon: 'none',
             duration: 2000
+          })
+          that.setData({
+            buttonClicked:false
           })
           return false;
         }
@@ -239,14 +245,14 @@ Page({
         })
         wx.switchTab({
           url: '/pages/index/index',
-          success: function(e) {
+          success: function (e) {
             var page = getCurrentPages().pop();
             if (page == undefined || page == null) return;
             page.onLoad();
           }
         })
       },
-      fail: function() {
+      fail: function () {
         wx.showToast({
           title: '登录失败',
           icon: 'success',

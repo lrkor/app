@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    buttonClicked:false,
     userInfo: {
       userName: "",
     }
@@ -36,6 +37,10 @@ Page({
     })
   },
   userBind(e) {
+    let that = this;
+    that.setData({
+      buttonClicked:true
+    })
     wx.request({
       method: "GET",
       url: app.globalData.BaseURL + 'api/v1/userBind/unBind',
@@ -51,6 +56,9 @@ Page({
             title: res.data.message,
             icon: 'none',
             duration: 2000
+          })
+          that.setData({
+            buttonClicked:false
           })
           return false;
         }

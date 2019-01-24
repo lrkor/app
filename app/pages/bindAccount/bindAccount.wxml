@@ -6,7 +6,7 @@
     <input class="login_input" type="password" placeholder="请输入密码" bindinput="listenerPasswordInput" bindblur="bindKeyBlurPassword"></input>
     <view class="pwd-txt" wx:if="{{showTxt}}">密码错误</view>
   </view>
-  <button class="btn-bind" bindtap="loginAction">确认绑定</button>
+  <button class="btn-bind" bindtap="{{!buttonClicked?'loginAction':''}}">确认绑定</button>
 </view>
 <!-- modal -->
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
