@@ -7,6 +7,7 @@ Page({
     //用户个人信息
     avatarUrl: "../../images/personal/1.png",
     userInfo: {
+      version:"",
       userName: "",
       systemName: "",
       tenderName: ""
@@ -14,6 +15,10 @@ Page({
   },
   onLoad: function(options) {
     var that = this;
+    let version = app.globalData.version
+    that.setData({
+      version : version
+    });
     wx.getUserInfo({
       success: function(res) {
         that.avatarUrl = res.userInfo.avatarUrl;

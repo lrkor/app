@@ -55,6 +55,15 @@
         <image src="../../images/personal/7.png" style="width:14rpx;height: 25rpx;" />
       </view>
     </view>
+    <view class="functionItem clearfix detail-view" hover="true" hover-class="detail-hover" bindtap='goToWebView'>
+      <view class="functionItem_img">
+        <image src="../../images/personal/6.png" style="width:35rpx;height: 36rpx;" />
+      </view>
+      <view class="functionItem_name">版本</view>
+      <view class="rigthArrow">
+       {{version}}
+      </view>
+    </view>
   </view>
 </view>
 <view class="showModule" wx:if="{{isShow}}">
