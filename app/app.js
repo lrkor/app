@@ -1,5 +1,7 @@
+let timer;
 App({
   onLaunch() {
+    this.timing();
     //console.log('onLaunch:', options);
     // 检测并获取小程序更新 api 说明：https://developers.weixin.qq.com/miniprogram/dev/api/getUpdateManager.html
     if (wx.canIUse('getUpdateManager')) { // 基础库 1.9.90 开始支持，低版本需做兼容处理
@@ -33,7 +35,27 @@ App({
       });
     }
   },
-
+// 定时获取token
+timing(){
+  let that = this;
+   timer = setInterval(function(){
+    that.getToken();
+  },600000);
+},
+getToken(){
+  let data = { token: this.globalData.token};
+  var that = this;
+  wx.request({
+    method: "GET",
+    url: that.globalData.BaseURL + 'api/v1/token/refresh',
+    data: data,
+    header: {
+      "Content-Type": "application/x-www-form-urlencoded" 
+      },
+    success: function (res) {
+      that.globalData.token = res.data.data.accessToken
+    }
+  });
   globalData: {
     version:'1.0.1',
     openid: '',
