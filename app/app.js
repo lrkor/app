@@ -70,6 +70,6 @@ getToken(){
     adminUserViewId: "",
     userInfo: {},
     BaseURL: "https://wechat-dev.zhinengjianshe.com/wechatService/",
-    tokenUrl: "https://wechat-dev.zhinengjianshe.com/wechatService/weChat/toProject"
+    tokenUrl: "https://wechat-dev.zhinengjianshe.com/wechatService/weChat/toProject?token="
   }
 })
