@@ -56,8 +56,10 @@ getToken(){
       that.globalData.token = res.data.data.accessToken
     }
   });
+},
   globalData: {
     version:'1.0.1',
+    token:'',
     openid: '',
     iv: '',
     userName: '',

@@ -8,7 +8,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '项目看板' 
     })
-    let url = app.globalData.tokenUrl;
+    let url = app.globalData.tokenUrl + app.globalData.token;
     this.setData({
       url: url 
     });

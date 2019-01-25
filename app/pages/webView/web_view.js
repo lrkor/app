@@ -16,7 +16,7 @@ Page({
         var systemName = res.data.systemName
         var systemCode = res.data.systemCode
         that.setData({
-          url:url
+          url: url + '?token=' + app.globalData.token
         });
       }
     })
