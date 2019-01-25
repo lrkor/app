@@ -4,7 +4,7 @@
     <!-- scroll-with-animation滚动添加动画过渡 -->
     <scroll-view scroll-x="true" class="nav" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
         <block wx:for="{{navData}}" wx:for-index="id" wx:for-item="navItem" wx:key="id">
-            <view  class="nav-item {{currentTab == id ?'active':''}}" data-current="{{id}}" data-id="{{navItem.id}}"
+            <view  class="nav-item {{currentIdnex == id ?'active':''}}" data-current="{{id}}" data-id="{{navItem.id}}"
                 bindtap="switchNav">
                 {{navItem.name}}
             </view>

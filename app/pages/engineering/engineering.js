@@ -15,14 +15,18 @@ Page({
         name: '推荐'
       }
     ],
+    currentIdnex:0,
     currentTab: 0,
     navScrollLeft: 0,
     infosArray: [],
     categoryId: '',
-    isSlid: true
+    isTouch:true
   },
   //事件处理函数
   onLoad: function () {
+    wx.showLoading({
+      title: '数据加载中',
+    })
     let that = this;
     this.queryHeaderList().then(res => {
       let headerArr = res.data.data;
@@ -60,6 +64,8 @@ Page({
 
   //滑动切换
   switchTab(event) {
+    // console.log(event.detail);
+    // console.log(this.data.currentTab);
     // 回到顶部
     if (wx.pageScrollTo) {
       wx.pageScrollTo({
@@ -75,20 +81,24 @@ Page({
     var that = this;
     var cur = event.detail.current;
 
-    var singleNavWidth = this.data.windowWidth / 5;
     this.setData({
-      currentTab: cur,
+      currentIdnex: cur,
       isload: true,
       infosArray: [],
       page: 1
     });
     this.eady();
+
     var query = wx.createSelectorQuery();
     //选择id
     query.select('.active').boundingClientRect(function (rect) {
       let id = rect.dataset.id;
+      console.log(id);
       that.setData({
         id: id
+      })
+      wx.showLoading({
+        title: '数据加载中',
       })
       if (id == '1') {
         that.getRecommend('0', '0');
@@ -109,7 +119,7 @@ Page({
     query.exec(function (res) {
       //遍历你当前的tab栏 之前的所有dom节点的宽 相加设置为滚动条滚去的scrollLeft 就搞定了
       var num = 0;
-      for (var i = 0; i < self.data.currentTab; i++) {
+      for (var i = 0; i < self.data.currentIdnex; i++) {
         num += res[0][i].width
       }
       self.setData({
@@ -117,6 +127,7 @@ Page({
       })
     })
   },
+
   //跳转详情页
   goDetaile(e) {
     wx.navigateTo({
@@ -147,7 +158,7 @@ Page({
     if (isload) {
       // 显示加载图标
       wx.showLoading({
-        title: '加载中'
+        title: '数据加载中'
       });
       let page1 = this.data.page + 1;
       this.setData({
@@ -176,6 +187,7 @@ Page({
     let data = { isRecommend: '1', page: that.data.page, size: 10, isRelease: '1' };
     that.recommend(url, data).then(res => {
       that.drawList(res, isRefresh, isLoading);
+      wx.hideLoading();
     });
   },
 
@@ -191,6 +203,7 @@ Page({
     let data = { categoryId: id, page: that.data.page, size: 10, isRelease: '1' };
     that.otherList(url, data).then(res => {
       that.drawList(res, isRefresh, isLoading);
+      wx.hideLoading();
     })
   },
 
@@ -206,18 +219,23 @@ Page({
       wx.hideNavigationBarLoading() //在标题栏中隐藏加载
       wx.stopPullDownRefresh();                       //停止下拉刷新
     }
+   
+    let isload = false;
+    if (res.data.data != null && res.data.data.length < 10) {
+      isload = false
+    } else {
+      isload = true;
+    }
+
+    let RecommendArr = [];
     if (isLoading == '1') {
       // 隐藏加载框
       wx.hideLoading();
-    }
 
-    if (res.data.data != null && res.data.data.length < 10) {
-      var isload = false;
-    } else {
-      var isload = true;
+      RecommendArr = [...that.data.infosArray, ...res.data.data];
+    }else{
+      RecommendArr =res.data.data
     }
-
-    let RecommendArr = [...that.data.infosArray, ...res.data.data];
 
     // 格式化时间
     for (let item of RecommendArr) {
