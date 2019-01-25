@@ -24,7 +24,7 @@ Page({
   //事件处理函数
   onLoad: function () {
     let that = this;
-    this.queryHeaderList().then(res=>{
+    this.queryHeaderList().then(res => {
       let headerArr = res.data.data;
       let newNavData = [...that.data.navData, ...headerArr];
       that.setData({
@@ -80,15 +80,15 @@ Page({
       currentTab: cur,
       isload: true,
       infosArray: [],
-      page:1
+      page: 1
     });
-
+    this.eady();
     var query = wx.createSelectorQuery();
     //选择id
     query.select('.active').boundingClientRect(function (rect) {
       let id = rect.dataset.id;
       that.setData({
-        id:id
+        id: id
       })
       if (id == '1') {
         that.getRecommend('0', '0');
@@ -99,6 +99,24 @@ Page({
 
   },
 
+  //获取节点宽度 把之前的相加起来 等于滚动条距离left的距离
+  //重点设置在这里 设置滚动条的距离 
+  eady() {
+    var self = this;
+    //获取导航的初始位置
+    const query = wx.createSelectorQuery()
+    query.selectAll('.nav-item').boundingClientRect();
+    query.exec(function (res) {
+      //遍历你当前的tab栏 之前的所有dom节点的宽 相加设置为滚动条滚去的scrollLeft 就搞定了
+      var num = 0;
+      for (var i = 0; i < self.data.currentTab; i++) {
+        num += res[0][i].width
+      }
+      self.setData({
+        navScrollLeft: Math.ceil(num)
+      })
+    })
+  },
   //跳转详情页
   goDetaile(e) {
     wx.navigateTo({
@@ -156,13 +174,13 @@ Page({
     var that = this;
     let url = 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/article/query';
     let data = { isRecommend: '1', page: that.data.page, size: 10, isRelease: '1' };
-    that.recommend(url,data).then(res=>{
-      that.drawList(res,isRefresh, isLoading);
+    that.recommend(url, data).then(res => {
+      that.drawList(res, isRefresh, isLoading);
     });
   },
 
   // 推荐列表接口
-  recommend(url, data){
+  recommend(url, data) {
     return wxRequest.postRequest(url, data);
   },
 
@@ -171,18 +189,18 @@ Page({
     var that = this;
     let url = 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/article/query';
     let data = { categoryId: id, page: that.data.page, size: 10, isRelease: '1' };
-    that.otherList(url,data).then(res=>{
-      that.drawList(res,isRefresh,isLoading);
+    that.otherList(url, data).then(res => {
+      that.drawList(res, isRefresh, isLoading);
     })
   },
 
   // 其他列表接口
-  otherList(url,data){
+  otherList(url, data) {
     return wxRequest.postRequest(url, data);
   },
 
   //渲染数据
-  drawList(res,isRefresh,isLoading){
+  drawList(res, isRefresh, isLoading) {
     var that = this;
     if (isRefresh == '1') {
       wx.hideNavigationBarLoading() //在标题栏中隐藏加载
