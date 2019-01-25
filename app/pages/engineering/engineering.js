@@ -239,7 +239,7 @@ Page({
 
     // 格式化时间
     for (let item of RecommendArr) {
-      item.createTime = util.formatTime(new Date(item.createTime), 'mm-dd');
+      item.createTime = util.formatTime(new Date(item.createTime), 'yyyy-mm-dd');
     }
     that.setData({
       infosArray: RecommendArr,

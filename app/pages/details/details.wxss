@@ -4,7 +4,8 @@
   padding: 0 30rpx;
 }
 .detail-title {
-  font-size: 16px;
+  font-weight: 700;
+  font-size: 50rpx;
   color: #222;
 }
 .title-brief {
@@ -12,7 +13,7 @@
   height: 48rpx;
   line-height: 48rpx;
   border-bottom: 1px solid #e8e8e8;
-  font-size: 12px;
+  font-size: 24rpx;
   color: #999;
 }
 .pull-left {
