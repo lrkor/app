@@ -43,7 +43,11 @@
                     <view class='list-infos'>
                         <view class='list-left'>
                             <view class='title-div'>
-                                <text class='title'><text class="to-top" wx:if="{{item.isTop=='1'}}">置顶</text>{{item.title}}</text>
+                                <view class='title'>
+                                    <text class="to-top" wx:if="{{item.isTop=='1'}}">置顶</text>
+                                    <text class="to-top1" wx:if="{{item.isTop=='1'}}">置顶</text>
+                                    <text>{{item.title}}</text>
+                                </view>
                             </view>
                             <view class='brief-div'>
                                 <text class='color-6 typeTitle'>{{item.categoryName}}</text>
@@ -57,7 +61,11 @@
                     <view class='list-infos' style="flex-direction: column;">
                         <view class='list-left' style="width: 100%;">
                             <view class='title-div'>
-                                <text class='title'><text class="to-top" wx:if="{{item.isTop=='1'}}">置顶</text>{{item.title}}</text>
+                                <view class='title'>
+                                    <text class="to-top" wx:if="{{item.isTop=='1'}}">置顶</text>
+                                    <text class="to-top1" wx:if="{{item.isTop=='1'}}">置顶</text>
+                                    <text>{{item.title}}</text>
+                                </view>
                             </view>
                         </view>
                         <view class='list-right flex-left'>

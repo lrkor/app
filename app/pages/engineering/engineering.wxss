@@ -83,6 +83,7 @@ page{
   -webkit-box-orient: vertical;
   color: #222;
   font-size: 36rpx;
+  position: relative;
 }
 .list-infos .img-box {
   width: 200rpx;
@@ -146,7 +147,7 @@ page{
   font-size: 22rpx;
   border-radius: 3px;
   position: absolute;
-  top:30rpx;
+  top:11rpx;
 }
 
 .to-top1{

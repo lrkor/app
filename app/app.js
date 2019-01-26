@@ -61,6 +61,7 @@ getToken(){
     version:'0.0.3',
     token:'',
     openid: '',
+    downUrl:'https://wechatapplet.zhinengjianshe.com/',
     iv: '',
     userName: '',
     userId: '',

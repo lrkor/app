@@ -9,4 +9,12 @@
   <view class='detail-content'>
       <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
+  <block wx:for="{{fileList}}" wx:key="id">
+ <view data-url="https://wechatapplet.zhinengjianshe.com/{{item.filePath}}" data-type="{{item.ext}}" catchtap='downloadFile'>
+    附件：{{item.fileName}}
+  </view>
+</block>
+  <!-- <view data-url="https://wechatapplet.zhinengjianshe.com/{{url}}" data-type="{{ext}}" catchtap='downloadFile'>
+    附件下载
+  </view> -->
 </view>

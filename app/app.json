@@ -47,8 +47,7 @@
     "color": "#444444",
     "selectedColor": "#3396fb",
     "backgroundColor": "#ffffff",
-    "borderStyle": "black",
-    "fontFamily": "Microsoft YaHei"
+    "borderStyle": "black"
   },
   "permission": {
     "scope.userLocation": {

@@ -7,6 +7,8 @@ const app = getApp();
 
 Page({
   data: {
+    fileList:[],
+    downUrl:'https://wechatapplet.zhinengjianshe.com/',
     title: '',
     typeName: '',
     date: '',
@@ -27,12 +29,13 @@ Page({
         WxParse.wxParse('article', 'html', article, that, 5);
         that.setData({
           title: res.data.data.title,
+          fileList: res.data.data.fileList,
           date: util.formatTime(new Date(res.data.data.createTime), 'yyyy-mm-dd'),
           typeName: typeName
         });
-        return {id: res.data.data.id, visitTimes: res.data.data.visitTimes + 1}
-      }).then(res=>{
-        that.updata(res.id,res.visitTimes);
+        return { id: res.data.data.id, visitTimes: res.data.data.visitTimes + 1 }
+      }).then(res => {
+        that.updata(res.id, res.visitTimes);
       })
   },
 
@@ -47,5 +50,33 @@ Page({
     let url = 'https://wechatapplet.zhinengjianshe.com/wechatApplet/api/article/updateStatus';
     let data = { id: id, visitTimes: visitTimes };
     return wxRequest.postRequest(url, data);
+  },
+
+  downloadFile: function (e) {
+    let type = e.currentTarget.dataset.type;
+    let url = e.currentTarget.dataset.url;
+    wx.downloadFile({
+      url: url,
+      success: function (res) {
+        var filePath = res.tempFilePath;
+        wx.openDocument({
+          filePath: filePath,
+          fileType: type,
+          success: function (res) {
+            console.log('打开文档成功')
+          },
+          fail: function (res) {
+            console.log(res);
+          },
+          complete: function (res) {
+            console.log(res);
+          }
+        })
+      },
+      fail: function (res) {
+        console.log('文件下载失败');
+      },
+      complete: function (res) { },
+    })
   }
 })
