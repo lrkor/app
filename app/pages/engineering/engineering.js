@@ -46,15 +46,25 @@ Page({
     var cur = event.currentTarget.dataset.current;
     let page1 = 1;
     // 获取导航栏id
-    var id = event.currentTarget.dataset.id;
+    let id = event.currentTarget.dataset.id;
     this.setData({
       id: id,
       page: page1,
-      isload: true
+      isload: true,
+      currentTab: cur
     })
 
+  
     if (this.data.currentTab == cur) {
-      return false;
+      this.setData({
+        page: page1,
+        infosArray: []
+      });
+      if (id == '1') {
+        this.getRecommend('1', '1');
+      } else {
+        this.getOtherList(id, '1', '1');
+      }
     } else {
       this.setData({
         currentTab: cur
@@ -93,7 +103,6 @@ Page({
     //选择id
     query.select('.active').boundingClientRect(function (rect) {
       let id = rect.dataset.id;
-      console.log(id);
       that.setData({
         id: id
       })
@@ -138,17 +147,7 @@ Page({
   //下拉刷新
   // onPullDownRefresh() {
   //   wx.showNavigationBarLoading() //在标题栏中显示加载
-  //   let id = this.data.id;
-  //   let page1 = 1;
-  //   this.setData({
-  //     page: page1,
-  //     infosArray: []
-  //   });
-  //   if (this.data.id == '1') {
-  //     this.getRecommend('1', '1');
-  //   } else {
-  //     this.getOtherList(id, '1', '1');
-  //   }
+   
   // },
 
   //上拉加载
