@@ -21,6 +21,7 @@ page{
   top: 0;
   left: 0;
   z-index: 99;
+  border-bottom: 1px solid #f1f1f1;
 }
 .nav-item {
   padding:0 20rpx;
@@ -36,11 +37,9 @@ page{
   top:80rpx;
   width: 100%;
   height: 100%;
-  border-bottom: 1px solid #ddd;
   box-sizing: border-box;
 }
 .tab-content{
-  border-top: 1px solid #ddd;
   overflow-y: scroll;
 }
 
@@ -53,13 +52,13 @@ page{
 .list-infos{
   display: flex;
   padding: 10px 0;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid #f1f1f1;
 }
 .list-infos1{
   display: flex;
   flex-direction: column;
   padding: 20rpx 0;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #f1f1f1;
 }
 .list-infos .list-left{
   widows: 423rpx;
