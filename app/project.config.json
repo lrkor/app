@@ -9,7 +9,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.94",
+	"libVersion": "2.5.1",
 	"appid": "wx55f0a1078776fa82",
 	"projectname": "app",
 	"isGameTourist": false,

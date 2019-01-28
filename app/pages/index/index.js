@@ -282,21 +282,21 @@ Page({
           that.getToken(res.data.data.userName);
           that.getweather();
           that.getSystemName();
-          if(!res.data.data.mpOpenId){
-            wx.showModal({
-              title: '是否获取消息推送',
-              content: '公众号消息推送需要授权',
-              success:function(res){
-                  if(res.cancel){
-                    console.info("授权失败返回数据");
-                  }else if(res.confirm){
-                    wx.navigateTo({
-                      url: '../pushMessage/pushMessage'
-                    })
-                  }
-              }
-            });
-          }
+          // if(!res.data.data.mpOpenId){
+          //   wx.showModal({
+          //     title: '是否获取消息推送',
+          //     content: '公众号消息推送需要授权',
+          //     success:function(res){
+          //         if(res.cancel){
+          //           console.info("授权失败返回数据");
+          //         }else if(res.confirm){
+          //           wx.navigateTo({
+          //             url: '../pushMessage/pushMessage'
+          //           })
+          //         }
+          //     }
+          //   });
+          // }
         } else {
           wx.reLaunch({
             url: '/pages/bindAccount/bindAccount'

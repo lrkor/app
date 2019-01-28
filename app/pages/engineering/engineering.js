@@ -136,20 +136,20 @@ Page({
   },
 
   //下拉刷新
-  onPullDownRefresh() {
-    wx.showNavigationBarLoading() //在标题栏中显示加载
-    let id = this.data.id;
-    let page1 = 1;
-    this.setData({
-      page: page1,
-      infosArray: []
-    });
-    if (this.data.id == '1') {
-      this.getRecommend('1', '1');
-    } else {
-      this.getOtherList(id, '1', '1');
-    }
-  },
+  // onPullDownRefresh() {
+  //   wx.showNavigationBarLoading() //在标题栏中显示加载
+  //   let id = this.data.id;
+  //   let page1 = 1;
+  //   this.setData({
+  //     page: page1,
+  //     infosArray: []
+  //   });
+  //   if (this.data.id == '1') {
+  //     this.getRecommend('1', '1');
+  //   } else {
+  //     this.getOtherList(id, '1', '1');
+  //   }
+  // },
 
   //上拉加载
   onReachBottom() {

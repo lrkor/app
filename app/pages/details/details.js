@@ -7,8 +7,8 @@ const app = getApp();
 
 Page({
   data: {
-    fileList:[],
-    downUrl:'https://wechatapplet.zhinengjianshe.com/',
+    fileList: [],
+    downUrl: 'https://wechatapplet.zhinengjianshe.com/',
     title: '',
     typeName: '',
     date: '',
