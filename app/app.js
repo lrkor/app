@@ -58,7 +58,7 @@ getToken(){
   });
 },
   globalData: {
-    version:'0.0.5',
+    version:'0.0.6',
     token:'',
     openid: '',
     downUrl:'https://wechatapplet.zhinengjianshe.com/',
