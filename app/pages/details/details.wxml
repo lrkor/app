@@ -10,8 +10,8 @@
       <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
   <block wx:for="{{fileList}}" wx:key="id">
- <view data-url="https://wechatapplet.zhinengjianshe.com/{{item.filePath}}" data-type="{{item.ext}}" catchtap='downloadFile'>
-    附件：{{item.fileName}}
+ <view >
+    附件：{{item.fileName}}<text data-url="https://wechatapplet.zhinengjianshe.com/{{item.filePath}}" data-type="{{item.ext}}"  catchtap='downloadFile'>下载</text><text data-url="https://wechatapplet.zhinengjianshe.com/{{item.filePath}}" data-type="{{item.ext}}"  catchtap='openFile'>预览</text>
   </view>
 </block>
   <!-- <view data-url="https://wechatapplet.zhinengjianshe.com/{{url}}" data-type="{{ext}}" catchtap='downloadFile'>

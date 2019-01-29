@@ -53,6 +53,26 @@ Page({
   },
 
   downloadFile: function (e) {
+    let url = e.currentTarget.dataset.url;
+    wx.downloadFile({
+      url: url,
+      success: function (res) {
+        var filePath = res.tempFilePath;
+        wx.saveFile({
+          tempFilePath: filePath,
+          success(res) {
+            // const savedFilePath = res.savedFilePath
+            console.log(res)
+          }
+        })
+      },
+      fail: function (res) {
+        console.log('文件下载失败');
+      },
+      complete: function (res) { },
+    })
+  },
+  openFile: function (e) {
     let type = e.currentTarget.dataset.type;
     let url = e.currentTarget.dataset.url;
     wx.downloadFile({
@@ -66,7 +86,17 @@ Page({
             console.log('打开文档成功')
           },
           fail: function (res) {
-            console.log(res);
+            wx.showModal({
+              title: '提示',
+              content: '不支持打开此类文件',
+              showCancel:false,
+              success:function(res){
+                  if(res.cancel){
+                  }else if(res.confirm){
+                   
+                  }
+              }
+            });
           },
           complete: function (res) {
             console.log(res);
@@ -74,9 +104,10 @@ Page({
         })
       },
       fail: function (res) {
+          
         console.log('文件下载失败');
       },
       complete: function (res) { },
     })
-  }
+  },
 })
