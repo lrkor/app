@@ -87,10 +87,7 @@ Page({
   },
 
   toProject(e) {
-    console.log(e.currentTarget.dataset);
-    console.log(e.currentTarget.dataset.serviceurl);
-    console.log(e.currentTarget.dataset.username);
-    var url = e.currentTarget.dataset.serviceurl + '/weChat/loginTo?userName=' + e.currentTarget.dataset.username;
+    let url = e.currentTarget.dataset.serviceurl + '/weChat/loginTo/' + e.currentTarget.dataset.username;
     wx.navigateTo({
       url: '../toProject/toproject?url=' + url,
     })
