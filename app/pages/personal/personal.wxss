@@ -86,6 +86,7 @@
 
 .functionItem_img {
   margin: 0 30rpx;
+  margin-top:-2px
 }
 
 .functionItem_img image{

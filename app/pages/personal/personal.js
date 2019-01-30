@@ -51,6 +51,14 @@ Page({
       image: '../../images/success.png',
       duration: 2000
     })
-  }
+  },
+
+  showVersion(e) {
+    wx.showToast({
+      title: '已是最新版本',
+      icon: 'none',
+      duration: 2000
+    })
+  },
 
 })

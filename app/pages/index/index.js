@@ -22,12 +22,13 @@ Page({
     duration: 1000,
     // circular:true
     smallImgUrl: [
-      [{
-        url: '../../images/index/small/sys.png',
-        hrefUrl: 'https://mp.weixin.qq.com/',
-        text: '扫一扫',
-        status: 3
-      },
+      [
+      //   {
+      //   url: '../../images/index/small/sys.png',
+      //   hrefUrl: 'https://mp.weixin.qq.com/',
+      //   text: '扫一扫',
+      //   status: 3
+      // },
       {
         url: '../../images/index/small/kqdk.png',
         hrefUrl: app.globalData.BaseURL + 'weChat/time/card/list',
@@ -45,6 +46,12 @@ Page({
         hrefUrl: app.globalData.BaseURL + 'weChat/meetingNotice/list',
         text: '会议通知',
         status: 1
+      },
+      {
+        url: '../../images/index/small/lxkf.png',
+        hrefUrl: 'https://mp.weixin.qq.com/',
+        text: '联系客服',
+        status: 5
       }
       ],
       [{
@@ -58,12 +65,7 @@ Page({
       //   text: '意见反馈',
       //   status: 2
       // },
-      {
-        url: '../../images/index/small/lxkf.png',
-        hrefUrl: 'https://mp.weixin.qq.com/',
-        text: '联系客服',
-        status: 5
-      }
+     
       ]
     ],
     applicationList: [{
