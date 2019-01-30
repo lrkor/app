@@ -1,7 +1,7 @@
 // pages/details/details.js
 var util = require('../../utils/util.js') //引入微信自带的日期格式化
 var WxParse = require('../../wxParse/wxParse.js');
-const wxRequest = require('../../utils/wxRequest.js')
+const wxRequest = require('../../utils/wxRequest.js');
 
 const app = getApp();
 

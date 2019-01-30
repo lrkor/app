@@ -1,2 +1,31 @@
-<web-view src="{{url}}"></web-view>
-
+<view class="project">
+    <view class="project-map">
+        <map id="map" 
+        longitude="{{longitude}}" 
+        latitude="{{latitude}}" 
+        scale="{{scale}}" 
+        bindcontroltap="controltap" 
+        markers="{{markers}}" 
+        bindmarkertap="markertap" 
+        bindregionchange="regionchange" 
+        include-points="{{markers}}"
+        show-location 
+        style="width: 100%; height: 420rpx;"></map>
+    </view>
+    <view class="project-list">
+        <block wx:for="{{projectList}}" wx:key="id">
+            <view class="project-item" bindtap="selectedClick" data-latitude="{{item.latitude}}" data-longitude="{{item.longitude}}">
+                <view class="item-left">
+                    <view class="item-left-top">{{item.aliasName}}</view>
+                    <view class="item-left-dowm">
+                        <image src="../../images/bid.png" class="item-left-dowm-img" />
+                        {{item.name}}
+                    </view>
+                </view>
+                <view class="item-right" bindtap="toProject" data-serviceUrl="{{item.serviceUrl}}" data-userName="{{item.userName}}">
+                    <view class="look">查看</view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

@@ -60,6 +60,7 @@ getToken(){
   globalData: {
     version:'0.0.8',
     token:'',
+    systemCode:'',
     openid: '',
     downUrl:'https://wechatapplet.zhinengjianshe.com/',
     iv: '',
@@ -70,7 +71,7 @@ getToken(){
     sessionKey: '',
     adminUserViewId: "",
     userInfo: {},
-    BaseURL: "https://wechat.zhinengjianshe.com/wechatService/",
-    tokenUrl: "https://wechat.zhinengjianshe.com/wechatService/weChat/toProject?token="
+    BaseURL: "https://wechat-dev.zhinengjianshe.com/wechatService/",
+    tokenUrl: "https://wechat-dev.zhinengjianshe.com/wechatService/weChat/toProject?token="
   }
 })

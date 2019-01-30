@@ -281,6 +281,7 @@ Page({
           app.globalData.userInfo = res.data.data;
           app.globalData.userId = res.data.data.userId;
           app.globalData.userName = res.data.data.userName;
+          app.globalData.systemCode = res.data.data.systemCode;
           that.getToken(res.data.data.userName);
           that.getweather();
           that.getSystemName();

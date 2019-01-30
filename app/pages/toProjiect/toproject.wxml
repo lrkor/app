@@ -1,0 +1,1 @@
+<web-view id="toproject" src="{{url}}"></web-view>
