@@ -27,7 +27,7 @@
     </view>
     <view class="functionItem clearfix detail-view" hover="true" hover-class="detail-hover" bindtap='goToWebView'>
       <view class="functionItem_img">
-        <image src="../../images/personal/4.png" style="width:35rpx;height: 36rpx;" />
+        <image src="../../images/personal/4.png" style="width:40rpx;height: 40rpx;" />
       </view>
       <view class="functionItem_name">意见反馈</view>
       <view class="rigthArrow">
@@ -42,13 +42,10 @@
       <view class="rigthArrow">
         <image src="../../images/personal/7.png" style="width:14rpx;height: 25rpx;" />
       </view>
-      <view>
-        <button class="contact-us" open-type="contact">联系客服</button>
-      </view>
     </view>
     <view class="functionItem clearfix detail-view" hover="true" hover-class="detail-hover" bindtap='goToWebView'>
       <view class="functionItem_img">
-        <image src="../../images/personal/6.png" style="width:35rpx;height: 36rpx;" />
+        <image src="../../images/personal/6.png" style="width:40rpx;height: 40rpx;" />
       </view>
       <view class="functionItem_name">设置</view>
       <view class="rigthArrow">
