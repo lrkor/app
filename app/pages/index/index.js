@@ -7,6 +7,7 @@ const app = getApp()
 Page({
   data: {
     systemName: '',
+    showView: true,
     systemCode: '',
     weatherImg: '', //天气图片
     temperature: '', //温度
@@ -152,6 +153,10 @@ Page({
   },
 
   onLoad: function () {
+    this.setData({
+      showView:app.globalData.isguidance
+    });
+
     this.login();
     wx.setNavigationBarTitle({
       title: '智慧工程云平台'
@@ -277,6 +282,9 @@ Page({
         }
      
         if (res.data.data != null) {
+          if(res.data.data.subscribe){
+            app.globalData.subscribe = res.data.data.subscribe;
+          }
           wx.setStorageSync('userInfo', res.data.data);
           app.globalData.userInfo = res.data.data;
           app.globalData.userId = res.data.data.userId;
@@ -397,4 +405,11 @@ Page({
 
     }
   },
+
+  close: function () {
+    let that = this;
+    that.setData({
+      showView: true
+    })
+  }
 })

@@ -15,6 +15,11 @@
     </view>
   </view>
   <view class="bgc"></view>
+   <view class="focus" wx:if="{{show}}">
+      <view class="focus_text">关注“智慧云平台”公众号，获取微信通知，重要消息不错过</view>
+      <view class="focus_btn">去关注</view>
+    </view>
+<view class="bgc" wx:if="{{show}}"></view>
   <view class="function">
     <view class="functionItem clearfix detail-view" hover="true" hover-class="detail-hover" bindtap='goToWebView'>
       <view class="functionItem_img">

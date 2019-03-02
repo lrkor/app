@@ -127,3 +127,27 @@
   color: rgba(0, 0, 0, 0.6);
   background-color: #dedede;
 }
+
+.focus{
+  display: flex;
+  font-size: 26rpx;
+  height: 100rpx;
+  background-color: #fffbf8;
+  padding: 0 30rpx;
+  justify-content:space-between;
+  align-items: center;
+}
+
+.focus_text{
+  color: #fd5805;
+  width: 476rpx;
+}
+.focus_btn{
+  background-color: #fd7936;
+  width: 150rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  border-radius: 13px;
+  text-align: center;
+  color: #ffffff;
+}

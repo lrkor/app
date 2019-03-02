@@ -62,4 +62,21 @@
             </block>
         </view>
     </view>
+
+    <!-- 遮罩层 -->
+    <view class="shadeOut hide {{showView?'':'show'}}">  
+       <!--遮罩层  -->
+       <view class="shade">  
+           <!--面板内容  -->
+           <view class="img1"><image src="../../images/index/img1.png" style="width:66rpx;height: 104rpx"/></view>
+           <view class="text1">
+            一、点击
+            <image src="../../images/index/img2.png" style="width:65rpx;height: 31rpx;margin-top:4rpx;margin-left:16rpx"/>
+            『添加到我的小程序』
+            </view>
+           <view class="text2">二、下拉微信首页进入『智慧云平台』</view>
+           <view class="img2"><image src="../../images/index/img3.png" style="width:450rpx;height: 160rpx"/></view>
+           <view class="btn" bindtap="close">知道了</view>
+       </view>  
+   </view>  
 </view>

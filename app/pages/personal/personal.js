@@ -7,6 +7,7 @@ Page({
     //用户个人信息
     avatarUrl: "../../images/personal/1.png",
     userInfo: {
+      show:false,
       version:"",
       userName: "",
       systemName: "",
@@ -14,6 +15,11 @@ Page({
     }
   },
   onLoad: function(options) {
+    if(app.globalData.subscribe=='1'){
+      this.setData({
+        show:true
+      });
+    }
     var that = this;
     let version = app.globalData.version
     that.setData({

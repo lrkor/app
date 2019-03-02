@@ -246,6 +246,7 @@ Page({
         wx.switchTab({
           url: '/pages/index/index',
           success: function (e) {
+            app.globalData.isguidance = false;
             var page = getCurrentPages().pop();
             if (page == undefined || page == null) return;
             page.onLoad();

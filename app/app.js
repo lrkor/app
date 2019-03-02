@@ -58,6 +58,8 @@ getToken(){
   });
 },
   globalData: {
+    isguidance:true,
+    subscribe:'0',
     version:'0.0.10',
     token:'',
     systemCode:'',
