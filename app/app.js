@@ -58,7 +58,7 @@ getToken(){
   });
 },
   globalData: {
-    version:'0.0.8',
+    version:'0.0.10',
     token:'',
     systemCode:'',
     openid: '',
@@ -71,7 +71,7 @@ getToken(){
     sessionKey: '',
     adminUserViewId: "",
     userInfo: {},
-    BaseURL: "https://wechat-dev.zhinengjianshe.com/wechatService/",
-    tokenUrl: "https://wechat-dev.zhinengjianshe.com/wechatService/weChat/toProject?token="
+    BaseURL: "https://wechat.zhinengjianshe.com/wechatService/",
+    tokenUrl: "https://wechat.zhinengjianshe.com/wechatService/weChat/toProject?token="
   }
 })

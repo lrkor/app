@@ -70,7 +70,7 @@ Page({
 
   //获取项目
   getSys() {
-    let url = app.globalData.BaseURL + '/api/v1/project/projectBoard';
+    let url = app.globalData.BaseURL + 'api/v1/project/projectBoard';
     let data = { code: app.globalData.systemCode };
     return wxRequest.postRequest(url, data);
   },
