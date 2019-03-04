@@ -24,36 +24,36 @@ Page({
     // circular:true
     smallImgUrl: [
       [
-      //   {
-      //   url: '../../images/index/small/sys.png',
-      //   hrefUrl: 'https://mp.weixin.qq.com/',
-      //   text: '扫一扫',
-      //   status: 3
-      // },
-      {
-        url: '../../images/index/small/kqdk.png',
-        hrefUrl: app.globalData.BaseURL + 'weChat/time/card/list',
-        text: '考勤打卡',
-        status: 1
-      },
-      {
-        url: '../../images/index/small/rwgl.png',
-        hrefUrl: app.globalData.BaseURL + 'weChat/task/list',
-        text: '任务管理',
-        status: 1
-      },
-      {
-        url: '../../images/index/small/hytz.png',
-        hrefUrl: app.globalData.BaseURL + 'weChat/meetingNotice/list',
-        text: '会议通知',
-        status: 1
-      },
-      {
-        url: '../../images/index/small/lxkf.png',
-        hrefUrl: 'https://mp.weixin.qq.com/',
-        text: '联系客服',
-        status: 5
-      }
+        //   {
+        //   url: '../../images/index/small/sys.png',
+        //   hrefUrl: 'https://mp.weixin.qq.com/',
+        //   text: '扫一扫',
+        //   status: 3
+        // },
+        {
+          url: '../../images/index/small/kqdk.png',
+          hrefUrl: app.globalData.BaseURL + 'weChat/time/card/list',
+          text: '考勤打卡',
+          status: 1
+        },
+        {
+          url: '../../images/index/small/rwgl.png',
+          hrefUrl: app.globalData.BaseURL + 'weChat/task/list',
+          text: '任务管理',
+          status: 1
+        },
+        {
+          url: '../../images/index/small/hytz.png',
+          hrefUrl: app.globalData.BaseURL + 'weChat/meetingNotice/list',
+          text: '会议通知',
+          status: 1
+        },
+        {
+          url: '../../images/index/small/lxkf.png',
+          hrefUrl: 'https://mp.weixin.qq.com/',
+          text: '联系客服',
+          status: 5
+        }
       ],
       [{
         url: '../../images/index/small/zhjb.png',
@@ -61,12 +61,12 @@ Page({
         text: '账号解绑',
         status: 4
       },
-      // {
-      //   url: '../../images/index/small/yjfk.png',
-      //   text: '意见反馈',
-      //   status: 2
-      // },
-     
+        // {
+        //   url: '../../images/index/small/yjfk.png',
+        //   text: '意见反馈',
+        //   status: 2
+        // },
+
       ]
     ],
     applicationList: [{
@@ -154,7 +154,7 @@ Page({
 
   onLoad: function () {
     this.setData({
-      showView:app.globalData.isguidance
+      showView: app.globalData.isguidance
     });
 
     this.login();
@@ -168,26 +168,26 @@ Page({
     // 查看是否授权
     wx.getSetting({
       success: function (res) {
-        if(res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true){
+        if (res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true) {
           wx.showModal({
             title: '是否授权当前位置',
             content: '需要获取您的地理位置，请确认授权，否则地图功能将无法使用',
-            success:function(res){
-                if(res.cancel){
-                  console.info("授权失败返回数据");
-                }else if(res.confirm){
-                  wx.openSetting({
-                    success:function(data){
-                      console.log(data);
-                    }
-                  })
-                }
+            success: function (res) {
+              if (res.cancel) {
+                console.info("授权失败返回数据");
+              } else if (res.confirm) {
+                wx.openSetting({
+                  success: function (data) {
+                    console.log(data);
+                  }
+                })
+              }
             }
           });
         }
         if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
-            lang:'zh_CN',
+            lang: 'zh_CN',
             success: function (res) {
               let encryptedData = res.encryptedData
               let iv = res.iv
@@ -208,10 +208,10 @@ Page({
                   app.globalData.openid = result.data.data.openId;
                   app.globalData.unionId = result.data.data.unionId;
 
-                 
+
                   //获取用户信息
                   that.queryUserInfo();
-                 
+
                 }
               })
 
@@ -235,7 +235,7 @@ Page({
         if (res.code) {
           // 发起网络请求  appid  secret
           wx.request({
-            url: app.globalData.BaseURL +'api/v1/miniApp/session/get',
+            url: app.globalData.BaseURL + 'api/v1/miniApp/session/get',
             method: 'GET',
             data: {
               jsCode: res.code
@@ -280,10 +280,10 @@ Page({
           })
           return false;
         }
-     
+
         if (res.data.data != null) {
-          if(res.data.data.subscribe){
-            app.globalData.subscribe = res.data.data.subscribe;
+          if (res.data.data.subscribe == '1' && res.data.data.mpOpenId) {
+            app.globalData.subscribe = true;
           }
           wx.setStorageSync('userInfo', res.data.data);
           app.globalData.userInfo = res.data.data;
@@ -314,20 +314,20 @@ Page({
           })
         }
 
-          
+
       }
     });
   },
 
-  getToken(userName){
-    let data = { userName: userName, credentials: app.globalData.unionId};
+  getToken(userName) {
+    let data = { userName: userName, credentials: app.globalData.unionId };
     wx.request({
       method: "POST",
       url: app.globalData.BaseURL + 'api/v1/token',
       data: data,
       header: {
-        "Content-Type": "application/x-www-form-urlencoded" 
-        },
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
       success: function (res) {
         app.globalData.token = res.data.data.accessToken
       }
@@ -341,7 +341,7 @@ Page({
     var BMap = new bmap.BMapWX({
       ak: 'wONQmGOLjZfXLbPXzAphdq5tgkKdTkCC'
     });
-    var fail = function (data) {};
+    var fail = function (data) { };
     var success = function (data) {
       var weatherData = data.originalData.results[0].weather_data[0];
       let temperature = weatherData.date;

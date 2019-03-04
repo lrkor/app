@@ -59,7 +59,7 @@ getToken(){
 },
   globalData: {
     isguidance:true,
-    subscribe:'0',
+    subscribe:false,
     version:'0.0.10',
     token:'',
     systemCode:'',
@@ -73,7 +73,7 @@ getToken(){
     sessionKey: '',
     adminUserViewId: "",
     userInfo: {},
-    BaseURL: "https://wechat.zhinengjianshe.com/wechatService/",
-    tokenUrl: "https://wechat.zhinengjianshe.com/wechatService/weChat/toProject?token="
+    BaseURL: "https://wechat-dev.zhinengjianshe.com/wechatService/",
+    tokenUrl: "https://wechat-dev.zhinengjianshe.com/wechatService/weChat/toProject?token="
   }
 })
