@@ -35,36 +35,36 @@ App({
       });
     }
   },
-// 定时获取token
-timing(){
-  let that = this;
-   timer = setInterval(function(){
-    that.getToken();
-  },600000);
-},
-getToken(){
-  let data = { token: this.globalData.token};
-  var that = this;
-  wx.request({
-    method: "GET",
-    url: that.globalData.BaseURL + 'api/v1/token/refresh',
-    data: data,
-    header: {
-      "Content-Type": "application/x-www-form-urlencoded" 
+  // 定时获取token
+  timing() {
+    let that = this;
+    timer = setInterval(function () {
+      that.getToken();
+    }, 600000);
+  },
+  getToken() {
+    let data = { token: this.globalData.token };
+    var that = this;
+    wx.request({
+      method: "GET",
+      url: that.globalData.BaseURL + 'api/v1/token/refresh',
+      data: data,
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
       },
-    success: function (res) {
-      that.globalData.token = res.data.data.accessToken
-    }
-  });
-},
+      success: function (res) {
+        that.globalData.token = res.data.data.accessToken
+      }
+    });
+  },
   globalData: {
-    isguidance:true,
-    subscribe:false,
-    version:'0.0.10',
-    token:'',
-    systemCode:'',
+    isguidance: true,
+    subscribe: false,
+    version: '0.0.10',
+    token: '',
+    systemCode: '',
     openid: '',
-    downUrl:'https://wechatapplet.zhinengjianshe.com/',
+    downUrl: 'https://wechatapplet.zhinengjianshe.com/',
     iv: '',
     userName: '',
     userId: '',
@@ -73,7 +73,7 @@ getToken(){
     sessionKey: '',
     adminUserViewId: "",
     userInfo: {},
-    BaseURL: "https://wechat-dev.zhinengjianshe.com/wechatService/",
-    tokenUrl: "https://wechat-dev.zhinengjianshe.com/wechatService/weChat/toProject?token="
+    BaseURL: "https://wechat.zhinengjianshe.com/wechatService/",
+    tokenUrl: "https://wechat.zhinengjianshe.com/wechatService/weChat/toProject?token="
   }
 })
