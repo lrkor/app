@@ -1,19 +1,24 @@
 <import src="../../wxParse/wxParse.wxml" />
-
 <view class='detail-page'>
   <view class='detail-title'>{{title}}</view>
-  <view class='title-brief'>
-    <text class='pull-left'>{{typeName}}</text> 
-    <text class='pull-right'>{{date}}</text>  
+  <view class='title-brief {{border?"border":""}}'>
+    <text class='pull-left'>{{typeName}}</text>
+    <text class='pull-right'>{{date}}</text>
   </view>
   <view class='detail-content'>
-      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
   <block wx:for="{{fileList}}" wx:key="id">
- <view >
-    附件：{{item.fileName}}<text data-url="https://wechatapplet.zhinengjianshe.com/{{item.filePath}}" data-type="{{item.ext}}"  catchtap='downloadFile'>下载</text><text data-url="https://wechatapplet.zhinengjianshe.com/{{item.filePath}}" data-type="{{item.ext}}"  catchtap='openFile'>预览</text>
-  </view>
-</block>
+    <view>
+      附件：{{item.fileName}}
+      <text data-url="https://wechatapplet.zhinengjianshe.com/{{item.filePath}}" data-type="{{item.ext}}" catchtap='downloadFile'>
+        下载
+      </text>
+      <text data-url="https://wechatapplet.zhinengjianshe.com/{{item.filePath}}" data-type="{{item.ext}}" catchtap='openFile'>
+        预览
+      </text>
+    </view>
+  </block>
   <!-- <view data-url="https://wechatapplet.zhinengjianshe.com/{{url}}" data-type="{{ext}}" catchtap='downloadFile'>
     附件下载
   </view> -->

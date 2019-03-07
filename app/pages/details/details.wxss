@@ -12,7 +12,6 @@
   margin-top: 20rpx;
   height: 48rpx;
   line-height: 48rpx;
-  border-bottom: 1px solid #e8e8e8;
   font-size: 24rpx;
   color: #999;
 }
@@ -30,4 +29,7 @@
 .detail-content image{
   width: 100%;
   height: auto;
+}
+.border{
+  border-bottom: 1px solid #e8e8e8;
 }

@@ -13,10 +13,14 @@ Page({
     typeName: '',
     date: '',
     content: '',
-    visitTimes: ''
+    visitTimes: '',
+    border:false
   },
   //事件处理函数
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.setNavigationBarTitle({
       title: '详情'
     })
@@ -24,6 +28,7 @@ Page({
     var that = this;
     this.getDetails(id)
       .then(res => {
+        wx.hideLoading();
         let article = res.data.data.content;
         let typeName = res.data.data.categoryName;
         WxParse.wxParse('article', 'html', article, that, 5);
@@ -31,7 +36,8 @@ Page({
           title: res.data.data.title,
           fileList: res.data.data.fileList,
           date: util.formatTime(new Date(res.data.data.createTime), 'yyyy-mm-dd'),
-          typeName: typeName
+          typeName: typeName,
+          border:true
         });
         return { id: res.data.data.id, visitTimes: res.data.data.visitTimes + 1 }
       }).then(res => {
