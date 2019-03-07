@@ -6,10 +6,28 @@ Page({
     latitude: '',
     scale: '10',
     markers: [],
-    projectList: []
+    projectList: [],
+    listHeight:'',
   },
   onLoad: function (options) {
     let that = this;
+    let windowHeight = 0;
+    wx.getSystemInfo({
+      success: function(res) {
+        windowHeight = res.windowHeight
+      },
+    })
+
+    // 创建节点选择器
+    let query = wx.createSelectorQuery();
+
+    query.select('.project-map').boundingClientRect(function (rect) {
+      let listHeight = windowHeight - rect.height;
+      that.setData({
+        listHeight: listHeight + 'px'
+      })
+    }).exec();
+
     this.getSys().then(res => {
       if (res.data.rows) {
         if (res.data.rows.length > 0) {
@@ -28,7 +46,7 @@ Page({
             markers[i] = markersData;
 
             let projectData = {
-              userName:rows[i].userName,
+              userName: rows[i].userName,
               serviceUrl: rows[i].serviceUrl,
               id: i,
               aliasName: rows[i].aliasName,

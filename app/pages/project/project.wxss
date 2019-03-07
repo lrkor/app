@@ -1,4 +1,7 @@
 /**project.wxss**/
+.project-list{
+  overflow-y:scroll; 
+}
 .project-item{
   display: flex;
   border-bottom: 1px solid #f1f1f1;
@@ -40,4 +43,7 @@
   color: #3497fc;
   border: 1rpx solid #3497fc;
   border-radius: 5px;
+}
+.toProject{
+  background-color: #f2f2f2;
 }
