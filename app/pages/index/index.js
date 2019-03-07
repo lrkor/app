@@ -152,50 +152,50 @@ Page({
     });
   },
 
-  onShow: function () {
-    var that = this;
-    //监测蓝牙状态的改变
-    wx.onBluetoothAdapterStateChange(function (res) {
-      console.log(res);
-      if (res.available) {//如果用户打开蓝牙，开始搜索IBeacon
-        searchBeacon();
-      }
-    })
-    //搜索beacons
-    searchBeacon();
-    //搜索函数
-    function searchBeacon() {
-      //检测蓝牙状态
-      wx.openBluetoothAdapter({
-        success: function (res) {//蓝牙状态：打开
-          wx.startBeaconDiscovery({//开始搜索附近的iBeacon设备
-            uuids: ['E2C56DB5-DFFB-48D2-B060-D0F5A7189012'],//参数uuid
-            success: function (res) {
-              wx.onBeaconUpdate(function (res) {//监听 iBeacon 设备的更新事件  
-                //封装请求数据 
-                console.log(res)
-              });
-            },
-            fail: function (res) {
-              //先关闭搜索再重新开启搜索,这一步操作是防止重复wx.startBeaconDiscovery导致失败
-              stopSearchBeacom();
-            }
-          })
-        },
-        fail: function (res) {//蓝牙状态：关闭
-          wx.showToast({ title: "请打开蓝牙", icon: "none", duration: 2000 })
-        }
-      })
-    }
-    //关闭成功后开启搜索
-    function stopSearchBeacom() {
-      wx.stopBeaconDiscovery({
-        success: function () {
-          searchBeacon();
-        }
-      })
-    }
-  },
+  // onShow: function () {
+  //   var that = this;
+  //   //监测蓝牙状态的改变
+  //   wx.onBluetoothAdapterStateChange(function (res) {
+  //     console.log(res);
+  //     if (res.available) {//如果用户打开蓝牙，开始搜索IBeacon
+  //       searchBeacon();
+  //     }
+  //   })
+  //   //搜索beacons
+  //   searchBeacon();
+  //   //搜索函数
+  //   function searchBeacon() {
+  //     //检测蓝牙状态
+  //     wx.openBluetoothAdapter({
+  //       success: function (res) {//蓝牙状态：打开
+  //         wx.startBeaconDiscovery({//开始搜索附近的iBeacon设备
+  //           uuids: ['E2C56DB5-DFFB-48D2-B060-D0F5A7189012'],//参数uuid
+  //           success: function (res) {
+  //             wx.onBeaconUpdate(function (res) {//监听 iBeacon 设备的更新事件  
+  //               //封装请求数据 
+  //               console.log(res)
+  //             });
+  //           },
+  //           fail: function (res) {
+  //             //先关闭搜索再重新开启搜索,这一步操作是防止重复wx.startBeaconDiscovery导致失败
+  //             stopSearchBeacom();
+  //           }
+  //         })
+  //       },
+  //       fail: function (res) {//蓝牙状态：关闭
+  //         wx.showToast({ title: "请打开蓝牙", icon: "none", duration: 2000 })
+  //       }
+  //     })
+  //   }
+  //   //关闭成功后开启搜索
+  //   function stopSearchBeacom() {
+  //     wx.stopBeaconDiscovery({
+  //       success: function () {
+  //         searchBeacon();
+  //       }
+  //     })
+  //   }
+  // },
 
   onLoad: function () {
     this.setData({

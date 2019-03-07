@@ -24,9 +24,18 @@
 .personal_information {
   padding: 50rpx 0;
 }
-
+.information{
+  display: flex;
+  flex-direction: column;
+  height: 158rpx;
+}
+.information>view{
+  display: flex;
+  line-height: 1;
+}
 .head_portrait {
   padding-right: 40rpx;
+  height: 158rpx;
 }
 
 .name {
@@ -36,7 +45,7 @@
 }
 
 .engineeringName {
-  margin: 17rpx 0;
+  margin: 26rpx 0;
 }
 
 .engineeringName, .orgName {
