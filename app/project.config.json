@@ -7,10 +7,11 @@
 		"minified": true,
 		"newFeature": true,
 		"autoAudits": false,
-		"uglifyFileName": false
+		"uglifyFileName": true,
+		"nodeModules": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.5.1",
+	"libVersion": "2.6.1",
 	"appid": "wx55f0a1078776fa82",
 	"projectname": "app",
 	"isGameTourist": false,

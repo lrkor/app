@@ -60,7 +60,7 @@ App({
   globalData: {
     isguidance: true,
     subscribe: false,
-    version: '0.0.10',
+    version: '0.0.11',
     token: '',
     systemCode: '',
     openid: '',

@@ -62,7 +62,6 @@
             </block>
         </view>
     </view>
-
     <!-- 遮罩层 -->
     <view class="shadeOut hide {{showView?'':'show'}}">  
        <!--遮罩层  -->
