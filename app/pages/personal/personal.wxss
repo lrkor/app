@@ -45,7 +45,8 @@
 }
 
 .engineeringName {
-  margin: 26rpx 0;
+  margin-top: 38rpx;
+  margin-bottom: 15rpx;
 }
 
 .engineeringName, .orgName {

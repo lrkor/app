@@ -70,7 +70,7 @@
            <view class="img1"><image src="../../images/index/img1.png" style="width:66rpx;height: 104rpx"/></view>
            <view class="text1">
             一、点击
-            <image src="../../images/index/img2.png" style="width:65rpx;height: 31rpx;margin-top:4rpx;margin-left:16rpx"/>
+            <image src="../../images/index/img2.png" style="width:65rpx;height: 31rpx;margin-top:12rpx;margin-left:16rpx"/>
             『添加到我的小程序』
             </view>
            <view class="text2">二、下拉微信首页进入『工程云平台』</view>

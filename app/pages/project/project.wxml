@@ -23,7 +23,7 @@
                     </view>
                 </view>
                 <view class="item-right">
-                    <view class="look" bindtap="toProject" hover-class="toProject" data-serviceUrl="{{item.serviceUrl}}" data-userName="{{item.userName}}">查看</view>
+                    <view class="look" catchtap="toProject" hover-class="toProject" data-serviceUrl="{{item.serviceUrl}}" data-userName="{{item.userName}}">查看</view>
                 </view>
             </view>
         </block>

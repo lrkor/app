@@ -192,7 +192,7 @@
   width:100%;   
   height:127%;   
   top:0;   
-  background:rgba(0,0,0,0.5);   
+  background:rgba(0,0,0,0.75);   
   overflow: hidden;   
   /*要显示在wrap的上面 */   
   z-index: 1;   
@@ -200,7 +200,7 @@
   } 
   .text1 , .text2{
     color: #fff;
-    font-size: 30rpx;
+    font-size: 18px;
   }
   .text1{
     padding-left: 15%;
@@ -226,10 +226,11 @@
     color: #fff;
     border: 1px solid #fff;
     width: 280rpx;
-    height: 100rpx;
-    line-height: 100rpx;
+    height: 80rpx;
+    line-height: 80rpx;
     text-align: center;
     margin: 0 auto;
+    margin-top: 422rpx;
     font-size: 40rpx;
   }
 
