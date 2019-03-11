@@ -473,6 +473,22 @@ Page({
         console.log(res);
       }
     }
+  },
+
+  onShareAppMessage(options) {
+    let that = this;
+    let url = '/pages/index/index';
+    console.log(url);
+    return {
+      title: '检查详情',
+      path: url,
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          url: url
+        });
+      }
+    }
   }
 
   // 判断是否获取用户地理位置

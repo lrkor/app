@@ -7,26 +7,24 @@ Page({
     wx.setNavigationBarTitle({
       title: '加载中...'
     })
-    var url = options.url;
-    var that = this;
-    wx.getStorage({
-      key: 'userInfo',
-      success(res) {
-        var systemName = res.data.systemName
-        var systemCode = res.data.systemCode
-        that.setData({
-          // url: url + '?token=' + app.globalData.token
-          url: url 
-        });
-      }
-    })
+    let url = options.url;
+    console.log(url);
+    this.setData({
+      url: url
+    });
   },
   onShareAppMessage(options) {
+    let that = this;
+    let url = '/pages/check/check?url=' + options.webViewUrl;
+    console.log(url);
     return {
       title: '检查详情',
-      path: '/pages/webView/web_view?url='+options.webViewUrl,
-      success: function(res) {
+      path: url,
+      success: function (res) {
         console.log(res);
+        that.setData({
+          url: url
+        });
       }
     }
   }
