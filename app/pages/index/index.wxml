@@ -54,9 +54,9 @@
         <view class="application_title">我的应用</view>
         <view class="application_list clearfix">
             <block wx:for="{{applicationList}}" wx:key="">
-                <view class="application_item detail-view" hover="true" data-status="{{item.status}}" data-url="{{item.url}}"
+                <view class="application_item detail-view" hover="true" data-status="{{item.status}}" data-url="{{item.url}}" data-text="{{item.text}}"
                     hover-class="detail-hover" bindtap='goToWebView'>
-                    <image src="{{item.imgUrl}}" style="width:90rpx;height: 90rpx;" data-status="{{item.status}}" data-url="{{item.url}}"/>
+                    <image src="{{item.imgUrl}}" style="width:90rpx;height: 90rpx;"/>
                     <view data-status="{{item.status}}" data-url="{{item.url}}">{{item.text}}</view>
                 </view>
             </block>

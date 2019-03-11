@@ -10,7 +10,8 @@
     "pages/accountDeregulation/accountDeregulation",
     "pages/webView/web_view",
     "pages/pushMessage/pushMessage",
-    "pages/toProject/toproject"
+    "pages/toProject/toproject",
+    "pages/check/check"
   ],
   "window": {
     "backgroundTextStyle": "light",

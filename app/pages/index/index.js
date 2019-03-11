@@ -119,10 +119,10 @@ Page({
       status: 2
     },
     {
-      url: 'https://mp.weixin.qq.com/',
+      url:'http://192.168.1.40:8080/',
       imgUrl: '../../images/index/application/rcxc.png',
       text: '日常巡查',
-      status: 2
+      status: 1
     },
     {
       url: 'https://mp.weixin.qq.com/',
@@ -424,12 +424,19 @@ Page({
 
   // 页面跳转事件
   goToWebView(e) {
-    var status = e.target.dataset.status;
-    var url = e.target.dataset.url + '?openId=' + app.globalData.openId + '&userId=1&systemCode=' + this.data.systemCode;
+    let status = e.target.dataset.status;
+    let text = e.target.dataset.text;
+    let url = e.target.dataset.url + '?openId=' + app.globalData.openId + '&userId=1&systemCode=' + this.data.systemCode;
     if (status == 1) {
-      wx.navigateTo({
-        url: '../webView/web_view?url=' + url,
-      })
+      if(text=='日常巡查'){
+        wx.navigateTo({
+          url: '../check/check?url=' + url,
+        })
+      }else{
+        wx.navigateTo({
+          url: '../webView/web_view?url=' + url,
+        })
+      }
     } else if (status == 2) {
       wx.showToast({
         title: '正在建设中',
@@ -457,6 +464,16 @@ Page({
       showView: true
     })
   },
+
+  onShareAppMessage(options) {
+    return {
+      title: '转发',
+      path: '/pages/index/index',
+      success: function(res) {
+        console.log(res);
+      }
+    }
+  }
 
   // 判断是否获取用户地理位置
   // isGetLocation(){
