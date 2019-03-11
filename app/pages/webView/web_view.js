@@ -2,23 +2,22 @@ const app = getApp()
 
 Page({
   data: {
-    url:''
+    url: ''
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
-      title: '加载中...' 
+      title: '加载中...'
     })
-    var url = options.url;
-    var that = this;
+    let url = options.url;
+    console.log(options);;
+    let that = this;
     wx.getStorage({
       key: 'userInfo',
       success(res) {
-        var systemName = res.data.systemName
-        var systemCode = res.data.systemCode
         that.setData({
           url: url + '?token=' + app.globalData.token
         });
       }
     })
-  }
+  },
 })

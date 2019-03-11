@@ -6,7 +6,7 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"nodeModules": false,
+		"nodeModules": true,
 		"autoAudits": false,
 		"uglifyFileName": false
 	},
@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -55,6 +55,12 @@
 					"pathName": "pages/index/index",
 					"query": "",
 					"scene": 1022
+				},
+				{
+					"id": -1,
+					"name": "分享打开",
+					"pathName": "pages/index/index",
+					"scene": 1008
 				}
 			]
 		}
