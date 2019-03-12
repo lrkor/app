@@ -1,7 +1,7 @@
 <view class="check_list">
     <view class="search">
         <van-search value="{{ value }}" placeholder="按编号搜索" use-action-slot bind:search="onSearch">
-            <view class="searchBtn" slot="action" bind:tap="onSearch">
+            <view class="searchBtn" slot="action" bind:tap="filtrate">
                 <image src="../../../images/patrol/check/1.png" style="width:24rpx;height:26rpx;" />
                 筛选
             </view>
@@ -31,4 +31,6 @@
         </view>
         </block>
     </view>
+
+    <view class="addCheck">添加检查</view>
 </view>

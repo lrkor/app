@@ -29,7 +29,7 @@ Page({
   },
 
   checkList(e){
-    console.log(e.currentTarget.dataset.id);
+    let id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '../checkList/checkList?id=' + id,
     })

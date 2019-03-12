@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/patrol/signature/signature",
     "pages/patrol/index/index",
     "pages/index/index",
     "pages/project/project",
@@ -15,7 +14,8 @@
     "pages/toProject/toproject",
     "pages/patrol/checkList/checkList",
     "pages/patrol/chooseUnit/chooseUnit",
-    "pages/patrol/examinationOrRectification/examinationOrRectification"
+    "pages/patrol/examinationOrRectification/examinationOrRectification",
+    "pages/patrol/filtrate/filtrate"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,7 +26,7 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/patrol/signature/signature",
+        "pagePath": "pages/patrol/index/index",
         "text": "首页",
         "iconPath": "images/tabBar/index1.png",
         "selectedIconPath": "images/tabBar/index2.png"

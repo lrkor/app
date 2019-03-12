@@ -1,0 +1,35 @@
+<view class="filtrate">
+    <van-cell title="选择时间" />
+    <van-cell title="{{startTime}}" bind:click="startTime" is-link />
+    <van-cell title="{{endTime}}" bind:click="endTime" is-link />
+    <view class="results">
+        <view class="results_title">检查结果</view>
+        <view class="results_mene">
+            <view class="results_item {{results==0?'checked':''}}" data-results="0" bindtap="checkedResults">
+                合格
+            </view>
+            <view class="results_item {{results==1?'checked':''}}" data-results="1" bindtap="checkedResults">
+                口头警告
+            </view>
+            <view class="results_item {{results==2?'checked':''}}" data-results="2" bindtap="checkedResults">
+                书面整改
+            </view>
+        </view>
+    </view>
+    <view class="state">
+        <view class="state_title">状态</view>
+        <view class="state_mene">
+            <view class="state_item {{state==0?'checked':''}}" data-state="0" bindtap="checkedState">
+                未发整改
+            </view>
+            <view class="state_item {{state==1?'checked':''}}" data-state="1" bindtap="checkedState">
+                已发整改
+            </view>
+        </view>
+    </view>
+    <view class="reset"  bindtap="reset">重置</view>
+    <view class="determine"  bindtap="determine">确定</view>
+</view>
+<van-popup show="{{ show }}" position="bottom" overlay="{{ true }}" bind:close="onClose" close-on-click-overlay>
+    <van-datetime-picker type="date" value="{{ currentDate }}" bind:confirm="confirm" />
+</van-popup>

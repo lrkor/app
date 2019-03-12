@@ -25,6 +25,7 @@
 }
 .list{
     padding: 0 30rpx;
+    margin-bottom: 110rpx;
 }
 .check_item{
     background-color: #fff;
@@ -125,4 +126,19 @@
 }
 .rectification{
     color: #FF0000;
+}
+
+.addCheck{
+    position:fixed;
+    bottom: 20rpx;
+    left: 50%;
+    margin-left: -345rpx;
+    width: 690rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    background-color: #2E85D6;
+    color: #fff;
+    font-size: 36rpx;
+    border-radius:8px;
 }

@@ -74,15 +74,30 @@ Page({
     let id = options.id;
     console.log(id);
   },
+
+  onShow(){
+    console.log(app.globalData.checkFiltrate);
+  },
+
+  onSearch(){
+    console.log(111);
+  },
+
+  filtrate(){
+    wx.navigateTo({
+      url: '../filtrate/filtrate',
+    })
+  },
+
   onPullDownRefresh(){
-    wx.showNavigationBarLoading();
-    wx.stopPullDownRefresh();
+    // wx.showNavigationBarLoading();
+    // wx.stopPullDownRefresh();
   },
   
   onReachBottom(){
-    wx.showLoading({
-      title: '玩命加载中',
-    })
+    // wx.showLoading({
+    //   title: '玩命加载中',
+    // })
 
      // 隐藏加载框
     //  wx.hideLoading();
