@@ -430,7 +430,7 @@ Page({
     if (status == 1) {
       if(text=='日常巡查'){
         wx.navigateTo({
-          url: '../check/check?url=' + url,
+          url: '../patrol/index/index',
         })
       }else{
         wx.navigateTo({
