@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/patrol/index/index",
     "pages/index/index",
     "pages/project/project",
     "pages/engineering/engineering",
@@ -11,7 +12,11 @@
     "pages/webView/web_view",
     "pages/pushMessage/pushMessage",
     "pages/toProject/toproject",
-    "pages/check/check"
+    "pages/patrol/checkList/checkList",
+    "pages/patrol/chooseUnit/chooseUnit",
+    "pages/patrol/examinationOrRectification/examinationOrRectification",
+    "pages/patrol/filtrate/filtrate",
+    "pages/patrol/addCheck/addCheck"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -22,7 +27,7 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/patrol/index/index",
         "text": "首页",
         "iconPath": "images/tabBar/index1.png",
         "selectedIconPath": "images/tabBar/index2.png"

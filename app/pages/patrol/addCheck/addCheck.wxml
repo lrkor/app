@@ -1,0 +1,40 @@
+<view class="add_check">
+    <view class="addDescribe">
+        <van-cell-group>
+            <van-field value="{{ message }}" type="textarea" placeholder="请输入问题描述" autosize border="{{ false }}" />
+        </van-cell-group>
+        <view class="choose_img">
+            <view class="weui-cells">
+                <view class="weui-cell">
+                    <view class="weui-cell__bd">
+                        <view class="weui-uploader">
+                            <view class="weui-uploader__bd">
+                                <view class="weui-uploader__files">
+                                    <block wx:for="{{imageList}}" wx:key="{{item.index}}" wx:for-item="image">
+                                        <view class="weui-uploader__file">
+                                            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                                        </view>
+                                    </block>
+                                </view>
+                                <view class="weui-uploader__input-box">
+                                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="add_check_down">
+        <van-cell-group>
+            <van-field bindtap="selectProject" value="{{projectVal}}" label="工程部位" disabled border="{{ false }}" />
+        </van-cell-group>
+        <van-cell-group>
+            <van-field placeholder="请输入用户名" type="textarea" value="" label="工程部位" autosize border="{{ false }}" />
+        </van-cell-group>
+    </view>
+    <van-popup show="{{ projectShow }}" position="bottom" overlay bind:close="onClose">
+        <van-picker show-toolbar title="标题" columns="{{ columns }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
+    </van-popup>
+</view>

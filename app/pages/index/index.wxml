@@ -62,9 +62,6 @@
             </block>
         </view>
     </view>
-
-    <van-button type="primary">按钮</van-button>
-
     <!-- 遮罩层 -->
     <view class="shadeOut hide {{showView?'':'show'}}">  
        <!--遮罩层  -->

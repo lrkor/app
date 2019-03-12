@@ -58,6 +58,8 @@ App({
     });
   },
   globalData: {
+    checkFiltrate:{},
+    rectificationFiltrate:{},
     isguidance: true,
     subscribe: false,
     version: '0.0.11',
