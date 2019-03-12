@@ -11,7 +11,7 @@
     "pages/webView/web_view",
     "pages/pushMessage/pushMessage",
     "pages/toProject/toproject",
-    "pages/check/check"
+    "pages/patrol/check/check"
   ],
   "window": {
     "backgroundTextStyle": "light",
