@@ -277,6 +277,7 @@ Page({
     wx.login({
       success: res => {
         // 获取用户openId
+        console.log(res);
         if (res.code) {
           // 发起网络请求  appid  secret
           wx.request({
