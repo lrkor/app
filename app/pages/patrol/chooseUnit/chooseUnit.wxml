@@ -1,5 +1,5 @@
 <view class="choose_unit">
     <block wx:for="{{unitList}}" wx:key="item.index">
-        <van-cell title="{{item.name}}" bindtap="checkList" data-id="{{item.id}}" />
+        <van-cell title="{{item.name}}" is-link bindtap="checkList" data-id="{{item.id}}" />
     </block>
 </view>

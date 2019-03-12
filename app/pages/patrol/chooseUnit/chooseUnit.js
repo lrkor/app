@@ -25,7 +25,9 @@ Page({
     ]
   },
   onLoad: function (options) {
-  
+    wx.setNavigationBarTitle({
+      title: '单位选择'
+    })
   },
 
   checkList(e){

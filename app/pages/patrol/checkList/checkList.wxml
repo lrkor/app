@@ -7,7 +7,7 @@
             </view>
         </van-search>
     </view>
-    <view class="list">
+    <view class="list" wx:if="{{list.length>0}}">
         <block wx:for="{{list}}" wx:key="item.index">
         <view class="check_item">
             <view class="item_top">
@@ -31,6 +31,9 @@
         </view>
         </block>
     </view>
+    <view class="noData" wx:else>
+        <image src="../../../images/patrol/check/2.png" style="width:382rpx;height:398rpx;"/>
+    </view>
 
-    <view class="addCheck">添加检查</view>
+    <view class="addCheck" bindtap="goAddCheck">添加检查</view>
 </view>

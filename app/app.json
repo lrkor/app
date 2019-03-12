@@ -15,7 +15,8 @@
     "pages/patrol/checkList/checkList",
     "pages/patrol/chooseUnit/chooseUnit",
     "pages/patrol/examinationOrRectification/examinationOrRectification",
-    "pages/patrol/filtrate/filtrate"
+    "pages/patrol/filtrate/filtrate",
+    "pages/patrol/addCheck/addCheck"
   ],
   "window": {
     "backgroundTextStyle": "light",

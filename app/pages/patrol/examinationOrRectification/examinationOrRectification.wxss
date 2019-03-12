@@ -18,7 +18,7 @@
 .item_top{
     display: flex;
     flex-direction: column;
-    border-bottom: 1rpx solid #dfdfdf;
+    border-bottom: 1rpx dashed #dfdfdf;
     padding: 0 15rpx;
 }
 .item_top_title{

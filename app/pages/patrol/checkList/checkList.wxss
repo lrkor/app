@@ -1,3 +1,10 @@
+
+.van-cell{
+    width: 540rpx;
+}
+.van-search__action{
+    padding: 0;
+}
 .check_list{
     background-color: #f2f2f2;
     height: 100%;
@@ -17,6 +24,7 @@
 .searchBtn{
     width: 130rpx;
     height: 60rpx;
+    line-height: 60rpx;
     background-color: #fff;
     color: #999;
     text-align: center;
@@ -37,7 +45,7 @@
 .item_top{
     display: flex;
     flex-direction: column;
-    border-bottom: 1rpx solid #dfdfdf;
+    border-bottom: 1rpx dashed #dfdfdf;
     padding: 0 15rpx;
 }
 .item_top_title{
@@ -129,16 +137,18 @@
 }
 
 .addCheck{
+    border-top: 1px solid #f1f1f1;
     position:fixed;
-    bottom: 20rpx;
-    left: 50%;
-    margin-left: -345rpx;
-    width: 690rpx;
+    bottom: 0;
+    width: 100%;
     height: 80rpx;
     line-height: 80rpx;
     text-align: center;
-    background-color: #2E85D6;
-    color: #fff;
+    background-color: #fff;
+    color: #2E85D6;
     font-size: 36rpx;
-    border-radius:8px;
+}
+.noData{
+    text-align: center;
+    margin-top: 160rpx;
 }

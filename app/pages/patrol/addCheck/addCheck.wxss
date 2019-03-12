@@ -1,0 +1,26 @@
+@import "../../../libs/css/weui.wxss";
+.weui-uploader__input-box{
+    border:1px dashed #D9D9D9;
+}
+.weui-uploader__img{
+    width: 160rpx;
+    height: 160rpx;
+}
+.weui-uploader__file{
+    margin-right: 17rpx;
+    margin-bottom:15rpx;
+}
+.weui-cells{
+    position: static;
+}
+.add_check{
+    background-color: #f7f7f7;
+    height: 100%;
+    border:1px solid #F1F1F1;
+}
+.addDescribe{
+    background-color: #fff;
+}
+.add_check_down{
+    margin-top: 20rpx;
+}

@@ -89,6 +89,12 @@ Page({
     })
   },
 
+  goAddCheck(){
+    wx.navigateTo({
+      url: '../addCheck/addCheck',
+    })
+  },
+
   onPullDownRefresh(){
     // wx.showNavigationBarLoading();
     // wx.stopPullDownRefresh();

@@ -36,7 +36,7 @@
         </view>
         <view class="do_item" data-type="1" bindtap="goTodo">
             <view class="do_item_left" style="margin-left: 1rpx;">
-                <image src="../../../images/patrol/index/5.png" style="width:36rpx;height: 36rpx;" />
+                <image src="../../../images/patrol/index/5.png" style="width:32rpx;height: 38rpx;" />
             </view>
             <view class="do_item_right">
                 <view class="title">待我审批</view>

@@ -1,6 +1,7 @@
 .index{
     background-color: #f7f7f7;
     height: 100%;
+    border:1px solid #F1F1F1;
 }
 .menu{
     height: 185rpx;
@@ -16,6 +17,15 @@
     display: flex;
     flex-direction:column;
     flex-grow:1;
+}
+.img{
+    height: 90rpx;
+}
+.text{
+    font-size: 30rpx;
+    color: #333;
+    line-height: 1;
+    margin-top: 14rpx;
 }
 .do_list{
     margin-top: 22rpx;
@@ -39,7 +49,7 @@
     justify-content:space-between;
     margin-left: 20rpx;
     width: 664rpx;
-    border-bottom: 1rpx solid #DCDCDC;
+    border-bottom: 1rpx solid #F1F1F1;
     padding-right: 30rpx;
 }
 .do_item_right_right{

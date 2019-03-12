@@ -1,7 +1,7 @@
 <view class="filtrate">
-    <van-cell title="选择时间" />
-    <van-cell title="{{startTime}}" bind:click="startTime" is-link />
-    <van-cell title="{{endTime}}" bind:click="endTime" is-link />
+    <van-cell title="选择时间" class="selectTime"/>
+    <van-cell title="{{startTime}}" class="time" bind:click="startTime" is-link />
+    <van-cell title="{{endTime}}" class="time" bind:click="endTime" is-link />
     <view class="results">
         <view class="results_title">检查结果</view>
         <view class="results_mene">

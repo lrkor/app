@@ -1,3 +1,6 @@
+.filtrate{
+    border-top: 1rpx solid #f1f1f1;
+}
 .results{
     margin-top: 50rpx;
     padding: 0 30rpx;
@@ -50,4 +53,12 @@
     bottom: 14rpx;
     background-color: #2E85D6;
     color: #FFFFFF;
+}
+.selectTime .van-cell{
+    color: #333!important;
+    font-size: 32rpx!important;
+}
+.time .van-cell{
+    color: #666!important;
+    font-size: 30rpx!important;
 }
