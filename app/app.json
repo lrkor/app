@@ -19,7 +19,8 @@
     "pages/patrol/filtrate/filtrate",
     "pages/patrol/addCheck/addCheck",
     "pages/patrol/checkDetail/checkDetail",
-    "pages/patrol/editCheck/editCheck"
+    "pages/patrol/editCheck/editCheck",
+    "pages/patrol/rectificationList/rectificationList"
   ],
   "window": {
     "backgroundTextStyle": "light",

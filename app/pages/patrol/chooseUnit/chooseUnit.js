@@ -43,7 +43,10 @@ Page({
         url: '../checkList/checkList?id=' + id,
       })
     }else{
-      console.log('整改记录')
+      console.log('整改记录');
+      wx.navigateTo({
+        url: '../rectificationList/rectificationList?id=' + id,
+      })
     }
     
   }
