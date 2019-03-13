@@ -1,1 +1,9 @@
 <!-- index.wxml -->
+<form bindsubmit="submitInfo" report-submit='true' >
+<button form-type="submit">
+<view class="userName">
+<text>数据</text>
+<input name="getNum"value="{{num}}"placeholder="请输入数据"class="username"/>
+</view>
+</button>
+</form>

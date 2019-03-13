@@ -1,7 +1,7 @@
 <view class="add_check">
     <view class="addDescribe">
-        <van-cell-group>
-            <van-field value="{{ message }}" type="textarea" placeholder="请输入问题描述" autosize border="{{ false }}" />
+        <van-cell-group border="{{false}}">
+            <van-field value="{{ message }}" maxlength="1000" type="textarea" placeholder="请输入问题描述" autosize border="{{ false }}" />
         </van-cell-group>
         <view class="choose_img">
             <view class="weui-cells">
@@ -27,14 +27,44 @@
         </view>
     </view>
     <view class="add_check_down">
+        <view class="location" bindtap="isGetLocation">
+            <view class="location_name">地理位置</view>
+            <view class="location_val {{isGetLocation==0?'onGet':'isGet'}}">{{locationVal}}</view>
+        </view>
         <van-cell-group>
-            <van-field bindtap="selectProject" value="{{projectVal}}" label="工程部位" disabled border="{{ false }}" />
+            <van-field bindtap="selectNature" value="{{natureVal}}" label="检查性质" disabled border="{{ false }}" />
         </van-cell-group>
         <van-cell-group>
-            <van-field placeholder="请输入用户名" type="textarea" value="" label="工程部位" autosize border="{{ false }}" />
+            <van-field bindtap="selectItem" value="{{itemVal}}" label="检查项" disabled border="{{ false }}" />
         </van-cell-group>
+        <!-- 工程部位 -->
+        <!-- <van-cell-group>
+            <van-field bindtap="selectProject"  value="{{projectVal}}" label="工程部位" disabled border="{{ false }}" />
+        </van-cell-group>
+        <van-cell-group>
+            <van-field placeholder="请输入用户名" placeholder-style="vertical-align:middle;" type="textarea" value="" label="工程部位" autosize border="{{ false }}" />
+        </van-cell-group> -->
+        <view class="check_result">
+            <view class="check_result_name">检查结果</view>
+            <view class="check_result_menu">
+                <view class="check_result_item {{state==0?'qualified':''}}" data-state="0" bindtap="switchState">
+                    合格
+                </view>
+                <view class="check_result_item {{state==1?'warning':''}}" data-state="1" bindtap="switchState">
+                    口头警告
+                </view>
+                <view class="check_result_item {{state==2?'rectification':''}}" data-state="2" bindtap="switchState">
+                    书面整改
+                </view>
+            </view>
+        </view>
     </view>
-    <van-popup show="{{ projectShow }}" position="bottom" overlay bind:close="onClose">
-        <van-picker show-toolbar title="标题" columns="{{ columns }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
+    <view class="btn">{{state==2?'下发整改':'提交'}}</view>
+    <van-popup show="{{ natureShow }}" position="bottom" overlay bind:close="onClose">
+        <van-picker show-toolbar title="检查形式" columns="{{ natureColumns }}" bind:cancel="onCancel" bind:confirm="natureOnConfirm" />
+    </van-popup>
+
+    <van-popup show="{{ itemShow }}" position="bottom" overlay bind:close="onClose">
+        <van-picker show-toolbar title="检查项" columns="{{ itemColumns }}" bind:cancel="onCancel" bind:confirm="itemOnConfirm" />
     </van-popup>
 </view>
