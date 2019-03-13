@@ -32,7 +32,7 @@
             <view class="location_val {{isGetLocation==0?'onGet':'isGet'}}">{{locationVal}}</view>
         </view>
         <van-cell-group>
-            <van-field bindtap="selectNature" value="{{natureVal}}" label="检查性质" disabled border="{{ false }}" />
+            <van-field bindtap="selectNature" value="{{natureVal}}" label="检查形式" disabled border="{{ false }}" />
         </van-cell-group>
         <van-cell-group>
             <van-field bindtap="selectItem" value="{{itemVal}}" label="检查项" disabled border="{{ false }}" />

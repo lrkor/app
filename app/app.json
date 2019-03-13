@@ -18,7 +18,8 @@
     "pages/patrol/examinationOrRectification/examinationOrRectification",
     "pages/patrol/filtrate/filtrate",
     "pages/patrol/addCheck/addCheck",
-    "pages/patrol/checkDetail/checkDetail"
+    "pages/patrol/checkDetail/checkDetail",
+    "pages/patrol/editCheck/editCheck"
   ],
   "window": {
     "backgroundTextStyle": "light",

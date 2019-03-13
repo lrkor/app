@@ -93,7 +93,7 @@ Page({
     if(state==2){
       console.log('下发整改');
     }else{
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../checkDetail/checkDetail',
       })
     }

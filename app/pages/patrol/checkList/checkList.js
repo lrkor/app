@@ -3,6 +3,7 @@ Page({
   data: {
     list:[
       {
+        id:1,
         number:'XT-NT1_20190001',
         isSend:true,
         check_type:'临边防护',
@@ -14,6 +15,7 @@ Page({
         createTime:'11:04',
       },
       {
+        id:23,
         number:'XT-NT1_20190001',
         isSend:true,
         check_type:'临边防护',
@@ -25,6 +27,7 @@ Page({
         createTime:'11:04',
       },
       {
+        id:535,
         number:'XT-NT1_20190001',
         isSend:false,
         check_type:'临边防护',
@@ -36,6 +39,7 @@ Page({
         createTime:'11:04',
       },
       {
+        id:324,
         number:'XT-NT1_20190001',
         isSend:false,
         check_type:'临边防护',
@@ -47,6 +51,7 @@ Page({
         createTime:'11:04',
       },
       {
+        id:123,
         number:'XT-NT1_20190001',
         isSend:true,
         check_type:'临边防护',
@@ -58,6 +63,7 @@ Page({
         createTime:'11:04',
       },
       {
+        id:44,
         number:'XT-NT1_20190001',
         isSend:true,
         check_type:'临边防护',
@@ -92,6 +98,13 @@ Page({
   goAddCheck(){
     wx.navigateTo({
       url: '../addCheck/addCheck',
+    })
+  },
+
+  goDetail(e){
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../checkDetail/checkDetail?id=' + id,
     })
   },
 

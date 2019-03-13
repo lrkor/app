@@ -1,6 +1,7 @@
 const app = getApp()
 Page({
   data: {
+    type:'',
     unitList:[
       {
         name:'南通一标',
@@ -25,6 +26,10 @@ Page({
     ]
   },
   onLoad: function (options) {
+    let type = options.type;
+    this.setData({
+      type:type
+    });
     wx.setNavigationBarTitle({
       title: '单位选择'
     })
@@ -32,9 +37,15 @@ Page({
 
   checkList(e){
     let id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '../checkList/checkList?id=' + id,
-    })
+    let type = this.data.type;
+    if(type==1){
+      wx.navigateTo({
+        url: '../checkList/checkList?id=' + id,
+      })
+    }else{
+      console.log('整改记录')
+    }
+    
   }
 
 })

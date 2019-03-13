@@ -1,12 +1,12 @@
 <view class="index">
     <view class="menu">
-        <view class="item" bindtap="goUnit">
+        <view class="item" data-type="1" bindtap="goUnit">
             <view class="img">
                 <image src="../../../images/patrol/index/3.png" style="width:90rpx;height: 90rpx;" />
             </view>
             <view class="text">检查</view>
         </view>
-        <view class="item" bindtap="goUnit">
+        <view class="item" data-type="2" bindtap="goUnit">
             <view class="img">
                 <image src="../../../images/patrol/index/2.png" style="width:90rpx;height: 90rpx;" />
             </view>

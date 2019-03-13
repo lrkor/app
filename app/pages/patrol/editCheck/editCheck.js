@@ -4,9 +4,15 @@ const sizeType = [['compressed'], ['original'], ['compressed', 'original']]
 Page({
   data: {
     value: '',
+    message:'萨福克见到过哈会计法噶三等奖回复噶时间的回复噶后视镜的高房价哈师大刚放假哈三等奖哈哈电风扇开关机跨界和顾客按计划',
     isGetLocation: 0,
     locationVal: '',
-    imageList: [],
+    imageList: [
+      '../../../images/patrol/index/2.png',
+      '../../../images/patrol/index/2.png',
+      '../../../images/patrol/index/2.png',
+      '../../../images/patrol/index/2.png',
+    ],
     sourceTypeIndex: 2,
     sourceType: ['拍照', '相册', '拍照或相册'],
     sizeTypeIndex: 2,
@@ -14,13 +20,13 @@ Page({
     countIndex: 8,
     count: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     natureShow: false,
-    natureVal: '请选择检查形式',
+    natureVal: '杭州',
     natureColumns: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
 
     itemShow:false,
-    itemVal: '请选择检查项',
+    itemVal: '宁波',
     itemColumns: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
-    state:'4',
+    state:'0',
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
@@ -39,7 +45,7 @@ Page({
       sizeType: sizeType[this.data.sizeTypeIndex],
       count: 8,
       success(res) {
-        console.log(res)
+        console.log(res.tempFilePaths)
         that.setData({
           imageList: res.tempFilePaths
         })
@@ -93,7 +99,7 @@ Page({
     if(state==2){
       console.log('下发整改');
     }else{
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../checkDetail/checkDetail',
       })
     }
