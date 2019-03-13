@@ -1,0 +1,35 @@
+<view class="check_detail">
+    <view class="check_describe">现场描述：描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容描述内容</view>
+    <view class="check_img">
+        <image src="../../../images/patrol/index/2.png" />
+        <image src="../../../images/patrol/index/2.png" />
+        <image src="../../../images/patrol/index/2.png" />
+        <image src="../../../images/patrol/index/2.png" />
+        <image src="../../../images/patrol/index/2.png" />
+        <image src="../../../images/patrol/index/2.png" />
+        <image src="../../../images/patrol/index/2.png" />
+        <image src="../../../images/patrol/index/2.png" />
+    </view>
+    <view class="check_list">
+        <van-cell-group>
+            <van-cell border="{{false}}" title="检查性质" value="日常巡查" />
+        </van-cell-group>
+        <van-cell-group>
+            <van-cell border="{{false}}" title="检查项" value="日常巡查" />
+        </van-cell-group>
+        <van-cell-group>
+            <van-cell border="{{false}}" title="检查编号" value="日常巡查" />
+        </van-cell-group>
+        <view class="check_res">
+            <view class="check_res_name">检查结果</view>
+            <view class="check_res_val">合格</view>
+        </view>
+        <van-cell-group>
+            <van-cell border="{{false}}" title="创建编号" value="201809002" />
+        </van-cell-group>
+        <van-cell-group>
+            <van-cell border="{{false}}" title="创建人" value="张三   2019-12-23 12:32" />
+        </van-cell-group>
+    </view>
+    <view class="check_btn">按钮</view>
+</view>

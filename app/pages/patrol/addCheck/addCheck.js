@@ -87,6 +87,18 @@ Page({
     });
   },
 
+  // 提交新增
+  addCheck(){
+    let state = this.data.state;
+    if(state==2){
+      console.log('下发整改');
+    }else{
+      wx.navigateTo({
+        url: '../checkDetail/checkDetail',
+      })
+    }
+  },
+
 
   // 判断是否获取用户地理位置
   isGetLocation() {
