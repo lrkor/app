@@ -2,8 +2,8 @@
     <view class="search">
         <van-search value="{{ value }}" placeholder="按编号搜索" use-action-slot bind:search="onSearch">
             <view class="searchBtn" slot="action" bind:tap="filtrate">
-                <image src="../../../images/patrol/check/1.png" style="width:24rpx;height:26rpx;" />
-                筛选
+                <image src="../../../images/patrol/check/1.png" style="width:24rpx;height:26rpx;margin-left: 20rpx;margin-right: 10rpx;" /> 
+                <view >筛选</view>
             </view>
         </van-search>
     </view>
