@@ -91,7 +91,7 @@ Page({
 
   filtrate(){
     wx.navigateTo({
-      url: '../filtrate/filtrate',
+      url: '../filtrate/filtrate?type=1',
     })
   },
 
