@@ -1,45 +1,120 @@
-.check_detail{
+.check_detail .van-cell__value {
+    color: #333;
+}
+.check_detail .van-cell{
+    padding: 13px 30rpx;
+}
+.check_detail {
     background-color: #f7f7f7;
     height: 100%;
-    border:1px solid #F1F1F1;
+    border: 1px solid #F1F1F1;
 }
-.check_describe{
+
+.check_describe {
     padding: 0 30rpx;
     font-size: 28rpx;
     color: #333;
 }
-.check_img{
+
+.check_img {
     padding: 0 30rpx;
     display: flex;
     flex-wrap: wrap;
 }
-.check_img>image{
+
+.check_img>image {
     width: 160rpx;
     height: 160rpx;
     margin-right: 15rpx;
     margin-top: 20rpx;
 }
-.check_img>image:nth-child(4),.check_img>image:nth-child(8){
+
+.check_img>image:nth-child(4), .check_img>image:nth-child(8) {
     margin-right: 0;
 }
-.check_list{
+
+.check_list {
     margin-top: 30rpx;
     border-top: 1px solid #f1f1f1;
 }
-.check_res{
+
+.check_res {
     display: flex;
     flex-direction: row;
-    height: 100rpx;
-    line-height: 100rpx;
+    height: 50px;
+    line-height: 50px;
     background-color: #fff;
     justify-content: space-between;
+    align-items: center;
     padding: 0 30rpx;
+    margin-bottom: 20rpx;
 }
-.check_res_name{
+
+.check_res_name {
     font-size: 30rpx;
     color: #333;
 }
-.check_res_val{
+
+.check_res_val {
     font-size: 26rpx;
     color: #fff;
+    width: 130rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    border-radius:5px;
+    text-align: center;
+}
+
+.check_btn {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    box-shadow: 0px 0px 1px 0px rgba(224, 224, 224, 1);
+    background-color: #fff;
+    height: 92rpx;
+    line-height: 92rpx;
+    font-size: 30rpx;
+    color: #2E85D6;
+}
+
+.state {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    flex: auto;
+    align-items: center;
+}
+
+.btn_item {
+    flex-grow: 1;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+}
+
+.btn_item>button {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    line-height: 40rpx;
+    font-size: 30rpx;
+    border: none;
+    color: #2E85D6;
+    position: static;
+}
+
+.border_right {
+    border-right: 1px solid #f1f1f1;
+}
+
+.qualified{
+    background-color:#13C37F;
+}
+.warning{
+    background-color:#FFCC00;
+}
+.rectification{
+    background-color:#FF0000;
 }
