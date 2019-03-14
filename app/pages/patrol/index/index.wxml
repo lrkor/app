@@ -48,7 +48,7 @@
                 </view>
             </view>
         </view>
-        <view class="do_item">
+        <view class="do_item" data-type="2" bindtap="goTodo">
             <view class="do_item_left">
                 <image src="../../../images/patrol/index/6.png" style="width:36rpx;height: 36rpx;" />
             </view>
@@ -62,12 +62,12 @@
                 </view>
             </view>
         </view>
-        <view class="do_item">
+        <view class="do_item" bindtap="goChooseCheckList">
             <view class="do_item_left">
                 <image src="../../../images/patrol/index/8.png" style="width:36rpx;height: 36rpx;" />
             </view>
             <view class="do_item_right" style="border:none;">
-                <view class="title">待发整改（单位）</view>
+                <view class="title">待下发整改（单位）</view>
                 <view class="do_item_right_right">
                     <view class="num">{{momentum}}</view>
                     <view>

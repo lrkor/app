@@ -24,6 +24,10 @@ Page({
     currentDate: new Date().getTime()
   },
   onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: '下发整改'
+    })
+
     // 获取当前时间
     this.setData({
       time: util.formatTime(new Date(), 'yyyy-mm-dd hh:mm')

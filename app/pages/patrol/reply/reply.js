@@ -15,11 +15,11 @@ Page({
     count: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     natureShow: false,
     natureVal: '',
-    natureColumns: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
+    natureColumns: ['措施', '措施', '措施', '措施', '措施'],
 
     itemShow:false,
     itemVal: '',
-    itemColumns: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
+    itemColumns: ['审核人', '审核人', '审核人', '审核人', '审核人'],
     state:'4',
   },
   onLoad: function (options) {
@@ -56,7 +56,6 @@ Page({
   },
 
   itemOnConfirm(event){
-    console.log(111);
     this.setData({
       itemShow: false,
       itemVal: event.detail.value

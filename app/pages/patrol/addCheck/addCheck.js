@@ -60,7 +60,6 @@ Page({
   },
 
   itemOnConfirm(event){
-    console.log(111);
     this.setData({
       itemShow: false,
       itemVal: event.detail.value
@@ -91,7 +90,9 @@ Page({
   addCheck(){
     let state = this.data.state;
     if(state==2){
-      console.log('下发整改');
+      wx.redirectTo({
+        url: '../issue/issue',
+      })
     }else{
       wx.redirectTo({
         url: '../checkDetail/checkDetail',

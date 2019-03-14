@@ -1,9 +1,9 @@
 const app = getApp()
 Page({
   data: {
-    type:0,
     list:[
       {
+        id:1,
         number:'XT-NT1_20190001',
         isSend:true,
         check_type:'临边防护',
@@ -15,6 +15,7 @@ Page({
         createTime:'11:04',
       },
       {
+        id:23,
         number:'XT-NT1_20190001',
         isSend:true,
         check_type:'临边防护',
@@ -26,6 +27,7 @@ Page({
         createTime:'11:04',
       },
       {
+        id:535,
         number:'XT-NT1_20190001',
         isSend:false,
         check_type:'临边防护',
@@ -37,6 +39,7 @@ Page({
         createTime:'11:04',
       },
       {
+        id:324,
         number:'XT-NT1_20190001',
         isSend:false,
         check_type:'临边防护',
@@ -48,6 +51,7 @@ Page({
         createTime:'11:04',
       },
       {
+        id:123,
         number:'XT-NT1_20190001',
         isSend:true,
         check_type:'临边防护',
@@ -59,6 +63,7 @@ Page({
         createTime:'11:04',
       },
       {
+        id:44,
         number:'XT-NT1_20190001',
         isSend:true,
         check_type:'临边防护',
@@ -72,35 +77,28 @@ Page({
     ]
   },
   onLoad: function (options) {
-    let type = options.type;
-    // type ==0 待我整改  type ==1 待我审批
-    this.setData({
-      type:type
-    });
-    if(type==0){
-      wx.setNavigationBarTitle({
-        title: '待我整改'
-      })
-    }else if(type==1){
-      wx.setNavigationBarTitle({
-        title: '待我审批'
-      })
-    }else{
-      wx.setNavigationBarTitle({
-        title: '单位待办'
-      })
-    }
-   
+    let id = options.id;
+    wx.setNavigationBarTitle({
+      title: '检查记录'
+    })
   },
+
+  goDetail(e){
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../checkDetail/checkDetail?id=' + id,
+    })
+  },
+
   onPullDownRefresh(){
-    wx.showNavigationBarLoading();
-    wx.stopPullDownRefresh();
+    // wx.showNavigationBarLoading();
+    // wx.stopPullDownRefresh();
   },
   
   onReachBottom(){
-    wx.showLoading({
-      title: '玩命加载中',
-    })
+    // wx.showLoading({
+    //   title: '玩命加载中',
+    // })
 
      // 隐藏加载框
     //  wx.hideLoading();

@@ -7,7 +7,9 @@ Page({
     momentum: 1,
   },
   onLoad: function (options) {
-
+    wx.setNavigationBarTitle({
+      title: '安全检查'
+    })
   },
 
   goUnit(e) {
@@ -15,12 +17,17 @@ Page({
     wx.navigateTo({
       url: '../chooseUnit/chooseUnit?type=' + type,
     })
-
   },
   goTodo(e) {
     let type = e.currentTarget.dataset.type;
     wx.navigateTo({
       url: '../examinationOrRectification/examinationOrRectification?type=' + type,
+    })
+  },
+
+  goChooseCheckList(){
+    wx.navigateTo({
+      url: '../chooseCheckList/chooseCheckList',
     })
   }
 

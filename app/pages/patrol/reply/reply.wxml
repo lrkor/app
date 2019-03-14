@@ -36,10 +36,10 @@
 
 
     <van-popup show="{{ natureShow }}" position="bottom" overlay bind:close="onClose">
-        <van-picker show-toolbar columns="{{ natureColumns }}" bind:cancel="onCancel" bind:confirm="natureOnConfirm" />
+        <van-picker show-toolbar title="后期措施" columns="{{ natureColumns }}" bind:cancel="onCancel" bind:confirm="natureOnConfirm" />
     </van-popup>
 
     <van-popup show="{{ itemShow }}" position="bottom" overlay bind:close="onClose">
-        <van-picker show-toolbar columns="{{ itemColumns }}" bind:cancel="onCancel" bind:confirm="itemOnConfirm" />
+        <van-picker show-toolbar title="审核人" columns="{{ itemColumns }}" bind:cancel="onCancel" bind:confirm="itemOnConfirm" />
     </van-popup>
 </view>

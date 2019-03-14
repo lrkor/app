@@ -1,0 +1,29 @@
+<view class="check_list">
+    <view class="list" wx:if="{{list.length>0}}">
+        <block wx:for="{{list}}" wx:key="item.index">
+        <view class="check_item" data-id="{{item.id}}" bind:tap="goDetail">
+            <view class="item_top">
+                <view class="item_top_title">
+                    <view class="number">{{item.number}}</view>
+                    <view class="isSend" wx:if="{{item.results != 0 &&item.isSend}}">已发整改</view>
+                    <view class="isSend unSend" wx:elif="{{item.results != 0 &&!item.isSend}}">未发整改</view>
+                </view>
+                <view class="check_type"><view class="check_type_title">检查项：</view><view class="check_type_val">{{item.check_type}}</view></view>
+                <view class="type"><view class="type_title">类<view class="empty">查</view>型：</view><view class="type_val">{{item.type}}</view></view>
+                <view class="describe"><view class="describe_title">描<view class="empty">查</view>述：</view><view class="describe_val">{{item.describe}}</view></view>
+            </view>
+            <view class="item_down">
+                <view class="results {{item.results==0?'qualified':item.results==1?'warning':'rectification'}}">检查结果：{{item.results==0?'合格':item.results==1?'口头警告':'书面整改'}}</view>
+                <view class="create">
+                    <view class="createPeople">{{item.createPeople}}</view>
+                    <view class="createDate">{{item.createDate}}</view>
+                    <view class="createTime">{{item.createTime}}</view>
+                </view>
+            </view>
+        </view>
+        </block>
+    </view>
+    <view class="noData" wx:else>
+        <image src="../../../images/patrol/check/2.png" style="width:382rpx;height:398rpx;"/>
+    </view>
+</view>
