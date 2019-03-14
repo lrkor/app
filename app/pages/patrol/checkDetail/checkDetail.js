@@ -1,7 +1,7 @@
 const app = getApp()
 Page({
   data: {
-    state:0,
+    state:3,
     result:0
   },
   onLoad: function (options) {
@@ -13,6 +13,13 @@ Page({
   goEdit(){
     wx.navigateTo({
       url: '../editCheck/editCheck'
+    })
+  },
+
+  // 编辑
+  goIssue(){
+    wx.navigateTo({
+      url: '../issue/issue'
     })
   },
 

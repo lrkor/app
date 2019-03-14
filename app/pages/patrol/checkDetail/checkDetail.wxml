@@ -49,7 +49,7 @@
             </view>
         </view>
         <view class="state" wx:else>
-            <view class="btn_item border_right">下发整改</view>
+            <view class="btn_item border_right" bind:tap="goIssue">下发整改</view>
             <view class="btn_item border_right" catchtap="goEdit">编辑</view>
             <view class="btn_item">
                 <button open-type="share">分享</button>
