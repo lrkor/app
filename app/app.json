@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/patrol/approval/approval",
     "pages/index/index",
     "pages/patrol/index/index",
     "pages/from/from",
@@ -24,7 +25,6 @@
     "pages/patrol/issue/issue",
     "pages/patrol/reply/reply",
     "pages/patrol/chooseCheckList/chooseCheckList"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -35,7 +35,7 @@
   "tabBar": {
     "list": [
       {
-        "pagePath":"pages/index/index",
+        "pagePath": "pages/patrol/approval/approval",
         "text": "首页",
         "iconPath": "images/tabBar/index1.png",
         "selectedIconPath": "images/tabBar/index2.png"
