@@ -32,10 +32,10 @@
             <view class="location_val {{isGetLocation==0?'onGet':'isGet'}}">{{locationVal}}</view>
         </view>
         <van-cell-group border="{{false}}">
-            <van-field  bindtap="selectNature" value="{{natureVal}}" label="检查形式"  placeholder="请选择检查形式"  border="{{ false }}" />
+            <van-field bindtap="selectNature" value="{{natureVal}}" label="检查形式" placeholder="请选择检查形式" border="{{ false }}" />
         </van-cell-group>
         <van-cell-group>
-            <van-field border="{{false}}" bindtap="selectItem" value="{{itemVal}}" label="检查项" placeholder="请选择检查项"  border="{{ false }}" />
+            <van-field border="{{false}}" bindtap="selectItem" value="{{itemVal}}" label="检查项" placeholder="请选择检查项" border="{{ false }}" />
         </van-cell-group>
         <!-- 工程部位 -->
         <!-- <van-cell-group>
@@ -60,12 +60,9 @@
         </view>
     </view>
     <view class="btn" bindtap="addCheck">{{state==2?'下发整改':'提交'}}</view>
-
-
     <van-popup show="{{ natureShow }}" position="bottom" overlay bind:close="onClose">
         <van-picker show-toolbar columns="{{ natureColumns }}" bind:cancel="onCancel" bind:confirm="natureOnConfirm" />
     </van-popup>
-
     <van-popup show="{{ itemShow }}" position="bottom" overlay bind:close="onClose">
         <van-picker show-toolbar columns="{{ itemColumns }}" bind:cancel="onCancel" bind:confirm="itemOnConfirm" />
     </van-popup>
