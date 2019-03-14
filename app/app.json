@@ -20,7 +20,8 @@
     "pages/patrol/addCheck/addCheck",
     "pages/patrol/checkDetail/checkDetail",
     "pages/patrol/editCheck/editCheck",
-    "pages/patrol/rectificationList/rectificationList"
+    "pages/patrol/rectificationList/rectificationList",
+    "pages/patrol/issue/issue"
   ],
   "window": {
     "backgroundTextStyle": "light",

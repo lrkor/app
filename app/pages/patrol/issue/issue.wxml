@@ -1,0 +1,80 @@
+<view class="index">
+    <view class="menu">
+        <view class="item" data-type="1" bindtap="goUnit">
+            <view class="img">
+                <image src="../../../images/patrol/index/3.png" style="width:90rpx;height: 90rpx;" />
+            </view>
+            <view class="text">检查</view>
+        </view>
+        <view class="item" data-type="2" bindtap="goUnit">
+            <view class="img">
+                <image src="../../../images/patrol/index/2.png" style="width:90rpx;height: 90rpx;" />
+            </view>
+            <view class="text">整改</view>
+        </view>
+        <view class="item">
+            <view class="img">
+                <image src="../../../images/patrol/index/1.png" style="width:90rpx;height: 90rpx;" />
+            </view>
+            <view class="text">奖惩</view>
+        </view>
+    </view>
+    <view class="do_list">
+        <view class="do_item" data-type="0" bindtap="goTodo">
+            <view class="do_item_left">
+                <image src="../../../images/patrol/index/7.png" style="width:36rpx;height: 36rpx;" />
+            </view>
+            <view class="do_item_right">
+                <view class="title">待我整改</view>
+                <view class="do_item_right_right">
+                    <view class="num">{{myRectification}}</view>
+                    <view>
+                        <image src="../../../images/patrol/index/4.png" style="width:14rpx;height: 25rpx;" />
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="do_item" data-type="1" bindtap="goTodo">
+            <view class="do_item_left" style="margin-left: 1rpx;">
+                <image src="../../../images/patrol/index/5.png" style="width:32rpx;height: 38rpx;" />
+            </view>
+            <view class="do_item_right">
+                <view class="title">待我审批</view>
+                <view class="do_item_right_right">
+                    <view class="num">{{myExamination}}</view>
+                    <view>
+                        <image src="../../../images/patrol/index/4.png" style="width:14rpx;height: 25rpx;" />
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="do_item">
+            <view class="do_item_left">
+                <image src="../../../images/patrol/index/6.png" style="width:36rpx;height: 36rpx;" />
+            </view>
+            <view class="do_item_right">
+                <view class="title">单位待办</view>
+                <view class="do_item_right_right">
+                    <view class="num">{{unitTodo}}</view>
+                    <view>
+                        <image src="../../../images/patrol/index/4.png" style="width:14rpx;height: 25rpx;" />
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="do_item">
+            <view class="do_item_left">
+                <image src="../../../images/patrol/index/8.png" style="width:36rpx;height: 36rpx;" />
+            </view>
+            <view class="do_item_right" style="border:none;">
+                <view class="title">待发整改（单位）</view>
+                <view class="do_item_right_right">
+                    <view class="num">{{momentum}}</view>
+                    <view>
+                        <image src="../../../images/patrol/index/4.png" style="width:14rpx;height: 25rpx;" />
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
