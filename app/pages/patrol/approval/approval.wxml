@@ -43,11 +43,12 @@
                     </radio-group>
                 </view>
             </view>
+            <view class="border-scale"></view>
         </view>
         <van-cell-group border="{{false}}">
-            <van-field bindtap="selectNature" value="{{natureVal}}" label="问题归属" placeholder="请输入后期措施" />
-            <van-field bindtap="selectItem" value="{{itemVal}}" label="审批流程" placeholder="请选择审核人" />
-            <van-field bindtap="selectItem" value="{{itemVal}}" label="审批人" placeholder="请选择审批人" />
+            <van-field disabled bindtap="selectNature" value="{{natureVal}}" label="问题归属" placeholder="请输入后期措施" />
+            <van-field disabled bindtap="selectItem" value="{{itemVal}}" label="审批流程" placeholder="请选择审核人" />
+            <van-field disabled bindtap="selectItem" value="{{itemVal}}" label="审批人" placeholder="请选择审批人" />
         </van-cell-group>
     </view>
     <view class="btn" bindtap="submit">提交</view>

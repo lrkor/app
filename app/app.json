@@ -23,8 +23,7 @@
     "pages/patrol/editCheck/editCheck",
     "pages/patrol/rectificationList/rectificationList",
     "pages/patrol/issue/issue",
-    "pages/patrol/reply/reply",
-    "pages/patrol/chooseCheckList/chooseCheckList"
+    "pages/patrol/reply/reply"
   ],
   "window": {
     "backgroundTextStyle": "light",

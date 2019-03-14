@@ -1,5 +1,5 @@
 .choose_unit{
     background-color: #f2f2f2;
     height: 100%;
-    border:1px solid #F1F1F1;
+    border-top:1px solid #F1F1F1;
 }

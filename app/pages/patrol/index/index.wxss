@@ -1,7 +1,7 @@
 .index{
     background-color: #f7f7f7;
     height: 100%;
-    border:1px solid #F1F1F1;
+    border-top:1px solid #F1F1F1;
 }
 .menu{
     height: 185rpx;

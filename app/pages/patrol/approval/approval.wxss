@@ -17,15 +17,19 @@
     position: static;
 }
 
-.add_check .van-cell{
+.add_check .van-cell {
     font-size: 30rpx;
     padding: 13px 15px;
+}
+
+.add_check .van-field__input--disabled {
+    color: #333;
 }
 
 .add_check {
     background-color: #f7f7f7;
     height: 100%;
-    border: 1px solid #F1F1F1;
+    border-top: 1px solid #F1F1F1;
 }
 
 .addDescribe {
@@ -123,21 +127,41 @@
     border-radius: 8px;
     font-size: 36rpx
 }
-.approval_res_fa{
+
+.approval_res_fa {
     background-color: #fff;
-    padding-left:15px;
+    padding-left: 15px;
 }
-.approval_res{
+
+.approval_res {
     display: flex;
     font-size: 30rpx;
     color: #333;
     height: 50px;
     line-height: 50px;
-    border-bottom: 1px solid #f1f1f1;
 }
-.radio{
+
+.radio {
     margin-right: 20rpx;
 }
-.approval_res_name{
+
+.approval_res_name {
     width: 90px;
+}
+
+.border-scale {
+    position: relative;
+}
+
+.border-scale:after {
+    content: "  ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ebedf0;
+    /* 如果不用 background-color, 使用 border-top:1px solid #f00; 效果是一样的*/
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
 }
