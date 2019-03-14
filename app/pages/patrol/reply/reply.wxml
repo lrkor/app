@@ -1,0 +1,45 @@
+<view class="add_check">
+    <view class="addDescribe">
+        <van-cell-group border="{{false}}">
+            <van-field value="{{ message }}" maxlength="1000" type="textarea" placeholder="请输入整改内容..." autosize border="{{ false }}" />
+        </van-cell-group>
+        <view class="choose_img">
+            <view class="weui-cells">
+                <view class="weui-cell">
+                    <view class="weui-cell__bd">
+                        <view class="weui-uploader">
+                            <view class="weui-uploader__bd">
+                                <view class="weui-uploader__files">
+                                    <block wx:for="{{imageList}}" wx:key="{{item.index}}" wx:for-item="image">
+                                        <view class="weui-uploader__file">
+                                            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                                        </view>
+                                    </block>
+                                </view>
+                                <view class="weui-uploader__input-box">
+                                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="add_check_down">
+        <van-cell-group border="{{false}}">
+            <van-field  bindtap="selectNature" value="{{natureVal}}" label="后期措施"  placeholder="请输入后期措施"  border="{{ false }}" />
+            <van-field border="{{false}}" bindtap="selectItem" value="{{itemVal}}" label="审核人" placeholder="请选择审核人"  border="{{ false }}" />
+        </van-cell-group>
+    </view>
+    <view class="btn" bindtap="addCheck">提交</view>
+
+
+    <van-popup show="{{ natureShow }}" position="bottom" overlay bind:close="onClose">
+        <van-picker show-toolbar columns="{{ natureColumns }}" bind:cancel="onCancel" bind:confirm="natureOnConfirm" />
+    </van-popup>
+
+    <van-popup show="{{ itemShow }}" position="bottom" overlay bind:close="onClose">
+        <van-picker show-toolbar columns="{{ itemColumns }}" bind:cancel="onCancel" bind:confirm="itemOnConfirm" />
+    </van-popup>
+</view>

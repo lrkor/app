@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/patrol/reply/reply",
     "pages/index/index",
     "pages/patrol/index/index",
     "pages/from/from",
@@ -22,6 +23,7 @@
     "pages/patrol/editCheck/editCheck",
     "pages/patrol/rectificationList/rectificationList",
     "pages/patrol/issue/issue"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -32,7 +34,7 @@
   "tabBar": {
     "list": [
       {
-        "pagePath":"pages/index/index",
+        "pagePath":"pages/patrol/reply/reply",
         "text": "首页",
         "iconPath": "images/tabBar/index1.png",
         "selectedIconPath": "images/tabBar/index2.png"
