@@ -6,7 +6,7 @@ const app = getApp()
 
 Page({
   data: {
-    systemName: '111',
+    systemName: '',
     showView: true,
     systemCode: '',
     weatherImg: '', //天气图片

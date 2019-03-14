@@ -14,11 +14,11 @@ Page({
     countIndex: 8,
     count: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     natureShow: false,
-    natureVal: '请选择检查形式',
+    natureVal: '',
     natureColumns: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
 
     itemShow:false,
-    itemVal: '请选择检查项',
+    itemVal: '',
     itemColumns: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
     state:'4',
   },

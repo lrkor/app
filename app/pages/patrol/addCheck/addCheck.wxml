@@ -31,11 +31,11 @@
             <view class="location_name">地理位置</view>
             <view class="location_val {{isGetLocation==0?'onGet':'isGet'}}">{{locationVal}}</view>
         </view>
-        <van-cell-group>
-            <van-field bindtap="selectNature" value="{{natureVal}}" label="检查形式" disabled border="{{ false }}" />
+        <van-cell-group border="{{false}}">
+            <van-field  bindtap="selectNature" value="{{natureVal}}" label="检查形式"  placeholder="请选择检查形式"  border="{{ false }}" />
         </van-cell-group>
         <van-cell-group>
-            <van-field bindtap="selectItem" value="{{itemVal}}" label="检查项" disabled border="{{ false }}" />
+            <van-field border="{{false}}" bindtap="selectItem" value="{{itemVal}}" label="检查项" placeholder="请选择检查项"  border="{{ false }}" />
         </van-cell-group>
         <!-- 工程部位 -->
         <!-- <van-cell-group>

@@ -7,10 +7,10 @@
         <image src="../../../images/patrol/index/2.png" />
     </view>
     <view class="check_list">
-        <van-cell-group border="{{false}}">
+        <van-cell-group>
             <van-cell border="{{false}}" title="检查形式" value="日常巡查" />
         </van-cell-group>
-        <van-cell-group>
+        <van-cell-group border="{{false}}">
             <van-cell border="{{false}}" title="检查项" value="日常巡查" />
         </van-cell-group>
         <van-cell-group>
@@ -22,7 +22,8 @@
                 {{result==0?'合格':result==1?'口头警告':'书面整改'}}
             </view>
         </view>
-        <van-cell-group>
+        <view class="bgc"></view>
+        <van-cell-group border="{{false}}">
             <van-cell border="{{false}}" title="创建编号" value="201809002" />
         </van-cell-group>
         <van-cell-group>

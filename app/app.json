@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/patrol/index/index",
     "pages/from/from",
-    "pages/index/index",
     "pages/project/project",
     "pages/engineering/engineering",
     "pages/personal/personal",
@@ -31,7 +31,7 @@
   "tabBar": {
     "list": [
       {
-        "pagePath":"pages/patrol/index/index",
+        "pagePath":"pages/index/index",
         "text": "首页",
         "iconPath": "images/tabBar/index1.png",
         "selectedIconPath": "images/tabBar/index2.png"
