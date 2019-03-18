@@ -9,7 +9,7 @@
     </view>
     <view class="list">
         <block wx:for="{{list}}" wx:key="item.index">
-            <view class="check_item">
+            <view class="check_item" data-id="{{item.id}}" bind:tap="goDetail">
                 <view class="item_top">
                     <view class="item_top_title">
                         <view class="number">{{item.number}}</view>
@@ -22,13 +22,13 @@
                     </view>
                     <view class="type">
                         <view class="type_title">
-                            类<view class="empty">查</view>型：
+                            <view>类</view><view class="empty">查</view><view>型：</view>
                         </view>
                         <view class="type_val">{{item.type}}</view>
                     </view>
                     <view class="describe">
                         <view class="describe_title">
-                            描<view class="empty">查</view>述：
+                            <view>描</view><view class="empty">查</view><view>述：</view>
                         </view>
                         <view class="describe_val">{{item.describe}}</view>
                     </view>

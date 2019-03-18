@@ -77,6 +77,8 @@ Page({
 
   // 提交新增
   submit(){
-   
+    wx.navigateBack({
+      delta: 2
+    })
   },
 })

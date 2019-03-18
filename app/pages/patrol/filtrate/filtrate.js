@@ -78,6 +78,7 @@ Page({
     let isQualified = this.data.isQualified;
     let isWarning = this.data.isWarning;
     let isRectification = this.data.isRectification;
+    console.log(isRectification);
 
     if (result == 'isQualified') {
       this.setData({
@@ -88,14 +89,14 @@ Page({
         isWarning: !isWarning
       })
     } else {
+      if (isRectification) {
+        this.setData({
+          isSend: false,
+          onSend: false,
+        })
+      }
       this.setData({
         isRectification: !isRectification
-      })
-    }
-    if (isRectification) {
-      this.setData({
-        isSend: false,
-        onSend: false,
       })
     }
   },
@@ -103,6 +104,7 @@ Page({
   checkedState(e) {
     let isSend = this.data.isSend;
     let onSend = this.data.onSend;
+    let isRectification = this.data.isRectification;
     if (isRectification) {
       let state = e.currentTarget.dataset.state;
       if (state == 'isSend') {
@@ -176,9 +178,50 @@ Page({
     let that = this;
     let type = that.data.type;
     if (type == 1) {
-      let json = {
-        startTime: that.data.startTime,
-        endTime: that.data.endTime,
+      // 检查结果
+      let isQualified = that.data.isQualified;
+      let isWarning = that.data.isWarning;
+      let isRectification = that.data.isRectification;
+      let resultList = [];
+
+
+
+
+      if (isQualified) {
+        resultList.push(1);
+      }
+      if (isWarning) {
+        resultList.push(2);
+      }
+      if (isRectification) {
+        resultList.push(3);
+      }
+
+      // 是否下发整改
+      let isSend = that.data.isSend;
+      let onSend = that.data.onSend;
+      let isNotify = 0;
+
+      let json = {};
+      if (isSend && onSend) {
+        json = {
+          startDate: that.data.startTime,
+          endDate: that.data.endTime,
+          resultList: resultList
+        }
+      } else {
+        if(isSend){
+          isNotify = 0
+        }
+        if(onSend){
+          isNotify = 1
+        }
+        json = {
+          startDate: that.data.startTime,
+          endDate: that.data.endTime,
+          resultList: resultList,
+          isNotify:isNotify
+        }
       }
       app.globalData.checkFiltrate = json;
     } else {

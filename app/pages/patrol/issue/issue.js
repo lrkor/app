@@ -21,9 +21,15 @@ Page({
     showTime: false,
     columns: [],
 
-    currentDate: new Date().getTime()
+    currentDate: new Date().getTime(),
+
+    number:0
   },
   onLoad: function (options) {
+    let number = options.number;
+    this.setData({
+      number:number
+    });
     wx.setNavigationBarTitle({
       title: '下发整改'
     })
@@ -99,15 +105,21 @@ Page({
   },
 
   onClose() {
-    this.setData({ show: false });
+    console.log(111);
+    this.setData({ show: false, showTime:false});
   },
 
-  goUnit(e) {
-    let type = e.currentTarget.dataset.type
-    wx.navigateTo({
-      url: '../chooseUnit/chooseUnit?type=' + type,
-    })
-  },
-
-
+  add(){
+    let number = this.data.number;
+    if(number==1){
+      wx.navigateBack({
+        delta: 1
+      })
+    }else{
+      wx.navigateBack({
+        delta: 2
+      })
+    }
+  
+  }
 })

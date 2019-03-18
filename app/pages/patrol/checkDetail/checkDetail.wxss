@@ -5,11 +5,13 @@
 .check_detail .van-cell {
     padding: 13px 30rpx;
 }
+.check_detail .van-cell::after{
+    left: 0;
+}
 
 .check_detail {
     background-color: #f7f7f7;
     height: 100%;
-    border-top: 1px solid #F1F1F1;
 }
 
 .check_describe {
@@ -18,6 +20,7 @@
     font-size: 28rpx;
     color: #333;
     background-color: #fff;
+    border-top: 1px solid #F1F1F1;
 }
 
 .check_img {
@@ -92,9 +95,10 @@
     height: 100%;
     flex: auto;
     align-items: center;
+    border-top: 1px solid #f1f1f1;
 }
 
-.btn_item, .btn_item1 {
+.btn_item {
     flex-grow: 1;
     height: 40rpx;
     line-height: 40rpx;

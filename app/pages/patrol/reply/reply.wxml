@@ -1,7 +1,7 @@
 <view class="add_check">
     <view class="addDescribe">
         <van-cell-group border="{{false}}">
-            <van-field value="{{ message }}" maxlength="1000" type="textarea" placeholder="请输入整改内容..." autosize border="{{ false }}" />
+            <van-field show-confirm-bar="{{false}}" value="{{ message }}" maxlength="1000" type="textarea" placeholder="请输入整改内容..." autosize border="{{ false }}" />
         </van-cell-group>
         <view class="choose_img">
             <view class="weui-cells">
@@ -28,8 +28,8 @@
     </view>
     <view class="add_check_down">
         <van-cell-group border="{{false}}">
-            <van-field  bindtap="selectNature" value="{{natureVal}}" label="后期措施"  placeholder="请输入后期措施"  border="{{ false }}" />
-            <van-field border="{{false}}" bindtap="selectItem" value="{{itemVal}}" label="审核人" placeholder="请选择审核人"  border="{{ false }}" />
+            <van-field bindtap="selectNature" value="{{natureVal}}" label="后期措施"  placeholder="请输入后期措施" />
+            <van-field bindtap="selectItem" value="{{itemVal}}" label="审核人" placeholder="请选择审核人"/>
         </van-cell-group>
     </view>
     <view class="btn" bindtap="submit">提交</view>

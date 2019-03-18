@@ -15,12 +15,22 @@
 
 .weui-cells {
     position: static;
+    margin-top: 0;
+}
+.weui-cells::before{
+    border: none;
+}
+.weui-cells::after{
+    border: none;
+}
+.add_check .van-cell::after{
+    left: 0;
 }
 
 .add_check {
     background-color: #f7f7f7;
     height: 100%;
-    border-top: 1px solid #F1F1F1;
+    border-top: 1px solid #f1f1f1;
 }
 
 .addDescribe {

@@ -25,7 +25,6 @@
 
 .list {
     padding: 0 30rpx;
-    margin-top: 20rpx;
 }
 
 .check_item {
@@ -92,6 +91,13 @@
 .check_type_title, .describe_title, .type_title {
     width: 104rpx;
 }
+.describe_title{
+    display: flex;
+}
+.type_title{
+    display: flex;
+    flex-direction: row;
+}
 
 .describe_val {
     width: 555rpx;
@@ -147,6 +153,7 @@
 }
 
 .searchBtn {
+    margin-right:30rpx;
     width: 130rpx;
     height: 60rpx;
     line-height: 60rpx;

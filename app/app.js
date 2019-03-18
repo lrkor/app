@@ -58,8 +58,11 @@ App({
     });
   },
   globalData: {
+    sid:'',
+    orgId:'',
     checkFiltrate:{},
     rectificationFiltrate:{},
+    checkItem:{},
     isguidance: true,
     subscribe: false,
     version: '0.0.11',
@@ -75,7 +78,9 @@ App({
     sessionKey: '',
     adminUserViewId: "",
     userInfo: {},
-    BaseURL: "https://wechat.zhinengjianshe.com/wechatService/",
-    tokenUrl: "https://wechat.zhinengjianshe.com/wechatService/weChat/toProject?token="
+    sgmsUrl:"http://192.168.1.35:8080/sgms",
+    sgmeImgUrl:"http://192.168.1.35:8080/",
+    BaseURL: "https://wechat-dev.zhinengjianshe.com/wechatService/",
+    tokenUrl: "https://wechat-dev.zhinengjianshe.com/wechatService/weChat/toProject?token="
   }
 })

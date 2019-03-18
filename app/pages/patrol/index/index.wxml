@@ -6,7 +6,7 @@
             </view>
             <view class="text">检查</view>
         </view>
-        <view class="item" data-type="2" bindtap="goUnit">
+        <view class="item b_l_r" data-type="2" bindtap="goUnit">
             <view class="img">
                 <image src="../../../images/patrol/index/2.png" style="width:90rpx;height: 90rpx;" />
             </view>
@@ -20,7 +20,7 @@
         </view>
     </view>
     <view class="do_list">
-        <view class="do_item" data-type="0" bindtap="goTodo">
+        <view class="do_item" data-type="0" bindtap="goTodo" wx:if="{{isShow}}">
             <view class="do_item_left">
                 <image src="../../../images/patrol/index/7.png" style="width:36rpx;height: 36rpx;" />
             </view>

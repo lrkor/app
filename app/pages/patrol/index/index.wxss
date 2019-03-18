@@ -1,15 +1,15 @@
 .index{
     background-color: #f7f7f7;
     height: 100%;
-    border-top:1px solid #F1F1F1;
 }
 .menu{
-    height: 185rpx;
+    height: 205rpx;
     width: 100%;
     display: flex;
     background-color: #fff;
     align-items: center;
     flex: auto;
+    border-top:1px solid #F1F1F1;
 }
 .item{
     text-align: center;
@@ -57,5 +57,9 @@
 }
 .num{
     color: #FE0000;
-    margin-right: 9rpx;
+    margin-right:20rpx;
+}
+.b_l_r{
+    border-left: 1rpx solid #f1f1f1;
+    border-right: 1rpx solid #f1f1f1;
 }

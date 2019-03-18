@@ -1,54 +1,68 @@
 const app = getApp()
-const sourceType = [['camera'], ['album'], ['camera', 'album']]
-const sizeType = [['compressed'], ['original'], ['compressed', 'original']]
+const wxRequest = require('../../../utils/wxRequest.js');
 Page({
   data: {
+    content: '',
     value: '',
     isGetLocation: 0,
     locationVal: '',
     imageList: [],
-    sourceTypeIndex: 2,
-    sourceType: ['拍照', '相册', '拍照或相册'],
-    sizeTypeIndex: 2,
-    sizeType: ['压缩', '原图', '压缩或原图'],
-    countIndex: 8,
-    count: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+
     natureShow: false,
     natureVal: '',
-    natureColumns: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
-
-    itemShow:false,
+    natureColumns: [],
+    natureArr: [],
+    itemShow: false,
     itemVal: '',
-    itemColumns: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
-    state:'4',
+    itemObj: {},
+    state: '4',
+
+    // 经纬度
+    gpsLng: '',
+    gpsLat: '',
+
+    // 图片数组
+    fileIds:[]
   },
   onLoad: function (options) {
+    let that = this;
     wx.setNavigationBarTitle({
       title: '新增检查'
+    });
+    this.getJcxs().then(res => {
+      let arr = res.data.rows;
+      let natureColumns = [];
+
+
+      for (let item of arr) {
+        natureColumns.push(item.name);
+      }
+
+      that.setData({
+        natureArr: arr,
+        natureColumns: natureColumns
+      });
     })
   },
 
   onShow() {
     this.isGetLocation();
+    if (app.globalData.checkItem.name) {
+      this.setData({
+        itemObj: app.globalData.checkItem
+      })
+      app.globalData.checkItem = {};
+    }
   },
 
-  chooseImage() {
-    const that = this
-    wx.chooseImage({
-      sourceType: sourceType[this.data.sourceTypeIndex],
-      sizeType: sizeType[this.data.sizeTypeIndex],
-      count: 8,
-      success(res) {
-        console.log(res)
-        that.setData({
-          imageList: res.tempFilePaths
-        })
-      }
+  changeContent(e){
+    this.setData({
+      content:e.detail
     })
   },
 
   onClose() {
-    this.setData({ natureShow: false ,itemShow: false});
+    this.setData({ natureShow: false, itemShow: false });
   },
 
   natureOnConfirm(event) {
@@ -59,47 +73,120 @@ Page({
     });
   },
 
-  itemOnConfirm(event){
-    this.setData({
-      itemShow: false,
-      itemVal: event.detail.value
-    });
-  },
-
   onCancel() {
-    this.setData({ natureShow: false ,itemShow: false});
+    this.setData({ natureShow: false, itemShow: false });
   },
 
   selectNature() {
     this.setData({ natureShow: true });
   },
 
-  selectItem(){
-    this.setData({ itemShow: true });
+  selectItem() {
+    wx.navigateTo({
+      url: '../chooseCheck/chooseCheck'
+    })
   },
 
   // 切换状态
-  switchState(e){
+  switchState(e) {
     let state = e.currentTarget.dataset.state;
     this.setData({
-      state:state
+      state: state
     });
   },
 
-  // 提交新增
-  addCheck(){
-    let state = this.data.state;
-    if(state==2){
-      wx.redirectTo({
-        url: '../issue/issue',
-      })
-    }else{
-      wx.redirectTo({
-        url: '../checkDetail/checkDetail',
-      })
-    }
+  // 获取检查形式
+  getJcxs() {
+    let url = app.globalData.sgmsUrl + '/api/v1/codeDict/systemSettingCodeDictList';
+    let data = { typeName: '检查形式' };
+    return wxRequest.getRequest(url, data, app.globalData.sid);
   },
 
+  // 提交新增
+  addCheck() {
+    let state = this.data.state;
+    let content = this.data.content;
+    let natureVal = this.data.natureVal;
+    let natureArr = this.data.natureArr;
+    let itemObj = this.data.itemObj;
+    
+
+    let nature = '';
+
+    for(let item of natureArr){
+      if(item.name == natureVal){
+        nature = item.value;
+      }
+    }
+
+    let data = {
+      content:content,
+      checkClassifyId:itemObj.id,
+      fileIds:this.data.fileIds,
+      orgId:app.globalData.orgId,
+      result:state,
+      gpsLng:this.data.gpsLng,
+      gpsLat:this.data.gpsLat,
+      nature:nature
+    }
+
+    this.add(data).then(res=>{
+      let id = res.data.data.id;
+      if (state == 3) {
+        wx.redirectTo({
+          url: '../issue/issue?number=1'
+        })
+      } else {
+        wx.redirectTo({
+          url: '../checkDetail/checkDetail?id=' + id
+        })
+      }
+    })
+  },
+
+  chooseImage() {
+    const that = this;
+    let fileArr = [];
+    wx.chooseImage({
+      sourceType: ['album', 'camera'],
+      sizeType: ['compressed'],
+      count: 8,
+      success(res) {
+        let tempFilePaths = res.tempFilePaths
+        //上传照片
+        for (let i = 0; i < tempFilePaths.length; i++) {
+          wx.uploadFile({
+            url: app.globalData.sgmsUrl + '/api/v1/common/uploadFile?folderName=consulting', //仅为示例，非真实的接口地址
+            filePath: tempFilePaths[i],
+            name: 'file',
+            success: function (res) {
+              let data = JSON.parse(res.data);
+              fileArr.push(data.data);
+            }
+          })
+        }
+        that.setData({
+          imageList: res.tempFilePaths,
+          fileIds:fileArr
+        })
+      }
+    })
+  },
+
+  // 图片预览
+  previewImage(e) {
+    const current = e.target.dataset.src
+    wx.previewImage({
+      current,
+      urls: this.data.imageList
+    })
+  },
+
+  //新增
+  add(data) {
+    let url = app.globalData.sgmsUrl + '/api/v1/inspect/add';
+    return wxRequest.postRequest(url, data, app.globalData.sid);
+  },
 
   // 判断是否获取用户地理位置
   isGetLocation() {
@@ -174,9 +261,11 @@ Page({
         that.setData({
           isGetLocation: 1,
           locationVal: '获取成功',
+          gpsLng: longitude,
+          gpsLat: latitude
         });
       },
-      fail(res){
+      fail(res) {
         that.setData({
           locationVal: '获取失败，点击重新获取',
         });

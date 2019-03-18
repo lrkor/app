@@ -3,6 +3,7 @@ Page({
   data: {
     list: [
       {
+        id:1,
         number: 'XT-NT1_20190001',
         isSend: true,
         check_type: '临边防护',
@@ -14,6 +15,7 @@ Page({
         createTime: '11:04',
       },
       {
+        id:1,
         number: 'XT-NT1_20190001',
         isSend: true,
         check_type: '临边防护',
@@ -25,6 +27,7 @@ Page({
         createTime: '11:04',
       },
       {
+        id:1,
         number: 'XT-NT1_20190001',
         isSend: false,
         check_type: '临边防护',
@@ -36,6 +39,7 @@ Page({
         createTime: '11:04',
       },
       {
+        id:1,
         number: 'XT-NT1_20190001',
         isSend: false,
         check_type: '临边防护',
@@ -47,6 +51,7 @@ Page({
         createTime: '11:04',
       },
       {
+        id:1,
         number: 'XT-NT1_20190001',
         isSend: true,
         check_type: '临边防护',
@@ -58,6 +63,7 @@ Page({
         createTime: '11:04',
       },
       {
+        id:1,
         number: 'XT-NT1_20190001',
         isSend: true,
         check_type: '临边防护',
@@ -80,6 +86,13 @@ Page({
   filtrate() {
     wx.navigateTo({
       url: '../filtrate/filtrate?type=2',
+    })
+  },
+
+  goDetail(e){
+    let id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '../rectificationDetail/rectificationDetail?id=' + id,
     })
   },
   onPullDownRefresh() {

@@ -1,7 +1,7 @@
 <view class="add_check">
     <view class="addDescribe">
         <van-cell-group border="{{false}}">
-            <van-field value="{{ message }}" maxlength="1000" type="textarea" placeholder="请输入审批意见..." autosize border="{{ false }}" />
+            <van-field show-confirm-bar="{{false}}" value="{{ message }}" maxlength="1000" type="textarea" placeholder="请输入审批意见..." autosize border="{{ false }}" />
         </van-cell-group>
         <view class="choose_img">
             <view class="weui-cells">
@@ -58,7 +58,7 @@
     <van-popup show="{{ itemShow }}" position="bottom" overlay bind:close="onClose">
         <van-picker show-toolbar title="审批流程" columns="{{ itemColumns }}" bind:cancel="onCancel" bind:confirm="itemOnConfirm" />
     </van-popup>
-    <van-popup show="{{ itemShow }}" position="bottom" overlay bind:close="onClose">
+    <van-popup show="{{ personShow }}" position="bottom" overlay bind:close="onClose">
         <van-picker show-toolbar title="审批人" columns="{{ itemColumns }}" bind:cancel="onCancel" bind:confirm="itemOnConfirm" />
     </van-popup>
 </view>

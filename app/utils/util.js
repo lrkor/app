@@ -13,6 +13,8 @@ const formatTime = (date, type) => {
     return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
   } else if (type == 'yyyy-mm-dd hh:mm') {
     return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute].map(formatNumber).join(':')
+  }else if (type == 'hh:mm') {
+    return [hour, minute].map(formatNumber).join(':')
   }
 }
 

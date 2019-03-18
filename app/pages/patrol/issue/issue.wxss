@@ -3,9 +3,12 @@
     height: 100%;
     border-top:1px solid #F1F1F1;
 }
-/* .issue textarea{
-    height: 200rpx;
-} */
+.issue .list .van-cell::after{
+    left: 0px;
+}
+.issue .van-field__input--disabled{
+    color: #333;
+}
 .requirements{
     min-height: 200rpx;
     background-color: #fff;
