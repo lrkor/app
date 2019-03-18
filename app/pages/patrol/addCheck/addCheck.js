@@ -1,59 +1,275 @@
 const app = getApp()
-const sourceType = [['camera'], ['album'], ['camera', 'album']]
-const sizeType = [['compressed'], ['original'], ['compressed', 'original']]
+const wxRequest = require('../../../utils/wxRequest.js');
 Page({
   data: {
+    content: '',
     value: '',
+    isGetLocation: 0,
+    locationVal: '',
     imageList: [],
-    sourceTypeIndex: 2,
-    sourceType: ['拍照', '相册', '拍照或相册'],
-    sizeTypeIndex: 2,
-    sizeType: ['压缩', '原图', '压缩或原图'],
-    countIndex: 8,
-    count: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    projectShow: false,
-    projectVal:'请选择工程部位',
-    columns: ['杭州', '宁波', '温州', '嘉兴', '湖州']
 
+    natureShow: false,
+    natureVal: '',
+    natureColumns: [],
+    natureArr: [],
+    itemShow: false,
+    itemVal: '',
+    itemObj: {},
+    state: '4',
+
+    // 经纬度
+    gpsLng: '',
+    gpsLat: '',
+
+    // 图片数组
+    fileIds:[]
   },
   onLoad: function (options) {
+    let that = this;
     wx.setNavigationBarTitle({
       title: '新增检查'
+    });
+    this.getJcxs().then(res => {
+      let arr = res.data.rows;
+      let natureColumns = [];
+
+
+      for (let item of arr) {
+        natureColumns.push(item.name);
+      }
+
+      that.setData({
+        natureArr: arr,
+        natureColumns: natureColumns
+      });
     })
   },
-  chooseImage() {
-    const that = this
-    wx.chooseImage({
-      sourceType: sourceType[this.data.sourceTypeIndex],
-      sizeType: sizeType[this.data.sizeTypeIndex],
-      count: 8,
-      success(res) {
-        console.log(res)
-        that.setData({
-          imageList: res.tempFilePaths
+
+  onShow() {
+    this.isGetLocation();
+    if (app.globalData.checkItem.name) {
+      this.setData({
+        itemObj: app.globalData.checkItem
+      })
+      app.globalData.checkItem = {};
+    }
+  },
+
+  changeContent(e){
+    this.setData({
+      content:e.detail
+    })
+  },
+
+  onClose() {
+    this.setData({ natureShow: false, itemShow: false });
+  },
+
+  natureOnConfirm(event) {
+    console.log(event.detail.value);
+    this.setData({
+      natureShow: false,
+      natureVal: event.detail.value
+    });
+  },
+
+  onCancel() {
+    this.setData({ natureShow: false, itemShow: false });
+  },
+
+  selectNature() {
+    this.setData({ natureShow: true });
+  },
+
+  selectItem() {
+    wx.navigateTo({
+      url: '../chooseCheck/chooseCheck'
+    })
+  },
+
+  // 切换状态
+  switchState(e) {
+    let state = e.currentTarget.dataset.state;
+    this.setData({
+      state: state
+    });
+  },
+
+  // 获取检查形式
+  getJcxs() {
+    let url = app.globalData.sgmsUrl + '/api/v1/codeDict/systemSettingCodeDictList';
+    let data = { typeName: '检查形式' };
+    return wxRequest.getRequest(url, data, app.globalData.sid);
+  },
+
+  // 提交新增
+  addCheck() {
+    let state = this.data.state;
+    let content = this.data.content;
+    let natureVal = this.data.natureVal;
+    let natureArr = this.data.natureArr;
+    let itemObj = this.data.itemObj;
+    
+
+    let nature = '';
+
+    for(let item of natureArr){
+      if(item.name == natureVal){
+        nature = item.value;
+      }
+    }
+
+    let data = {
+      content:content,
+      checkClassifyId:itemObj.id,
+      fileIds:this.data.fileIds,
+      orgId:app.globalData.orgId,
+      result:state,
+      gpsLng:this.data.gpsLng,
+      gpsLat:this.data.gpsLat,
+      nature:nature
+    }
+
+    this.add(data).then(res=>{
+      let id = res.data.data.id;
+      if (state == 3) {
+        wx.redirectTo({
+          url: '../issue/issue?number=1'
+        })
+      } else {
+        wx.redirectTo({
+          url: '../checkDetail/checkDetail?id=' + id
         })
       }
     })
   },
 
-  onClose() {
-    this.setData({ projectShow: false });
+  chooseImage() {
+    const that = this;
+    let fileArr = [];
+    wx.chooseImage({
+      sourceType: ['album', 'camera'],
+      sizeType: ['compressed'],
+      count: 8,
+      success(res) {
+        let tempFilePaths = res.tempFilePaths
+        //上传照片
+        for (let i = 0; i < tempFilePaths.length; i++) {
+          wx.uploadFile({
+            url: app.globalData.sgmsUrl + '/api/v1/common/uploadFile?folderName=consulting', //仅为示例，非真实的接口地址
+            filePath: tempFilePaths[i],
+            name: 'file',
+            success: function (res) {
+              let data = JSON.parse(res.data);
+              fileArr.push(data.data);
+            }
+          })
+        }
+        that.setData({
+          imageList: res.tempFilePaths,
+          fileIds:fileArr
+        })
+      }
+    })
   },
 
-  onConfirm(event) {
-    console.log(event.detail.value);
-    this.setData({ 
-      projectShow: false,
-      projectVal:event.detail.value
-    });
+  // 图片预览
+  previewImage(e) {
+    const current = e.target.dataset.src
+    wx.previewImage({
+      current,
+      urls: this.data.imageList
+    })
   },
 
-  onCancel() {
-    this.setData({ projectShow: false });
+  //新增
+  add(data) {
+    let url = app.globalData.sgmsUrl + '/api/v1/inspect/add';
+    return wxRequest.postRequest(url, data, app.globalData.sid);
   },
 
-  selectProject(){
-    console.log(111);
-    this.setData({ projectShow: true });
+  // 判断是否获取用户地理位置
+  isGetLocation() {
+    let that = this;
+    wx.getSetting({
+      success: (res) => {
+        console.log(JSON.stringify(res))
+        // res.authSetting['scope.userLocation'] == undefined    表示 初始化进入该页面
+        // res.authSetting['scope.userLocation'] == false    表示 非初始化进入该页面,且未授权
+        // res.authSetting['scope.userLocation'] == true    表示 地理位置授权
+        if (res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true) {
+          wx.showModal({
+            title: '请求授权当前位置',
+            content: '需要获取您的地理位置，请确认授权',
+            success: function (res) {
+              if (res.cancel) {
+                wx.showToast({
+                  title: '拒绝授权',
+                  icon: 'none',
+                  duration: 1000
+                })
+                that.setData({
+                  locationVal: '获取失败，点击重新获取',
+                });
+              } else if (res.confirm) {
+                wx.openSetting({
+                  success: function (dataAu) {
+                    if (dataAu.authSetting["scope.userLocation"] == true) {
+                      wx.showToast({
+                        title: '授权成功',
+                        icon: 'success',
+                        duration: 1000
+                      })
+                      //再次授权，调用wx.getLocation的API
+                      that.getLocation();
+                    } else {
+                      that.setData({
+                        locationVal: '获取失败，点击重新获取',
+                      });
+                      wx.showToast({
+                        title: '授权失败',
+                        icon: 'none',
+                        duration: 1000
+                      })
+                    }
+                  }
+                })
+              }
+            }
+          })
+        } else if (res.authSetting['scope.userLocation'] == undefined) {
+          //调用wx.getLocation的API
+          that.getLocation();
+        }
+        else {
+          //调用wx.getLocation的API
+          that.getLocation();
+        }
+      }
+    })
+  },
+
+  // 获取用户位置
+  getLocation() {
+    let that = this;
+    wx.getLocation({
+      type: 'wgs84',
+      success(res) {
+        const latitude = res.latitude
+        const longitude = res.longitude
+        console.log(latitude, longitude);
+        that.setData({
+          isGetLocation: 1,
+          locationVal: '获取成功',
+          gpsLng: longitude,
+          gpsLat: latitude
+        });
+      },
+      fail(res) {
+        that.setData({
+          locationVal: '获取失败，点击重新获取',
+        });
+      }
+    })
   }
 })

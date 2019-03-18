@@ -7,10 +7,32 @@ Page({
     endTime: '结束时间',
     currentDate: new Date().getTime(),
     isStart: 1,
-    results: '5',
-    state: '5',
+
+    // 检查结果
+    isQualified: false,
+    isWarning: false,
+    isRectification: false,
+
+    // 状态
+    isSend: false,
+    onSend: false,
+
+    // 整改状态
+    dzg: false,
+    dsp: false,
+    ybh: false,
+
+    // 是否逾期
+    wyq: false,
+    yq: false,
+
+    type: ''
   },
   onLoad: function (options) {
+    let type = options.type;
+    this.setData({
+      type: type
+    });
     wx.setNavigationBarTitle({
       title: '筛选'
     })
@@ -49,37 +71,166 @@ Page({
     }
   },
 
+  // 检查筛选
   checkedResults(e) {
-    let results = e.currentTarget.dataset.results;
-    this.setData({
-      results: results
-    })
+    let result = e.currentTarget.dataset.results;
+    // 获取各个状态值
+    let isQualified = this.data.isQualified;
+    let isWarning = this.data.isWarning;
+    let isRectification = this.data.isRectification;
+    console.log(isRectification);
+
+    if (result == 'isQualified') {
+      this.setData({
+        isQualified: !isQualified
+      })
+    } else if (result == 'isWarning') {
+      this.setData({
+        isWarning: !isWarning
+      })
+    } else {
+      if (isRectification) {
+        this.setData({
+          isSend: false,
+          onSend: false,
+        })
+      }
+      this.setData({
+        isRectification: !isRectification
+      })
+    }
   },
 
   checkedState(e) {
-    let state = e.currentTarget.dataset.state;
-    this.setData({
-      state: state
-    })
+    let isSend = this.data.isSend;
+    let onSend = this.data.onSend;
+    let isRectification = this.data.isRectification;
+    if (isRectification) {
+      let state = e.currentTarget.dataset.state;
+      if (state == 'isSend') {
+        this.setData({
+          isSend: !isSend
+        })
+      } else {
+        this.setData({
+          onSend: !onSend
+        })
+      }
+    }
   },
+
+  // 整改筛选筛选
+  rectificationResults(e) {
+    let result = e.currentTarget.dataset.results;
+    // 获取各个状态值
+    let dzg = this.data.dzg;
+    let dsp = this.data.dsp;
+    let ybh = this.data.ybh;
+
+    if (result == 'dzg') {
+      this.setData({
+        dzg: !dzg
+      })
+    } else if (result == 'dsp') {
+      this.setData({
+        dsp: !dsp
+      })
+    } else {
+      this.setData({
+        ybh: !ybh
+      })
+    }
+  },
+
+  rectificationState(e) {
+    let state = e.currentTarget.dataset.state;
+    let wyq = this.data.wyq;
+    let yq = this.data.yq;
+    if (state == 'wyq') {
+      this.setData({
+        wyq: !wyq
+      });
+    } else {
+      this.setData({
+        yq: !yq
+      });
+    }
+  },
+
   reset() {
     this.setData({
       startTime: '开始时间',
       endTime: '结束时间',
-      results: '5',
-      state: '5',
+      isQualified: false,
+      isWarning: false,
+      isRectification: false,
+      isSend: false,
+      onSend: false,
+      dzg: false,
+      dsp: false,
+      ybh: false,
+      wyq: false,
+      yq: false,
     });
   },
 
   determine() {
     let that = this;
-    let json = {
-      startTime: that.data.startTime,
-      endTime: that.data.endTime,
-      results: that.data.results,
-      state: that.data.state,
+    let type = that.data.type;
+    if (type == 1) {
+      // 检查结果
+      let isQualified = that.data.isQualified;
+      let isWarning = that.data.isWarning;
+      let isRectification = that.data.isRectification;
+      let resultList = [];
+
+
+
+
+      if (isQualified) {
+        resultList.push(1);
+      }
+      if (isWarning) {
+        resultList.push(2);
+      }
+      if (isRectification) {
+        resultList.push(3);
+      }
+
+      // 是否下发整改
+      let isSend = that.data.isSend;
+      let onSend = that.data.onSend;
+      let isNotify = 0;
+
+      let json = {};
+      if (isSend && onSend) {
+        json = {
+          startDate: that.data.startTime,
+          endDate: that.data.endTime,
+          resultList: resultList
+        }
+      } else {
+        if(isSend){
+          isNotify = 0
+        }
+        if(onSend){
+          isNotify = 1
+        }
+        json = {
+          startDate: that.data.startTime,
+          endDate: that.data.endTime,
+          resultList: resultList,
+          isNotify:isNotify
+        }
+      }
+      app.globalData.checkFiltrate = json;
+    } else {
+      let json = {
+        startTime: that.data.startTime,
+        endTime: that.data.endTime,
+      }
+      app.globalData.rectificationFiltrate = json;
     }
-    app.globalData.checkFiltrate = json;
     wx.navigateBack({
       delta: 1
     })

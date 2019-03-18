@@ -1,26 +1,132 @@
 @import "../../../libs/css/weui.wxss";
-.weui-uploader__input-box{
-    border:1px dashed #D9D9D9;
+.weui-uploader__input-box {
+    border: 1px dashed #D9D9D9;
 }
-.weui-uploader__img{
+
+.weui-uploader__img {
     width: 160rpx;
     height: 160rpx;
 }
-.weui-uploader__file{
+
+.weui-uploader__file {
     margin-right: 17rpx;
-    margin-bottom:15rpx;
+    margin-bottom: 15rpx;
 }
-.weui-cells{
+.weui-cells {
     position: static;
+    margin-top: 0;
 }
-.add_check{
+.weui-cells::before{
+    border: none;
+}
+.weui-cells::after{
+    border: none;
+}
+
+.add_check .van-field__input--disabled{
+    color: #333;
+}
+.add_check .van-cell::after{
+    left: 0;
+}
+.add_check {
     background-color: #f7f7f7;
     height: 100%;
-    border:1px solid #F1F1F1;
+    border-top: 1px solid #f1f1f1;
 }
-.addDescribe{
+
+.addDescribe {
     background-color: #fff;
 }
-.add_check_down{
+
+.add_check_down {
     margin-top: 20rpx;
+}
+
+.location {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    padding: 0 30rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    justify-content: space-between;
+    font-size: 30rpx;
+    /* border-bottom: 1px solid #f1f1f1; */
+}
+
+.location_name {
+    color: #333;
+}
+
+.isGet {
+    color: #2E85D6;
+}
+
+.onGet {
+    color: #FF0000;
+}
+
+.check_result {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    border-bottom: 1px solid #f1f1f1;
+    padding: 0 30rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 30rpx;
+}
+
+.check_result_name {
+    width: 180rpx;
+    color: #333;
+}
+
+.check_result_menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.check_result_item {
+    width: 130rpx;
+    height: 40rpx;
+    text-align: center;
+    margin-right: 20rpx;
+    background-color: #f7f7f7;
+    color: #999;
+    line-height: 40rpx;
+    font-size: 26rpx;
+    border-radius: 5px;
+}
+
+.qualified {
+    background-color: #13C37F;
+    color: #fff;
+}
+
+.warning {
+    background-color: #FFCC00;
+    color: #fff;
+}
+
+.rectification {
+    background-color: #FF0000;
+    color: #fff;
+}
+
+.btn {
+    position: fixed;
+    width: 690rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    bottom: 14rpx;
+    left: 50%;
+    margin-left: -345rpx;
+    background-color: #2E85D6;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 36rpx
 }

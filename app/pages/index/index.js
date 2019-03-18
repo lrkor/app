@@ -1,9 +1,9 @@
 //index.js
 //获取应用实例
 var bmap = require('../../libs/bmap-wx/bmap-wx.min.js');
-const wxRequest = require('../../utils/wxRequest.js')
-const app = getApp()
-
+const wxRequest = require('../../utils/wxRequest.js');
+const app = getApp();
+const sgmsUrl = app.globalData.sgmsUrl;
 Page({
   data: {
     systemName: '',
@@ -113,10 +113,11 @@ Page({
       status: 2
     },
     {
-      url: 'https://mp.weixin.qq.com/',
-      imgUrl: '../../images/index/application/spjk.png',
+      url: 'http://mp.zhinengjianshe.com/minWeb/unit',
+      // url: 'http://192.168.1.40:8083/minWeb/unit',
+      imgUrl: '../../images/index/application/spjk1.png',
       text: '视频监控',
-      status: 2
+      status: 1
     },
     {
       url:'http://192.168.1.40:8080/',
@@ -202,6 +203,8 @@ Page({
       showView: app.globalData.isguidance
     });
 
+  
+
     this.login();
     wx.setNavigationBarTitle({
       title: '智慧工程云平台'
@@ -252,11 +255,8 @@ Page({
                 success: function (result) {
                   app.globalData.openid = result.data.data.openId;
                   app.globalData.unionId = result.data.data.unionId;
-
-
                   //获取用户信息
                   that.queryUserInfo();
-
                 }
               })
 
@@ -380,6 +380,8 @@ Page({
     });
   },
 
+ 
+
   //获取天气
   getweather: function () {
     var that = this;
@@ -465,32 +467,6 @@ Page({
       showView: true
     })
   },
-
-  onShareAppMessage(options) {
-    return {
-      title: '转发',
-      path: '/pages/index/index',
-      success: function(res) {
-        console.log(res);
-      }
-    }
-  },
-
-  onShareAppMessage(options) {
-    let that = this;
-    let url = '/pages/index/index';
-    console.log(url);
-    return {
-      title: '检查详情',
-      path: url,
-      success: function (res) {
-        console.log(res);
-        that.setData({
-          url: url
-        });
-      }
-    }
-  }
 
   // 判断是否获取用户地理位置
   // isGetLocation(){

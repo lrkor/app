@@ -1,7 +1,7 @@
 <view class="check_list">
     <view class="list">
         <block wx:for="{{list}}" wx:key="item.index">
-        <view class="check_item">
+        <view class="check_item" data-id="{{item.id}}" bind:tap="goDetail">
             <view class="item_top">
                 <view class="item_top_title">
                     <view class="number">{{item.number}}</view>

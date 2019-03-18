@@ -1,0 +1,32 @@
+.issue{
+    background-color: #f7f7f7;
+    height: 100%;
+    border-top:1px solid #F1F1F1;
+}
+.issue .list .van-cell::after{
+    left: 0px;
+}
+.issue .van-field__input--disabled{
+    color: #333;
+}
+.requirements{
+    min-height: 200rpx;
+    background-color: #fff;
+}
+.list{
+    margin-top: 20rpx;
+}
+.btn{
+    position: fixed;
+    width: 690rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    bottom: 14rpx;
+    left: 50%;
+    margin-left: -345rpx;
+    background-color: #2E85D6;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 36rpx
+}

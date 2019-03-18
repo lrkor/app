@@ -15,7 +15,7 @@ Page({
       key: 'userInfo',
       success(res) {
         that.setData({
-          url: url + '?token=' + app.globalData.token
+          url: url + '?token=' + app.globalData.token + '&systemCode=' + app.globalData.systemCode + '&userId=' + app.globalData.userId
         });
       }
     })

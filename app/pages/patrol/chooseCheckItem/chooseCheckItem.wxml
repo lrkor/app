@@ -1,0 +1,14 @@
+<view class="choose_unit">
+    <view class="list">
+        <van-radio-group value="{{ radio }}" bind:change="onChange">
+            <van-cell-group border="{{fales}}">
+                <block wx:for="{{unitList}}" wx:key="item.index">
+                    <van-cell title="{{item.name}}" clickable data-name="{{item.id}}" data-title="{{item.name}}"
+                        bind:click="onClick">
+                        <van-radio name="{{item.id}}" />
+                    </van-cell>
+                </block>
+            </van-cell-group>
+        </van-radio-group>
+    </view>
+</view>

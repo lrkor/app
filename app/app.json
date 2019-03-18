@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/patrol/index/index",
     "pages/index/index",
+    "pages/patrol/index/index",
+    "pages/from/from",
     "pages/project/project",
     "pages/engineering/engineering",
     "pages/personal/personal",
@@ -12,11 +13,22 @@
     "pages/webView/web_view",
     "pages/pushMessage/pushMessage",
     "pages/toProject/toproject",
+    "pages/patrol/process/process",
     "pages/patrol/checkList/checkList",
     "pages/patrol/chooseUnit/chooseUnit",
     "pages/patrol/examinationOrRectification/examinationOrRectification",
     "pages/patrol/filtrate/filtrate",
-    "pages/patrol/addCheck/addCheck"
+    "pages/patrol/addCheck/addCheck",
+    "pages/patrol/checkDetail/checkDetail",
+    "pages/patrol/editCheck/editCheck",
+    "pages/patrol/rectificationList/rectificationList",
+    "pages/patrol/issue/issue",
+    "pages/patrol/reply/reply",
+    "pages/patrol/approval/approval",
+    "pages/patrol/chooseCheckList/chooseCheckList",
+    "pages/patrol/rectificationDetail/rectificationDetail",
+    "pages/patrol/chooseCheckItem/chooseCheckItem",
+    "pages/patrol/chooseCheck/chooseCheck"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -27,7 +39,7 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/patrol/index/index",
+        "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "images/tabBar/index1.png",
         "selectedIconPath": "images/tabBar/index2.png"

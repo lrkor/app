@@ -1,0 +1,64 @@
+<view class="add_check">
+    <view class="addDescribe">
+        <van-cell-group border="{{false}}">
+            <van-field show-confirm-bar="{{false}}" value="{{ message }}" maxlength="1000" type="textarea" placeholder="请输入审批意见..." autosize border="{{ false }}" />
+        </van-cell-group>
+        <view class="choose_img">
+            <view class="weui-cells">
+                <view class="weui-cell">
+                    <view class="weui-cell__bd">
+                        <view class="weui-uploader">
+                            <view class="weui-uploader__bd">
+                                <view class="weui-uploader__files">
+                                    <block wx:for="{{imageList}}" wx:key="{{item.index}}" wx:for-item="image">
+                                        <view class="weui-uploader__file">
+                                            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                                        </view>
+                                    </block>
+                                </view>
+                                <view class="weui-uploader__input-box">
+                                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="add_check_down">
+        <view class="approval_res_fa">
+            <view class="approval_res">
+                <view class="approval_res_name">审批结果</view>
+                <view class="approval_res_val">
+                    <radio-group class="radio-group" bindchange="radioChange">
+                        <label class="radio">
+                            <radio value="1" checked="{{true}}" />
+                            通过
+                        </label>
+                        <label class="radio">
+                            <radio value="2" />
+                            不通过
+                        </label>
+                    </radio-group>
+                </view>
+            </view>
+            <view class="border-scale"></view>
+        </view>
+        <van-cell-group border="{{false}}">
+            <van-field disabled bindtap="selectNature" value="{{natureVal}}" label="问题归属" placeholder="请输入后期措施" />
+            <van-field disabled bindtap="selectItem" value="{{itemVal}}" label="审批流程" placeholder="请选择审核人" />
+            <van-field disabled bindtap="selectItem" value="{{itemVal}}" label="审批人" placeholder="请选择审批人" />
+        </van-cell-group>
+    </view>
+    <view class="btn" bindtap="submit">提交</view>
+    <van-popup show="{{ natureShow }}" position="bottom" overlay bind:close="onClose">
+        <van-picker show-toolbar title="问题归属" columns="{{ natureColumns }}" bind:cancel="onCancel" bind:confirm="natureOnConfirm" />
+    </van-popup>
+    <van-popup show="{{ itemShow }}" position="bottom" overlay bind:close="onClose">
+        <van-picker show-toolbar title="审批流程" columns="{{ itemColumns }}" bind:cancel="onCancel" bind:confirm="itemOnConfirm" />
+    </van-popup>
+    <van-popup show="{{ personShow }}" position="bottom" overlay bind:close="onClose">
+        <van-picker show-toolbar title="审批人" columns="{{ itemColumns }}" bind:cancel="onCancel" bind:confirm="itemOnConfirm" />
+    </van-popup>
+</view>

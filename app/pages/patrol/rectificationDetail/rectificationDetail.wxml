@@ -1,0 +1,137 @@
+<view class="rectification_detail">
+    <view class="rd_title">
+        <image class="rd_title_img" src="../../../images/patrol/rectification/1.png" />
+        <view class="rd_title_status">当前状态：<view class="{{status==0?'color_red':'color_yellow'}}">{{status==0?"待整改":"待审批"}}</view>，</view>
+        <view class="rd_title_person">当前处理人：{{person}}</view>
+    </view>
+    <view class="problem_detail">
+        <view class="problem_detail_title">
+            <view class="problem_detail_title_border"></view>
+            <view class="problem_detail_title_text">问题详情</view>
+        </view>
+        <view class="problem_detail_list">
+            <view class="problem_detail_list_des">
+                <view class="problem_detail_list_des_text">{{des}}</view>
+                <view class="problem_detail_list_des_img">
+                    <block wx:for="{{imgList}}" wx:key="item.index">
+                        <image src="{{item}}" />
+                    </block>
+                </view>
+                <view class="border-scale"></view>
+            </view>
+            <view class="problem_detail_item">
+                <view class="problem_detail_item_top">
+                    <view class="problem_detail_item_left">检查项</view>
+                    <view class="problem_detail_item_right">{{checkItem}}</view>
+                </view>
+                <view class="border-scale"></view>
+            </view>
+            <view class="problem_detail_item">
+                <view class="problem_detail_item_top">
+                    <view class="problem_detail_item_left">整改责任人</view>
+                    <view class="problem_detail_item_right">{{headPerson}}</view>
+                </view>
+                <view class="border-scale"></view>
+            </view>
+            <view class="problem_detail_item">
+                <view class="problem_detail_item_top">
+                    <view class="problem_detail_item_left">隐患等级</view>
+                    <view class="problem_detail_item_right">{{level}}</view>
+                </view>
+                <view class="border-scale"></view>
+            </view>
+            <view class="problem_detail_item">
+                <view class="problem_detail_item_top">
+
+                    <view class="problem_detail_item_left">整改期限</view>
+                    <view class="problem_detail_item_right overdue">
+                        <View class="time">{{time}}</View>
+                        <View class="is_overdue">超期</View>
+                    </view>
+                </view>
+                <view class="border-scale"></view>
+            </view>
+            <view class="problem_detail_item more" wx:if="{{isMore}}" bind:tap="isMore">
+                查看更多
+            </view>
+            <view class="problem_detail_item h_60" wx:else>
+                <view class="problem_detail_item_top small">
+                    <view class="problem_detail_item_left">发布人：{{releasePerson}}</view>
+                    <view class="problem_detail_item_right">{{releaseTime}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="problem_detail">
+        <view class="problem_detail_title">
+            <view class="problem_detail_title_border"></view>
+            <view class="problem_detail_title_text">整改内容</view>
+        </view>
+        <view class="problem_detail_list">
+            <view class="problem_detail_list_des xu">
+                <view class="problem_detail_list_des_text">{{des}}</view>
+                <view class="problem_detail_list_des_img">
+                    <block wx:for="{{imgList}}" wx:key="item.index">
+                        <image src="{{item}}" />
+                    </block>
+                </view>
+            </view>
+            <view class="problem_detail_item h_60">
+                <view class="problem_detail_item_top small">
+                    <view class="problem_detail_item_left">整改人：{{rectificationPerson}}</view>
+                    <view class="problem_detail_item_right">{{rectificationTime}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <block wx:for=""></block>
+    <view class="process">
+        <view class="problem_detail_title">
+            <view class="problem_detail_title_border"></view>
+            <view class="problem_detail_title_text">项目部审批</view>
+        </view>
+        <view class="process_item">
+            <view class="process_item_top">
+                <view class="item_left">
+                    <view class="point bc_tg"></view>
+                    <view class="title tongguo">审批结果：通过</view>
+                </view>
+            </view>
+            <view class="process_item_down">
+                <view class="opinion ">审批意见：意见意见意见意见意见意见意见意见意见意见意见意见意见意见意见意见</view>
+                <view class="result">审批人：<view class="name">张三</view> <view class="time">2019-12-31 12:00</view></view>
+            </view>
+        </view>
+        <view class="process_item">
+            <view class="process_item_top">
+                <view class="item_left">
+                    <view class="point bc_btg"></view>
+                    <view class="title color_red">审批结果：不通过</view>
+                </view>
+            </view>
+            <view class="process_item_down">
+                <view class="opinion">审批意见：意见意见意见意见意见意见意见意见意见意见意见意见意见意见意见意见</view>
+                <view class="result">审批人：<view class="name">张三</view> <view class="time">2019-12-31 12:00</view></view>
+            </view>
+        </view>
+    </view>
+
+
+</view>
+<view class="check_btn">
+    <view class="state" wx:if="{{state==0}}">
+        <view class="btn_item border_right" bind:tap="goIssue">整改</view>
+        <view class="btn_item border_right" bind:tap="goApproval">审批</view>
+        <view class="btn_item border_right" bind:tap="goProcess">流转日志</view>
+        <view class="btn_item">
+            <button open-type="share">分享</button>
+        </view>
+    </view>
+    <view class="state" wx:else>
+        <view class="btn_item border_right" bind:tap="goIssue">审批</view>
+        <view class="btn_item">
+            <button open-type="share">分享</button>
+        </view>
+    </view>
+</view>

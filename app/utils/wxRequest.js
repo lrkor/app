@@ -1,7 +1,7 @@
 //wxRequest.js
 const Promise = require('es6-promise.js');
 
-function wxPromise(method, url, data){
+function wxPromise(method, url, data ,sid){
   //返回一个Promise对象
   return new Promise(function (resolve, reject) {
     wx.request({
@@ -10,7 +10,8 @@ function wxPromise(method, url, data){
       data: data,
       //在header中统一封装报文头，这样不用每个接口都写一样的报文头定义的代码
       header: {
-      "Content-Type": "application/json" 
+      "Content-Type": "application/json" ,
+      'Cookie': 'sid=' + sid
       },
       success: function(res){
         setTimeout(function () {
@@ -49,12 +50,12 @@ function wxPromise(method, url, data){
 }
 
 
-function getRequest(url, data){
-  return wxPromise("GET", url, data);
+function getRequest(url, data,sid){
+  return wxPromise("GET", url, data,sid);
 }
 
-function postRequest(url, data){
-  return wxPromise("POST", url, data);
+function postRequest(url, data,sid){
+  return wxPromise("POST", url, data,sid);
 }
 
 module.exports = {

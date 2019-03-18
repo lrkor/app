@@ -12,8 +12,8 @@
 }
 .results_item, .state_item{
     width: 130rpx;
-    height: 40rpx;
-    line-height: 40rpx;
+    height: 50rpx;
+    line-height: 50rpx;
     text-align: center;
     margin-right: 20rpx;
     margin-top: 30rpx;
@@ -22,7 +22,7 @@
     border-radius:5px;
 }
 .state{
-    margin-top: 60rpx;
+    margin-top: 50rpx;
     padding: 0 30rpx;
 }
 .results_title, .state_title{
