@@ -1,7 +1,8 @@
 <view class="add_check">
     <view class="addDescribe">
         <van-cell-group border="{{false}}">
-            <van-field show-confirm-bar="{{false}}" value="{{ message }}" maxlength="1000" type="textarea" placeholder="请输入审批意见..." autosize border="{{ false }}" />
+            <van-field show-confirm-bar="{{false}}" value="{{ content }}" maxlength="1000" type="textarea"
+                placeholder="请输入审批意见..." autosize border="{{ false }}" bind:change="changeContent" />
         </van-cell-group>
         <view class="choose_img">
             <view class="weui-cells">
@@ -12,7 +13,8 @@
                                 <view class="weui-uploader__files">
                                     <block wx:for="{{imageList}}" wx:key="{{item.index}}" wx:for-item="image">
                                         <view class="weui-uploader__file">
-                                            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                                            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}"
+                                                bindtap="previewImage"></image>
                                         </view>
                                     </block>
                                 </view>
@@ -37,7 +39,7 @@
                             通过
                         </label>
                         <label class="radio">
-                            <radio value="2" />
+                            <radio value="0" />
                             不通过
                         </label>
                     </radio-group>
@@ -46,19 +48,43 @@
             <view class="border-scale"></view>
         </view>
         <van-cell-group border="{{false}}">
-            <van-field disabled bindtap="selectNature" value="{{natureVal}}" label="问题归属" placeholder="请输入后期措施" />
-            <van-field disabled bindtap="selectItem" value="{{itemVal}}" label="审批流程" placeholder="请选择审核人" />
-            <van-field disabled bindtap="selectItem" value="{{itemVal}}" label="审批人" placeholder="请选择审批人" />
+            <view wx:if="{{isProblem&&isPass==1}}">
+                <van-field disabled bindtap="selectNature" value="{{natureVal}}" label="问题归属" placeholder="请输入问题归属" />
+            </view>
+            <view wx:if="{{isPass==1}}">
+                <van-field disabled bindtap="selectFlow" value="{{flowVal}}" label="审批流程" placeholder="请选择审批流程" />
+            </view>
+            <view wx:if="{{shrShow&&isPass==1}}">
+                <van-field disabled bindtap="selectItem" value="{{itemVal}}" label="审批人" placeholder="请选择审批人" />
+            </view>
         </van-cell-group>
     </view>
     <view class="btn" bindtap="submit">提交</view>
     <van-popup show="{{ natureShow }}" position="bottom" overlay bind:close="onClose">
-        <van-picker show-toolbar title="问题归属" columns="{{ natureColumns }}" bind:cancel="onCancel" bind:confirm="natureOnConfirm" />
+        <!-- <view class="problem">
+            <view class="problem_list">
+                <van-checkbox-group border="{{false}}" value="{{ result }}" bind:change="onChange">
+                    <van-cell-group border="{{false}}">
+                        <van-cell wx:for="{{ natureArr }}" wx:key="index" title="{{ item.name }}" clickable
+                            data-id="{{ item.id }}" data-name="{{ item.name }}" bind:click="toggle">
+                            <van-checkbox catch:tap="noop" class="checkboxes-{{ item.id }}" name="{{ item.name }}" />
+                        </van-cell>
+                    </van-cell-group>
+                </van-checkbox-group>
+            </view>
+            <view class="problem_btn" bindtap="proBtn">
+                确定
+            </view>
+        </view> -->
+        <van-picker show-toolbar title="问题归属" columns="{{ natureColumns }}" bind:cancel="onClose"
+            bind:confirm="natureOnConfirm" />
+    </van-popup>
+    <van-popup show="{{ flowShow }}" position="bottom" overlay bind:close="onClose">
+        <van-picker show-toolbar title="审批流程" columns="{{ flowColumns }}" bind:cancel="onClose"
+            bind:confirm="flowOnConfirm" />
     </van-popup>
     <van-popup show="{{ itemShow }}" position="bottom" overlay bind:close="onClose">
-        <van-picker show-toolbar title="审批流程" columns="{{ itemColumns }}" bind:cancel="onCancel" bind:confirm="itemOnConfirm" />
-    </van-popup>
-    <van-popup show="{{ personShow }}" position="bottom" overlay bind:close="onClose">
-        <van-picker show-toolbar title="审批人" columns="{{ itemColumns }}" bind:cancel="onCancel" bind:confirm="itemOnConfirm" />
+        <van-picker show-toolbar title="审批人" columns="{{ itemColumns }}" bind:cancel="onClose"
+            bind:confirm="itemOnConfirm" />
     </van-popup>
 </view>

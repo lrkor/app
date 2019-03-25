@@ -1,8 +1,10 @@
 <view class="rectification_detail">
     <view class="rd_title">
         <image class="rd_title_img" src="../../../images/patrol/rectification/1.png" />
-        <view class="rd_title_status">当前状态：<view class="{{status==0?'color_red':'color_yellow'}}">{{status==0?"待整改":"待审批"}}</view>，</view>
-        <view class="rd_title_person">当前处理人：{{person}}</view>
+        <view class="rd_title_status">当前状态：<view class="{{obj.status==1?'color_red':obj.status==5?'color_blue':'color_yellow'}}">
+                {{obj.status==1?"待整改":obj.status==5?"通过":"待审批"}}
+            </view>，</view>
+        <view class="rd_title_person">当前处理人：{{obj.handlerName}}</view>
     </view>
     <view class="problem_detail">
         <view class="problem_detail_title">
@@ -11,10 +13,10 @@
         </view>
         <view class="problem_detail_list">
             <view class="problem_detail_list_des">
-                <view class="problem_detail_list_des_text">{{des}}</view>
+                <view class="problem_detail_list_des_text">{{obj.inspectBO.content}}</view>
                 <view class="problem_detail_list_des_img">
                     <block wx:for="{{imgList}}" wx:key="item.index">
-                        <image src="{{item}}" />
+                        <image src="{{item}}" data-src="{{image}}" bindtap="previewImage" />
                     </block>
                 </view>
                 <view class="border-scale"></view>
@@ -22,116 +24,159 @@
             <view class="problem_detail_item">
                 <view class="problem_detail_item_top">
                     <view class="problem_detail_item_left">检查项</view>
-                    <view class="problem_detail_item_right">{{checkItem}}</view>
+                    <view class="problem_detail_item_right">{{obj.inspectBO.patrolClassifyPO.name}}</view>
                 </view>
                 <view class="border-scale"></view>
             </view>
             <view class="problem_detail_item">
                 <view class="problem_detail_item_top">
                     <view class="problem_detail_item_left">整改责任人</view>
-                    <view class="problem_detail_item_right">{{headPerson}}</view>
+                    <view class="problem_detail_item_right">{{obj.rectifyPersonName}}</view>
                 </view>
                 <view class="border-scale"></view>
             </view>
             <view class="problem_detail_item">
                 <view class="problem_detail_item_top">
                     <view class="problem_detail_item_left">隐患等级</view>
-                    <view class="problem_detail_item_right">{{level}}</view>
+                    <view class="problem_detail_item_right">{{obj.level==1?'一般':obj.level==2?'较大':'重大'}}</view>
                 </view>
                 <view class="border-scale"></view>
             </view>
             <view class="problem_detail_item">
                 <view class="problem_detail_item_top">
-
                     <view class="problem_detail_item_left">整改期限</view>
                     <view class="problem_detail_item_right overdue">
                         <View class="time">{{time}}</View>
-                        <View class="is_overdue">超期</View>
+                        <View class="is_overdue" wx:if="{{isOverdue}}">超期</View>
                     </view>
                 </view>
                 <view class="border-scale"></view>
             </view>
-            <view class="problem_detail_item more" wx:if="{{isMore}}" bind:tap="isMore">
+            <view class="problem_detail_item more" bind:tap="isMore" wx:if="{{isMore}}">
                 查看更多
             </view>
-            <view class="problem_detail_item h_60" wx:else>
-                <view class="problem_detail_item_top small">
-                    <view class="problem_detail_item_left">发布人：{{releasePerson}}</view>
-                    <view class="problem_detail_item_right">{{releaseTime}}</view>
+            <view wx:else>
+                <view class="problem_detail_item h_60">
+                    <view class="problem_detail_item_top small">
+                        <view class="problem_detail_item_left">整改要求：</view>
+                        <view class="problem_detail_item_right">{{obj.inspectBO.content}}</view>
+                    </view>
+                    <view class="border-scale"></view>
+                </view>
+                <view class="problem_detail_item h_60">
+                    <view class="problem_detail_item_top small">
+                        <view class="problem_detail_item_left">整改编号：</view>
+                        <view class="problem_detail_item_right">{{obj.inspectBO.number}}</view>
+                    </view>
+                    <view class="border-scale"></view>
+                </view>
+                <view class="problem_detail_item h_60">
+                    <view class="problem_detail_item_top small">
+                        <view class="problem_detail_item_left">检查类型：</view>
+                        <view class="problem_detail_item_right">
+                            {{obj.inspectBO.type==1?'项目部自查':obj.inspectBO.type==2?'监理检查':'指挥部检查'}}</view>
+                    </view>
+                    <view class="border-scale"></view>
+                </view>
+                <view class="problem_detail_item cause">
+                    <view class="problem_detail_item_top small">
+                        <view class="problem_detail_item_left">原因分析：</view>
+                        <view class="problem_detail_item_right">
+                            <block wx:for="{{obj.inspectReasonAnalysisList}}" wx:key="{{item.index}}">
+                                <text>{{item.name}},</text>
+                            </block>
+                        </view>
+                    </view>
+                    <view class="border-scale"></view>
+                </view>
+                <view class="problem_detail_item h_60">
+                    <view class="problem_detail_item_top small">
+                        <view class="problem_detail_item_left">问题归属：</view>
+                        <view class="problem_detail_item_right">{{obj.departName?obj.departName:''}}</view>
+                    </view>
+                    <view class="border-scale"></view>
+                </view>
+                <view class="problem_detail_item h_60">
+                    <view class="problem_detail_item_top small">
+                        <view class="problem_detail_item_left">发布人：{{obj.inspectBO.inspectPersonName}}</view>
+                        <view class="problem_detail_item_right w_40">{{releaseTime}}</view>
+                    </view>
                 </view>
             </view>
         </view>
     </view>
-    <view class="problem_detail">
+    <view class="problem_detail" wx:if="{{zgnr}}">
         <view class="problem_detail_title">
             <view class="problem_detail_title_border"></view>
-            <view class="problem_detail_title_text">整改内容</view>
+            <view class="problem_detail_title_text">整改详情</view>
         </view>
         <view class="problem_detail_list">
             <view class="problem_detail_list_des xu">
-                <view class="problem_detail_list_des_text">{{des}}</view>
-                <view class="problem_detail_list_des_img">
-                    <block wx:for="{{imgList}}" wx:key="item.index">
-                        <image src="{{item}}" />
+                <view class="problem_detail_list_des_text">{{zgnrObj.content}}</view>
+                <view class="problem_detail_list_des_img" wx:if="{{imgList1.length>0}}">
+                    <block wx:for="{{imgList1}}" wx:key="item.index">
+                        <image src="{{item}}" data-src="{{image}}" bindtap="previewImage1" />
                     </block>
+                </view>
+                <view class="problem_detail_item">
+                    <view class="problem_detail_item_top">
+                        <view class="problem_detail_item_left color_666">后期措施：{{zgnrObj.laterMeasures}}</view>
+                    </view>
                 </view>
             </view>
             <view class="problem_detail_item h_60">
                 <view class="problem_detail_item_top small">
-                    <view class="problem_detail_item_left">整改人：{{rectificationPerson}}</view>
+                    <view class="problem_detail_item_left">整改人：{{zgnrObj.fromHandlerName}}</view>
                     <view class="problem_detail_item_right">{{rectificationTime}}</view>
                 </view>
             </view>
         </view>
     </view>
 
-    <block wx:for=""></block>
-    <view class="process">
-        <view class="problem_detail_title">
-            <view class="problem_detail_title_border"></view>
-            <view class="problem_detail_title_text">项目部审批</view>
-        </view>
-        <view class="process_item">
-            <view class="process_item_top">
-                <view class="item_left">
-                    <view class="point bc_tg"></view>
-                    <view class="title tongguo">审批结果：通过</view>
+    <block wx:for="{{flowArr}}" wx:key="item.index">
+        <view class="process" wx:if="{{item.list&&item.list.length>0}}">
+            <view class="problem_detail_title">
+                <view class="problem_detail_title_border"></view>
+                <view class="problem_detail_title_text">{{item.name}}</view>
+            </view>
+            <block wx:for="{{item.list}}" wx:key="{{item.index}}">
+                <view class="process_item">
+                    <view class="process_item_top">
+                        <view class="item_left">
+                            <view class="point bc_tg"></view>
+                            <view class="title {{item.isPass==1?'tongguo':'color_red'}}">
+                                审批结果：{{item.isPass==1?'通过':'不通过'}}</view>
+                        </view>
+                    </view>
+                    <view class="process_item_down">
+                        <view class="opinion ">审批意见：{{item.content}}</view>
+                        <view class="result">审批人：<view class="name">{{item.fromHandlerName}}</view>
+                            <view class="time">{{item.createTime}}</view>
+                        </view>
+                    </view>
                 </view>
-            </view>
-            <view class="process_item_down">
-                <view class="opinion ">审批意见：意见意见意见意见意见意见意见意见意见意见意见意见意见意见意见意见</view>
-                <view class="result">审批人：<view class="name">张三</view> <view class="time">2019-12-31 12:00</view></view>
-            </view>
+            </block>
         </view>
-        <view class="process_item">
-            <view class="process_item_top">
-                <view class="item_left">
-                    <view class="point bc_btg"></view>
-                    <view class="title color_red">审批结果：不通过</view>
-                </view>
-            </view>
-            <view class="process_item_down">
-                <view class="opinion">审批意见：意见意见意见意见意见意见意见意见意见意见意见意见意见意见意见意见</view>
-                <view class="result">审批人：<view class="name">张三</view> <view class="time">2019-12-31 12:00</view></view>
-            </view>
-        </view>
-    </view>
-
-
+    </block>
 </view>
 <view class="check_btn">
+    <!-- 小于等于4 -->
     <view class="state" wx:if="{{state==0}}">
-        <view class="btn_item border_right" bind:tap="goIssue">整改</view>
-        <view class="btn_item border_right" bind:tap="goApproval">审批</view>
+        <view class="btn_item border_right" bind:tap="goIssue" wx:if="{{rectify}}">整改</view>
+        <view class="btn_item border_right" bind:tap="goApproval" wx:if="{{audit}}">审批</view>
         <view class="btn_item border_right" bind:tap="goProcess">流转日志</view>
         <view class="btn_item">
             <button open-type="share">分享</button>
         </view>
     </view>
-    <view class="state" wx:else>
-        <view class="btn_item border_right" bind:tap="goIssue">审批</view>
-        <view class="btn_item">
+    <!-- 小于等于4 -->
+    <!-- <view class="state" wx:if="{{state==0}}">
+        <view class="btn_item border_right" bind:tap="goIssue">整改</view>
+        <view class="btn_item border_right" bind:tap="goApproval">审批</view>
+        <view class="btn_item border_right" bind:tap="goProcess">流转日志</view>
+        <view class="btn_item border_right">
             <button open-type="share">分享</button>
         </view>
-    </view>
+        <view class="btn_item border_right" bind:tap="goProcess">更多</view>
+    </view> -->
 </view>

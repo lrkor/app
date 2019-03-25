@@ -2,7 +2,7 @@
     <view class="check_describe">{{obj.content}}</view>
     <view class="check_img">
         <block wx:for="{{imageList}}" wx:key="{{item.index}}" wx:for-item="image">
-                <image src="{{image}}" data-src="{{image}}" bindtap="previewImage"/>
+            <image src="{{image}}" data-src="{{image}}" bindtap="previewImage" />
         </block>
     </view>
     <view class="check_list">
@@ -25,29 +25,29 @@
         </van-cell-group>
     </view>
     <view class="check_btn">
-        <view class="state" wx:if="{{state==0}}">
-            <view class="btn_item border_right" catchtap="goEdit">编辑</view>
+        <!-- 小于等于4的情况 -->
+        <view class="state" wx:if="{{!moreFore}}">
+            <view class="btn_item border_right" bind:tap="showDelete" wx:if="{{updateOrDelete}}">删除</view>
+            <view class="btn_item border_right" catchtap="goEdit" wx:if="{{updateOrDelete}}">编辑</view>
+            <view class="btn_item border_right" bind:tap="goIssue" wx:if="{{addRectify}}">下发整改</view>
+            <view class="btn_item border_right" bind:tap="goRectifyDetail" wx:if="{{rectifyDetail}}">整改详情</view>
             <view class="btn_item">
                 <button open-type="share">分享</button>
             </view>
         </view>
-        <view class="state" wx:elif="{{state==1}}">
-            <view class="btn_item">
-                <button open-type="share">分享</button>
-            </view>
-        </view>
-        <view class="state" wx:elif="{{state==2}}">
-            <view class="btn_item border_right">整改详情</view>
-            <view class="btn_item">
-                <button open-type="share">分享</button>
-            </view>
-        </view>
+        <!-- 大于4的情况 -->
         <view class="state" wx:else>
-            <view class="btn_item border_right" bind:tap="goIssue">下发整改</view>
+            <view class="btn_item border_right" bind:tap="showDelete">删除</view>
             <view class="btn_item border_right" catchtap="goEdit">编辑</view>
-            <view class="btn_item">
+            <view class="btn_item border_right" bind:tap="goIssue">下发整改</view>
+            <!-- <view class="btn_item border_right">整改详情</view> -->
+            <!-- <view class="btn_item border_right">
                 <button open-type="share">分享</button>
-            </view>
+            </view> -->
+            <view class="btn_item border_right" bind:tap="goMoreBtn">更多</view>
         </view>
     </view>
 </view>
+
+<van-dialog id="van-dialog" />
+<van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:close="onClose" bind:select="onSelect" />

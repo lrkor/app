@@ -7,50 +7,69 @@
                     <view class="title">发起检查</view>
                 </view>
                 <view class="item_right">
-                    <view class="name">张三</view>
-                    <view class="time">03-04 11:22</view>
+                    <view class="name">{{inspectBO.inspectPersonName}}</view>
+                    <view class="time">{{inspectBO.createTime}}</view>
                 </view>
             </view>
             <view class="process_item_down">
-                <view class="result color_999">现场描述：{{describe}}</view>
+                <view class="result color_999">现场描述：{{inspectBO.content}}</view>
             </view>
         </view>
-        <view class="process_item">
+        <view class="process_item" wx:if="{{issue.content}}">
             <view class="process_item_top">
                 <view class="item_left">
                     <view class="point"></view>
                     <view class="title">下发整改</view>
                 </view>
                 <view class="item_right">
-                    <view class="name">张三</view>
-                    <view class="time">03-04 11:22</view>
+                    <view class="name">{{issue.createName}}</view>
+                    <view class="time">{{issue.createTime}}</view>
                 </view>
             </view>
             <view class="process_item_down">
-                <view class="result color_999">整改要求：{{demand}}</view>
+                <view class="result color_999">整改要求：{{issue.content}}</view>
             </view>
         </view>
-        <block wx:for="{{list}}" wx:key="{{item.index}}">
-            <view class="process_item">
-                <view class="process_item_top">
-                    <view class="item_left">
-                        <view class="point {{item.status==0?'bc_red':''}}"></view>
-                        <view class="title">发起检查</view>
+        <view wx:if="{{inspectRectifyFlowList.length>0}}">
+            <block wx:for="{{inspectRectifyFlowList}}" wx:key="{{item.index}}">
+                <view class="process_item" wx:if="{{item.type==1}}">
+                    <view class="process_item_top">
+                        <view class="item_left">
+                            <view class="point"></view>
+                            <view class="title">问题整改</view>
+                        </view>
+                        <view class="item_right">
+                            <view class="name">{{item.fromHandlerName}}</view>
+                            <view class="time">{{item.createTime}}</view>
+                        </view>
                     </view>
-                    <view class="item_right">
-                        <view class="name">张三</view>
-                        <view class="time">{{item.time}}</view>
+                    <view class="process_item_down">
+                        <view class="result color_999">整改内容：{{item.content}}</view>
+                        <view class="result color_999">后期措施：{{item.laterMeasures}}</view>
                     </view>
                 </view>
-                <view class="process_item_down {{item.status==0?'color_red':'color_bule'}}">
-                    <view class="result">审批结果：{{item.result}}</view>
-                    <view class="opinion">审批意见：{{item.opinion}}</view>
+                <view class="process_item" wx:else>
+                    <view class="process_item_top">
+                        <view class="item_left">
+                            <view class="point {{item.status==0?'bc_red':''}}"></view>
+                            <view class="title">{{item.type==2?'项目部审批':item.type==3?'监理审批':'指挥部审批'}}
+                            </view>
+                        </view>
+                        <view class="item_right">
+                            <view class="name">{{item.fromHandlerName}}</view>
+                            <view class="time">{{item.createTime}}</view>
+                        </view>
+                    </view>
+                    <view class="process_item_down {{item.isPass==0?'color_red':'color_bule'}}">
+                        <view class="result">审批结果：{{item.isPass==0?'不通过':'通过'}}</view>
+                        <view class="opinion">审批意见：{{item.content}}</view>
+                    </view>
                 </view>
-            </view>
-        </block>
+            </block>
+        </view>
     </view>
-    <view class="isComplete">
-        <image class="img" src="../../../images/patrol/1.png"/>
+    <view class="isComplete" wx:if="{{issue.status==5}}">
+        <image class="img" src="../../../images/patrol/1.png" />
         <view class="text">已完成</view>
     </view>
 </view>

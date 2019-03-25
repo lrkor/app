@@ -28,7 +28,10 @@
     "pages/patrol/chooseCheckList/chooseCheckList",
     "pages/patrol/rectificationDetail/rectificationDetail",
     "pages/patrol/chooseCheckItem/chooseCheckItem",
-    "pages/patrol/chooseCheck/chooseCheck"
+    "pages/patrol/chooseCheck/chooseCheck",
+    "pages/team/chooseUnit/chooseUnit",
+    "pages/team/educationList/educationList",
+    "pages/team/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -24,7 +24,7 @@ function wxPromise(method, url, data ,sid){
           //如果出现异常则弹出dialog
           wx.showModal({
             title: '提示',
-            content: res.data.errCode + '系统异常',
+            content: '系统异常',
             confirmColor: '#118EDE',
             showCancel: false,
             success: function (res) {

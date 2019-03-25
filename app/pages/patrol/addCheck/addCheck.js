@@ -1,5 +1,6 @@
 const app = getApp()
 const wxRequest = require('../../../utils/wxRequest.js');
+import Toast from '../../../miniprogram_npm/vant-weapp/toast/toast';
 Page({
   data: {
     content: '',
@@ -22,7 +23,7 @@ Page({
     gpsLat: '',
 
     // 图片数组
-    fileIds:[]
+    fileIds: []
   },
   onLoad: function (options) {
     let that = this;
@@ -55,9 +56,9 @@ Page({
     }
   },
 
-  changeContent(e){
+  changeContent(e) {
     this.setData({
-      content:e.detail
+      content: e.detail
     })
   },
 
@@ -109,39 +110,42 @@ Page({
     let natureVal = this.data.natureVal;
     let natureArr = this.data.natureArr;
     let itemObj = this.data.itemObj;
-    
+
 
     let nature = '';
 
-    for(let item of natureArr){
-      if(item.name == natureVal){
+    for (let item of natureArr) {
+      if (item.name == natureVal) {
         nature = item.value;
       }
     }
 
     let data = {
-      content:content,
-      checkClassifyId:itemObj.id,
-      fileIds:this.data.fileIds,
-      orgId:app.globalData.orgId,
-      result:state,
-      gpsLng:this.data.gpsLng,
-      gpsLat:this.data.gpsLat,
-      nature:nature
+      content: content,
+      checkClassifyId: itemObj.id,
+      fileIds: this.data.fileIds,
+      orgId: app.globalData.orgId,
+      result: state,
+      gpsLng: this.data.gpsLng,
+      gpsLat: this.data.gpsLat,
+      nature: nature
     }
-
-    this.add(data).then(res=>{
-      let id = res.data.data.id;
-      if (state == 3) {
-        wx.redirectTo({
-          url: '../issue/issue?number=1'
-        })
-      } else {
-        wx.redirectTo({
-          url: '../checkDetail/checkDetail?id=' + id
-        })
-      }
-    })
+    if (data.content == '' || !data.checkClassifyId || data.result > 3 || data.nature == '') {
+      Toast.fail('请输入内容');
+    } else {
+      this.add(data).then(res => {
+        let id = res.data.data.id;
+        if (state == 3) {
+          wx.redirectTo({
+            url: '../issue/issue?number=1&id=' + id
+          })
+        } else {
+          wx.redirectTo({
+            url: '../checkDetail/checkDetail?id=' + id
+          })
+        }
+      });
+    }
   },
 
   chooseImage() {
@@ -167,7 +171,7 @@ Page({
         }
         that.setData({
           imageList: res.tempFilePaths,
-          fileIds:fileArr
+          fileIds: fileArr
         })
       }
     })

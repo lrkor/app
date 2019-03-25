@@ -30,7 +30,7 @@
         <swiper indicator-dots="{{flase}}" autoplay="{{flase}}" class="small_feature_swiper" bindchange="switchTab">
             <block wx:for="{{smallImgUrl}}" wx:key="*this">
                 <swiper-item>
-                    <view wx:for="{{item}}" wx:key="" class="small_feature_li  detail-view" data-status="{{item.status}}" data-url="{{item.hrefUrl}}" hover="true" hover-class="detail1-hover"
+                    <view wx:for="{{item}}" wx:key="" class="small_feature_li  detail-view" data-status="{{item.status}}" data-url="{{item.hrefUrl}}"
                         bindtap='goToWebView'>
                         <image src="{{item.url}}" data-status="{{item.status}}" data-url="{{item.hrefUrl}}" style="width:60rpx;height: 60rpx;" />
                         <view wx:if="{{item.status == 5}}" data-status="{{item.status}}" data-url="{{item.hrefUrl}}">
@@ -54,14 +54,15 @@
         <view class="application_title">我的应用</view>
         <view class="application_list clearfix">
             <block wx:for="{{applicationList}}" wx:key="">
-                <view class="application_item detail-view" hover="true" data-status="{{item.status}}" data-url="{{item.url}}" data-text="{{item.text}}"
-                    hover-class="detail-hover" bindtap='goToWebView' >
+                <view class="application_item detail-view" data-url="{{item.url}}" data-text="{{item.text}}"
+                 bindtap='goToWebView' >
                     <image src="{{item.imgUrl}}" style="width:90rpx;height: 90rpx;" data-status="{{item.status}}" data-url="{{item.url}}" data-text="{{item.text}}"/>
                     <view data-status="{{item.status}}" data-url="{{item.url}}">{{item.text}}</view>
                 </view>
             </block>
         </view>
     </view>
+
     <!-- 遮罩层 -->
     <view class="shadeOut hide {{showView?'':'show'}}">  
        <!--遮罩层  -->

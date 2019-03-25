@@ -14,25 +14,24 @@ Page({
     wx.setNavigationBarTitle({
       title: '单位选择'
     });
-
-    this.getUnit().then(res=>{
+    this.getUnit().then(res => {
       that.setData({
-        unitList:res.data.rows
+        unitList: res.data.rows
       });
     })
   },
 
   checkList(e) {
     let id = e.currentTarget.dataset.id;
-    app.globalData.orgId = e.currentTarget.dataset.orgId;
+    app.globalData.orgId = e.currentTarget.dataset.orgid;
     let type = this.data.type;
     if (type == 1) {
       wx.navigateTo({
-        url: '../checkList/checkList?id=' + id,
+        url: '../checkList/checkList?orgId=' + e.currentTarget.dataset.orgid,
       })
     } else {
       wx.navigateTo({
-        url: '../rectificationList/rectificationList?id=' + id,
+        url: '../rectificationList/rectificationList?orgId=' + e.currentTarget.dataset.orgid,
       })
     }
 

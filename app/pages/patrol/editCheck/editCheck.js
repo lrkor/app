@@ -1,6 +1,6 @@
 const app = getApp()
 const wxRequest = require('../../../utils/wxRequest.js');
-var util = require('../../../utils/util.js') //引入微信自带的日期格式化
+import Toast from '../../../miniprogram_npm/vant-weapp/toast/toast';
 Page({
   data: {
     id: '',
@@ -68,16 +68,17 @@ Page({
         }
       });
       let json = {
-        name: res.data.data.patrolClassifyPO.name
+        name: res.data.data.patrolClassifyPO.name,
+        id:res.data.data.patrolClassifyPO.id
       };
       let fileArr = [];
-      for(let item of res.data.data.fileList){
+      for (let item of res.data.data.fileList) {
         fileArr.push(item.id)
       }
       that.setData({
         obj: res.data.data,
         imageList: imgArr,
-        fileIds:fileArr,
+        fileIds: fileArr,
         content: res.data.data.content,
         itemObj: json,
         state: res.data.data.result
@@ -191,8 +192,6 @@ Page({
         nature = item.value;
       }
     }
-    console.log(this.data.fileIds);
-
     let data = {
       id: id,
       content: content,
@@ -205,18 +204,22 @@ Page({
       nature: nature
     }
 
-    this.edit(data).then(res => {
-      let id = res.data.data.id;
-      if (state == 3) {
-        wx.redirectTo({
-          url: '../issue/issue?number=1'
-        })
-      } else {
-        wx.redirectTo({
-          url: '../checkDetail/checkDetail?id=' + id
-        })
-      }
-    })
+    if (data.content == '' || !data.checkClassifyId || data.result > 3 || data.nature == '') {
+      Toast.fail('请输入内容');
+    } else {
+      this.edit(data).then(res => {
+        let id = res.data.data.id;
+        if (state == 3) {
+          wx.redirectTo({
+            url: '../issue/issue?number=1&id=' + id
+          })
+        } else {
+          wx.redirectTo({
+            url: '../checkDetail/checkDetail?id=' + id
+          })
+        }
+      })
+    }
   },
 
   changeContent(e) {

@@ -7,42 +7,46 @@
             </view>
         </van-search>
     </view>
-    <view class="list">
+    <view class="list" wx:if="{{list.length>0}}">
         <block wx:for="{{list}}" wx:key="item.index">
             <view class="check_item" data-id="{{item.id}}" bind:tap="goDetail">
                 <view class="item_top">
                     <view class="item_top_title">
-                        <view class="number">{{item.number}}</view>
-                        <view class="isSend" wx:if="{{type==1}}">待审批</view>
-                        <view class="isSend unSend" wx:else>待整改</view>
+                        <view class="number">{{item.inspectBO.number}}</view>
+                        <view class="isSend unSend" wx:if="{{item.status==1}}">待整改</view>
+                        <view class="isSend" wx:elif="{{item.status<5}}">待审批</view>
+                        <view class="isSend pass" wx:elif="{{item.status==5}}">通过</view>
                     </view>
                     <view class="check_type">
                         <view class="check_type_title">检查项：</view>
-                        <view class="check_type_val">{{item.check_type}}</view>
+                        <view class="check_type_val">{{item.inspectBO.patrolClassifyPO.name}}</view>
                     </view>
                     <view class="type">
                         <view class="type_title">
                             <view>类</view><view class="empty">查</view><view>型：</view>
                         </view>
-                        <view class="type_val">{{item.type}}</view>
+                        <view class="type_val">{{item.type==1?'项目部自查':item.type==2?'监理检查':'指挥部检查'}}</view>
                     </view>
                     <view class="describe">
                         <view class="describe_title">
                             <view>描</view><view class="empty">查</view><view>述：</view>
                         </view>
-                        <view class="describe_val">{{item.describe}}</view>
+                        <view class="describe_val">{{item.inspectBO.content}}</view>
                     </view>
                 </view>
                 <view class="item_down">
-                    <view class="results">整改人：{{item.createPeople}}</view>
+                    <view class="results">整改人：{{item.rectifyPersonName}}</view>
                     <view class="create">
                         <view class="createPeople">整改期限：</view>
                         <view class="createDate">{{item.createDate}}</view>
                         <view class="createTime">{{item.createTime}}</view>
-                        <view class="isOverdue">逾期</view>
+                        <view class="isOverdue" wx:if="{{item.isOverTime}}">逾期</view>
                     </view>
                 </view>
             </view>
         </block>
+    </view>
+    <view class="noData" wx:else>
+        <image src="../../../images/patrol/check/2.png" style="width:382rpx;height:398rpx;"/>
     </view>
 </view>

@@ -1,41 +1,61 @@
 const app = getApp();
 const wxRequest = require('../../../utils/wxRequest.js');
-var util = require('../../../utils/util.js') //引入微信自带的日期格式化
+const util = require('../../../utils/util.js');
 Page({
   data: {
-    id: '',
+    orgId: '',
     page: 1,
-    size: 10,
     list: [],
-    obj:{}
+    obj: {},
+    obj1: {},
+    notSelf: '',
+    btnShow: false,
+    isLoading: true
   },
-  onLoad: function (options) {
+  onLoad(options) {
+    let that = this;
     wx.setNavigationBarTitle({
       title: '检查记录'
     });
-    let id = options.id;
+
+    // 获取权限
+    this.hasPermission().then(res => {
+      that.setData({
+        btnShow: res.data.data
+      });
+    });
+
+    if (app.globalData.userInfo.unitType != 3) {
+      this.setData({
+        notSelf: 1
+      });
+    }
+
+    let orgId = options.orgId;
     let data = {
-      id: id,
+      orgId: orgId,
+      notSelf: this.data.notSelf,
       page: 1,
       size: 10,
     }
     this.setData({
-      id: id,
-      obj:data
+      orgId: orgId,
     });
     this.drawList(data);
   },
 
   onShow() {
-    if(app.globalData.checkFiltrate.startDate){
-      let id = this.data.id;
+    if (JSON.stringify(app.globalData.checkFiltrate) != '{}') {
+      let orgId = this.data.orgId;
       let data = app.globalData.checkFiltrate;
-      data.id = id;
+      data.orgId = orgId;
+      data.notSelf = this.data.notSelf;
       data.page = 1;
       data.size = 10;
       this.setData({
-        page:1,
-        obj:data
+        page: 1,
+        obj1: data,
+        isLoading: true
       });
       this.drawList(data);
       app.globalData.checkFiltrate = {};
@@ -44,17 +64,17 @@ Page({
 
   onSearch(event) {
     let fullName = event.detail;
-    let that = this;
-    let id = this.data.id;
+    let orgId = this.data.orgId;
     let data = {
-      id: id,
+      orgId: orgId,
+      notSelf: this.data.notSelf,
       page: 1,
       size: 10,
-      fullName:fullName
+      fullName: fullName
     }
     this.setData({
       page: 1,
-      obj:data
+      obj: data
     })
     this.drawList(data);
   },
@@ -85,34 +105,85 @@ Page({
   },
 
   // 渲染数据
-  drawList(data){
+  drawList(data, isLoading) {
     let that = this;
+    let listArr = this.data.list;
     this.getList(data).then(res => {
+      wx.stopPullDownRefresh();
+      wx.hideNavigationBarLoading();
+      wx.hideLoading();
       let list = res.data.rows
       // 格式化时间,类型
-      if(list.length!=0){
+      if (list.length != 0) {
         for (let item of list) {
           item.createDate = util.formatTime(new Date(item.createTime), 'yyyy-mm-dd');
           item.createTime = util.formatTime(new Date(item.createTime), 'hh:mm');
         }
       }
-      that.setData({
-        list: list
-      });
+      if (list.length < 10) {
+        that.setData({
+          isLoading: false
+        });
+      }
+      if (isLoading) {
+        that.setData({
+          list: [...listArr, ...list]
+        });
+      } else {
+        that.setData({
+          list: list
+        });
+      }
     });
   },
 
+  // 获取按钮权限
+  hasPermission() {
+    let url = app.globalData.sgmsUrl + '/sys/api/permission/hasPermission';
+    return wxRequest.getRequest(url, { code: 'inspect:add' }, app.globalData.sid);
+  },
+
   onPullDownRefresh() {
-    // wx.showNavigationBarLoading();
-    // wx.stopPullDownRefresh();
+    wx.showNavigationBarLoading();
+    let data = {
+      orgId: this.data.orgId,
+      notSelf: this.data.notSelf,
+      page: 1,
+      size: 10,
+    }
+    this.setData({
+      page: 1,
+      isLoading: true
+    });
+    this.drawList(data);
   },
 
   onReachBottom() {
-    // wx.showLoading({
-    //   title: '玩命加载中',
-    // })
-
-    // 隐藏加载框
-    //  wx.hideLoading();
+    let isLoading = this.data.isLoading;
+    let page = this.data.page;
+    let obj1 = this.data.obj1;
+    let obj = this.data.obj;
+    let data = {};
+    if (isLoading) {
+      wx.showLoading({
+        title: '加载中',
+      });
+      page = page + 1;
+      if (JSON.stringify(obj1) != '{}') {
+        obj1.page = page;
+        data = obj1;
+      } else if (JSON.stringify(obj) != '{}') {
+        obj.page = page;
+        data = obj;
+      } else {
+        data = {
+          orgId: this.data.orgId,
+          notSelf: this.data.notSelf,
+          page: page,
+          size: 10,
+        }
+      }
+      this.drawList(data, 1);
+    }
   }
 })

@@ -1,82 +1,12 @@
 const app = getApp();
 const wxRequest = require('../../../utils/wxRequest.js');
+const util = require('../../../utils/util.js');
 Page({
   data: {
     type: 0,
-    list: [
-      {
-        id: 1,
-        number: 'XT-NT1_20190001',
-        isSend: true,
-        check_type: '临边防护',
-        type: '项目部自查',
-        describe: '防护防护防护防护不够安全需要防护防防护防护防护防护不够安全需要防护防',
-        results: 0,
-        createPeople: '张三',
-        createDate: '2019-03-07',
-        createTime: '11:04',
-      },
-      {
-        id: 1,
-        number: 'XT-NT1_20190001',
-        isSend: true,
-        check_type: '临边防护',
-        type: '项目部自查',
-        describe: '防护防护防护防护不够安全需要防护防防护防护防护防护不够安全需要防护防',
-        results: 1,
-        createPeople: '张三',
-        createDate: '2019-03-07',
-        createTime: '11:04',
-      },
-      {
-        id: 1,
-        number: 'XT-NT1_20190001',
-        isSend: false,
-        check_type: '临边防护',
-        type: '项目部自查',
-        describe: '防护防护防护防护不够安全需要防护防防护防护防护防护不够安全需要防护防',
-        results: 2,
-        createPeople: '张三',
-        createDate: '2019-03-07',
-        createTime: '11:04',
-      },
-      {
-        id: 1,
-        number: 'XT-NT1_20190001',
-        isSend: false,
-        check_type: '临边防护',
-        type: '项目部自查',
-        describe: '防护防护防护防护不够安全需要防护防防护防护防护防护不够安全需要防护防',
-        results: 0,
-        createPeople: '张三',
-        createDate: '2019-03-07',
-        createTime: '11:04',
-      },
-      {
-        id: 1,
-        number: 'XT-NT1_20190001',
-        isSend: true,
-        check_type: '临边防护',
-        type: '项目部自查',
-        describe: '防护防护防护防护不够安全需要防护防防护防护防护防护不够安全需要防护防',
-        results: 0,
-        createPeople: '张三',
-        createDate: '2019-03-07',
-        createTime: '11:04',
-      },
-      {
-        id: 1,
-        number: 'XT-NT1_20190001',
-        isSend: true,
-        check_type: '临边防护',
-        type: '项目部自查',
-        describe: '防护防护防护防护不够安全需要防护防防护防护防护防护不够安全需要防护防',
-        results: 0,
-        createPeople: '张三',
-        createDate: '2019-03-07',
-        createTime: '11:04',
-      },
-    ]
+    list: [],
+    page: 1,
+    isLoading: true
   },
   onLoad: function (options) {
     let type = options.type;
@@ -86,28 +16,28 @@ Page({
       type: type
     });
     if (type == 0) {
-      that.getDwzg().then(res => {
-        console.log(res);
+      that.getDwzg(1).then(res => {
+        that.drawList(res.data.rows);
       })
 
       wx.setNavigationBarTitle({
         title: '待我整改'
-      })
+      });
     } else if (type == 1) {
       wx.setNavigationBarTitle({
         title: '待我审批'
       });
 
-      that.getDwsp().then(res => {
-        console.log(res);
+      that.getDwsp(1).then(res => {
+        that.drawList(res.data.rows);
       })
     } else {
       wx.setNavigationBarTitle({
         title: '单位待办'
       });
 
-      that.getDwdb().then(res => {
-        console.log(res);
+      that.getDwdb(1).then(res => {
+        that.drawList(res.data.rows);
       })
     }
 
@@ -120,33 +50,122 @@ Page({
   },
 
   // 获取待我整改
-  getDwzg() {
+  getDwzg(page) {
     let url = app.globalData.sgmsUrl + '/api/v1/inspectRectify/query';
-    let data = { status: 1, rectifyUserId: app.globalData.userId };
+    let data = { status: 1, rectifyUserId: app.globalData.userId, size: 10, page: page };
     return wxRequest.postRequest(url, data, app.globalData.sid);
   },
 
   // 获取待我审批
-  getDwsp() {
+  getDwsp(page) {
     let url = app.globalData.sgmsUrl + '/api/v1/inspectRectify/query';
-    let data = { toAudit: 1, handlerId: app.globalData.userId };
+    let data = { toAudit: 1, handlerId: app.globalData.userId, size: 10, page: page };
     return wxRequest.postRequest(url, data, app.globalData.sid);
   },
 
   // 获取单位待办
-  getDwdb() {
+  getDwdb(page) {
     let url = app.globalData.sgmsUrl + '/api/v1/inspectRectify/query';
-    let data = { orgId: app.globalData.userInfo.orgId, notFinish: 1 };
+    let data = { orgId: app.globalData.userInfo.orgId, notFinish: 1, size: 10, page: page };
     return wxRequest.postRequest(url, data, app.globalData.sid);
+  },
+
+  // 渲染数据
+  drawList(data, isLoading) {
+    let list = data;
+    let that = this;
+    let listArr = this.data.list;
+    // 格式化时间,类型
+    if (list.length != 0) {
+      for (let item of list) {
+        item.isOverTime = item.dateline > new Date().getTime() ? false : true;
+        item.createDate = util.formatTime(new Date(item.createTime), 'yyyy-mm-dd');
+        item.createTime = util.formatTime(new Date(item.createTime), 'hh:mm');
+      }
+    }
+    if (list.length < 10) {
+      that.setData({
+        isLoading: false
+      });
+    }
+    if (isLoading) {
+      that.setData({
+        list: [...listArr, ...list]
+      });
+    } else {
+      that.setData({
+        list: list
+      });
+    }
   },
 
 
   onPullDownRefresh() {
-    // wx.showNavigationBarLoading();
-    // wx.stopPullDownRefresh();
+    wx.showNavigationBarLoading();
+    let type = this.data.type;
+    let that = this;
+    this.setData({
+      page: 1,
+      isLoading: true
+    });
+    if (type == 0) {
+      that.getDwzg(1).then(res => {
+        that.drawList(res.data.rows);
+        wx.stopPullDownRefresh();
+        wx.hideNavigationBarLoading();
+        wx.hideLoading();
+      })
+    } else if (type == 1) {
+      that.getDwsp(1).then(res => {
+        that.drawList(res.data.rows);
+        wx.stopPullDownRefresh();
+        wx.hideNavigationBarLoading();
+        wx.hideLoading();
+      })
+    } else {
+      that.getDwdb(1).then(res => {
+        that.drawList(res.data.rows);
+        wx.stopPullDownRefresh();
+        wx.hideNavigationBarLoading();
+        wx.hideLoading();
+      })
+    }
   },
 
   onReachBottom() {
+    let isLoading = this.data.isLoading;
+    let type = this.data.type;
+    let page = this.data.page;
+    let that = this;
+    if (isLoading) {
+      wx.showLoading({
+        title: '加载中',
+      });
+
+      page = page + 1;
+      if (type == 0) {
+        that.getDwzg(page).then(res => {
+          that.drawList(res.data.rows,1);
+          wx.stopPullDownRefresh();
+          wx.hideNavigationBarLoading();
+          wx.hideLoading();
+        })
+      } else if (type == 1) {
+        that.getDwsp(page).then(res => {
+          that.drawList(res.data.rows,1);
+          wx.stopPullDownRefresh();
+          wx.hideNavigationBarLoading();
+          wx.hideLoading();
+        })
+      } else {
+        that.getDwdb(page).then(res => {
+          that.drawList(res.data.rows,1);
+          wx.stopPullDownRefresh();
+          wx.hideNavigationBarLoading();
+          wx.hideLoading();
+        })
+      }
+    }
     // wx.showLoading({
     //   title: '玩命加载中',
     // })

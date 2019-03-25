@@ -36,7 +36,7 @@
 }
 
 .title_letf {
-  padding-left: 33rpx;
+  padding-left: 30rpx;
   display: flex;
   flex: 1;
   align-items: center;
@@ -44,11 +44,12 @@
 
 .title_right {
   text-align: right;
-  padding-right: 33rpx;
+  padding-right: 30rpx;
 }
 
 .shuffling {
   padding: 0 30rpx;
+  margin-top: 10rpx;
 }
 
 .slide-image {
@@ -116,14 +117,14 @@
 }
 
 .application_list {
-  margin-top: 40rpx;
+  margin-top: 20rpx;
 }
 
 .application_item {
   width: 25%;
   float: left;
   text-align: center;
-  margin-bottom: 40rpx;
+  margin-bottom: 20rpx;
   padding:20rpx 0;
 }
 

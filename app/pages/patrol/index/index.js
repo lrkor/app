@@ -17,16 +17,16 @@ Page({
     this.getSid(app.globalData.openid).then(res => {
       app.globalData.sid = res.data.data;
       that.statisticsToDo().then(res => {
-        if(!toRectify){
+        if(!res.data.data.toRectify){
           that.setData({
             isShow:false
           });
         }
         that.setData({
-          myRectification: res.data.data.toRectify,
+          myRectification: res.data.data.toRectify?res.data.data.toRectify:0,
           myExamination: res.data.data.toAudit,
           unitTodo: res.data.data.orgToDo,
-          momentum: res.data.data.orgToAddRectify,
+          momentum: res.data.data.orgToAddRectify
         });
       });
     })

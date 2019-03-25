@@ -177,8 +177,16 @@ Page({
   determine() {
     let that = this;
     let type = that.data.type;
+    let startDate =  that.data.startTime;
+    let endDate = that.data.endTime;
+    if(startDate=='开始时间'){
+      startDate = '';
+    }
+    if(endDate=='结束时间'){
+      endDate = '';
+    }
     if (type == 1) {
-      // 检查结果
+      // 检查结果 
       let isQualified = that.data.isQualified;
       let isWarning = that.data.isWarning;
       let isRectification = that.data.isRectification;
@@ -205,8 +213,8 @@ Page({
       let json = {};
       if (isSend && onSend) {
         json = {
-          startDate: that.data.startTime,
-          endDate: that.data.endTime,
+          startDate: startDate,
+          endDate: endDate,
           resultList: resultList
         }
       } else {
@@ -217,17 +225,51 @@ Page({
           isNotify = 1
         }
         json = {
-          startDate: that.data.startTime,
-          endDate: that.data.endTime,
+          startDate: startDate,
+          endDate: endDate,
           resultList: resultList,
           isNotify:isNotify
         }
       }
       app.globalData.checkFiltrate = json;
     } else {
+      // 整改筛选
+      let data = this.data;
+      let dzg = data.dzg;
+      let dsp = data.dsp;
+      let ybh = data.ybh;
+      let statusList = [];
+
+      //是否逾期
+      let wyq =  data.wyq;
+      let yq =  data.yq;
+      let outDateline = '';
+      let inDateline = '';
+
+      if(dzg){
+        statusList.push(1);
+      }
+      if(dsp){
+        statusList.push(2,3,4);
+      }
+      if(ybh){
+        statusList.push(5);
+      }
+
+      if(wyq){
+        inDateline = 1;
+      }
+      if(yq){
+        outDateline = 1;
+      }
+
+
       let json = {
-        startTime: that.data.startTime,
-        endTime: that.data.endTime,
+        startDate: startDate,
+        endDate: endDate,
+        statusList:statusList,
+        outDateline:outDateline,
+        inDateline:inDateline
       }
       app.globalData.rectificationFiltrate = json;
     }

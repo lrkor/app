@@ -98,6 +98,10 @@
     text-align: right;
 }
 
+.w_40 {
+    width: 40%;
+}
+
 .overdue {
     display: flex;
     align-items: center;
@@ -268,29 +272,54 @@ button::after {
 .color_yellow {
     color: #FFCC00;
 }
-.result{
+
+.result {
     margin-top: 20rpx;
     color: #999;
     display: flex;
     flex-direction: row;
     font-size: 26rpx;
 }
-.name{
+
+.name {
     margin-right: 15rpx;
 }
-.name,.time{
+
+.name, .time {
     font-size: 26rpx;
     color: #999;
 }
-.opinion{
+
+.opinion {
     color: #999;
 }
-.tongguo{
+
+.tongguo {
     color: #39CD3D;
 }
-.bc_tg{
+
+.bc_tg {
     background-color: #39CD3D;
 }
-.bc_btg{
+
+.bc_btg {
     background-color: #ff0000;
+}
+
+.color_666 {
+    color: #666;
+    font-size: 28rpx;
+}
+
+.color_blue {
+    color: #2E85D6;
+}
+
+.cause {
+    line-height: normal;
+    height: auto;
+}
+
+.cause .problem_detail_item_top {
+    padding: 10rpx 0;
 }

@@ -1,6 +1,6 @@
 {
   "enablePullDownRefresh":true,
-  "onReachBottomDistance":20,
+  "onReachBottomDistance":200,
   "usingComponents": {
     "van-search": "../../../miniprogram_npm/vant-weapp/search/index"
   }

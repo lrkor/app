@@ -1,8 +1,8 @@
 <view class="add_check">
     <view class="addDescribe">
-        <van-cell-group border="{{ false }}" >
+        <van-cell-group border="{{ false }}">
             <van-field show-confirm-bar="{{false}}" value="{{ content }}" maxlength="1000" type="textarea"
-                placeholder="请输入问题描述" autosize border="{{ false }}" bind:change="changeContent"/>
+                placeholder="请输入问题描述" autosize border="{{ false }}" bind:change="changeContent" />
         </van-cell-group>
         <view class="choose_img">
             <view class="weui-cells">
@@ -73,3 +73,5 @@
         <van-picker show-toolbar columns="{{ natureColumns }}" bind:cancel="onCancel" bind:confirm="natureOnConfirm" />
     </van-popup>
 </view>
+
+<van-toast id="van-toast" />

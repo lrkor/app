@@ -113,14 +113,14 @@ Page({
       status: 2
     },
     {
-      url: 'http://mp.zhinengjianshe.com/minWeb/unit',
-      // url: 'http://192.168.1.40:8083/minWeb/unit',
+      url: 'https://wechatapplet.zhinengjianshe.com/miniWeb/unit',
+      // url: 'http://192.168.1.40:8083/miniWeb/unit',
       imgUrl: '../../images/index/application/spjk1.png',
       text: '视频监控',
       status: 1
     },
     {
-      url:'http://192.168.1.40:8080/',
+      url: 'http://192.168.1.40:8080/',
       imgUrl: '../../images/index/application/rcxc.png',
       text: '日常巡查',
       status: 1
@@ -135,7 +135,7 @@ Page({
       url: 'https://mp.weixin.qq.com/',
       imgUrl: '../../images/index/application/bzjy.png',
       text: '班组教育',
-      status: 2
+      status: 1
     },
     {
       url: 'https://mp.weixin.qq.com/',
@@ -203,7 +203,7 @@ Page({
       showView: app.globalData.isguidance
     });
 
-  
+
 
     this.login();
     wx.setNavigationBarTitle({
@@ -380,7 +380,7 @@ Page({
     });
   },
 
- 
+
 
   //获取天气
   getweather: function () {
@@ -431,11 +431,15 @@ Page({
     let text = e.target.dataset.text;
     let url = e.target.dataset.url + '?openId=' + app.globalData.openId + '&userId=1&systemCode=' + this.data.systemCode;
     if (status == 1) {
-      if(text=='日常巡查'){
+      if (text == '日常巡查') {
         wx.navigateTo({
           url: '../patrol/index/index',
         })
-      }else{
+      } else if (text == '班组教育') {
+        wx.navigateTo({
+          url: '../team/chooseUnit/chooseUnit',
+        })
+      } else {
         wx.navigateTo({
           url: '../webView/web_view?url=' + url,
         })

@@ -4,6 +4,8 @@
     "van-picker": "../../../miniprogram_npm/vant-weapp/picker/index",
     "van-popup": "../../../miniprogram_npm/vant-weapp/popup/index",
     "van-cell": "../../../miniprogram_npm/vant-weapp/cell/index",
-    "van-cell-group": "../../../miniprogram_npm/vant-weapp/cell-group/index"
+    "van-cell-group": "../../../miniprogram_npm/vant-weapp/cell-group/index",
+    "van-checkbox": "../../../miniprogram_npm/vant-weapp/checkbox/index",
+    "van-checkbox-group": "../../../miniprogram_npm/vant-weapp/checkbox-group/index"
   }
 }

@@ -65,7 +65,7 @@ App({
     checkItem:{},
     isguidance: true,
     subscribe: false,
-    version: '0.0.11',
+    version: '0.0.12',
     token: '',
     systemCode: '',
     openid: '',
@@ -78,8 +78,8 @@ App({
     sessionKey: '',
     adminUserViewId: "",
     userInfo: {},
-    sgmsUrl:"http://192.168.1.35:8080/sgms",
-    sgmeImgUrl:"http://192.168.1.35:8080/",
+    sgmsUrl:"http://192.168.1.40:8080/sgms",
+    sgmeImgUrl:"http://192.168.1.40:8080/",
     BaseURL: "https://wechat-dev.zhinengjianshe.com/wechatService/",
     tokenUrl: "https://wechat-dev.zhinengjianshe.com/wechatService/weChat/toProject?token="
   }

@@ -1,61 +1,103 @@
-const app = getApp()
-const sourceType = [['camera'], ['album'], ['camera', 'album']]
-const sizeType = [['compressed'], ['original'], ['compressed', 'original']]
+const app = getApp();
+const wxRequest = require('../../../utils/wxRequest.js');
 Page({
   data: {
     value: '',
+    content: '',
     isGetLocation: 0,
     locationVal: '',
     imageList: [],
-    sourceTypeIndex: 2,
-    sourceType: ['拍照', '相册', '拍照或相册'],
-    sizeTypeIndex: 2,
-    sizeType: ['压缩', '原图', '压缩或原图'],
-    countIndex: 8,
-    count: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    natureShow: false,
     natureVal: '',
-    natureColumns: ['措施', '措施', '措施', '措施', '措施'],
-
-    itemShow:false,
+    itemShow: false,
     itemVal: '',
-    itemColumns: ['审核人', '审核人', '审核人', '审核人', '审核人'],
-    state:'4',
+    itemColumns: [],
+    itemArr: [],
+    state: '4',
+    id: '',
+    fileIds: [],
   },
   onLoad: function (options) {
+    let id = options.id;
+    let that = this;
+    this.setData({
+      id: id
+    });
     wx.setNavigationBarTitle({
       title: '整改回复'
+    });
+
+    this.getShrList().then(res => {
+      let arr = [];
+      if (res.data.rows && res.data.rows.length > 0) {
+        for (let item of res.data.rows) {
+          arr.push(item.fullName)
+        }
+      }
+      that.setData({
+        itemColumns: arr,
+        itemArr: res.data.rows
+      });
+
+
     })
   },
 
   chooseImage() {
-    const that = this
+    const that = this;
+    let fileArr = [];
     wx.chooseImage({
-      sourceType: sourceType[this.data.sourceTypeIndex],
-      sizeType: sizeType[this.data.sizeTypeIndex],
+      sourceType: ['album', 'camera'],
+      sizeType: ['compressed'],
       count: 8,
       success(res) {
         console.log(res)
+        let tempFilePaths = res.tempFilePaths
+        //上传照片
+        for (let i = 0; i < tempFilePaths.length; i++) {
+          wx.uploadFile({
+            url: app.globalData.sgmsUrl + '/api/v1/common/uploadFile?folderName=consulting', //仅为示例，非真实的接口地址
+            filePath: tempFilePaths[i],
+            name: 'file',
+            success: function (res) {
+              let data = JSON.parse(res.data);
+              fileArr.push(data.data);
+            }
+          })
+        }
         that.setData({
-          imageList: res.tempFilePaths
+          imageList: res.tempFilePaths,
+          fileIds: fileArr
         })
       }
     })
   },
 
-  onClose() {
-    this.setData({ natureShow: false ,itemShow: false});
-  },
-
-  natureOnConfirm(event) {
-    console.log(event.detail.value);
+  changeContent(e) {
     this.setData({
-      natureShow: false,
-      natureVal: event.detail.value
-    });
+      content: e.detail
+    })
+  },
+  // 图片预览
+  previewImage(e) {
+    const current = e.target.dataset.src
+    wx.previewImage({
+      current,
+      urls: this.data.imageList
+    })
   },
 
-  itemOnConfirm(event){
+  changeNatureVal(e) {
+    this.setData({
+      natureVal: e.detail
+    })
+  },
+
+  onClose() {
+    this.setData({ itemShow: false });
+  },
+
+
+  itemOnConfirm(event) {
     this.setData({
       itemShow: false,
       itemVal: event.detail.value
@@ -63,22 +105,54 @@ Page({
   },
 
   onCancel() {
-    this.setData({ natureShow: false ,itemShow: false});
+    this.setData({ itemShow: false });
   },
 
-  selectNature() {
-    this.setData({ natureShow: true });
-  },
-
-  selectItem(){
+  selectItem() {
     this.setData({ itemShow: true });
   },
 
 
   // 提交新增
-  submit(){
-    wx.navigateBack({
-      delta: 2
+  submit() {
+    let itemVal = this.data.itemVal;
+    let itemArr = this.data.itemArr;
+    let toHandlerId = '';
+    for (let item of itemArr) {
+      if (item.fullName == itemVal) {
+        toHandlerId = item.userId
+      }
+    }
+    let data = {
+      content: this.data.content,
+      rectifyId: this.data.id,
+      fileIds: this.data.fileIds,
+      type: '1',
+      laterMeasures: this.data.natureVal,
+      toHandlerId: toHandlerId,
+    }
+    this.addReply(data).then(res => {
+      wx.navigateBack({
+        delta: 2
+      })
     })
+  },
+
+  // 获取审核人列表
+  getShrList() {
+    let url = app.globalData.sgmsUrl + '/api/v1/inspectResponsiblePerson/query';
+    return wxRequest.postRequest(url, { type: 2, orgId: app.globalData.userInfo.orgId }, app.globalData.sid);
+  },
+
+  // 提交整改
+  addReply(data) {
+    let url = app.globalData.sgmsUrl + '/api/v1/inspectRectifyFlow/add';
+    return wxRequest.postRequest(url, data, app.globalData.sid);
+  },
+
+  // 获取orgId父id
+  getFatherId() {
+    let url = app.globalData.sgmsUrl + '/api/v1/org/get';
+    return wxRequest.postRequest(url, { id: app.globalData.userInfo.orgId }, app.globalData.sid);
   },
 })

@@ -27,6 +27,10 @@
     left: 0;
 }
 
+.add_check .van-field__input--disabled{
+    color: #333;
+}
+
 .add_check {
     background-color: #f7f7f7;
     height: 100%;

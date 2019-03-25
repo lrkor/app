@@ -34,5 +34,5 @@
     <view class="noData" wx:else>
         <image src="../../../images/patrol/check/2.png" style="width:382rpx;height:398rpx;"/>
     </view>
-    <view class="addCheck" bindtap="goAddCheck">添加检查</view>
+    <view class="addCheck" bindtap="goAddCheck" wx:if="{{btnShow}}">添加检查</view>
 </view>

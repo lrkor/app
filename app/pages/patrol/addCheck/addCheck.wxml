@@ -61,7 +61,7 @@
             </view>
         </view>
     </view>
-    <view class="btn" bindtap="addCheck">{{state==2?'下发整改':'提交'}}</view>
+    <view class="btn" bindtap="addCheck">{{state==3?'下发整改':'提交'}}</view>
 
 
     <van-popup show="{{ natureShow }}" position="bottom" overlay bind:close="onClose">
@@ -69,3 +69,5 @@
             bind:confirm="natureOnConfirm" />
     </van-popup>
 </view>
+
+<van-toast id="van-toast" />

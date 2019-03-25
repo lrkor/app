@@ -1,13 +1,19 @@
 <view class="issue">
     <view class="requirements">
-        <van-field show-confirm-bar="{{false}}" value="{{ requirements }}" placeholder-style="font-size:30rpx" type="textarea" placeholder="请输入整改要求..." maxlength="1000" autosize border="{{ false }}" />
+        <van-field show-confirm-bar="{{false}}" value="{{ requirements }}" placeholder-style="font-size:30rpx"
+            type="textarea" placeholder="请输入整改要求..." maxlength="1000" autosize border="{{ false }}"
+            bind:change="changeContent" />
     </view>
     <view class="list">
         <van-cell-group>
-            <van-field disabled value="{{ dutyPerson }}" label="整改责任人" placeholder="请选择整改责任人" data-type='dutyPerson' bind:tap="select" />
-            <van-field disabled value="{{ level }}" label="隐患等级" placeholder="请选择隐患等级" data-type='level' bind:tap="select" />
-            <van-field disabled value="{{ time }}" label="整改期限" placeholder="请选择整改期限" data-type='time' bind:tap="select" />
-            <van-field disabled value="{{ cause }}" label="原因分析" placeholder="请选择原因分析" data-type='cause' bind:tap="select" />
+            <van-field disabled value="{{ dutyPerson }}" label="整改责任人" placeholder="请选择整改责任人" data-type='dutyPerson'
+                bind:tap="select" />
+            <van-field disabled value="{{ level }}" label="隐患等级" placeholder="请选择隐患等级" data-type='level'
+                bind:tap="select" />
+            <van-field disabled value="{{ time }}" label="整改期限" placeholder="请选择整改期限" data-type='time'
+                bind:tap="select" />
+            <van-field autosize type="textarea" disabled value="{{ cause }}" label="原因分析" placeholder="请选择原因分析" data-type='cause'
+                bind:tap="select" />
         </van-cell-group>
     </view>
     <view class="btn" bind:tap="add">提交</view>
@@ -15,7 +21,26 @@
     <van-popup show="{{ show }}" position="bottom" bind:close="onClose">
         <van-picker show-toolbar columns="{{ columns }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
     </van-popup>
+    <van-popup show="{{ causeShow }}" position="right" bind:close="onClose">
+    <view class="problem">
+            <view class="problem_list">
+                <van-checkbox-group border="{{false}}" value="{{ causeResult }}" bind:change="onChange">
+                    <van-cell-group border="{{false}}">
+                        <van-cell wx:for="{{ causeList }}" wx:key="index" title="{{ item.name }}" clickable
+                            data-id="{{ item.id }}" data-name="{{ item.name }}" bind:click="toggle">
+                            <van-checkbox class="checkboxes-{{ item.id }}" name="{{ item.name }}" />
+                        </van-cell>
+                    </van-cell-group>
+                </van-checkbox-group>
+            </view>
+            <view class="problem_btn" bindtap="proBtn">
+                确定
+            </view>
+        </view>
+    </van-popup>
     <van-popup show="{{ showTime }}" position="bottom" bind:close="onClose">
-        <van-datetime-picker type="datetime" value="{{ currentDate }}" bind:cancel="onClose" bind:confirm="onConfirmTime" />
+        <van-datetime-picker type="datetime" value="{{ currentDate }}" bind:cancel="onClose"
+            bind:confirm="onConfirmTime" />
     </van-popup>
 </view>
+<van-toast id="van-toast" />

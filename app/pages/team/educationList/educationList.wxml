@@ -1,0 +1,78 @@
+<view class="check_list">
+    <view class="search">
+        <van-search value="{{ value }}" placeholder="按编号搜索" use-action-slot bind:search="onSearch">
+            <view class="searchBtn" slot="action" bind:tap="filtrate">
+                <image src="../../../images/patrol/check/1.png"
+                    style="width:24rpx;height:26rpx;margin-left: 20rpx;margin-right: 10rpx;" />
+                <view>筛选</view>
+            </view>
+        </van-search>
+    </view>
+    <view class="list" wx:if="{{list.length>0}}">
+        <block wx:for="{{list}}" wx:key="item.index">
+            <view class="check_item" data-id="{{item.id}}" bind:tap="goDetail">
+                <view class="item_top">
+                    <view class="item_top_title">
+                        <view class="number">{{item.number}}</view>
+                    </view>
+                    <view class="type">
+                        <view class="type_title">
+                            <view>班</view>
+                            <view class="empty">查</view>
+                            <view>组：</view>
+                        </view>
+                        <view class="type_val">{{item.teamName}}</view>
+                    </view>
+                    <view class="describe">
+                        <view class="describe_title">
+                            <view>班组长：</view>
+                        </view>
+                        <view class="describe_val">{{item.groupLeader}}</view>
+                    </view>
+                </view>
+                <view class="item_down">
+                    <view class="results">创建人：{{item.createName}}</view>
+                    <view class="create">
+                        <view class="createTime">{{item.createTime}}</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="noData" wx:else>
+        <image src="../../../images/patrol/check/2.png" style="width:382rpx;height:398rpx;" />
+    </view>
+    <view class="addCheck" bindtap="goAddCheck">添加检查</view>
+
+
+    <van-popup show="{{ show }}" position="right" bind:close="onClose">
+        <view class="filtrate">
+            <view class="title">
+                <view class="text">
+                    选择创建日期
+                </view>
+                <view class="border-scale"></view>
+            </view>
+            <van-cell-group border="{{false}}">
+                <van-cell title="{{startTime}}" data-type="1" bind:click="seletTime" is-link />
+                <van-cell title="{{endTime}}" data-type="2" bind:click="seletTime" is-link />
+            </van-cell-group>
+
+            <view class="filtrate_btn">
+                <view class="filtrate_btn_child">
+                    <view class="filtrate_btn1">
+                        <van-button size="large" bind:click="reset">重置</van-button>
+                    </view>
+                    <view class="filtrate_btn2">
+                        <van-button size="large" bind:click="confirm">确定</van-button>
+                    </view>
+                </view>
+            </view>
+
+            <van-popup show="{{ showTime }}" position="bottom" bind:close="onClose">
+                <van-datetime-picker type="date" value="{{ currentDate }}" bind:cancel="onClose"
+                    bind:confirm="onConfirmTime" />
+            </van-popup>
+        </view>
+    </van-popup>
+</view>
