@@ -1,35 +1,59 @@
-page{
+page {
     background-color: #f7f7f7;
 }
-.list{
+
+.list {
+    border-top: 1px solid #f1f1f1;
     background-color: #fff;
-    padding-left: 30rpx;
     margin-bottom: 120rpx;
 }
-.item{
+
+.list .van-cell__title{
+    padding-left: 20rpx;
+    color: #333;
+    font-size: 30rpx;
+}
+
+.list  .van-swipe-cell__right{
+    color: #fff;
+    font-size: 15px;
+    width: 65px;
+    height: 44px;
+    display: inline-block;
+    text-align: center;
+    line-height: 44px;
+    background-color: #f44
+}
+
+.item {
     display: flex;
     justify-content: space-between;
     padding-right: 30rpx;
     border-bottom: 1px solid #f1f1f1;
 }
-.item::last-child{
+
+.item::last-child {
     border: none;
 }
-.item_left{
+
+.item_left {
     display: flex;
     align-items: center;
 }
-.name{
+
+.name {
     color: #333;
     font-size: 15px;
     padding: 13px 0;
     margin-left: 20rpx;
 }
-.item_right{
+
+.item_right {
     display: flex;
     align-items: center;
 }
-.item_right .van-button--small{
+
+.item_right .van-button--small {
     width: 88rpx;
     height: 44rpx;
     line-height: 44rpx;
@@ -41,21 +65,35 @@ page{
     border: none;
     min-width: 88rpx;
 }
-.img{
+
+.img {
     width: 40rpx;
     height: 40rpx;
 }
-.btn{
+
+.delete_img {
+    width: 28rpx;
+    height: 30rpx;
+}
+
+.btn {
     position: fixed;
     width: 100%;
     bottom: 0;
     border-top: 1px solid #f1f1f1;
 }
-.btn .van-button--large{
+
+.btn .van-button--large {
     border: none;
     height: 100rpx;
     line-height: 100rpx;
     background-color: #fff;
     color: #2E85D6;
     font-size: 36rpx
+}
+
+.icon_img {
+    width: 40rpx;
+    height: 40rpx;
+    margin-top: 5rpx;
 }

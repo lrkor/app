@@ -87,4 +87,5 @@
     width: 36rpx;
     height: 34rpx;
     margin-right: 10rpx;
+    margin-bottom: 5rpx;
 }

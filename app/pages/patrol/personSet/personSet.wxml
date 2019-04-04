@@ -1,152 +1,22 @@
 <view class="person_set">
-  <view class="list">
-      <view class="item">
-          <view class="item_left">
-              <image class="img" src="../../../images/patrol/set/1.png" />
-              <text class="name">张三（项目经理）</text>
-          </view>
-          <view class="item_right">
-              <van-button size="small">删除</van-button>
-          </view>
-      </view>
-       <view class="item">
-          <view class="item_left">
-              <image class="img" src="../../../images/patrol/set/1.png" />
-              <text class="name">张三（项目经理）</text>
-          </view>
-          <view class="item_right">
-              <van-button size="small">删除</van-button>
-          </view>
-      </view>
-       <view class="item">
-          <view class="item_left">
-              <image class="img" src="../../../images/patrol/set/1.png" />
-              <text class="name">张三（项目经理）</text>
-          </view>
-          <view class="item_right">
-              <van-button size="small">删除</van-button>
-          </view>
-      </view>
-       <view class="item">
-          <view class="item_left">
-              <image class="img" src="../../../images/patrol/set/1.png" />
-              <text class="name">张三（项目经理）</text>
-          </view>
-          <view class="item_right">
-              <van-button size="small">删除</van-button>
-          </view>
-      </view>
-      <view class="item">
-          <view class="item_left">
-              <image class="img" src="../../../images/patrol/set/1.png" />
-              <text class="name">张三（项目经理）</text>
-          </view>
-          <view class="item_right">
-              <van-button size="small">删除</van-button>
-          </view>
-      </view>
-      <view class="item">
-          <view class="item_left">
-              <image class="img" src="../../../images/patrol/set/1.png" />
-              <text class="name">张三（项目经理）</text>
-          </view>
-          <view class="item_right">
-              <van-button size="small">删除</van-button>
-          </view>
-      </view>
-      <view class="item">
-          <view class="item_left">
-              <image class="img" src="../../../images/patrol/set/1.png" />
-              <text class="name">张三（项目经理）</text>
-          </view>
-          <view class="item_right">
-              <van-button size="small">删除</van-button>
-          </view>
-      </view>
-      <view class="item">
-          <view class="item_left">
-              <image class="img" src="../../../images/patrol/set/1.png" />
-              <text class="name">张三（项目经理）</text>
-          </view>
-          <view class="item_right">
-              <van-button size="small">删除</van-button>
-          </view>
-      </view>
-      <view class="item">
-          <view class="item_left">
-              <image class="img" src="../../../images/patrol/set/1.png" />
-              <text class="name">张三（项目经理）</text>
-          </view>
-          <view class="item_right">
-              <van-button size="small">删除</van-button>
-          </view>
-      </view>
-      <view class="item">
-          <view class="item_left">
-              <image class="img" src="../../../images/patrol/set/1.png" />
-              <text class="name">张三（项目经理）</text>
-          </view>
-          <view class="item_right">
-              <van-button size="small">删除</van-button>
-          </view>
-      </view>
-      <view class="item">
-          <view class="item_left">
-              <image class="img" src="../../../images/patrol/set/1.png" />
-              <text class="name">张三（项目经理）</text>
-          </view>
-          <view class="item_right">
-              <van-button size="small">删除</van-button>
-          </view>
-      </view>
-      <view class="item">
-          <view class="item_left">
-              <image class="img" src="../../../images/patrol/set/1.png" />
-              <text class="name">张三（项目经理）</text>
-          </view>
-          <view class="item_right">
-              <van-button size="small">删除</van-button>
-          </view>
-      </view>
-      <view class="item">
-          <view class="item_left">
-              <image class="img" src="../../../images/patrol/set/1.png" />
-              <text class="name">张三（项目经理）</text>
-          </view>
-          <view class="item_right">
-              <van-button size="small">删除</van-button>
-          </view>
-      </view>
-      <view class="item">
-          <view class="item_left">
-              <image class="img" src="../../../images/patrol/set/1.png" />
-              <text class="name">张三（项目经理）</text>
-          </view>
-          <view class="item_right">
-              <van-button size="small">删除</van-button>
-          </view>
-      </view>
-      <view class="item">
-          <view class="item_left">
-              <image class="img" src="../../../images/patrol/set/1.png" />
-              <text class="name">张三（项目经理）</text>
-          </view>
-          <view class="item_right">
-              <van-button size="small">删除</van-button>
-          </view>
-      </view>
-      <view class="item">
-          <view class="item_left">
-              <image class="img" src="../../../images/patrol/set/1.png" />
-              <text class="name">张三（项目经理）</text>
-          </view>
-          <view class="item_right">
-              <van-button size="small">删除</van-button>
-          </view>
-      </view>
-  </view>
-
-  <view class="btn">
-      <van-button size="large" bind:click="goAddPerson">添加人员</van-button>
-  </view>
+    <view class="list">
+        <block wx:for="{{list}}" wx:key="index">
+            <van-swipe-cell id="swipe-cell" right-width="{{ 65 }}" data-id="{{item.id}}" async-close bind:close="onClose">
+                <van-cell-group border="{{false}}">
+                    <van-cell title="{{item.name}}">
+                        <view slot="icon">
+                            <view class="img">
+                                <image class="icon_img" style="" src="../../../images/team/1.png" />
+                            </view>
+                        </view>
+                    </van-cell>
+                </van-cell-group>
+                <view class="van-swipe-cell__right" slot="right">删除</view>
+            </van-swipe-cell>
+        </block>
+    </view>
+    <view class="btn">
+        <van-button size="large" bind:click="goAddPerson">添加人员</van-button>
+    </view>
 </view>
+<van-dialog id="van-dialog" />
