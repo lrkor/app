@@ -337,6 +337,9 @@ Page({
           app.globalData.userId = res.data.data.userId;
           app.globalData.userName = res.data.data.userName;
           app.globalData.systemCode = res.data.data.systemCode;
+          app.globalData.sgmsUrl = res.data.data.serviceUrl;
+          let domain = res.data.data.serviceUrl.match(/http[s]?:\/\/(.*?)([:\/]|$)/);
+          app.globalData.sgmeImgUrl = domain[0];
           that.getToken(res.data.data.userName);
           that.getweather();
           that.getSystemName();

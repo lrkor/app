@@ -1,6 +1,5 @@
 const wxRequest = require('../../../utils/wxRequest.js');
 const app = getApp();
-const sgmsUrl = app.globalData.sgmsUrl;
 Page({
   data: {
     myRectification: 0,
@@ -13,32 +12,19 @@ Page({
     wx.setNavigationBarTitle({
       title: '安全检查'
     });
-    let that = this;
-    // this.getSid(app.globalData.openid).then(res => {
-    //   app.globalData.sid = res.data.data;
-    //   that.statisticsToDo().then(res => {
-    //     if(res.data.data.toRectify){
-    //       that.setData({
-    //         isShow:true
-    //       });
-    //     }
-    //     that.setData({
-    //       myRectification: res.data.data.toRectify?res.data.data.toRectify:0,
-    //       myExamination: res.data.data.toAudit,
-    //       unitTodo: res.data.data.orgToDo,
-    //       momentum: res.data.data.orgToAddRectify
-    //     });
-    //   });
-    // })
   },
   onShow(){
     let that = this;
     this.getSid(app.globalData.openid).then(res => {
       app.globalData.sid = res.data.data;
       that.statisticsToDo().then(res => {
-        if(!res.data.data.toRectify){
+        if(res.data.data.toRectify==null){
           that.setData({
             isShow:false
+          });
+        }else{
+          that.setData({
+            isShow:true
           });
         }
         that.setData({
@@ -85,14 +71,14 @@ Page({
 
   // 获取sid
   getSid(openid) {
-    let url = sgmsUrl + '/api/v1/token';
+    let url = app.globalData.sgmsUrl + '/api/v1/token';
     let data = { miniOpenId: openid };
     return wxRequest.getRequest(url, data);
   },
 
   //统计待办
   statisticsToDo() {
-    let url = sgmsUrl + '/api/v1/inspect/statisticsToDo';
+    let url = app.globalData.sgmsUrl + '/api/v1/inspect/statisticsToDo';
     let data = { miniOpenId: app.globalData.openid };
     return wxRequest.postRequest(url, data, app.globalData.sid);
   }

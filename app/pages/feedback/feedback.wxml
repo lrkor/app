@@ -27,4 +27,4 @@
   </view>
 </view>
 <van-toast id="van-toast"/>
-<button class="btn"  bindtap='{{clicked?'submission':''}}'>提交</button>
+<button class="btn"  bindtap='{{clicked?"submission":""}}'>提交</button>

@@ -78,8 +78,8 @@ App({
     sessionKey: '',
     adminUserViewId: "",
     userInfo: {},
-    sgmsUrl:"https://xtsgms-beta.zhinengjianshe.com/sgms",
-    sgmeImgUrl:"https://xtsgms-beta.zhinengjianshe.com/",
+    sgmsUrl:"",
+    sgmeImgUrl:"",
     BaseURL: "https://wechat-beta.zhinengjianshe.com/wechatService/",
     tokenUrl: "https://wechat-beta.zhinengjianshe.com/wechatService/weChat/toProject?token="
   }

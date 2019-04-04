@@ -36,3 +36,7 @@ page{
     align-items: center;
     padding-top: 2px;
 }
+
+.border_none{
+    border: none;
+}

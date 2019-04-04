@@ -79,8 +79,10 @@
     </view>
     <view class="btn">
         <van-button size="large" bind:click="goSet">
-            <image class="setImg" src="../../../images/patrol/set/set.png" />
-            检查设置
+            <view class="setImg1">
+                <image class="setImg" src="../../../images/patrol/set/set.png" />
+                <text >检查设置</text>
+            </view>
         </van-button>
     </view>
 </view>

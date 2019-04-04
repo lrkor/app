@@ -42,7 +42,7 @@
         <view class="do_item_left">
             <image class="title_img" src="../../../images/patrol/set/tzzpqx.png"  />
         </view>
-        <view class="do_item_right">
+        <view class="do_item_right border_none">
             <view class="title">调整期限权限</view>
             <view class="do_item_right_right">
                 <view>
