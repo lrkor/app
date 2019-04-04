@@ -21,8 +21,8 @@
                 </view>
                 <view class="border-scale"></view>
             </view>
-            <view class="problem_detail_item">
-                <view class="problem_detail_item_top">
+            <view class="problem_detail_item cause">
+                <view class="problem_detail_item_top cause_top">
                     <view class="problem_detail_item_left">检查项</view>
                     <view class="problem_detail_item_right">{{obj.inspectBO.patrolClassifyPO.name}}</view>
                 </view>
@@ -56,22 +56,22 @@
                 查看更多
             </view>
             <view wx:else>
-                <view class="problem_detail_item h_60">
-                    <view class="problem_detail_item_top small">
+                <view class="problem_detail_item">
+                    <view class="problem_detail_item_top">
                         <view class="problem_detail_item_left">整改要求：</view>
                         <view class="problem_detail_item_right">{{obj.inspectBO.content}}</view>
                     </view>
                     <view class="border-scale"></view>
                 </view>
-                <view class="problem_detail_item h_60">
-                    <view class="problem_detail_item_top small">
+                <view class="problem_detail_item">
+                    <view class="problem_detail_item_top">
                         <view class="problem_detail_item_left">整改编号：</view>
                         <view class="problem_detail_item_right">{{obj.inspectBO.number}}</view>
                     </view>
                     <view class="border-scale"></view>
                 </view>
-                <view class="problem_detail_item h_60">
-                    <view class="problem_detail_item_top small">
+                <view class="problem_detail_item">
+                    <view class="problem_detail_item_top">
                         <view class="problem_detail_item_left">检查类型：</view>
                         <view class="problem_detail_item_right">
                             {{obj.inspectBO.type==1?'项目部自查':obj.inspectBO.type==2?'监理检查':'指挥部检查'}}</view>
@@ -79,7 +79,7 @@
                     <view class="border-scale"></view>
                 </view>
                 <view class="problem_detail_item cause">
-                    <view class="problem_detail_item_top small">
+                    <view class="problem_detail_item_top cause_top">
                         <view class="problem_detail_item_left">原因分析：</view>
                         <view class="problem_detail_item_right">
                             <block wx:for="{{obj.inspectReasonAnalysisList}}" wx:key="{{item.index}}">
@@ -89,8 +89,8 @@
                     </view>
                     <view class="border-scale"></view>
                 </view>
-                <view class="problem_detail_item h_60">
-                    <view class="problem_detail_item_top small">
+                <view class="problem_detail_item">
+                    <view class="problem_detail_item_top">
                         <view class="problem_detail_item_left">问题归属：</view>
                         <view class="problem_detail_item_right">{{obj.departName?obj.departName:''}}</view>
                     </view>

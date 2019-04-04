@@ -80,6 +80,7 @@ Page({
   },
   goRectifyDetail() {
     // 获取整改详情id
+    let {id} = this.data;
     this.getRectificationDetailId(id).then(res => {
       wx.navigateTo({
         url: '../rectificationDetail/rectificationDetail?id=' + res.data.data.id

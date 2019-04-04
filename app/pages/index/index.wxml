@@ -53,11 +53,10 @@
     <view class="application">
         <view class="application_title">我的应用</view>
         <view class="application_list clearfix">
-            <block wx:for="{{applicationList}}" wx:key="">
-                <view class="application_item detail-view" data-url="{{item.url}}" data-text="{{item.text}}"
-                 bindtap='goToWebView' >
-                    <image src="{{item.imgUrl}}" style="width:90rpx;height: 90rpx;" data-status="{{item.status}}" data-url="{{item.url}}" data-text="{{item.text}}"/>
-                    <view data-status="{{item.status}}" data-url="{{item.url}}">{{item.text}}</view>
+            <block wx:for="{{applicationList}}" wx:key="{{item.index}}">
+                <view class="application_item detail-view" data-status="{{item.status}}" data-url="{{item.url}}" data-text="{{item.text}}" catchtap='goToWebView' >
+                    <image src="{{item.imgUrl}}" style="width:90rpx;height: 90rpx;"/>
+                    <view>{{item.text}}</view>
                 </view>
             </block>
         </view>
@@ -80,3 +79,4 @@
        </view>  
    </view>  
 </view>
+<van-dialog id="van-dialog" />

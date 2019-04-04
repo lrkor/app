@@ -3,7 +3,7 @@
     height: 100%;
 }
 .menu{
-    height: 205rpx;
+    height: 225rpx;
     width: 100%;
     display: flex;
     background-color: #fff;
@@ -62,4 +62,22 @@
 .b_l_r{
     border-left: 1rpx solid #f1f1f1;
     border-right: 1rpx solid #f1f1f1;
+}
+.btn{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    border-top: 1px solid #f1f1f1;
+}
+.btn .van-button--large{
+    border: none;
+    height: 98rpx;
+    line-height: 98rpx;
+    background-color: #fff;
+    color: #2E85D6;
+    font-size: 36rpx
+}
+.setImg{
+    width: 36rpx;
+    height: 34rpx;
 }

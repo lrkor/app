@@ -11,6 +11,7 @@
     "pages/bindAccount/bindAccount",
     "pages/accountDeregulation/accountDeregulation",
     "pages/webView/web_view",
+    "pages/qrCode/qrCode",  
     "pages/pushMessage/pushMessage",
     "pages/toProject/toproject",
     "pages/patrol/process/process",
@@ -29,9 +30,20 @@
     "pages/patrol/rectificationDetail/rectificationDetail",
     "pages/patrol/chooseCheckItem/chooseCheckItem",
     "pages/patrol/chooseCheck/chooseCheck",
+
+    "pages/patrol/set/set",
+    "pages/patrol/personSet/personSet",
+    "pages/patrol/choosePerson/choosePerson",
+
     "pages/team/chooseUnit/chooseUnit",
     "pages/team/educationList/educationList",
-    "pages/team/detail/detail"
+    "pages/team/detail/detail",
+    "pages/team/add/add",
+    "pages/feedback/feedback",
+    "pages/announcement/list/list",
+    "pages/announcement/detail/detail",
+    "pages/newsReports/list/list",
+    "pages/newsReports/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

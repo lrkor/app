@@ -13,9 +13,9 @@ const formatTime = (date, type) => {
     return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
   } else if (type == 'yyyy-mm-dd hh:mm') {
     return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute].map(formatNumber).join(':');
-  }else if (type == 'hh:mm') {
+  } else if (type == 'hh:mm') {
     return [hour, minute].map(formatNumber).join(':')
-  }else if('mm-dd hh:mm'){
+  } else if ('mm-dd hh:mm') {
     return [month, day].map(formatNumber).join('-') + ' ' + [hour, minute].map(formatNumber).join(':');
   }
 }

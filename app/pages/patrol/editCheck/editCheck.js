@@ -25,6 +25,8 @@ Page({
 
     // 图片数组
     fileIds: [],
+
+    clicked:true,
   },
   onLoad: function (options) {
     let id = options.id;
@@ -207,6 +209,7 @@ Page({
     if (data.content == '' || !data.checkClassifyId || data.result > 3 || data.nature == '') {
       Toast.fail('请输入内容');
     } else {
+      this.setData({clicked:false});
       this.edit(data).then(res => {
         let id = res.data.data.id;
         if (state == 3) {

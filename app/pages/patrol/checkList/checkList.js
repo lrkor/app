@@ -10,9 +10,13 @@ Page({
     obj1: {},
     notSelf: '',
     btnShow: false,
-    isLoading: true
+    isLoading: true,
+    over:false
   },
   onLoad(options) {
+    wx.showLoading({
+      title: '加载中',
+    });
     let that = this;
     wx.setNavigationBarTitle({
       title: '检查记录'
@@ -119,6 +123,10 @@ Page({
           item.createDate = util.formatTime(new Date(item.createTime), 'yyyy-mm-dd');
           item.createTime = util.formatTime(new Date(item.createTime), 'hh:mm');
         }
+      }else{
+        that.setData({
+          over: true
+        });
       }
       if (list.length < 10) {
         that.setData({
@@ -131,7 +139,7 @@ Page({
         });
       } else {
         that.setData({
-          list: list
+          list
         });
       }
     });

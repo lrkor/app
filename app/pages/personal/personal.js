@@ -58,7 +58,6 @@ Page({
       duration: 2000
     })
   },
-
   showVersion(e) {
     wx.showToast({
       title: '已是最新版本',
@@ -66,5 +65,5 @@ Page({
       duration: 2000
     })
   },
-
+  
 })

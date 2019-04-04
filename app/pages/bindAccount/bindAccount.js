@@ -189,14 +189,14 @@ Page({
     if (userName === "") {
       wx.showToast({
         title: '账号不能为空！',
-        icon: 'success',
+        icon: 'none',
         duration: 2000
       })
       return;
     } else if (passwords === "") {
       wx.showToast({
         title: '密码不能为空！',
-        icon: 'success',
+        icon: 'none',
         duration: 2000
       })
       return;

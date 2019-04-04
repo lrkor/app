@@ -36,21 +36,30 @@
 }
 .reset, .determine{
     width: 690rpx;
-    height: 80rpx;
     position:fixed;
     left: 50%;
     margin-left: -345rpx;
     text-align: center;
+   
+}
+.filtrate .van-button--large{
+    border: none;
+    height: 80rpx;
     line-height: 80rpx;
-    border-radius:8px;
+    border-radius:8rpx;
 }
 .reset{
-    bottom: 114rpx;
+    bottom: 104rpx;
+}
+.reset .van-button--large{
     background-color: #F7F7F7;
     color: #999;
 }
 .determine{
     bottom: 14rpx;
+   
+}
+.determine .van-button--large{
     background-color: #2E85D6;
     color: #FFFFFF;
 }
@@ -59,6 +68,5 @@
     font-size: 32rpx!important;
 }
 .time .van-cell{
-    color: #666!important;
     font-size: 30rpx!important;
 }

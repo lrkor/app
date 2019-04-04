@@ -1,0 +1,152 @@
+<view class="person_set">
+  <view class="list">
+      <view class="item">
+          <view class="item_left">
+              <image class="img" src="../../../images/patrol/set/1.png" />
+              <text class="name">张三（项目经理）</text>
+          </view>
+          <view class="item_right">
+              <van-button size="small">删除</van-button>
+          </view>
+      </view>
+       <view class="item">
+          <view class="item_left">
+              <image class="img" src="../../../images/patrol/set/1.png" />
+              <text class="name">张三（项目经理）</text>
+          </view>
+          <view class="item_right">
+              <van-button size="small">删除</van-button>
+          </view>
+      </view>
+       <view class="item">
+          <view class="item_left">
+              <image class="img" src="../../../images/patrol/set/1.png" />
+              <text class="name">张三（项目经理）</text>
+          </view>
+          <view class="item_right">
+              <van-button size="small">删除</van-button>
+          </view>
+      </view>
+       <view class="item">
+          <view class="item_left">
+              <image class="img" src="../../../images/patrol/set/1.png" />
+              <text class="name">张三（项目经理）</text>
+          </view>
+          <view class="item_right">
+              <van-button size="small">删除</van-button>
+          </view>
+      </view>
+      <view class="item">
+          <view class="item_left">
+              <image class="img" src="../../../images/patrol/set/1.png" />
+              <text class="name">张三（项目经理）</text>
+          </view>
+          <view class="item_right">
+              <van-button size="small">删除</van-button>
+          </view>
+      </view>
+      <view class="item">
+          <view class="item_left">
+              <image class="img" src="../../../images/patrol/set/1.png" />
+              <text class="name">张三（项目经理）</text>
+          </view>
+          <view class="item_right">
+              <van-button size="small">删除</van-button>
+          </view>
+      </view>
+      <view class="item">
+          <view class="item_left">
+              <image class="img" src="../../../images/patrol/set/1.png" />
+              <text class="name">张三（项目经理）</text>
+          </view>
+          <view class="item_right">
+              <van-button size="small">删除</van-button>
+          </view>
+      </view>
+      <view class="item">
+          <view class="item_left">
+              <image class="img" src="../../../images/patrol/set/1.png" />
+              <text class="name">张三（项目经理）</text>
+          </view>
+          <view class="item_right">
+              <van-button size="small">删除</van-button>
+          </view>
+      </view>
+      <view class="item">
+          <view class="item_left">
+              <image class="img" src="../../../images/patrol/set/1.png" />
+              <text class="name">张三（项目经理）</text>
+          </view>
+          <view class="item_right">
+              <van-button size="small">删除</van-button>
+          </view>
+      </view>
+      <view class="item">
+          <view class="item_left">
+              <image class="img" src="../../../images/patrol/set/1.png" />
+              <text class="name">张三（项目经理）</text>
+          </view>
+          <view class="item_right">
+              <van-button size="small">删除</van-button>
+          </view>
+      </view>
+      <view class="item">
+          <view class="item_left">
+              <image class="img" src="../../../images/patrol/set/1.png" />
+              <text class="name">张三（项目经理）</text>
+          </view>
+          <view class="item_right">
+              <van-button size="small">删除</van-button>
+          </view>
+      </view>
+      <view class="item">
+          <view class="item_left">
+              <image class="img" src="../../../images/patrol/set/1.png" />
+              <text class="name">张三（项目经理）</text>
+          </view>
+          <view class="item_right">
+              <van-button size="small">删除</van-button>
+          </view>
+      </view>
+      <view class="item">
+          <view class="item_left">
+              <image class="img" src="../../../images/patrol/set/1.png" />
+              <text class="name">张三（项目经理）</text>
+          </view>
+          <view class="item_right">
+              <van-button size="small">删除</van-button>
+          </view>
+      </view>
+      <view class="item">
+          <view class="item_left">
+              <image class="img" src="../../../images/patrol/set/1.png" />
+              <text class="name">张三（项目经理）</text>
+          </view>
+          <view class="item_right">
+              <van-button size="small">删除</van-button>
+          </view>
+      </view>
+      <view class="item">
+          <view class="item_left">
+              <image class="img" src="../../../images/patrol/set/1.png" />
+              <text class="name">张三（项目经理）</text>
+          </view>
+          <view class="item_right">
+              <van-button size="small">删除</van-button>
+          </view>
+      </view>
+      <view class="item">
+          <view class="item_left">
+              <image class="img" src="../../../images/patrol/set/1.png" />
+              <text class="name">张三（项目经理）</text>
+          </view>
+          <view class="item_right">
+              <van-button size="small">删除</van-button>
+          </view>
+      </view>
+  </view>
+
+  <view class="btn">
+      <van-button size="large" bind:click="goAddPerson">添加人员</van-button>
+  </view>
+</view>

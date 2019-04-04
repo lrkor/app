@@ -26,6 +26,7 @@
 .add_check .van-field__input--disabled{
     color: #333;
 }
+
 .add_check .van-cell::after{
     left: 0;
 }
@@ -118,15 +119,24 @@
 
 .btn {
     position: fixed;
-    width: 690rpx;
-    height: 80rpx;
-    line-height: 80rpx;
-    bottom: 14rpx;
-    left: 50%;
-    margin-left: -345rpx;
+    width: 100%;
+    bottom: 0;
+}
+.btn .van-button--large{
+    border: none;
     background-color: #2E85D6;
+    height: 98rpx;
+    line-height: 98rpx;
     color: #fff;
-    text-align: center;
-    border-radius: 8px;
-    font-size: 36rpx
+    font-size: 36rpx;
+    border-radius: 0;
+}
+
+.field_div_content{
+    color:#333;
+    font-size:14px;
+    padding:10px 15px;
+}
+.field_div_content1{
+    min-height: 24px;
 }

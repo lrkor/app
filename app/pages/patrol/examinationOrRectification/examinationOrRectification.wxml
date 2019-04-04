@@ -23,7 +23,7 @@
                     </view>
                 </view>
                 <view class="item_down">
-                    <view class="results">整改人：{{item.inspectBO.inspectPersonName}}</view>
+                    <view class="results">整改人：{{item.rectifyPersonName}}</view>
                     <view class="create">
                         <view class="createPeople">整改期限：</view>
                         <view class="createDate">{{item.createDate}}</view>
@@ -34,7 +34,7 @@
             </view>
         </block>
     </view>
-    <view class="noData" wx:else>
+    <view class="noData" wx:elif="{{over}}">
             <image src="../../../images/patrol/check/2.png" style="width:382rpx;height:398rpx;"/>
         </view>
 </view>

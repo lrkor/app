@@ -9,7 +9,8 @@ Page({
     orgId: '',
     obj: {},
     obj1: {},
-    isLoading: true
+    isLoading: true,
+    over:false
   },
   onLoad: function (options) {
     let orgId = options.orgId;
@@ -60,6 +61,24 @@ Page({
     })
   },
 
+  
+  onSearch(event) {
+    let fullName = event.detail;
+    let orgId = this.data.orgId;
+    let data = {
+      orgId: orgId,
+      notSelf: this.data.notSelf,
+      page: 1,
+      size: 10,
+      fullName: fullName
+    }
+    this.setData({
+      page: 1,
+      obj: data
+    })
+    this.drawList(data);
+  },
+
   goDetail(e) {
     let id = e.currentTarget.dataset.id
     wx.navigateTo({
@@ -89,6 +108,10 @@ Page({
           item.createDate = util.formatTime(new Date(item.dateline), 'yyyy-mm-dd');
           item.createTime = util.formatTime(new Date(item.dateline), 'hh:mm');
         }
+      }else{
+        that.setData({
+          over: true
+        });
       }
       if (list.length < 10) {
         that.setData({

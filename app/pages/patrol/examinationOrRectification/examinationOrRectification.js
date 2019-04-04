@@ -6,7 +6,8 @@ Page({
     type: 0,
     list: [],
     page: 1,
-    isLoading: true
+    isLoading: true,
+    over:false
   },
   onLoad: function (options) {
     let type = options.type;
@@ -79,9 +80,13 @@ Page({
     if (list.length != 0) {
       for (let item of list) {
         item.isOverTime = item.dateline > new Date().getTime() ? false : true;
-        item.createDate = util.formatTime(new Date(item.createTime), 'yyyy-mm-dd');
-        item.createTime = util.formatTime(new Date(item.createTime), 'hh:mm');
+        item.createDate = util.formatTime(new Date(item.dateline), 'yyyy-mm-dd');
+        item.createTime = util.formatTime(new Date(item.dateline), 'hh:mm');
       }
+    }else{
+      that.setData({
+        over: true
+      });
     }
     if (list.length < 10) {
       that.setData({

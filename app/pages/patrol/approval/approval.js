@@ -1,5 +1,6 @@
 const app = getApp();
 const wxRequest = require('../../../utils/wxRequest.js');
+import Toast from '../../../miniprogram_npm/vant-weapp/toast/toast';
 Page({
   data: {
     content: '',
@@ -32,6 +33,9 @@ Page({
 
     fatherOrgId: '',
     shrShow: true,
+
+
+    clicked: true,
 
     // list: ['a', 'b', 'c'],
     // result: []
@@ -79,7 +83,6 @@ Page({
     });
 
     this.getFatherId().then(res => {
-      console.log(res.data.data);
       that.setData({
         fatherOrgId: res.data.data.parentId,
       });
@@ -158,7 +161,6 @@ Page({
   },
 
   natureOnConfirm(event) {
-    console.log(event.detail.value);
     this.setData({
       natureShow: false,
       natureVal: event.detail.value
@@ -190,6 +192,7 @@ Page({
           itemColumns: arr,
           itemArr: res.data.rows,
           itemVal: '',
+          shrShow: true
         });
       });
     } else if (event.detail.value == '下一环节审核') {
@@ -204,6 +207,7 @@ Page({
           itemColumns: arr,
           itemArr: res.data.rows,
           itemVal: '',
+          shrShow: true
         });
       });
     } else {
@@ -258,6 +262,15 @@ Page({
       fileIds: this.data.fileIds,
       toHandlerId: toHandlerId
     }
+    if (this.data.flowVal != '审核结束') {
+      if (toHandlerId == '') {
+        Toast.fail('请选择审批人');
+        return;
+      }
+    }
+    this.setData({
+      clicked: false
+    });
     this.addaudit(data).then(res => {
       wx.navigateBack({
         delta: 2

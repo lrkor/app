@@ -208,7 +208,7 @@ Page({
       // 是否下发整改
       let isSend = that.data.isSend;
       let onSend = that.data.onSend;
-      let isNotify = 0;
+      let isNotify = '0';
 
       let json = {};
       if (isSend && onSend) {
@@ -219,10 +219,10 @@ Page({
         }
       } else {
         if(isSend){
-          isNotify = 0
+          isNotify = '0'
         }
         if(onSend){
-          isNotify = 1
+          isNotify = '1'
         }
         json = {
           startDate: startDate,

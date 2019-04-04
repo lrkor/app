@@ -1,0 +1,83 @@
+page{
+    background-color: #f7f7f7;
+}
+.popup_top {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 10px 20rpx;
+}
+
+.popup_top_left {
+    font-size: 34rpx;
+}
+
+.popup_top .van-button--normal {
+    width: 140rpx;
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+    font-size: 26rpx;
+}
+
+.popup_top_right {
+    display: flex;
+    align-items: center;
+}
+.cancel, .check_all {
+    width: 140rpx;
+    height: 32px;
+    display: flex;
+}
+.check_all {
+    margin-left: 20rpx;
+}
+.check_all .van-button--normal {
+    border-color: #00A0E9;
+    color: #00A0E9;
+}
+.cancel .van-button--normal {
+    border-color: #EBEDF0;
+    color: #666666;
+}
+.popup_list{
+    margin-top: 10px;
+    margin-bottom: 128rpx;
+}
+
+.popup_list .van-cell{
+    font-size: 30rpx;
+}
+.img{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-right: 19rpx;
+}
+.img image{
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.btn{
+    border-top: 1rpx solid #f1f1f1;
+    background-color: #fff;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 98rpx;
+}
+.btn1{
+    margin: 0 30rpx;
+}
+.btn .van-button--large{
+    border: none;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin-top: 10rpx;
+    background-color: #2E85D6;
+    color: #fff;
+    font-size: 36rpx;
+    border-radius: 8rpx;
+
+}

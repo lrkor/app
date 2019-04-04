@@ -5,7 +5,8 @@ Page({
   data: {
     list: [],
     isLoading: true,
-    page: 1
+    page: 1,
+    over:false
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
@@ -26,7 +27,7 @@ Page({
   // 获取待下发整改（单位）
   getDxfzg(page) {
     let url = app.globalData.sgmsUrl + '/api/v1/inspect/query';
-    let data = { isNotify: '0', deleted: 1, inspectOrgId: app.globalData.userInfo.orgId, page: page, size: 10 };
+    let data = { isNotify: '0', deleted: 1, inspectOrgId: app.globalData.userInfo.orgId, result:'3', page: page, size: 10 };
     return wxRequest.postRequest(url, data, app.globalData.sid);
   },
 
@@ -45,6 +46,8 @@ Page({
           item.createDate = util.formatTime(new Date(item.createTime), 'yyyy-mm-dd');
           item.createTime = util.formatTime(new Date(item.createTime), 'hh:mm');
         }
+      }else{
+        that.setData({over:true})
       }
       if (list.length < 10) {
         that.setData({

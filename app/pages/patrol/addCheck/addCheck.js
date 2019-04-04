@@ -23,7 +23,8 @@ Page({
     gpsLat: '',
 
     // 图片数组
-    fileIds: []
+    fileIds: [],
+    clicked:true,
   },
   onLoad: function (options) {
     let that = this;
@@ -133,6 +134,7 @@ Page({
     if (data.content == '' || !data.checkClassifyId || data.result > 3 || data.nature == '') {
       Toast.fail('请输入内容');
     } else {
+      this.setData({clicked:false});  
       this.add(data).then(res => {
         let id = res.data.data.id;
         if (state == 3) {

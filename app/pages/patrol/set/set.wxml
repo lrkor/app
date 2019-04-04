@@ -1,0 +1,54 @@
+<view class="set_list">
+    <view class="do_item" data-type="1" bind:tap="goPersonSet">
+        <view class="do_item_left" >
+            <image class="title_img" src="../../../images/patrol/set/zgzrs.png" />
+        </view>
+        <view class="do_item_right">
+            <view class="title">整改责任人</view>
+            <view class="do_item_right_right">
+                <view>
+                    <image src="../../../images/patrol/index/4.png" style="width:14rpx;height: 25rpx;" />
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="do_item" data-type="2" bind:tap="goPersonSet">
+        <view class="do_item_left" style="margin-left: 1rpx;">
+            <image class="title_img" src="../../../images/patrol/set/spr.png" style="width:35rpx;height: 38rpx;" />
+        </view>
+        <view class="do_item_right">
+            <view class="title">审批人</view>
+            <view class="do_item_right_right">
+                <view>
+                    <image src="../../../images/patrol/index/4.png" style="width:14rpx;height: 25rpx;" />
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="do_item">
+        <view class="do_item_left">
+            <image class="title_img" src="../../../images/patrol/set/zpqx.png" />
+        </view>
+        <view class="do_item_right">
+            <view class="title">转派权限</view>
+            <view class="do_item_right_right">
+                <view>
+                    <image src="../../../images/patrol/index/4.png" style="width:14rpx;height: 25rpx;" />
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="do_item">
+        <view class="do_item_left">
+            <image class="title_img" src="../../../images/patrol/set/tzzpqx.png"  />
+        </view>
+        <view class="do_item_right">
+            <view class="title">调整期限权限</view>
+            <view class="do_item_right_right">
+                <view>
+                    <image src="../../../images/patrol/index/4.png" style="width:14rpx;height: 25rpx;" />
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

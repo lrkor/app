@@ -4,6 +4,7 @@ var bmap = require('../../libs/bmap-wx/bmap-wx.min.js');
 const wxRequest = require('../../utils/wxRequest.js');
 const app = getApp();
 const sgmsUrl = app.globalData.sgmsUrl;
+import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog';
 Page({
   data: {
     systemName: '',
@@ -24,12 +25,12 @@ Page({
     // circular:true
     smallImgUrl: [
       [
-        //   {
-        //   url: '../../images/index/small/sys.png',
-        //   hrefUrl: 'https://mp.weixin.qq.com/',
-        //   text: '扫一扫',
-        //   status: 3
-        // },
+        {
+          url: '../../images/index/small/sys.png',
+          hrefUrl: 'https://mp.weixin.qq.com/',
+          text: '扫一扫',
+          status: 3
+        },
         {
           url: '../../images/index/small/kqdk.png',
           hrefUrl: app.globalData.BaseURL + 'weChat/time/card/list',
@@ -47,12 +48,6 @@ Page({
           hrefUrl: app.globalData.BaseURL + 'weChat/meetingNotice/list',
           text: '会议通知',
           status: 1
-        },
-        {
-          url: '../../images/index/small/lxkf.png',
-          hrefUrl: 'https://mp.weixin.qq.com/',
-          text: '联系客服',
-          status: 5
         }
       ],
       [{
@@ -61,6 +56,12 @@ Page({
         text: '账号解绑',
         status: 4
       },
+      {
+        url: '../../images/index/small/lxkf.png',
+        hrefUrl: 'https://mp.weixin.qq.com/',
+        text: '联系客服',
+        status: 5
+      }
         // {
         //   url: '../../images/index/small/yjfk.png',
         //   text: '意见反馈',
@@ -97,14 +98,14 @@ Page({
       url: 'https://mp.weixin.qq.com/',
       imgUrl: '../../images/index/application/tzgg.png',
       text: '通知公告',
-      status: 2
+      status: 1
     },
 
     {
       url: 'https://mp.weixin.qq.com/',
       imgUrl: '../../images/index/application/xwbd.png',
       text: '新闻报道',
-      status: 2
+      status: 1
     },
     {
       url: 'https://mp.weixin.qq.com/',
@@ -427,9 +428,9 @@ Page({
 
   // 页面跳转事件
   goToWebView(e) {
-    let status = e.target.dataset.status;
-    let text = e.target.dataset.text;
-    let url = e.target.dataset.url + '?openId=' + app.globalData.openId + '&userId=1&systemCode=' + this.data.systemCode;
+    let status = e.currentTarget.dataset.status;
+    let text = e.currentTarget.dataset.text;
+    let url = e.currentTarget.dataset.url + '?openId=' + app.globalData.openId + '&userId=1&systemCode=' + this.data.systemCode;
     if (status == 1) {
       if (text == '日常巡查') {
         wx.navigateTo({
@@ -439,7 +440,15 @@ Page({
         wx.navigateTo({
           url: '../team/chooseUnit/chooseUnit',
         })
-      } else {
+      }else if(text == '新闻报道'){
+        wx.navigateTo({
+          url: '../announcement/list/list',
+        })
+      } else if(text == '通知公告'){
+        wx.navigateTo({
+          url: '../newsReports/list/list',
+        })
+      }else {
         wx.navigateTo({
           url: '../webView/web_view?url=' + url,
         })
@@ -453,7 +462,18 @@ Page({
     } else if (status == 3) {
       wx.scanCode({
         success(res) {
-          console.log(res);
+          let url = res.result;
+          if (url.indexOf('http') != -1) {
+            url = url.substring(4);
+            url = encodeURIComponent('https' + url);
+            wx.navigateTo({
+              url: '../qrCode/qrCode?url=' + url
+            })
+          } else {
+            Dialog.alert({
+              message: '请扫描正确的人机二维码'
+            }).then(() => { });
+          }
         }
       })
     } else if (status == 4) {

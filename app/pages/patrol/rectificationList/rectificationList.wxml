@@ -1,6 +1,6 @@
 <view class="check_list">
     <view class="search">
-        <van-search value="{{ value }}" placeholder="按编号搜索" use-action-slot bind:search="onSearch">
+        <van-search value="{{ value }}" placeholder="按整改人搜索" use-action-slot bind:search="onSearch">
             <view class="searchBtn" slot="action" bind:tap="filtrate">
                 <image src="../../../images/patrol/check/1.png" style="width:24rpx;height:26rpx;margin-left: 20rpx;margin-right: 10rpx;" />
                 <view>筛选</view>
@@ -46,7 +46,7 @@
             </view>
         </block>
     </view>
-    <view class="noData" wx:else>
+    <view class="noData" wx:elif="{{over}}">
         <image src="../../../images/patrol/check/2.png" style="width:382rpx;height:398rpx;"/>
     </view>
 </view>

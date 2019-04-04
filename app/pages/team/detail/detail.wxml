@@ -1,37 +1,41 @@
 <view class="detail">
-   <view class="img_list">
+   <view class="img_list" wx:if="{{imageList.length>0}}">
       <block wx:for="{{imageList}}" wx:key="{{item.index}}" wx:for-item="image">
          <image src="{{image}}" data-src="{{image}}" bindtap="previewImage" />
       </block>
    </view>
 
    <view class="title_list">
-      <view class="title_item">
+      <view class="title_item {{imageList.length>0?'':'border_none'}}">
          <view class="title_item_left">班组</view>
-         <view class="title_item_right">桥面班</view>
+         <view class="title_item_right">{{workTeamName}}</view>
       </view>
       <view class="title_item">
          <view class="title_item_left">记录编号</view>
-         <view class="title_item_right">桥面班_201812240548</view>
+         <view class="title_item_right">{{name}}</view>
       </view>
       <view class="title_item">
          <view class="title_item_left">班组长</view>
-         <view class="title_item_right">程丰收</view>
+         <view class="title_item_right">{{workTeamLeader}}</view>
+      </view>
+      <view class="title_item ">
+         <view class="title_item_left">参会人员</view>
+         <view class="title_item_right">
+            <block wx:for="{{attendeeNameList}}" wx:key="index">
+               <text >{{item}},</text>
+            </block>
+         </view>
       </view>
       <view class="title_item">
-         <view class="title_item_left">参会人员</view>
-         <view class="title_item_right">张三，张三，张三，张三，张三，张三，张三，张三，张三，张三，张三，张三，张三，张三</view>
-      </view>
-      <view class="title_item">
-         <view class="title_item_left">参会人员</view>
+         <view class="title_item_left">创建人</view>
          <view class="title_item_right person">
-            <view class="name">张三</view>
-            <view class="time">2019-12-23 12:32</view>
+            <view class="name">{{creatorName}}</view>
+            <view class="time">{{createdTime}}</view>
          </view>
       </view>
    </view>
 
-   <view class="video">
+   <view class="video" wx:if="{{videoSrc!=''}}">
       <video src="{{videoSrc}}"></video>
    </view>
 

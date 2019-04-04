@@ -54,34 +54,39 @@
     padding-left: 15px;
 }
 
-.filtrate_btn .van-button--default{
+.filtrate_btn .van-button--default {
     border: none;
 }
-.filtrate_btn1 .van-button--large{
+
+.filtrate_btn1 .van-button--large {
     background-color: #F7F7F7;
     font-size: 36rpx;
     color: #999;
-    border-radius:8rpx;
-    height: 40px;
-    line-height: 40px;
-}
-.filtrate_btn2{
-    margin-top: 10rpx;
-}
-.filtrate_btn2 .van-button--large{
-    background-color: #2E85D6;
-    font-size: 36rpx;
-    color: #fff;
-    border-radius:8rpx;
+    border-radius: 8rpx;
     height: 40px;
     line-height: 40px;
 }
 
-.check_list {
-    background-color: #f2f2f2;
-    height: 100%;
+.filtrate_btn2 {
+    margin-top: 10rpx;
+}
+
+.filtrate_btn2 .van-button--large {
+    background-color: #2E85D6;
+    font-size: 36rpx;
+    color: #fff;
+    border-radius: 8rpx;
+    height: 40px;
+    line-height: 40px;
+}
+
+page {
     overflow-y: scroll;
-    padding-bottom: 20rpx;
+    background-color: #f2f2f2;
+}
+
+.check_list {
+    padding-bottom: 90rpx;
 }
 
 .list {
@@ -230,8 +235,8 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 80rpx;
-    line-height: 80rpx;
+    height: 98rpx;
+    line-height: 98rpx;
     text-align: center;
     background-color: #fff;
     color: #2E85D6;

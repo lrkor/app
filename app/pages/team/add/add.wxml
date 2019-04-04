@@ -1,7 +1,95 @@
-<view class="choose_unit">
-    <view class="list">
-        <block wx:for="{{unitList}}" wx:key="item.index">
-            <van-cell title="{{item.tenderName}}" is-link bind:tap="educationList" data-orgId="{{item.orgId}}" data-id="{{item.id}}" />
+<view class="add">
+    <view class="img_list" wx:if="{{permissionsObj.photoIsOn==1}}">
+        <view class="weui-cells">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                        <view class="weui-uploader__bd">
+                            <view class="weui-uploader__files">
+                                <block wx:for="{{imageList}}" wx:key="{{item.index}}" wx:for-item="image">
+                                    <view class="weui-uploader__file">
+                                        <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                                    </view>
+                                </block>
+                            </view>
+                            <view class="weui-uploader__input-box">
+                                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="title_list">
+        <view class="title_item border_f1" bind:tap="selectTeam">
+            <view class="title_item_left">班组</view>
+            <view class="title_item_right {{teamValColor?'color_ccc':''}}">{{teamVal}}</view>
+        </view>
+        <view class="title_item border_f1">
+            <view class="title_item_left">记录编号</view>
+            <view class="title_item_right">{{name}}</view>
+        </view>
+        <view class="title_item border_f1">
+            <view class="title_item_left">班组长</view>
+            <view class="title_item_right">{{workTeamLeader}}</view>
+        </view>
+        <view class="title_item" bind:tap="selectPerson">
+            <view class="title_item_left">参会人员</view>
+            <view class="title_item_right {{personValColor?'color_ccc':''}}">{{personVal}}</view>
+        </view>
+    </view>
+    <view class="page-body-info" wx:if="{{permissionsObj.videoIsOn==1}}">
+        <block wx:if="{{src === ''}}">
+            <view class="image-plus image-plus-nb" bindtap="chooseVideo">
+                <view class="image-plus-horizontal"></view>
+                <view class="image-plus-vertical"></view>
+            </view>
+            <view class="image-plus-text">添加视频</view>
+        </block>
+        <block wx:if="{{src != ''}}">
+            <video src="{{src}}" class="video"></video>
         </block>
     </view>
+    <view class="btn" >
+        <van-button size="large" bind:tap="{{checked?'add':''}}">提交</van-button>
+    </view>
+    <van-popup show="{{ show }}" position="right" bind:close="onClose">
+        <view class="select_person">
+            <view class="popup_top">
+                <view class="popup_top_left">已选{{psersonResult.length}}人</view>
+                <view class="popup_top_right">
+                    <view class="cancel">
+                        <van-button type="default" bind:click="reset">取消选择</van-button>
+                    </view>
+                    <view class="check_all">
+                        <van-button type="default" bind:click="checkAll">全选</van-button>
+                    </view>
+                </view>
+            </view>
+            <view class="popup_list">
+                <van-checkbox-group border="{{false}}" value="{{ psersonResult }}" bind:change="onChange">
+                    <van-cell-group border="{{false}}">
+                        <van-cell wx:for="{{ psersonList }}" wx:key="index" title="{{ item.name }}" clickable data-id="{{ item.id }}" data-name="{{ item.name }}" bind:click="toggle">
+                            <view slot="icon">
+                                <view class="img">
+                                    <image src="../../../images/team/1.png" />
+                                </view>
+                            </view>
+                            <van-checkbox class="checkboxes-{{ item.id }}" name="{{ item.name }}" />
+                        </van-cell>
+                    </van-cell-group>
+                </van-checkbox-group>
+            </view>
+            <view class="popup_btn">
+                <view class="popup_btn1">
+                    <van-button size="large" bind:click="determine">确定</van-button>
+                </view>
+            </view>
+        </view>
+    </van-popup>
+    <van-popup show="{{ teamShow }}" position="bottom" bind:close="onClose">
+        <van-picker show-toolbar title="选择班组" columns="{{ teamColumns }}" bind:cancel="onClose" bind:confirm="onConfirm" />
+    </van-popup>
 </view>
+<van-dialog id="van-dialog" />

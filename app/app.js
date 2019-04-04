@@ -78,9 +78,9 @@ App({
     sessionKey: '',
     adminUserViewId: "",
     userInfo: {},
-    sgmsUrl:"http://192.168.1.40:8080/sgms",
-    sgmeImgUrl:"http://192.168.1.40:8080/",
-    BaseURL: "https://wechat-dev.zhinengjianshe.com/wechatService/",
-    tokenUrl: "https://wechat-dev.zhinengjianshe.com/wechatService/weChat/toProject?token="
+    sgmsUrl:"https://xtsgms-beta.zhinengjianshe.com/sgms",
+    sgmeImgUrl:"https://xtsgms-beta.zhinengjianshe.com/",
+    BaseURL: "https://wechat-beta.zhinengjianshe.com/wechatService/",
+    tokenUrl: "https://wechat-beta.zhinengjianshe.com/wechatService/weChat/toProject?token="
   }
 })

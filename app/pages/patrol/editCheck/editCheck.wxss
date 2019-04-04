@@ -100,15 +100,12 @@
 
 .btn{
     position: fixed;
-    width: 690rpx;
-    height: 80rpx;
-    line-height: 80rpx;
-    bottom: 14rpx;
-    left: 50%;
-    margin-left: -345rpx;
+    width: 100%;
+    height: 98rpx;
+    line-height: 98rpx;
+    bottom: 0;
     background-color: #2E85D6;
     color: #fff;
     text-align: center;
-    border-radius:8px;
     font-size: 36rpx
 }

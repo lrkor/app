@@ -12,7 +12,7 @@
             </view>
             <view class="text">整改</view>
         </view>
-        <view class="item">
+        <view class="item" bind:tap="RewardPunishments">
             <view class="img">
                 <image src="../../../images/patrol/index/1.png" style="width:90rpx;height: 90rpx;" />
             </view>
@@ -76,5 +76,11 @@
                 </view>
             </view>
         </view>
+    </view>
+    <view class="btn">
+        <van-button size="large" bind:click="goSet">
+            <image class="setImg" src="../../../images/patrol/set/set.png" />
+            检查设置
+        </van-button>
     </view>
 </view>

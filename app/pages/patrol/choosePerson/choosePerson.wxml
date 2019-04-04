@@ -1,0 +1,32 @@
+<view class="choose_person">
+    <view class="popup_top">
+        <view class="popup_top_left">已选{{psersonResult.length}}人</view>
+        <view class="popup_top_right">
+            <view class="cancel">
+                <van-button type="default" bind:click="reset">取消选择</van-button>
+            </view>
+            <view class="check_all">
+                <van-button type="default" bind:click="checkAll">全选</van-button>
+            </view>
+        </view>
+    </view>
+    <view class="popup_list">
+        <van-checkbox-group border="{{false}}" value="{{ psersonResult }}" bind:change="onChange">
+            <van-cell-group border="{{false}}">
+                <van-cell wx:for="{{ psersonList }}" wx:key="index" title="{{ item.name }}" clickable data-id="{{ item.id }}" data-name="{{ item.name }}" bind:click="toggle">
+                    <view slot="icon">
+                        <view class="img">
+                            <image src="../../../images/team/1.png" />
+                        </view>
+                    </view>
+                    <van-checkbox class="checkboxes-{{ item.id }}" name="{{ item.name }}" />
+                </van-cell>
+            </van-cell-group>
+        </van-checkbox-group>
+    </view>
+    <view class="btn">
+        <view class="btn1">
+            <van-button size="large" bind:click="addPerson">确定</van-button>
+        </view>
+    </view>
+</view>

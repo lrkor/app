@@ -1,0 +1,30 @@
+<view class="content" hover-class="none" hover-stop-propagation="false">反馈内容（必填）</view>
+<view class="addDescribe">
+  <textarea class="textarea" value="" placeholder="您的建议是我们前进的动力" placeholder-class="textarea-placeholder" maxlength="200" bindinput="changeContent"></textarea>
+  <view class="field_div_content1">{{num}}</view>
+</view>
+<view class="screenshot" hover-class="none" hover-stop-propagation="false">问题截图</view>
+<view class="choose_img">
+  <view class="weui-cells">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view class="weui-uploader">
+          <view class="weui-uploader__bd">
+            <view class="weui-uploader__files">
+              <block wx:for="{{imageList}}" wx:key="{{item.index}}" wx:for-item="image">
+                <view class="weui-uploader__file">
+                  <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                </view>
+              </block>
+            </view>
+            <view class="weui-uploader__input-box">
+              <view class="weui-uploader__input" bindtap="chooseImage"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<van-toast id="van-toast"/>
+<button class="btn"  bindtap='{{clicked?'submission':''}}'>提交</button>

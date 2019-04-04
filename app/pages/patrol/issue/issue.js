@@ -30,10 +30,13 @@ Page({
     columns: [],
 
     currentDate: new Date().getTime(),
+    minDate:new Date().getTime(),
 
     number: 0,
     businessId: '',
-    causeResult: []
+    causeResult: [],
+
+    clicked:true
   },
   onLoad: function (options) {
     let number = options.number;
@@ -213,10 +216,10 @@ Page({
       businessType: '1',
       analysisIds: analysisIds
     }
-    console.log(data1);
     if (data1.content == '' || data1.level == '' || !data1.rectifyUserId || data1.analysisIds == []) {
       Toast.fail('请输入内容');
     } else {
+      this.setData({clicked:false});
       this.addRectification(data1).then(res => {
         if (number == 1) {
           wx.navigateBack({

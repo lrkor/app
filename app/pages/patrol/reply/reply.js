@@ -1,5 +1,6 @@
 const app = getApp();
 const wxRequest = require('../../../utils/wxRequest.js');
+import Toast from '../../../miniprogram_npm/vant-weapp/toast/toast';
 Page({
   data: {
     value: '',
@@ -15,6 +16,8 @@ Page({
     state: '4',
     id: '',
     fileIds: [],
+
+    clicked:true
   },
   onLoad: function (options) {
     let id = options.id;
@@ -50,7 +53,6 @@ Page({
       sizeType: ['compressed'],
       count: 8,
       success(res) {
-        console.log(res)
         let tempFilePaths = res.tempFilePaths
         //上传照片
         for (let i = 0; i < tempFilePaths.length; i++) {
@@ -131,11 +133,18 @@ Page({
       laterMeasures: this.data.natureVal,
       toHandlerId: toHandlerId,
     }
-    this.addReply(data).then(res => {
-      wx.navigateBack({
-        delta: 2
+    if(toHandlerId==''){
+      Toast.fail('请选择审核人');
+    }else{
+      this.setData({
+        clicked:false
+      });
+      this.addReply(data).then(res => {
+        wx.navigateBack({
+          delta: 2
+        })
       })
-    })
+    }
   },
 
   // 获取审核人列表

@@ -1,7 +1,11 @@
 <view class="add_check">
     <view class="addDescribe">
-        <van-field show-confirm-bar="{{false}}" value="{{ content }}" maxlength="1000" type="textarea"
-            placeholder="请输入问题描述" autosize border="{{ false }}" bind:change="changeContent"/>
+        <view class="field_div">
+            <van-field show-confirm-bar="{{false}}" value="{{ content }}" maxlength="1000" type="textarea" placeholder="请输入问题描述" autosize border="{{ false }}" bind:change="changeContent" clearable="{{true}}" />
+        </view>
+        <!-- <view class="field_div_content" wx:else>
+            <view class="field_div_content1">{{content}}</view>
+        </view> -->
         <view class="choose_img">
             <view class="weui-cells">
                 <view class="weui-cell">
@@ -11,8 +15,7 @@
                                 <view class="weui-uploader__files">
                                     <block wx:for="{{imageList}}" wx:key="{{item.index}}" wx:for-item="image">
                                         <view class="weui-uploader__file">
-                                            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}"
-                                                bindtap="previewImage"></image>
+                                            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
                                         </view>
                                     </block>
                                 </view>
@@ -30,11 +33,12 @@
         <view>
             <view class="location" bindtap="isGetLocation">
                 <view class="location_name">地理位置</view>
-                <view class="location_val {{isGetLocation==0?'onGet':'isGet'}}">{{locationVal}}</view>
+                <view class="location_val {{isGetLocation==0?'onGet':'isGet'}}">
+                    {{locationVal}}
+                </view>
             </view>
             <view class="border-scale"></view>
         </view>
-
         <van-cell-group border="{{false}}">
             <van-field disabled bindtap="selectNature" value="{{natureVal}}" label="检查形式" placeholder="请选择检查形式" />
             <van-field disabled bindtap="selectItem" value="{{itemObj.name}}" label="检查项" placeholder="请选择检查项" />
@@ -61,13 +65,11 @@
             </view>
         </view>
     </view>
-    <view class="btn" bindtap="addCheck">{{state==3?'下发整改':'提交'}}</view>
-
-
+    <view class="btn">
+        <van-button size="large" bind:click="{{clicked?'addCheck':''}}">{{state==3?'下发整改':'提交'}}</van-button>
+        </view>
     <van-popup show="{{ natureShow }}" position="bottom" overlay bind:close="onClose">
-        <van-picker show-toolbar title="检查形式" columns="{{ natureColumns }}" bind:cancel="onCancel"
-            bind:confirm="natureOnConfirm" />
+        <van-picker show-toolbar title="检查形式" columns="{{ natureColumns }}" bind:cancel="onCancel" bind:confirm="natureOnConfirm" />
     </van-popup>
 </view>
-
 <van-toast id="van-toast" />

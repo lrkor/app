@@ -23,7 +23,7 @@
         </view>
         </block>
     </view>
-    <view class="noData" wx:else>
+    <view class="noData" wx:elif="{{over}}">
         <image src="../../../images/patrol/check/2.png" style="width:382rpx;height:398rpx;"/>
     </view>
 </view>

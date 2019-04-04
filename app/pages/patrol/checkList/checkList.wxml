@@ -21,7 +21,7 @@
                 <view class="describe"><view class="describe_title">描<view class="empty">查</view>述：</view><view class="describe_val">{{item.content}}</view></view>
             </view>
             <view class="item_down">
-                <view class="results {{item.result==1?'qualified':item.result==2?'warning':'rectification'}}">检查结果：{{item.result==1?'合格':item.results==2?'口头警告':'书面整改'}}</view>
+                <view class="results {{item.result==1?'qualified':item.result==2?'warning':'rectification'}}">检查结果：{{item.result==1?'合格':item.result==2?'口头警告':'书面整改'}}</view>
                 <view class="create">
                     <view class="createPeople">{{item.inspectPersonName}}</view>
                     <view class="createDate">{{item.createDate}}</view>
@@ -31,8 +31,10 @@
         </view>
         </block>
     </view>
-    <view class="noData" wx:else>
+    <view class="noData" wx:elif="{{over}}">
         <image src="../../../images/patrol/check/2.png" style="width:382rpx;height:398rpx;"/>
     </view>
-    <view class="addCheck" bindtap="goAddCheck" wx:if="{{btnShow}}">添加检查</view>
+    <view class="addCheck"wx:if="{{btnShow}}">
+    <van-button size="large" bind:click="goAddCheck">添加检查</van-button>
+    </view>
 </view>

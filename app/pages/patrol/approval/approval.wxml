@@ -59,7 +59,9 @@
             </view>
         </van-cell-group>
     </view>
-    <view class="btn" bindtap="submit">提交</view>
+    <view class="btn">
+        <van-button size="large" bind:click="{{clicked?'submit':''}}">提交</van-button>
+        </view>
     <van-popup show="{{ natureShow }}" position="bottom" overlay bind:close="onClose">
         <!-- <view class="problem">
             <view class="problem_list">
@@ -88,3 +90,4 @@
             bind:confirm="itemOnConfirm" />
     </van-popup>
 </view>
+<van-toast id="van-toast" />

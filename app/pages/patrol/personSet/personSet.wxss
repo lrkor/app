@@ -1,0 +1,61 @@
+page{
+    background-color: #f7f7f7;
+}
+.list{
+    background-color: #fff;
+    padding-left: 30rpx;
+    margin-bottom: 120rpx;
+}
+.item{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 30rpx;
+    border-bottom: 1px solid #f1f1f1;
+}
+.item::last-child{
+    border: none;
+}
+.item_left{
+    display: flex;
+    align-items: center;
+}
+.name{
+    color: #333;
+    font-size: 15px;
+    padding: 13px 0;
+    margin-left: 20rpx;
+}
+.item_right{
+    display: flex;
+    align-items: center;
+}
+.item_right .van-button--small{
+    width: 88rpx;
+    height: 44rpx;
+    line-height: 44rpx;
+    background-color: #ff0000;
+    color: #fff;
+    border-radius: 5rpx;
+    font-size: 24rpx;
+    padding: 0;
+    border: none;
+    min-width: 88rpx;
+}
+.img{
+    width: 40rpx;
+    height: 40rpx;
+}
+.btn{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    border-top: 1px solid #f1f1f1;
+}
+.btn .van-button--large{
+    border: none;
+    height: 100rpx;
+    line-height: 100rpx;
+    background-color: #fff;
+    color: #2E85D6;
+    font-size: 36rpx
+}

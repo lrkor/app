@@ -52,8 +52,12 @@
             </view>
         </view>
     </view>
-    <view class="reset" bindtap="reset">重置</view>
-    <view class="determine" bindtap="determine">确定</view>
+    <view class="reset">
+        <van-button size="large" bind:click="reset">重置</van-button>
+    </view>
+    <view class="determine" >
+        <van-button size="large" bind:click="determine">确定</van-button>
+    </view>
 </view>
 <van-popup show="{{ show }}" position="bottom" overlay="{{ true }}" bind:close="onClose" close-on-click-overlay>
     <van-datetime-picker type="date" value="{{ currentDate }}" bind:confirm="confirm" />

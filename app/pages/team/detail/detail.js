@@ -1,18 +1,62 @@
 const app = getApp();
 const wxRequest = require('../../../utils/wxRequest.js');
+const util = require('../../../utils/util.js');
 Page({
   data: {
-    id:'',
+    id: '',
     type: '',
-    videoSrc:'http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400',
-    imageList:['../../../images/bid.png','../../../images/bid.png','../../../images/bid.png','../../../images/bid.png',
-    '../../../images/bid.png','../../../images/bid.png','../../../images/bid.png','../../../images/bid.png'],
+    name: '',
+    workTeamName: '',
+    workTeamLeader: '',
+    attendeeNameList: [],
+    createdTime: '',
+    creatorName: '',
+    videoSrc: '',
+    imageList: [],
   },
   onLoad: function (options) {
-    // this.setData({id:options.id});
-    wx.setNavigationBarTitle({
-      title: '单位选择'
+    wx.showLoading({
+      title: '加载中',
     });
+    let { id } = options;
+    let that = this;
+    this.setData({ id: options.id });
+    wx.setNavigationBarTitle({
+      title: '班组教育详情'
+    });
+
+    this.getDetail(id).then(res => {
+      wx.hideLoading();
+      let data = res.data.data;
+      let imageList = [];
+      if (data.imageFiles && data.imageFiles.length > 0) {
+        for (let item of data.imageFiles) {
+          imageList.push(app.globalData.sgmeImgUrl + item.filePath)
+        }
+      }
+      let { creatorName, createdTime, attendeeNameList, name } = data;
+      let { workTeamLeader, workTeamName } = data.workTeam;
+      let videoSrc = '';
+      if (data.videoFile) {
+        videoSrc = app.globalData.sgmeImgUrl + data.videoFile.filePath
+      }
+      that.setData({
+        videoSrc,
+        imageList,
+        creatorName,
+        attendeeNameList,
+        workTeamLeader,
+        workTeamName,
+        name,
+        createdTime: util.formatTime(new Date(createdTime), 'yyyy-mm-dd hh:mm'),
+      })
+    });
+  },
+
+  // 获取详情
+  getDetail(id) {
+    let url = app.globalData.sgmsUrl + '/api/v1/safeActivity/teamTraining/get';
+    return wxRequest.getRequest(url, { id }, app.globalData.sid);
   },
 
   // 图片预览
@@ -24,7 +68,6 @@ Page({
     })
   },
 
-
   // 分享
   onShareAppMessage(res) {
     let id = this.data.id;
@@ -32,7 +75,7 @@ Page({
       // 来自页面内转发按钮
     }
     return {
-      title: '检查详情',
+      title: '班组教育详情详情',
       path: '/pages/team/detail/detail?id=' + id
     }
   }
