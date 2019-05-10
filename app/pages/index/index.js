@@ -1,9 +1,7 @@
 //index.js
 //获取应用实例
 var bmap = require('../../libs/bmap-wx/bmap-wx.min.js');
-const wxRequest = require('../../utils/wxRequest.js');
 const app = getApp();
-const sgmsUrl = app.globalData.sgmsUrl;
 import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog';
 Page({
   data: {
@@ -111,11 +109,12 @@ Page({
       url: 'https://mp.weixin.qq.com/',
       imgUrl: '../../images/index/application/txl.png',
       text: '通讯录',
-      status: 2
+      status: 1
     },
     {
-      url: 'https://wechatapplet.zhinengjianshe.com/miniWeb/unit',
+      // url: 'https://wechatapplet.zhinengjianshe.com/miniWeb/unit',
       // url: 'http://192.168.1.40:8083/miniWeb/unit',
+      url: 'http://192.168.1.40:8083/video/detail',
       imgUrl: '../../images/index/application/spjk1.png',
       text: '视频监控',
       status: 1
@@ -123,26 +122,20 @@ Page({
     {
       url: 'http://192.168.1.40:8080/',
       imgUrl: '../../images/index/application/rcxc.png',
-      text: '日常巡查',
+      text: '安全检查',
       status: 1
     },
     {
       url: 'https://mp.weixin.qq.com/',
       imgUrl: '../../images/index/application/djc.png',
-      text: '大检查',
-      status: 2
+      text: '班组积分',
+      status: 1
     },
     {
       url: 'https://mp.weixin.qq.com/',
       imgUrl: '../../images/index/application/bzjy.png',
       text: '班组教育',
       status: 1
-    },
-    {
-      url: 'https://mp.weixin.qq.com/',
-      imgUrl: '../../images/index/application/aqrj.png',
-      text: '安全日记',
-      status: 2
     }
     ]
   },
@@ -203,13 +196,19 @@ Page({
     this.setData({
       showView: app.globalData.isguidance
     });
-
-
-
     this.login();
     wx.setNavigationBarTitle({
       title: '智慧工程云平台'
     })
+  },
+
+  // 下拉刷新
+  onPullDownRefresh() {
+    wx.showNavigationBarLoading();
+    setTimeout(function(){
+      wx.stopPullDownRefresh();
+      wx.hideNavigationBarLoading();
+    },500)
   },
 
   getSetting: function (sessionKey) {
@@ -435,7 +434,7 @@ Page({
     let text = e.currentTarget.dataset.text;
     let url = e.currentTarget.dataset.url + '?openId=' + app.globalData.openId + '&userId=1&systemCode=' + this.data.systemCode;
     if (status == 1) {
-      if (text == '日常巡查') {
+      if (text == '安全检查') {
         wx.navigateTo({
           url: '../patrol/index/index',
         })
@@ -443,13 +442,27 @@ Page({
         wx.navigateTo({
           url: '../team/chooseUnit/chooseUnit',
         })
-      }else if(text == '新闻报道'){
+      } else if (text == '新闻报道') {
         wx.navigateTo({
           url: '../announcement/list/list',
         })
-      } else if(text == '通知公告'){
+      } else if (text == '通知公告') {
         wx.navigateTo({
           url: '../newsReports/list/list',
+        })
+      }
+      else if (text == '视频监控') {
+        wx.navigateTo({
+          url: '../video/unitList/unitList?url=' + url,
+        })
+      }
+      else if (text == '通讯录') {
+        wx.navigateTo({
+          url: '../communicate/communication?parentId=-1',
+        })
+      }else if(text == '班组积分'){
+        wx.navigateTo({
+          url: '../integral/index/index',
         })
       }else {
         wx.navigateTo({

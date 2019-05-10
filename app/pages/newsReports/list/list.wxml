@@ -1,6 +1,24 @@
-<!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
+<!-- logs.wxml -->
+<view class="section">
+  <icon class="icon" type="search" size="15" bindtap='Search'/>
+  <input class="text" placeholder="搜索关键字" bindblur='Search' bindinput="inputBind" />
+</view>
+<view class=" log-list">
+  <block wx:for="{{logs}}" wx:for-item="log" wx:key='index'>
+    <view hover="true" hover-class="detail-hover" data-id="{{log.id}}" class='list-div' bindtap="goDetaile">
+      <view class='list'>
+        <view class='log-item-title'>
+          <text>{{log.title}}</text>
+        </view>
+        <view class='log-item-container'>
+          <text>{{log.content}}</text>
+        </view>
+        <view class='log-item-date'>
+          <text class='color-6 typeTitle'>{{log.unitName}}</text>
+          <text class='view-num color-6'>{{log.creatorName}}</text>
+          <text class='date color-6'>{{log.createdTime}}</text>
+        </view>
+      </view>
+    </view>
   </block>
 </view>

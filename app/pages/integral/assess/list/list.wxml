@@ -1,0 +1,101 @@
+<view class="check_list">
+    <view class="search">
+        <van-search value="{{ value }}" placeholder="按创建查人查询" use-action-slot bind:search="onSearch">
+            <view class="searchBtn" slot="action" bind:tap="filtrate">
+                <image src="../../../../images/patrol/check/1.png" style="width:24rpx;height:26rpx;margin-left: 20rpx;margin-right: 10rpx;" />
+                <view>筛选</view>
+            </view>
+        </van-search>
+    </view>
+    <view class="list" wx:if="{{list.length>0}}">
+        <block wx:for="{{list}}" wx:key="item.index">
+            <view class="check_item" data-id="{{item.id}}" bind:tap="goDetail">
+                <view class="item_top">
+                    <view class="item_top_title">
+                        <view class="number">{{item.number}}</view>
+                        <view class="isSend" wx:if="{{item.result == 3 &&item.isNotify==1}}">
+                            <view class="left_triangle"></view>
+                            <view class="millde_rectangular">-10分</view>
+                            <view class="down_triangle"></view>
+                        </view>
+                        <view class="isSend" wx:else>
+                            <view class="left_triangle br_color_green"></view>
+                            <view class="millde_rectangular bc_green">+10分</view>
+                            <view class="down_triangle bt_color_green"></view>
+                        </view>
+                    </view>
+                    <view class="check_type">项目部考核</view>
+                    <view class="type">
+                        <view class="type_title">
+                            标<view class="empty">查</view>段：
+                        </view>
+                        <view class="type_val">
+                            {{item.type==1?'项目部自查':item.type==2?'监理检查':'指挥部检查'}}
+                        </view>
+                    </view>
+                    <view class="describe">
+                        <view class="describe_title">扣分项：</view>
+                        <view class="describe_val">{{item.content}}</view>
+                    </view>
+                </view>
+                <view class="item_down">
+                    <view class="createPeople">创建人：{{item.inspectPersonName}}</view>
+                    <view class="create">
+                        <view class="createDate">{{item.createDate}}</view>
+                        <view class="createTime">{{item.createTime}}</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="noData" wx:elif="{{over}}">
+        <image src="../../../images/patrol/check/2.png" style="width:382rpx;height:398rpx;" />
+    </view>
+    <view class="addCheck" wx:if="{{btnShow}}">
+        <van-button size="large" bind:click="goAddCheck">积分考核</van-button>
+    </view>
+
+
+    <van-action-sheet show="{{ actionShow }}" actions="{{ actions }}" bind:close="onClose" bind:select="onSelect" />
+
+    <!-- 条件弹框 -->
+    <van-popup show="{{ show }}" position="right" bind:close="onClose">
+        <view class="filtrate">
+            <view class="title">
+                <view class="text">选择创建日期</view>
+                <view class="border-scale"></view>
+            </view>
+            <van-cell-group border="{{false}}">
+                <van-cell title="{{startTime}}" data-type="1" bind:click="seletTime" is-link />
+                <van-cell title="{{endTime}}" data-type="2" bind:click="seletTime" is-link />
+            </van-cell-group>
+            <view class="title">
+                <view class="text">检查结果</view>
+            </view>
+            <view class="result_list">
+                <view class="result_item {{xmb?'result_item_active':''}}" data-type="xmb" bindtap="checkedType">
+                    项目部考核
+                </view>
+                <view class="result_item {{jl?'result_item_active':''}}" data-type="jl" bindtap="checkedType">
+                    监理考核
+                </view>
+                <view class="result_item {{zhb?'result_item_active':''}}" data-type="zhb" bindtap="checkedType">
+                    指挥部考核
+                </view>
+            </view>
+            <view class="filtrate_btn">
+                <view class="filtrate_btn_child">
+                    <view class="filtrate_btn1">
+                        <van-button size="large" bind:click="reset">重置</van-button>
+                    </view>
+                    <view class="filtrate_btn2">
+                        <van-button size="large" bind:click="confirm">确定</van-button>
+                    </view>
+                </view>
+            </view>
+            <van-popup show="{{ showTime }}" position="bottom" bind:close="onClose">
+                <van-datetime-picker type="date" value="{{ currentDate }}" bind:cancel="onClose" bind:confirm="onConfirmTime" />
+            </van-popup>
+        </view>
+    </van-popup>
+</view>

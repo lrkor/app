@@ -1,0 +1,16 @@
+.choose_unit {
+    background-color: #f2f2f2;
+    height: 100%;
+}
+
+.list {
+    border-top: 1px solid #F1F1F1;
+}
+
+.m_t_10{
+    margin-top: 10px;
+}
+
+.list .van-cell{
+    padding: 13px 15px;
+}

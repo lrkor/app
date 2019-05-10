@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/patrol/index/index",
     "pages/from/from",
     "pages/project/project",
     "pages/engineering/engineering",
@@ -11,9 +10,11 @@
     "pages/bindAccount/bindAccount",
     "pages/accountDeregulation/accountDeregulation",
     "pages/webView/web_view",
-    "pages/qrCode/qrCode",  
+    "pages/qrCode/qrCode",
     "pages/pushMessage/pushMessage",
     "pages/toProject/toproject",
+
+    "pages/patrol/index/index",
     "pages/patrol/process/process",
     "pages/patrol/checkList/checkList",
     "pages/patrol/chooseUnit/chooseUnit",
@@ -30,11 +31,11 @@
     "pages/patrol/rectificationDetail/rectificationDetail",
     "pages/patrol/chooseCheckItem/chooseCheckItem",
     "pages/patrol/chooseCheck/chooseCheck",
-
     "pages/patrol/set/set",
     "pages/patrol/personSet/personSet",
     "pages/patrol/choosePerson/choosePerson",
-
+    "pages/patrol/redeploy/redeploy",
+    "pages/patrol/updateTime/updateTime",
     "pages/team/chooseUnit/chooseUnit",
     "pages/team/educationList/educationList",
     "pages/team/detail/detail",
@@ -43,7 +44,26 @@
     "pages/announcement/list/list",
     "pages/announcement/detail/detail",
     "pages/newsReports/list/list",
-    "pages/newsReports/detail/detail"
+    "pages/newsReports/detail/detail",
+    "pages/video/unitList/unitList",
+    "pages/video/videoList/videoList",
+    "pages/video/videoWeb/videoWeb",
+    "pages/communicate/communication",
+
+    "pages/integral/index/index",
+
+    "pages/integral/assess/chooseUnit/chooseUnit",
+    "pages/integral/assess/list/list",
+    "pages/integral/assess/add/add",
+    "pages/integral/assess/detail/detail",
+    "pages/integral/assess/penalize/penalize",
+    "pages/integral/assess/scoreDetail/scoreDetail",
+
+    "pages/integral/scoreboard/chooseUnit/chooseUnit",
+    "pages/integral/scoreboard/chooseCondition/chooseCondition",
+    "pages/integral/scoreboard/chooseTeam/chooseTeam",
+    "pages/integral/scoreboard/scoreList/scoreList",
+    "pages/integral/scoreboard/list/list"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -87,5 +107,6 @@
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

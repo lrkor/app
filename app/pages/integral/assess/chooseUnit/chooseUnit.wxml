@@ -1,0 +1,7 @@
+<view class="choose_unit">
+    <view class="list">
+        <block wx:for="{{unitList}}" wx:key="item.index">
+            <van-cell title="{{item.tenderName}}" is-link bindtap="checkList" data-orgId="{{item.orgId}}" data-tenderName="{{item.tenderName}}"/>
+        </block>
+    </view>
+</view>

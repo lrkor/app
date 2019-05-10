@@ -1,6 +1,26 @@
-<!--logs.wxml-->
+<!-- logs.wxml -->
 <view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
+  <block wx:for="{{logs}}" wx:for-item="log" wx:key='index'>
+    <view hover="true" hover-class="detail-hover" class='list-div' data-id="{{log.id}}" bindtap="goDetaile">
+      <view class='list'>
+        <view class='log-item-title'>
+          <text>{{log.title}}</text>
+        </view>
+        <view class="log-img" wx:if='{{index==0 && log.imageBean.filePath.length>0}}'>
+          <image class="img" src='{{imgSrc}}' mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+        </view>
+        <view class='log-item-container' wx:if='{{index==0 && log.imageBean.filePath.length==0}}'>
+          <text>{{log.summary}}</text>
+        </view>
+        <view class='log-item-container' wx:if='{{index>0}}'>
+          <text>{{log.summary}}</text>
+        </view>
+        <view class='log-item-date'>
+          <text class='color-6 typeTitle'>{{log.orgBean.tenderName}}</text>
+          <text class='view-num color-6'>{{log.creatorName}}</text>
+          <text class='date color-6'>{{log.createdTime}}</text>
+        </view>
+      </view>
+    </view>
   </block>
 </view>

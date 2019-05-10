@@ -1,0 +1,36 @@
+page{
+    background-color: #f1f1f1;
+}
+
+.list{
+    margin-top: 10px;
+    padding: 0 15px;
+    font-size: 15px;
+    background-color: #fff;
+}
+
+.list_title{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid#DFDFDE;
+    padding: 10px 0;
+}
+
+.title_val{
+    margin-left: 10px;
+}
+
+.item{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.color_red{
+    color: #FF0000;
+}
+
+.img{
+    width: 30rpx;
+    height: 30rpx;
+}

@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/project/project",
+    "pages/engineering/engineering",
+    "pages/personal/personal",
+    "pages/logs/logs",
+    "pages/details/details",
+    "pages/bindAccount/bindAccount",
+    "pages/accountDeregulation/accountDeregulation",
+    "pages/webView/web_view"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "智慧工程云平台",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tabBar/index1.png",
+        "selectedIconPath": "images/tabBar/index2.png"
+      },
+      {
+        "pagePath": "pages/project/project",
+        "text": "项目看板",
+        "iconPath": "images/tabBar/project1.png",
+        "selectedIconPath": "images/tabBar/project2.png"
+      },
+      {
+        "pagePath": "pages/engineering/engineering",
+        "text": "工程圈",
+        "iconPath": "images/tabBar/engineering1.png",
+        "selectedIconPath": "images/tabBar/engineering2.png"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "text": "我的",
+        "iconPath": "images/tabBar/personal1.png",
+        "selectedIconPath": "images/tabBar/personal2.png"
+      }
+    ],
+    "color": "#444444",
+    "selectedColor": "#3396fb",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "#dddddd",
+    "fontFamily": "Microsoft YaHei"
+  }
+}

@@ -89,6 +89,8 @@ Page({
     checkbox.toggle();
   },
 
+  noop(){},
+
   // 确认选择
   proBtn() {
     let causeResult = this.data.causeResult;

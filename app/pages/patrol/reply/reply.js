@@ -17,7 +17,7 @@ Page({
     id: '',
     fileIds: [],
 
-    clicked:true
+    clicked: true
   },
   onLoad: function (options) {
     let id = options.id;
@@ -133,11 +133,15 @@ Page({
       laterMeasures: this.data.natureVal,
       toHandlerId: toHandlerId,
     }
-    if(toHandlerId==''){
+    if (data.laterMeasures == '' || data.content == '') {
+      Toast.fail('请输入内容');
+      return;
+    }
+    if (toHandlerId == '') {
       Toast.fail('请选择审核人');
-    }else{
+    } else {
       this.setData({
-        clicked:false
+        clicked: false
       });
       this.addReply(data).then(res => {
         wx.navigateBack({

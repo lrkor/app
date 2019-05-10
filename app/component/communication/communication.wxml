@@ -1,0 +1,36 @@
+<view class="choose_unit">
+    <view class="list" wx:if="{{unitList1.length>0}}">
+        <block wx:for="{{unitList1}}" wx:key="item.index" >
+            <view class="list_item" data-parentId='{{item.id}}' hover-class="bc_f7" bindtap="goNext">
+                <view class="list_item_child">
+                    <view class="list_item_child_left">
+                        <image src="../../images/communicate/1.png" class="org_img"/>
+                        <text class="org_name">{{item.name}}</text>
+                    </view>
+                    <view class="list_item_child_right">
+                        <text class="num">{{item.num}}</text>
+                         <image src="../../images/communicate/4.png" class="right_img"/>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>
+    <view class="list communicatePerson" data-orgId='{{item.id}}' wx:if="{{unitList2.length>0}}">
+        <block wx:for="{{unitList2}}" wx:key="item.index">
+            <view class="person_container" bindtap="makePhone" data-phone='{{item.phone}}' hover-class="bc_f7">
+                <view class="person_left">
+                    <image class="" src="../../images/communicate/2.png" />
+                </view>
+                <view class="person_center">
+                    <text class="person_name">{{item.contactName}}</text>
+                    <view>
+                        <text class="person_phone">{{item.phone}}</text>
+                        <text class="person_position">{{item.post}}</text>
+                    </view>
+                </view>
+                <view class="person_right" hover-class="person_right_hover">
+                </view>
+            </view>
+        </block>
+    </view>

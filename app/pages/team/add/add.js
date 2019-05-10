@@ -62,7 +62,6 @@ Page({
 
   selectPerson() {
     let { teamVal, teamId, orgId } = this.data;
-    let id = '';
     let that = this;
     if (teamVal == '选择班组') {
       Dialog.alert({
@@ -94,6 +93,7 @@ Page({
     const checkbox = this.selectComponent(`.checkboxes-${id}`);
     checkbox.toggle();
   },
+  noop(){},
 
   reset() {
     this.setData({

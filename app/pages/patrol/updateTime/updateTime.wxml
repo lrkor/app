@@ -1,0 +1,17 @@
+<view class="redeploy">
+    <view class="list">
+        <view class="item" bind:tap="showPopup">
+            <view class="item_left">新整改期限</view>
+            <view class="item_right {{color}}">{{time}}</view>
+        </view>
+        <van-cell-group>
+            <van-field label="备注" value="{{ content }}" placeholder-style="color:#ccc;font-size: 30rpx;" placeholder="请输入备注" border="{{ false }}" bind:change="onChange" />
+        </van-cell-group>
+    </view>
+    <view class="btn">
+        <van-button bind:click="{{clicked?'sub':''}}" size="large">提交</van-button>
+    </view>
+    <van-popup position="bottom" show="{{ show }}" bind:close="onClose">
+        <van-datetime-picker type="datetime" value="{{ currentDate }}" bind:cancel="onClose" bind:confirm="onConfirmTime" />
+    </van-popup>
+</view>

@@ -36,9 +36,6 @@ Page({
 
 
     clicked: true,
-
-    // list: ['a', 'b', 'c'],
-    // result: []
   },
   onLoad: function (options) {
     let id = options.id;
@@ -134,28 +131,6 @@ Page({
     })
   },
 
-  // onChange(event) {
-  //   this.setData({
-  //     result: event.detail
-  //   });
-  // },
-
-  // toggle(event) {
-  //   const id = event.currentTarget.dataset.id;
-  //   const checkbox = this.selectComponent(`.checkboxes-${id}`);
-  //   checkbox.toggle();
-  // },
-
-  // // 确认选择
-  // proBtn(){
-  //   let result = this.data.result;
-  //   this.setData({
-  //     natureVal: result.join(','),
-  //     natureShow:false
-  //   });
-  //   console.log(this.data.natureVal)
-  // },
-
   onClose() {
     this.setData({ natureShow: false, itemShow: false, flowShow: false });
   },
@@ -222,7 +197,12 @@ Page({
   },
 
   selectItem() {
-    this.setData({ itemShow: true });
+    let {flowVal} = this.data;
+    if(flowVal==''){
+      Toast.fail('请选择流程');
+     }else{
+      this.setData({ itemShow: true });
+    }
   },
   selectFlow() {
     this.setData({ flowShow: true });
@@ -262,7 +242,7 @@ Page({
       fileIds: this.data.fileIds,
       toHandlerId: toHandlerId
     }
-    if (this.data.flowVal != '审核结束') {
+    if (data.isPass=='1' && this.data.flowVal != '审核结束') {
       if (toHandlerId == '') {
         Toast.fail('请选择审批人');
         return;

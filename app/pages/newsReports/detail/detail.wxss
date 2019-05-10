@@ -1,8 +1,41 @@
-.log-list {
-  display: flex;
-  flex-direction: column;
-  padding: 40rpx;
+@import"../../../wxParse/wxParse.wxss";
+
+.detail-page {
+  padding: 0 30rpx;
 }
-.log-item {
-  margin: 10rpx;
+.detail-title {
+  font-weight: 700;
+  font-size: 50rpx;
+  color: #222;
+}
+.title-brief {
+  margin-top: 38rpx;
+  line-height: 1;
+  font-size: 24rpx;
+  color: #999;
+  padding-bottom:20rpx;
+}
+.pull-left {
+  float: left;
+}
+.pull-center{
+  margin-left: 20rpx;
+}
+.pull-right {
+  float: right;
+}
+.detail-content {
+  padding: 30rpx 0;
+  clear: both;
+}
+
+.detail-content image{
+  width: 100%;
+  height: auto;
+}
+.border{
+  border-bottom: 1px solid #e8e8e8;
+}
+.attachment{
+  color: #4387fe;
 }

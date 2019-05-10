@@ -1,0 +1,63 @@
+<view class="detail">
+    <view class="item">
+        <view class="item_title">单位</view>
+        <view class="item_val">南通一标</view>
+    </view>
+    <view class="item">
+        <view class="item_title">考核结果</view>
+        <view class="item_val">
+            <view class="reward" wx:if="{{true}}">奖励</view>
+            <view class="punishment" wx:else>扣分</view>
+        </view>
+    </view>
+    <view class="item">
+        <view class="item_title">施工班组</view>
+        <view class="item_val">南通一标</view>
+    </view>
+    <view class="item">
+        <view class="item_title">负责人</view>
+        <view class="item_val">南通一标</view>
+    </view>
+    <view class="item">
+        <view class="item_title">张三</view>
+        <view class="item_val">南通一标</view>
+    </view>
+    <view class="addScore" wx:if="{{true}}">
+        <view class="item">
+            <view class="item_title">加分项</view>
+            <view class="item_val">南通一标南通一标南通一标南通一标南通一标南通一标南通一标南通一标南通一标南通一标南通一标南通一标南通一标南通一标南通一标南通一标南通一标</view>
+        </view>
+        <view class="item">
+            <view class="item_title">实加分</view>
+            <view class="item_val">南通一标</view>
+        </view>
+    </view>
+    <view class="addScore" wx:else>
+        <view class="item">
+            <view class="item_title">扣分项</view>
+            <view class="item_val">南通一标</view>
+        </view>
+        <view class="item">
+            <view class="item_title">是扣分</view>
+            <view class="item_val">南通一标</view>
+        </view>
+    </view>
+    <view class="item" bind:tap="goScoreDetail">
+        <view class="item_title color_2E85D6">评分明细</view>
+        <view class="item_val">
+            <image class="img" src="../../../../images/patrol/index/4.png" />
+        </view>
+    </view>
+    <view class="item">
+        <view class="item_title">考核说明</view>
+        <view class="item_val">南通一标</view>
+    </view>
+    <view class="item">
+        <view class="item_title">考核编号</view>
+        <view class="item_val">南通一标</view>
+    </view>
+    <view class="item">
+        <view class="item_title">创建人</view>
+        <view class="item_val">张三 2019-05-05 14:15</view>
+    </view>
+</view>

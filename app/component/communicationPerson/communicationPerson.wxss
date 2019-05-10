@@ -1,0 +1,90 @@
+page{
+    background-color: #f7f7f7;
+  }
+.person_unit{
+    background-color: #ffffff;
+    margin-bottom: 20rpx;
+}
+.list {
+    border-top: 1px solid #F1F1F1;  
+}
+.van-cell{
+    width: 750rpx;
+    height: 100rpx;
+    line-height: 50rpx !important;
+}
+.van-cell__value{
+    color: #2E85D6 !important;
+    font-size:30rpx;
+    font-family:PingFang-SC-Regular;
+    font-weight:400;
+}
+.communicatePerson{
+    height: 140rpx;
+}
+.person_container{
+    display: flex;
+    background-color: #ffffff;
+}
+.person_name{
+    margin-top: 5rpx;   
+    height: 30rpx;
+    font-size: 32rpx;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: #333333;
+    line-height: 80rpx;
+}
+.person_phone{
+    width: 185rpx;
+    height: 21rpx;
+    font-size: 28rpx;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: #999999;
+    line-height: 80rpx;
+    margin-right: 20rpx;
+}
+.person_position{
+    width: 90rpx;
+    height: 27rpx;
+    font-size: 28rpx;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: #999999;
+    line-height: 80rpx;
+    border-left: 1px solid #999999;
+    padding-left: 20rpx;
+    margin-right: 164rpx;
+}
+.person_center{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    border-bottom: 1px solid #f1f1f1;
+}
+.person_center view{
+    margin-top: 20rpx;
+}
+.person_left{
+    width: 140rpx;
+    height: 140rpx;
+    text-align: center;
+    vertical-align: middle;
+}
+.person_right{
+    width: 110rpx;
+    height: 140rpx;
+    text-align: center;
+    border-bottom: 1px solid #f1f1f1;
+}
+.person_left image{
+    width: 80rpx;
+    height: 80rpx;
+    margin-top: 30rpx;
+}
+.person_right image{
+    width: 48rpx;
+    height: 48rpx;
+    margin-top: 47rpx;
+}

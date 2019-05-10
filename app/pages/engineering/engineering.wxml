@@ -1,95 +1,96 @@
-<view>
+<view class="engineering">
     <!-- tab导航栏 -->
     <!-- scroll-left属性可以控制滚动条位置 -->
     <!-- scroll-with-animation滚动添加动画过渡 -->
     <scroll-view scroll-x="true" class="nav" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
         <block wx:for="{{navData}}" wx:for-index="id" wx:for-item="navItem" wx:key="id">
-            <view  class="nav-item {{currentIdnex == id ?'active':''}}" data-current="{{id}}" data-id="{{navItem.id}}"
-                bindtap="switchNav">
+            <view class="nav-item {{currentIdnex == id ?'active':''}}" data-current="{{id}}" data-id="{{navItem.id}}" bindtap="switchNav">
                 {{navItem.name}}
             </view>
         </block>
     </scroll-view>
     <!-- 页面内容 -->
-    <swiper class="tab-box" current="{{currentTab}}" duration="500" data-id="{{id}}" bindchange="switchTab">
+    <swiper class="tab-box" current="{{currentTab}}" duration="500" data-id="{{id}}" bindchange="switchTab" style="height:{{swiperHeight}}">
         <swiper-item wx:for="{{navData}}" wx:for-item="tabItem" wx:for-index="id" wx:key="id" class="tab-content">
-            <block wx:for="{{infosArray}}" wx:key="id">
-                <view hover="true" hover-class="detail-hover" wx:if="{{item.imageList.length>0 && item.imageList.length<3}}" class='list-div' data-id="{{item.id}}"
-                    bindtap="goDetaile">
-                    <view class='list-infos'>
-                        <view class='list-left' style="height:147rpx;">
-                            <view class='title-div' style="height:116rpx;">
-                                <view class='title'>
-                                    <text class="to-top" wx:if="{{item.isTop=='1'}}">置顶</text>
-                                    <text class="to-top1" wx:if="{{item.isTop=='1'}}">置顶</text>
-                                    <text>{{item.title}}</text>
+            <view class="list">
+                <block wx:for="{{infosArray}}" wx:key="id">
+                    <view hover="true" hover-class="detail-hover" wx:if="{{item.imageList.length>0 && item.imageList.length<3}}" class='list-div' data-id="{{item.id}}" bindtap="goDetaile">
+                        <view class='list-infos'>
+                            <view class='list-left' style="height:147rpx;">
+                                <view class='title-div' style="height:116rpx;">
+                                    <view class='title'>
+                                        <text class="to-top" wx:if="{{item.isTop=='1'}}">置顶</text>
+                                        <text class="to-top1" wx:if="{{item.isTop=='1'}}">置顶</text>
+                                        <text>{{item.title}}</text>
+                                    </view>
+                                </view>
+                                <view class='brief-div' style="margin-top:0;">
+                                    <text class='color-6 typeTitle'>{{item.categoryName}}</text>
+                                    <text class='view-num color-6'>浏览{{item.visitTimes}}</text>
+                                    <text class='date color-6'>{{item.createTime}}</text>
                                 </view>
                             </view>
-                            <view class='brief-div' style="margin-top:0;">
-                                <text class='color-6 typeTitle'>{{item.categoryName}}</text>
-                                <text class='view-num color-6'>浏览{{item.visitTimes}}</text>
-                                <text class='date color-6'>{{item.createTime}}</text>
-                            </view>
-                        </view>
-                        <view class='list-right'>
-                            <view class='img-box'>
-                                <image class='list-img' src='{{item.imageList[0]}}'></image>
-                            </view>
-                        </view>
-                    </view>
-                </view>
-                <view hover="true" hover-class="detail-hover" wx:elif="{{item.imageList==null || item.imageList.length==0}}" class='list-div' data-id="{{item.id}}"
-                    bindtap="goDetaile">
-                    <view class='list-infos'>
-                        <view class='list-left'>
-                            <view class='title-div'>
-                                <view class='title'>
-                                    <text class="to-top" wx:if="{{item.isTop=='1'}}">置顶</text>
-                                    <text class="to-top1" wx:if="{{item.isTop=='1'}}">置顶</text>
-                                    <text>{{item.title}}</text>
-                                </view>
-                            </view>
-                            <view class='brief-div'>
-                                <text class='color-6 typeTitle'>{{item.categoryName}}</text>
-                                <text class='view-num color-6'>浏览{{item.visitTimes}}</text>
-                                <text class='date color-6'>{{item.createTime}}</text>
-                            </view>
-                        </view>
-                    </view>
-                </view>
-                <view hover="true" hover-class="detail-hover" wx:else="{{item.imageList.length>2}}" class='list-div' data-id="{{item.id}}" bindtap="goDetaile">
-                    <view class='list-infos' style="flex-direction: column;">
-                        <view class='list-left' style="width: 100%;">
-                            <view class='title-div'>
-                                <view class='title'>
-                                    <text class="to-top" wx:if="{{item.isTop=='1'}}">置顶</text>
-                                    <text class="to-top1" wx:if="{{item.isTop=='1'}}">置顶</text>
-                                    <text>{{item.title}}</text>
+                            <view class='list-right'>
+                                <view class='img-box'>
+                                    <image class='list-img' src='{{item.imageList[0]}}'></image>
                                 </view>
                             </view>
                         </view>
-                        <view class='list-right flex-left'>
-                            <view class='img-box'>
-                                <image class='list-img' src='{{item.imageList[0]}}' mode="widthFix"></image>
-                            </view>
-                            <view class='img-box'>
-                                <image class='list-img' src='{{item.imageList[1]}}' mode="widthFix"></image>
-                            </view>
-                            <view class='img-box'>
-                                <image class='list-img' src='{{item.imageList[2]}}' mode="widthFix"></image>
-                            </view>
-                        </view>
-                        <view class='list-left' style="width: 100%;">
-                            <view class='brief-div'>
-                                <text class='color-6 typeTitle'>{{item.categoryName}}</text>
-                                <text class='view-num color-6'>浏览{{item.visitTimes}}</text>
-                                <text class='date color-6'>{{item.createTime}}</text>
+                    </view>
+                    <view hover="true" hover-class="detail-hover" wx:elif="{{item.imageList==null || item.imageList.length==0}}" class='list-div' data-id="{{item.id}}" bindtap="goDetaile">
+                        <view class='list-infos'>
+                            <view class='list-left'>
+                                <view class='title-div'>
+                                    <view class='title'>
+                                        <text class="to-top" wx:if="{{item.isTop=='1'}}">置顶</text>
+                                        <text class="to-top1" wx:if="{{item.isTop=='1'}}">置顶</text>
+                                        <text>{{item.title}}</text>
+                                    </view>
+                                </view>
+                                <view class='brief-div'>
+                                    <text class=''>{{item.categoryName}}</text>
+                                    <text class='view-num color-6'>浏览{{item.visitTimes}}</text>
+                                    <text class='date color-6'>{{item.createTime}}</text>
+                                </view>
                             </view>
                         </view>
                     </view>
+                    <view hover="true" hover-class="detail-hover" wx:else="{{item.imageList.length>2}}" class='list-div' data-id="{{item.id}}" bindtap="goDetaile">
+                        <view class='list-infos' style="flex-direction: column;">
+                            <view class='list-left' style="width: 100%;">
+                                <view class='title-div'>
+                                    <view class='title'>
+                                        <text class="to-top" wx:if="{{item.isTop=='1'}}">置顶</text>
+                                        <text class="to-top1" wx:if="{{item.isTop=='1'}}">置顶</text>
+                                        <text>{{item.title}}</text>
+                                    </view>
+                                </view>
+                            </view>
+                            <view class='list-right flex-left'>
+                                <view class='img-box'>
+                                    <image class='list-img' src='{{item.imageList[0]}}' mode="widthFix"></image>
+                                </view>
+                                <view class='img-box'>
+                                    <image class='list-img' src='{{item.imageList[1]}}' mode="widthFix"></image>
+                                </view>
+                                <view class='img-box'>
+                                    <image class='list-img' src='{{item.imageList[2]}}' mode="widthFix"></image>
+                                </view>
+                            </view>
+                            <view class='list-left' style="width: 100%;">
+                                <view class='brief-div'>
+                                    <text class='color-6 typeTitle'>{{item.categoryName}}</text>
+                                    <text class='view-num color-6'>浏览{{item.visitTimes}}</text>
+                                    <text class='date color-6'>{{item.createTime}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+                <view class="loading_div" hidden="{{!onLoading}}">
+                    <van-loading color="#438afe" size="25px"/>正在加载中
                 </view>
-            </block>
-
+            </view>
         </swiper-item>
     </swiper>
     <!-- 没有更多数据 -->

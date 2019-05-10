@@ -20,7 +20,9 @@ Page({
     navScrollLeft: 0,
     infosArray: [],
     categoryId: '',
-    isTouch:true
+    isTouch:true,
+    swiperHeight:'',
+    onLoading:false
   },
   //事件处理函数
   onLoad: function () {
@@ -155,9 +157,8 @@ Page({
     let isload = this.data.isload;
     let id = this.data.id;
     if (isload) {
-      // 显示加载图标
-      wx.showLoading({
-        title: '数据加载中'
+      this.setData({
+        onLoading:true
       });
       let page1 = this.data.page + 1;
       this.setData({
@@ -229,7 +230,9 @@ Page({
     let RecommendArr = [];
     if (isLoading == '1') {
       // 隐藏加载框
-      wx.hideLoading();
+      that.setData({
+        onLoading:false
+      });
 
       RecommendArr = [...that.data.infosArray, ...res.data.data];
     }else{
@@ -244,5 +247,13 @@ Page({
       infosArray: RecommendArr,
       isload: isload
     });
+
+    let query = wx.createSelectorQuery();
+    //选择id
+    query.select('.list').boundingClientRect(function (rect) {
+      that.setData({
+        swiperHeight: rect.height + 50 + 'px'
+      })
+    }).exec();
   }
 })

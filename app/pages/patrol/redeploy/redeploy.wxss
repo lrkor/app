@@ -1,0 +1,48 @@
+page{
+    background-color: #f7f7f7;
+}
+.list{
+    margin-top: 10px;
+}
+.list .van-cell__title{
+    font-size: 30rpx;
+    color: #333;
+}
+.list .van-field__input{
+    font-size: 30rpx
+}
+
+.item{
+    display: flex;
+    padding: 10px 15px;
+    background-color: #fff;
+}
+.item_left{
+    font-size: 30rpx;
+    color: #333;
+    width: 90px;
+}
+
+.item_right{
+    font-size: 30rpx;
+    color: #ccc;
+}
+
+.color_333{
+    color: #333;
+}
+
+.btn{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.btn .van-button--large{
+    border: none;
+    background-color: #2E85D6;
+    height: 98rpx;
+    line-height: 98rpx;
+    color: #fff;
+    font-size: 36rpx;
+    border-radius: 0;
+}

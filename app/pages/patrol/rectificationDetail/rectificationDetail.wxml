@@ -59,7 +59,7 @@
                 <view class="problem_detail_item">
                     <view class="problem_detail_item_top">
                         <view class="problem_detail_item_left">整改要求：</view>
-                        <view class="problem_detail_item_right">{{obj.inspectBO.content}}</view>
+                        <view class="problem_detail_item_right">{{obj.content}}</view>
                     </view>
                     <view class="border-scale"></view>
                 </view>
@@ -164,19 +164,20 @@
     <view class="state" wx:if="{{state==0}}">
         <view class="btn_item border_right" bind:tap="goIssue" wx:if="{{rectify}}">整改</view>
         <view class="btn_item border_right" bind:tap="goApproval" wx:if="{{audit}}">审批</view>
+           <view class="btn_item border_right" bind:tap="goRedeploy" wx:if="{{transfer}}">转派</view>
+        <view class="btn_item border_right" bind:tap="goUpdateTime" wx:if="{{updateDateline}}">调整期限</view>
         <view class="btn_item border_right" bind:tap="goProcess">流转日志</view>
         <view class="btn_item">
             <button open-type="share">分享</button>
         </view>
     </view>
-    <!-- 小于等于4 -->
-    <!-- <view class="state" wx:if="{{state==0}}">
-        <view class="btn_item border_right" bind:tap="goIssue">整改</view>
-        <view class="btn_item border_right" bind:tap="goApproval">审批</view>
-        <view class="btn_item border_right" bind:tap="goProcess">流转日志</view>
-        <view class="btn_item border_right">
-            <button open-type="share">分享</button>
-        </view>
-        <view class="btn_item border_right" bind:tap="goProcess">更多</view>
-    </view> -->
+    <!-- 大于等4 -->
+    <view class="state" wx:else>
+        <view class="btn_item border_right" bind:tap="goIssue" wx:if="{{rectify}}">整改</view>
+        <view class="btn_item border_right" bind:tap="goApproval" wx:if="{{audit}}">审批</view>
+        <view class="btn_item border_right" bind:tap="goRedeploy" wx:if="{{transfer}}">转派</view>
+        <view class="btn_item border_right" bind:tap="goUpdateTime" wx:if="{{updateDateline}}">调整期限</view>
+        <view class="btn_item border_right" bind:tap="goMoreBtn">更多</view>
+    </view>
 </view>
+<van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:close="onClose" bind:select="onSelect" />

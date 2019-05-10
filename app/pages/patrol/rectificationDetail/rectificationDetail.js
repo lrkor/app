@@ -5,51 +5,21 @@ Page({
   data: {
     state: 0,
     obj: {},
-    person: '张三',
+    person: '',
     imgList: [],
     imgList1: [],
     time: '',
+    dateline:'',
     isOverdue: true,
-    releaseTime: '2019-12-31 12:00',
-    releasePerson: '张萨安',
+    releaseTime: '',
+    releasePerson: '',
     checkItem: '临边防护',
-    headPerson: '李四',
+    headPerson: '',
     level: '一般',
     isMore: true,
-    rectificationPerson: '李四',
-    rectificationTime: '2020-12-31 12:00',
-    list: [
-      {
-        result: '不通过',
-        opinion: '意见内容意见内容意见内容意见内容意见内容意见内容意见内容意见内容。',
-        status: 0,
-        time: '03-04 11:02'
-      },
-      {
-        result: '通过',
-        opinion: '意见内容意见内容意见内容意见内容意见内容意见内容意见内容意见内容。',
-        status: 1,
-        time: '03-04 11:02'
-      },
-      {
-        result: '不通过',
-        opinion: '意见内容意见内容意见内容意见内容意见内容意见内容意见内容意见内容。',
-        status: 0,
-        time: '03-04 11:02'
-      },
-      {
-        result: '通过',
-        opinion: '意见内容意见内容意见内容意见内容意见内容意见内容意见内容意见内容。',
-        status: 1,
-        time: '03-04 11:02'
-      },
-      {
-        result: '通过',
-        opinion: '意见内容意见内容意见内容意见内容意见内容意见内容意见内容意见内容。',
-        status: 0,
-        time: '03-04 11:02'
-      },
-    ],
+    rectificationPerson: '',
+    rectificationTime: '',
+    list: [],
     id: '',
     zgnr: false,
     zgnrObj: '',
@@ -57,16 +27,35 @@ Page({
 
     audit: false,
     rectify: false,
+    transfer:false,
+    updateDateline:false,
+
+    show:false,
+
+    actions: [
+      {
+        name:'流转日志'
+      },
+      {
+        name: '分享',
+        openType: 'share'
+      }
+    ],
   },
   onLoad: function (options) {
     let id = options.id;
-    let that = this;
     wx.setNavigationBarTitle({
       title: '整改详情'
     });
     this.setData({
       id: id
     });
+    
+  },
+
+  onShow(){
+    let {id} = this.data;
+    let that = this;
     this.getDetail(id).then(res => {
       let imgArr = [];
       let imgArr1 = [];
@@ -129,6 +118,7 @@ Page({
         imgList: imgArr,
         imgList1: imgArr1,
         time: util.formatTime(new Date(res.data.data.dateline), 'yyyy-mm-dd hh:mm'),
+        dateline: res.data.data.dateline,
         isOverdue: res.data.data.dateline > new Date().getTime() ? false : true,
         releaseTime: util.formatTime(new Date(res.data.data.inspectBO.createTime), 'yyyy-mm-dd hh:mm'),
         zgnr: zgnr,
@@ -136,16 +126,33 @@ Page({
         zgnrObj: zgnrObj,
         flowArr: flowArr
       });
-      console.log(that.data.obj)
     });
 
     // 获取整改详情权限按钮
     this.queryPermissionButton(id).then(res => {
-      console.log(res);
-      that.setData({
-        audit: res.data.data.audit,
-        rectify: res.data.data.rectify
-      });
+      let data1 = res.data.data;
+      let num = 0;
+      Object.keys(data1).map((key,item)=>{
+        if(data1[key]){
+          num++;
+        }
+      })
+      if(num>2){
+        that.setData({
+          state:'1',
+          audit: data1.audit,
+          rectify: data1.rectify,
+          transfer: data1.transfer,
+          updateDateline: data1.updateDateline
+        });
+      }else{
+        that.setData({
+          audit: data1.audit,
+          rectify: data1.rectify,
+          transfer: data1.transfer,
+          updateDateline: data1.updateDateline
+        });
+      }
     });
   },
 
@@ -157,6 +164,43 @@ Page({
       })
     }
   },
+
+  goMoreBtn() {
+    this.setData({
+      show: true
+    });
+  },
+
+  onSelect(event) {
+    let id = this.data.id;
+    console.log(event.detail);
+    if(event.detail.name=='流转日志'){
+      wx.navigateTo({
+        url: '../process/process?id=' + id,
+      })
+    }
+  },
+
+  onClose(){
+    this.setData({show:false});
+  },
+
+  // 跳转期限
+  goUpdateTime(){
+    let {id,dateline} = this.data;
+    wx.navigateTo({
+      url: '../updateTime/updateTime?rectifyId=' + id + '&dateline=' + dateline,
+    })
+  },
+
+  // 转派
+  goRedeploy(){
+    let {id} = this.data;
+    wx.navigateTo({
+      url: '../redeploy/redeploy?rectifyId=' + id,
+    })
+  },
+
   goIssue() {
     let id = this.data.id;
     wx.navigateTo({

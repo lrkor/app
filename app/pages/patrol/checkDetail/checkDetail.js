@@ -60,11 +60,8 @@ Page({
       })
     });
 
-
-
     //获取权限
     this.queryPermissionButton(id).then(res => {
-      console.log(res.data.data);
       if (res.data.data.addRectify && res.data.data.rectifyDetail && res.data.data.updateOrDelete) {
         this.setData({
           moreFore: true
@@ -78,6 +75,7 @@ Page({
       }
     });
   },
+
   goRectifyDetail() {
     // 获取整改详情id
     let {id} = this.data;

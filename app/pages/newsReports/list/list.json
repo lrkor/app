@@ -1,3 +1,17 @@
 {
-  "navigationBarTitleText": "查看启动日志"
+  "usingComponents": {
+    "van-field": "../../../miniprogram_npm/vant-weapp/field/index",
+    "van-picker": "../../../miniprogram_npm/vant-weapp/picker/index",
+    "van-popup": "../../../miniprogram_npm/vant-weapp/popup/index",
+    "van-cell": "../../../miniprogram_npm/vant-weapp/cell/index",
+    "van-cell-group": "../../../miniprogram_npm/vant-weapp/cell-group/index",
+    "van-toast": "../../../miniprogram_npm/vant-weapp/toast/index",
+    "van-button": "../../../miniprogram_npm/vant-weapp/button/index",
+    "van-search": "../../../miniprogram_npm/vant-weapp/search/index"
+  },
+  "navigationBarTitleText": "通知公告",
+  "onReachBottomDistance":20,
+  "backgroundColor": "#ffffff",
+  "backgroundTextStyle":"dark",
+  "enablePullDownRefresh": true
 }

@@ -1,0 +1,62 @@
+page{
+    background-color: #f2f2f2;
+}
+.add .van-cell{
+    padding: 13px 15px;
+}
+.add_item{
+    display: flex;
+    border-top: 1px solid #f1f1f1;
+    font-size: 30rpx;
+    background-color: #fff;
+    padding: 15px 0;
+}
+.add_item_title{
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    width: 90px;
+    color: #333;
+}
+.add_item_val{
+    display: flex;
+    align-items: center;
+}
+.add_score{
+    margin-top: 10px;
+}
+
+.border_top{
+    border-top: 1px solid #f1f1f1;
+}
+.color_ccc{
+    color: #ccc;
+    font-size: 28rpx;
+}
+
+.popup_btn {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.popup_btn1 .van-button--large {
+    height: 44px;
+    line-height: 44px;
+    background-color: #2E85D6;
+    color: #fff;
+    font-size: 36rpx;
+}
+
+.img{
+    width: 14rpx;
+    height: 25rpx;
+}
+
+.color_2E85D6{
+    color: #2E85D6;
+}
+
+.j-c-s-b{
+    justify-content: space-between;
+    padding-right: 15px;
+}

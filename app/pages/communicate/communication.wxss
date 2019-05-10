@@ -1,0 +1,12 @@
+
+page {
+    background-color: #f7f7f7;
+}
+
+.van-cell{
+    border-radius: 30rpx;
+}
+
+.communicatePerson {
+    height: 140rpx;
+}

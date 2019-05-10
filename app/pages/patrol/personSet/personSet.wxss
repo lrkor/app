@@ -13,7 +13,6 @@ page {
     color: #333;
     font-size: 30rpx;
 }
-
 .list  .van-swipe-cell__right{
     color: #fff;
     font-size: 15px;
@@ -32,7 +31,7 @@ page {
     border-bottom: 1px solid #f1f1f1;
 }
 
-.item::last-child {
+.item:last-child {
     border: none;
 }
 

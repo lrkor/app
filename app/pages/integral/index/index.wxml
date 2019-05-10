@@ -1,0 +1,2 @@
+<view bind:tap="goAssess">考核记录</view>
+<view bind:tap="goScoreboard">积分榜</view>

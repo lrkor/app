@@ -23,7 +23,7 @@
                 <van-checkbox-group border="{{false}}" value="{{ causeResult }}" bind:change="onChange">
                     <van-cell-group border="{{false}}">
                         <van-cell wx:for="{{ causeList }}" wx:key="index" title="{{ item.name }}" clickable data-id="{{ item.id }}" data-name="{{ item.name }}" bind:click="toggle">
-                            <van-checkbox class="checkboxes-{{ item.id }}" name="{{ item.name }}" />
+                            <van-checkbox catch:tap="noop" class="checkboxes-{{ item.id }}" name="{{ item.name }}" />
                         </van-cell>
                     </van-cell-group>
                 </van-checkbox-group>

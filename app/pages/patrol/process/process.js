@@ -3,8 +3,8 @@ const wxRequest = require('../../../utils/wxRequest.js');
 const util = require('../../../utils/util.js');
 Page({
   data: {
-    describe:'意见内容意见内容意见内容意见内容意见内容意见内容意见内容意见内容',
-    demand:'意见内容意见内容意见内容意见内容意见内容意见内容意见内容意见内容。',
+    describe:'',
+    demand:'',
     inspectBO:{},
     issue:{},
     rectification:{},
@@ -33,6 +33,9 @@ Page({
         let arr = res.data.data.inspectRectifyFlowList;
         for(let item of arr){
           item.createTime = util.formatTime(new Date(item.createTime), 'mm-dd hh:mm');
+          item.lastDateline = util.formatTime(new Date(item.lastDateline), 'yyyy-mm-dd hh:mm');
+          item.newDateline = util.formatTime(new Date(item.newDateline), 'yyyy-mm-dd hh:mm');
+
         }
         that.setData({
           inspectRectifyFlowList:arr

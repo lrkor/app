@@ -7,6 +7,10 @@ page{
     background-color: #fff;
     padding: 10px 20rpx;
 }
+.choose_person .van-cell__title{
+    flex: auto;
+    width: 60%;
+}
 
 .popup_top_left {
     font-size: 34rpx;
@@ -79,5 +83,8 @@ page{
     color: #fff;
     font-size: 36rpx;
     border-radius: 8rpx;
+}
 
+.popup_list .van-cell:last-child .van-cell::after{
+    border: none!important;
 }

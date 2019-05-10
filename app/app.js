@@ -60,12 +60,13 @@ App({
   globalData: {
     sid:'',
     orgId:'',
+    tenderName:'',
     checkFiltrate:{},
     rectificationFiltrate:{},
     checkItem:{},
     isguidance: true,
     subscribe: false,
-    version: '0.0.12',
+    version: '0.0.17',
     token: '',
     systemCode: '',
     openid: '',
@@ -80,7 +81,7 @@ App({
     userInfo: {},
     sgmsUrl:"",
     sgmeImgUrl:"",
-    BaseURL: "https://wechat-beta.zhinengjianshe.com/wechatService/",
-    tokenUrl: "https://wechat-beta.zhinengjianshe.com/wechatService/weChat/toProject?token="
+    BaseURL: "https://wechat.zhinengjianshe.com/wechatService/",
+    tokenUrl: "https://wechat.zhinengjianshe.com/wechatService/weChat/toProject?token="
   }
 })

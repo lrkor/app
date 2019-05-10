@@ -3,9 +3,8 @@
     <view class="title">
         <view class="flex-wrp" style="flex-direction:row;">
             <view class="flex-item title_letf">
-                <image src="../../images/index/positioning.png" style="width:20rpx;height: 24rpx;margin-right: 10rpx;" />
+                <image src="../../images/index/positioning.png" style="width:20rpx;height: 24rpx;flex-shrink: 0;" />
                 <text class="systemName-txt">{{systemName}}</text>
-                <!-- <image src="../../images/index/down.png" style="width:11rpx;height: 10rpx;margin-left: 10rpx;" /> -->
             </view>
             <view class="flex-item flex_weather flex-wrp title_right" bindtap="getweather">
                 <view class="weather">{{windSpeed}}</view>

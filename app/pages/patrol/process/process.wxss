@@ -1,9 +1,11 @@
+page{
+    height: 100%;
+    overflow-y: scroll;
+}
 .process{
     padding-left: 53rpx;
     border-top: 1px solid #f1f1f1;
     padding-bottom: 30rpx;
-    height: 100%;
-    overflow-y: scroll;
 }
 .process_item{
     padding-top: 30rpx;

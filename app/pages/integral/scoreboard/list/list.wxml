@@ -1,0 +1,20 @@
+<view class="list">
+    <view class="list_title">
+        <view class="title_name w_30">姓名</view>
+            <view class="title_post w_30">岗位</view>
+            <view class="title_points w_15">扣分</view>
+            <view class="title_reward w_15">奖励</view>
+            <view class="item_img w_10"></view>
+    </view>
+    <block wx:for="{{arr}}" wx:key="index">
+        <view class="list_item" bind:tap="goScoreList">
+            <view class="item_name w_30">张三</view>
+            <view class="item_points w_30">安全员</view>
+            <view class="item_points w_15">10.05</view>
+            <view class="item_reward w_15">10.05</view>
+            <view class="item_img w_10">
+                <image class="img" src="../../../../images/patrol/index/4.png" />
+            </view>
+        </view>
+    </block>
+</view>

@@ -1,0 +1,21 @@
+<view class="choose_unit">
+    <view class="list">
+        <block wx:for="{{unitList1}}" wx:key="item.index">
+            <van-cell title="{{item.tenderName}}" is-link bind:tap="educationList" data-url='{{url}}' data-orgId='{{item.id}}' />
+        </block>
+    </view>
+</view>
+<view class="choose_unit">
+    <view class="list">
+        <block wx:for="{{unitList2}}" wx:key="item.index">
+            <van-cell title="{{item.tenderName}}" is-link bind:tap="educationList" data-url='{{url}}' data-orgId='{{item.id}}' />
+        </block>
+    </view>
+</view>
+<view class="choose_unit">
+    <view class="list">
+        <block wx:for="{{unitList3}}" wx:key="item.index">
+            <van-cell title="{{item.tenderName}}" is-link bind:tap="educationList" data-url='{{url}}' data-orgId='{{item.id}}' />
+        </block>
+    </view>
+</view>

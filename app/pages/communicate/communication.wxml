@@ -1,0 +1,6 @@
+<view class="communicate" hover-class="none" hover-stop-propagation="false">
+    <view class="section">
+        <van-search value="{{ value }}" placeholder="按姓名查询" shape="square" bind:search="onSearch" />
+    </view>
+    <communication id="communication" unitList1='{{unitList1}}' unitList2='{{unitList2}}'></communication>
+</view>

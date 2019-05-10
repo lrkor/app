@@ -28,6 +28,7 @@ Page({
     var that = this;
     this.getDetails(id)
       .then(res => {
+        console.log(res)
         wx.hideLoading();
         let article = res.data.data.content;
         let typeName = res.data.data.categoryName;

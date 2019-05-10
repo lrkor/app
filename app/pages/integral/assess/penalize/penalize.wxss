@@ -1,0 +1,29 @@
+page {
+    background-color: #f1f1f1;
+}
+
+page .van-collapse-item__content {
+    padding: 0;
+}
+
+page .van-cell:not(:last-child)::after {
+    content: none;
+}
+
+page .van-collapse-item>.item:last-child {
+    border: none;
+}
+
+.list{
+    padding-left: 15px;
+}
+
+.item {
+    padding: 10px 0;
+    padding-right: 15px;
+    color: #333;
+    border-bottom: 1px solid #f1f1f1;
+}
+.list>.item:last-child{
+   border: none;
+}

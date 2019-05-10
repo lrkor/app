@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "van-field": "../../miniprogram_npm/vant-weapp/field/index",
+    "van-cell": "../../miniprogram_npm/vant-weapp/cell/index",
+    "van-cell-group": "../../miniprogram_npm/vant-weapp/cell-group/index",
+    "van-search": "../../miniprogram_npm/vant-weapp/search/index"
+  },
+  "navigationBarTitleText": "通讯录",
+  "backgroundColor": "#ffffff",
+  "backgroundTextStyle":"dark",
+  "component": true
+}

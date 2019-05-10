@@ -19,14 +19,14 @@
                             <image src="../../../images/team/1.png" />
                         </view>
                     </view>
-                    <van-checkbox class="checkboxes-{{ item.id }}" name="{{ item.name }}" />
+                    <van-checkbox catch:tap="noop" class="checkboxes-{{ item.id }}" name="{{ item.id }}" />
                 </van-cell>
             </van-cell-group>
         </van-checkbox-group>
     </view>
     <view class="btn">
         <view class="btn1">
-            <van-button size="large" bind:click="addPerson">确定</van-button>
+            <van-button size="large" bind:click="{{clicked?'addPerson':''}}">确定</van-button>
         </view>
     </view>
 </view>

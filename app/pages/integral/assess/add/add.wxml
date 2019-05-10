@@ -1,0 +1,68 @@
+<view class="add">
+    <view class="add_item">
+        <view class="add_item_title">单位</view>
+        <view class="add_item_val">{{tenderName}}</view>
+    </view>
+    <view class="add_item" bind:tap="teamCheck">
+        <view class="add_item_title">施工班组</view>
+        <view class="add_item_val {{teamVal=='请选择班组'?'color_ccc':''}}">{{teamVal}}</view>
+    </view>
+    <view class="add_item" bind:tap="peopleCheck">
+        <view class="add_item_title">责任人</view>
+        <view class="add_item_val {{peopleVal=='请选择责任人'?'color_ccc':''}}">{{peopleVal}}</view>
+    </view>
+    <view class="add_item" bind:tap="assessCheck">
+        <view class="add_item_title">考核方式</view>
+        <view class="add_item_val {{assessVal=='请选择考核方式'?'color_ccc':''}}">{{assessVal}}</view>
+    </view>
+    <view class="add_score" wx:if="{{name=='奖励积分'}}">
+        <view class="add_item" bind:tap="goPenalize">
+            <view class="add_item_title" >加分项</view>
+            <view class="add_item_val color_ccc">请选择加分项</view>
+        </view>
+        <view class="border_top">
+            <van-cell-group border="{{ false }}">
+                <van-field value="{{ value }}" label="实加分" type="number" border="{{ false }}" placeholder="请输入分数" placeholder-style="color:#ccc;" bind:change="onChange" />
+            </van-cell-group>
+        </view>
+    </view>
+
+  <view class="add_score" wx:else>
+        <view class="add_item" bind:tap="goPenalize">
+            <view class="add_item_title">扣分项</view>
+            <view class="add_item_val color_ccc">请选择扣分项</view>
+        </view>
+        <view class="border_top">
+            <van-cell-group border="{{ false }}">
+                <van-field value="{{ value }}" label="实扣分" type="number" border="{{ false }}" placeholder="请输入分数" placeholder-style="color:#ccc;" bind:change="onChange" />
+            </van-cell-group>
+        </view>
+    </view>
+
+    <view class="add_item j-c-s-b" bind:tap="goScoreDetail">
+        <view class="add_item_title color_2E85D6">评分明细</view>
+        <view class="add_item_val">
+            <image class="img" src="../../../../images/patrol/index/4.png" />
+        </view>
+    </view>
+    <view class="border_top">
+        <van-cell-group border="{{ false }}">
+            <van-field value="{{ message }}" label="考核说明" placeholder="请输入.." placeholder-style="color:#ccc;" autosize border="{{ false }}" />
+        </van-cell-group>
+    </view>
+    <view class="popup_btn">
+        <view class="popup_btn1">
+            <van-button size="large" bind:click="determine">提交</van-button>
+        </view>
+    </view>
+
+    <van-popup show="{{ teamShow }}" position="bottom" bind:close="onClose">
+        <van-picker show-toolbar title="班组" columns="{{ teamColumns }}" bind:cancel="onClose" bind:confirm="teamOnConfirm" />
+    </van-popup>
+    <van-popup show="{{ peopleShow }}" position="bottom" bind:close="onClose">
+        <van-picker show-toolbar title="责任人" columns="{{ peopleColumns }}" bind:cancel="onClose" bind:confirm="peopleOnConfirm" />
+    </van-popup>
+    <van-popup show="{{ assessShow }}" position="bottom" bind:close="onClose">
+        <van-picker show-toolbar title="考核方式" columns="{{ assessColumns }}" bind:cancel="onClose" bind:confirm="assessOnConfirm" />
+    </van-popup>
+</view>

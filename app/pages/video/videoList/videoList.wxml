@@ -1,0 +1,23 @@
+<van-collapse value="{{ activeNames }}" bind:change="onChange" wx:for='{{videoList}}' wx:key='index' wx:for-item="list">
+    <van-collapse-item title="{{list.name}}" name="{{index}}" icon="location-o">
+        <view class="van-collapse-item_wrapper" hover-class="none" hover-stop-propagation="false">
+            <view class="van-collpase-item_cotent" hover-class="none" hover-stop-propagation="false">
+                <van-row>
+                    <van-col span="12" wx:for='{{list.subVideoConfigList}}' wx:key='index' wx:for-item="video">
+                        <view class="video-item" hover-class="none" hover-stop-propagation="false" bindtap='toDetail' data-id='{{video.id}}' data-url='{{url}}'>
+                            <image class="vedio-img" src="{{picUrl[index]}}" />
+                            <text class="title-text" selectable="false" space="false" decode="false">
+                                {{video.name}}
+                            </text>
+                        </view>
+                    </van-col>
+                </van-row>  
+            </view>
+        </view>
+    </van-collapse-item>
+</van-collapse>
+
+<view class="mask {{border?'border':''}}">
+    <image src="../../../images/video.png" />
+</view>
+  

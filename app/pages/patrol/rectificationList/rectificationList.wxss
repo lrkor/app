@@ -16,10 +16,13 @@
     border-radius: 30rpx;
 }
 
-.check_list {
+page{
     background-color: #f2f2f2;
-    height: 100%;
     overflow-y: scroll;
+}
+
+.check_list {
+    height: 100%;
     padding-bottom: 20rpx;
 }
 

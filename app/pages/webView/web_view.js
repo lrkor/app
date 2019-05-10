@@ -5,6 +5,7 @@ Page({
     url: ''
   },
   onLoad: function (options) {
+    console.log(options)
     wx.setNavigationBarTitle({
       title: '加载中...'
     })
@@ -19,5 +20,6 @@ Page({
         });
       }
     })
+    console.log(that.data.url)
   },
 })

@@ -1,0 +1,53 @@
+page{
+    background-color: #f1f1f1;
+}
+.item{
+    display: flex;
+    border-top: 1px solid #f1f1f1;
+    background-color: #fff;
+    color: #333;
+    font-size: 28rpx;
+    padding: 15px 0;
+    justify-content: space-between;
+}
+
+.item_title{
+    display: flex;
+    padding-left: 15px;
+    width: 90px;
+    flex-shrink:0;
+}
+.item_val{
+    padding-right: 15px;
+}
+
+.addScore{
+    margin-top: 10px;
+}
+
+.reward{
+    width: 130rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    background-color: #13C37F;
+    color: #fff;
+    text-align: center;
+}
+
+.punishment{
+    width: 130rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    background-color: #FF0000;
+    color: #fff;
+    text-align: center;
+}
+
+.img{
+    width: 14rpx;
+    height: 25rpx;
+}
+
+.color_2E85D6{
+    color: #2E85D6;
+}

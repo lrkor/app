@@ -1,0 +1,47 @@
+page{
+    background-color: #f1f1f1;
+}
+
+.list{
+    background-color: #fff;
+}
+
+.list_title{
+    display: flex;
+    color: #2E85D6;
+    font-size: 30rpx;
+    padding: 15px 0;
+    border-top: 1px solid #f1f1f1;
+}
+
+.list_title>view{
+    text-align: center
+}
+
+.list_item{
+    display: flex;
+    border-top: 1px solid #f1f1f1;
+    font-size: 30rpx;
+    padding: 15px 0;
+    color: #333;
+}
+
+.list_item>view{
+    text-align: center
+}
+.img{
+    width: 14rpx;
+    height: 25rpx;
+}
+
+.w_10{
+    width: 10%;
+}
+
+.w_15{
+    width: 15%;
+}
+
+.w_30{
+    width: 30%;
+}

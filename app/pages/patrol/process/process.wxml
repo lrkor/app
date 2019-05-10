@@ -32,14 +32,30 @@
         </view>
         <view wx:if="{{inspectRectifyFlowList.length>0}}">
             <block wx:for="{{inspectRectifyFlowList}}" wx:key="{{item.index}}">
-                <view class="process_item" wx:if="{{item.type==1}}">
+                <view class="process_item" wx:if="{{item.isTransfer==1}}">
+                    <view class="process_item_top">
+                        <view class="item_left">
+                            <view class="point"></view>
+                            <view class="title">转派</view>
+                        </view>
+                        <view class="item_right">
+                            <view class="name">{{item.createName}}</view>
+                            <view class="time">{{item.createTime}}</view>
+                        </view>
+                    </view>
+                    <view class="process_item_down">
+                        <view class="result color_999">将当前处理人从{{item.fromHandlerName}}调整为{{item.toHandlerName}}</view>
+                        <view class="result color_999">备注：{{item.content}}</view>
+                    </view>
+                </view>
+                <view class="process_item" wx:elif="{{item.type==1}}">
                     <view class="process_item_top">
                         <view class="item_left">
                             <view class="point"></view>
                             <view class="title">问题整改</view>
                         </view>
                         <view class="item_right">
-                            <view class="name">{{item.fromHandlerName}}</view>
+                            <view class="name">{{item.createName}}</view>
                             <view class="time">{{item.createTime}}</view>
                         </view>
                     </view>
@@ -48,21 +64,37 @@
                         <view class="result color_999">后期措施：{{item.laterMeasures}}</view>
                     </view>
                 </view>
-                <view class="process_item" wx:else>
+                <view class="process_item" wx:elif="{{item.type<5}}">
                     <view class="process_item_top">
                         <view class="item_left">
-                            <view class="point {{item.status==0?'bc_red':''}}"></view>
+                            <view class="point {{item.isPass==0?'bc_red':''}}"></view>
                             <view class="title">{{item.type==2?'项目部审批':item.type==3?'监理审批':'指挥部审批'}}
                             </view>
                         </view>
                         <view class="item_right">
-                            <view class="name">{{item.fromHandlerName}}</view>
+                            <view class="name">{{item.createName}}</view>
                             <view class="time">{{item.createTime}}</view>
                         </view>
                     </view>
                     <view class="process_item_down {{item.isPass==0?'color_red':'color_bule'}}">
                         <view class="result">审批结果：{{item.isPass==0?'不通过':'通过'}}</view>
                         <view class="opinion">审批意见：{{item.content}}</view>
+                    </view>
+                </view>
+                 <view class="process_item" wx:else>
+                    <view class="process_item_top">
+                        <view class="item_left">
+                            <view class="point"></view>
+                            <view class="title">调整期限</view>
+                        </view>
+                        <view class="item_right">
+                            <view class="name">{{item.createName}}</view>
+                            <view class="time">{{item.createTime}}</view>
+                        </view>
+                    </view>
+                    <view class="process_item_down">
+                        <view class="result color_999">将整改期限从{{item.lastDateline}}调整为{{item.newDateline}}</view>
+                        <view class="result color_999">备注：{{item.content}}</view>
                     </view>
                 </view>
             </block>

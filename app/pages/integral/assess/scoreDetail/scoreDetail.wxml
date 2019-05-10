@@ -1,0 +1,12 @@
+<view class="score_detail">
+    <view class="list">
+        <view class="list_title">
+            <image class="img" src="../../../../images/integral/1.png" />
+            <view class="title_val">班组</view>
+        </view>
+        <view class="item">
+            <view class="item_title">张三</view>
+            <view class="item_val color_red">-10分</view>
+        </view>
+    </view>
+</view>

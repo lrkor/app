@@ -1,6 +1,20 @@
-<!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
+<import src="../../../wxParse/wxParse.wxml" />
+<view class='detail-page'>
+  <view class='detail-title'>{{title}}</view>
+  <view class='title-brief {{border?"border":""}}'>
+    <text class="pull-left">{{tenderName}}</text>
+    <text class='pull-center'>{{creatorName}}</text>
+    <text class='pull-right'>{{date}}</text>
+  </view>
+  <view class='detail-content'>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+  <block wx:for="{{fileList}}" wx:key="id">
+    <view class="attachment" data-url="https://wechatapplet.zhinengjianshe.com/{{item.filePath}}" data-type="{{item.ext}}" catchtap='openFile'>
+      附件：{{item.fileName}}
+    </view>
   </block>
+  <!-- <view data-url="https://wechatapplet.zhinengjianshe.com/{{url}}" data-type="{{ext}}" catchtap='downloadFile'>
+    附件下载
+  </view> -->
 </view>

@@ -1,0 +1,19 @@
+    <view class="list communicatePerson">
+        <block wx:for="{{unitList2}}" wx:key="item.index">
+            <view class="person_container" bindtap="makePhone" data-phone='{{item.phone}}'>
+                <view class="person_left">
+                    <image class="" src="../../images/personal/1.png" />
+                </view>
+                <view class="person_center">
+                    <text class="person_name">{{item.name}}</text>
+                    <view>
+                        <text class="person_phone">{{item.phone}}</text>
+                        <text class="person_position">{{item.position}}</text>
+                    </view>
+                </view>
+                <view class="person_right">
+                    <image class="" src="../../images/personal/1.png" />
+                </view>
+            </view>
+        </block>
+    </view>

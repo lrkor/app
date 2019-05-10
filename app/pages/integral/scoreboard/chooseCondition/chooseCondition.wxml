@@ -1,0 +1,6 @@
+<view class="choose_unit">
+    <view class="list">
+            <van-cell title="施工班组" is-link bindtap="goTeam" data-orgId="{{item.orgId}}"/>
+            <van-cell title="项目部" is-link bindtap="goList" data-orgId="{{item.orgId}}"/>
+    </view>
+</view>

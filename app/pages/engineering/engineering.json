@@ -1,5 +1,8 @@
 {
   "onReachBottomDistance":20,
   "backgroundColor": "#ffffff",
-  "backgroundTextStyle":"dark"
+  "backgroundTextStyle":"dark",
+  "usingComponents": {
+    "van-loading": "../../miniprogram_npm/vant-weapp/loading/index"
+  }
 }
